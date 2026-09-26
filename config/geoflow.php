@@ -156,8 +156,8 @@ return [
     'telemetry_enabled' => filter_var(env('GEOFLOW_TELEMETRY_ENABLED', false), FILTER_VALIDATE_BOOLEAN),
     'telemetry_endpoint' => $telemetryEndpoint,
     'telemetry_interval_seconds' => max(3600, (int) env('GEOFLOW_TELEMETRY_INTERVAL_SECONDS', 86400)),
-    // GitHub 最新正式 Release 的 version.json 资产；默认每天检查一次，可通过 GEOFLOW_UPDATE_CHECK_ENABLED=false 关闭
-    'update_check_enabled' => filter_var(env('GEOFLOW_UPDATE_CHECK_ENABLED', env('APP_ENV') !== 'testing'), FILTER_VALIDATE_BOOLEAN),
+    // GitHub 最新正式 Release 的 version.json 资产；默认关闭上游检查，确需开启时设置 GEOFLOW_UPDATE_CHECK_ENABLED=true
+    'update_check_enabled' => filter_var(env('GEOFLOW_UPDATE_CHECK_ENABLED', false), FILTER_VALIDATE_BOOLEAN),
     'update_metadata_url' => $updateMetadataUrl,
     'update_metadata_cache_ttl_seconds' => (int) env('GEOFLOW_UPDATE_METADATA_CACHE_TTL', 86400),
     // 后台系统更新中心由独立 SparklightAIGEO Updater 执行变更，应用仅保留状态、操作桥接和只读旧记录。
