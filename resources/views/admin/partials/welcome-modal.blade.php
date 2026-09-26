@@ -8,12 +8,12 @@
             --admin-welcome-ink: #141413;
             --admin-welcome-body: #3d3d3a;
             --admin-welcome-muted: #5e5d59;
-            --admin-welcome-brand: #1B365D;
+            --admin-welcome-brand: #2D326B;
             --admin-welcome-border: #e8e5da;
             max-width: 860px;
             background: #ffffff;
             color: var(--admin-welcome-body);
-            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            font-family: "Noto Sans SC", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
         }
 
         #admin-welcome-modal .admin-welcome-reader {
@@ -31,7 +31,7 @@
 
         #admin-welcome-subtitle {
             margin-top: 12px;
-            border-left: 3px solid #1B365D;
+            border-left: 3px solid #2D326B;
             padding-left: 14px;
             color: var(--admin-welcome-muted);
             font-size: var(--admin-welcome-body-size);
@@ -55,7 +55,7 @@
 
         #admin-welcome-content .admin-welcome-section-title {
             margin: 18px 0 8px;
-            border-left: 3px solid #1B365D;
+            border-left: 3px solid #2D326B;
             padding-left: 10px;
             font-family: ui-serif, "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", Georgia, serif;
             font-size: var(--admin-welcome-section-size);
@@ -94,16 +94,16 @@
     </style>
 
     <div id="admin-welcome-modal" class="hidden fixed inset-0 z-[70]" role="dialog" aria-modal="true" aria-labelledby="admin-welcome-title" aria-describedby="admin-welcome-subtitle">
-        <div class="absolute inset-0 bg-[rgba(15,23,42,0.48)]" data-welcome-backdrop></div>
+        <div class="absolute inset-0 bg-[rgba(30, 34, 56,0.48)]" data-welcome-backdrop></div>
         <div class="relative flex min-h-full items-center justify-center p-4 sm:p-6 lg:p-8">
-            <div data-kami-document data-welcome-dialog tabindex="-1" class="admin-welcome-document w-full overflow-hidden rounded-2xl border border-[#e8e5da] bg-white shadow-[0_24px_72px_rgba(15,23,42,0.28)] ring-1 ring-[#e8e5da]">
+            <div data-kami-document data-welcome-dialog tabindex="-1" class="admin-welcome-document w-full overflow-hidden rounded-2xl border border-[#e8e5da] bg-white shadow-[0_24px_72px_rgba(30, 34, 56,0.28)] ring-1 ring-[#e8e5da]">
                 <div class="border-b border-[#e8e5da] bg-white px-5 py-3.5 sm:px-7">
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                         <div>
-                            <div id="admin-welcome-badge" class="admin-welcome-meta-text inline-flex rounded-full bg-[#EEF2F7] px-2.5 py-1 font-semibold text-[#1B365D]"></div>
+                            <div id="admin-welcome-badge" class="admin-welcome-meta-text inline-flex rounded-full bg-[#EFF0FA] px-2.5 py-1 font-semibold text-[#2D326B]"></div>
                         </div>
                         <div class="flex items-center gap-2 self-start sm:self-auto">
-                            <button type="button" data-welcome-switch class="admin-welcome-meta-text min-h-10 rounded-full border border-[#d1cfc5] bg-white px-3 py-1.5 font-medium text-[#3d3d3a] hover:border-[#1B365D] hover:text-[#1B365D]"></button>
+                            <button type="button" data-welcome-switch class="admin-welcome-meta-text min-h-10 rounded-full border border-[#d1cfc5] bg-white px-3 py-1.5 font-medium text-[#3d3d3a] hover:border-[#2D326B] hover:text-[#2D326B]"></button>
                             <button type="button" data-welcome-close class="admin-welcome-meta-text min-h-10 rounded-full border border-[#d1cfc5] bg-white px-3 py-1.5 font-medium text-[#3d3d3a] hover:bg-[#f7f6f1]"></button>
                         </div>
                     </div>
@@ -119,9 +119,9 @@
                     <div class="admin-welcome-reader mx-auto mt-7 border-t border-[#e8e5da] pt-4">
                         <p id="admin-welcome-links-label" class="admin-welcome-meta-text text-[#5e5d59]"></p>
                         <div class="mt-3 flex flex-wrap gap-2">
-                            <a id="admin-welcome-link-x" class="admin-welcome-meta-text inline-flex items-center rounded-full bg-[#EEF2F7] px-3 py-1.5 font-medium text-[#1B365D] ring-1 ring-[#d1cfc5] hover:bg-[#E4ECF5]" target="_blank" rel="noopener noreferrer"></a>
-                            <a id="admin-welcome-link-github" class="admin-welcome-meta-text inline-flex items-center rounded-full bg-[#EEF2F7] px-3 py-1.5 font-medium text-[#1B365D] ring-1 ring-[#d1cfc5] hover:bg-[#E4ECF5]" target="_blank" rel="noopener noreferrer"></a>
-                            <a id="admin-welcome-link-changelog" class="admin-welcome-meta-text inline-flex items-center rounded-full bg-[#EEF2F7] px-3 py-1.5 font-medium text-[#1B365D] ring-1 ring-[#d1cfc5] hover:bg-[#E4ECF5]" target="_blank" rel="noopener noreferrer"></a>
+                            <a id="admin-welcome-link-x" class="admin-welcome-meta-text inline-flex items-center rounded-full bg-[#EFF0FA] px-3 py-1.5 font-medium text-[#2D326B] ring-1 ring-[#d1cfc5] hover:bg-[#DDE0F3]" target="_blank" rel="noopener noreferrer"></a>
+                            <a id="admin-welcome-link-github" class="admin-welcome-meta-text inline-flex items-center rounded-full bg-[#EFF0FA] px-3 py-1.5 font-medium text-[#2D326B] ring-1 ring-[#d1cfc5] hover:bg-[#DDE0F3]" target="_blank" rel="noopener noreferrer"></a>
+                            <a id="admin-welcome-link-changelog" class="admin-welcome-meta-text inline-flex items-center rounded-full bg-[#EFF0FA] px-3 py-1.5 font-medium text-[#2D326B] ring-1 ring-[#d1cfc5] hover:bg-[#DDE0F3]" target="_blank" rel="noopener noreferrer"></a>
                         </div>
                     </div>
                 </div>

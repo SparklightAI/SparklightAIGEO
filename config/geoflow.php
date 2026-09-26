@@ -1,13 +1,13 @@
 <?php
 
 /**
- * GEOFlow 业务相关配置（站点信息、后台路径、上传、缓存、会话与安全）。
+ * SparklightAIGEO 业务相关配置（站点信息、后台路径、上传、缓存、会话与安全）。
  *
  * 环境变量键名与默认值见各条目旁注释；修改后建议 `php artisan config:clear`。
  */
 $adminBasePath = trim((string) env('ADMIN_BASE_PATH', 'geo_admin'), '/');
 $adminBasePath = $adminBasePath !== '' ? $adminBasePath : 'geo_admin';
-$defaultUpdateMetadataUrl = 'https://github.com/yaojingang/GEOFlow/releases/latest/download/version.json';
+$defaultUpdateMetadataUrl = 'https://github.com/SparklightAI/SparklightAIGEO/releases/latest/download/version.json';
 $updateMetadataUrl = trim((string) env('GEOFLOW_UPDATE_METADATA_URL', $defaultUpdateMetadataUrl));
 $updateMetadataUrl = $updateMetadataUrl !== '' ? $updateMetadataUrl : $defaultUpdateMetadataUrl;
 $telemetryEndpoint = trim((string) env('GEOFLOW_TELEMETRY_ENDPOINT', ''));
@@ -73,9 +73,9 @@ return [
     'admin_ui_v3_enabled' => filter_var(env('GEOFLOW_ADMIN_UI_V3_ENABLED', false), FILTER_VALIDATE_BOOLEAN),
 
     // 站点展示名称（页眉、标题等）
-    'site_name' => env('SITE_NAME', 'GEOFlow'),
+    'site_name' => env('SITE_NAME', 'SparklightAIGEO'),
     // 站点完整/副标题文案
-    'site_full_name' => env('SITE_FULL_NAME', 'GEOFlow'),
+    'site_full_name' => env('SITE_FULL_NAME', 'SparklightAIGEO'),
     // 站点根 URL，用于生成绝对链接（末尾无斜杠）
     'site_url' => rtrim((string) env('SITE_URL', 'http://localhost'), '/'),
     'knowledge_fact_generation_max_per_run' => 200,
@@ -160,7 +160,7 @@ return [
     'update_check_enabled' => filter_var(env('GEOFLOW_UPDATE_CHECK_ENABLED', env('APP_ENV') !== 'testing'), FILTER_VALIDATE_BOOLEAN),
     'update_metadata_url' => $updateMetadataUrl,
     'update_metadata_cache_ttl_seconds' => (int) env('GEOFLOW_UPDATE_METADATA_CACHE_TTL', 86400),
-    // 后台系统更新中心由独立 GEOFlow Updater 执行变更，应用仅保留状态、操作桥接和只读旧记录。
+    // 后台系统更新中心由独立 SparklightAIGEO Updater 执行变更，应用仅保留状态、操作桥接和只读旧记录。
     'update_center_enabled' => filter_var(env('GEOFLOW_UPDATE_CENTER_ENABLED', true), FILTER_VALIDATE_BOOLEAN),
     'update_require_admin_password' => filter_var(env('GEOFLOW_UPDATE_REQUIRE_ADMIN_PASSWORD', true), FILTER_VALIDATE_BOOLEAN),
     // 独立 updater bridge：应用只访问 Unix socket 和实例凭据，不接触 Docker socket。
@@ -172,7 +172,7 @@ return [
     'updater_host_root' => rtrim((string) env('GEOFLOW_UPDATER_HOST_ROOT', ''), '/'),
     'updater_connect_timeout_seconds' => max(0.1, (float) env('GEOFLOW_UPDATER_CONNECT_TIMEOUT_SECONDS', 0.5)),
     'updater_read_timeout_seconds' => max(1, (int) env('GEOFLOW_UPDATER_READ_TIMEOUT_SECONDS', 10)),
-    'updater_bootstrap_manifest_url' => 'https://github.com/yaojingang/geoflow-updater/releases/latest/download/bootstrap-manifest.json',
+    'updater_bootstrap_manifest_url' => 'https://sparklight-ai.com/updater/releases/latest/download/bootstrap-manifest.json',
     'updater_trusted_root_path' => resource_path('update-trust/root.json'),
     'updater_bootstrap_max_bytes' => 100 * 1024 * 1024,
 
@@ -331,7 +331,7 @@ return [
     // present 且长期没有图片引用的注册表记录才视为 orphan，避免误报正常上传窗口。
     'security_audit_orphan_age_hours' => max(1, (int) env('GEOFLOW_SECURITY_AUDIT_ORPHAN_AGE_HOURS', 24)),
 
-    // 是否启用 GEOFlow 业务层缓存
+    // 是否启用 SparklightAIGEO 业务层缓存
     'cache_enabled' => filter_var(env('GEOFLOW_CACHE_ENABLED', true), FILTER_VALIDATE_BOOLEAN),
     // 业务缓存 TTL（秒）
     'cache_ttl_seconds' => (int) env('GEOFLOW_CACHE_TTL', 3600),

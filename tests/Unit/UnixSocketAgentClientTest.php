@@ -221,8 +221,8 @@ class UnixSocketAgentClientTest extends TestCase
                     $requestBody .= $chunk;
                 }
                 $firstLine = strtok($headers, "\r\n");
-                $updateAuthorized = str_contains($headers, "X-GEOFlow-Updater-Authorization: 123456\r\n");
-                $rollbackAuthorized = str_contains($headers, "X-GEOFlow-Updater-Authorization: 234567\r\n");
+                $updateAuthorized = str_contains($headers, "X-SparklightAIGEO-Updater-Authorization: 123456\r\n");
+                $rollbackAuthorized = str_contains($headers, "X-SparklightAIGEO-Updater-Authorization: 234567\r\n");
                 $operation = [
                     'schema_version' => 1,
                     'id' => '20260827T123456.000000000Z-0011223344556677',

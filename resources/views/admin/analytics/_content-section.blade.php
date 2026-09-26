@@ -11,7 +11,7 @@
                 'series' => $publicationTrend,
                 'chartLabel' => __('admin.analytics.publication_trend'),
                 'metrics' => [
-                    ['key' => 'created', 'label' => __('admin.analytics.created_articles'), 'color' => '#2563eb'],
+                    ['key' => 'created', 'label' => __('admin.analytics.created_articles'), 'color' => '#2d326b'],
                     ['key' => 'published', 'label' => __('admin.analytics.published_articles'), 'color' => '#059669'],
                 ],
             ])
@@ -29,7 +29,7 @@
                 'metrics' => [
                     ['key' => 'completed', 'label' => __('admin.analytics.completed'), 'color' => '#059669'],
                     ['key' => 'failed', 'label' => __('admin.analytics.failed'), 'color' => '#dc2626'],
-                    ['key' => 'running', 'label' => __('admin.analytics.running'), 'color' => '#2563eb'],
+                    ['key' => 'running', 'label' => __('admin.analytics.running'), 'color' => '#2d326b'],
                     ['key' => 'pending', 'label' => __('admin.analytics.pending'), 'color' => '#d97706'],
                 ],
             ])

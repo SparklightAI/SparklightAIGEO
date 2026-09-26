@@ -47,6 +47,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     @else
         <script src="{{ asset('js/tailwindcss.play-cdn.js') }}"></script>
+        <x-brand-tailwind-config />
     @endif
     <script src="{{ asset('js/lucide.min.js') }}" data-lucide-runtime defer></script>
     @stack('styles')
@@ -96,7 +97,7 @@
         <x-admin.action-dialog />
         @include('admin.partials.welcome-modal')
         @if (is_array($anonymousUsageTelemetryPayload ?? null))
-            <script src="{{ asset('js/geoflow-pulse.js') }}" defer></script>
+            <script src="{{ asset('js/sparklightaigeo-pulse.js') }}" defer></script>
         @endif
         @stack('scripts')
     </body>
@@ -122,7 +123,7 @@
         @include('admin.partials.welcome-modal')
         @vite('resources/js/app.js')
         @if (is_array($anonymousUsageTelemetryPayload ?? null))
-            <script src="{{ asset('js/geoflow-pulse.js') }}" defer></script>
+            <script src="{{ asset('js/sparklightaigeo-pulse.js') }}" defer></script>
         @endif
         @stack('scripts')
     </body>

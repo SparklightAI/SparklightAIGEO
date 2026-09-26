@@ -1,21 +1,21 @@
-# GEOFlow Blue/Green Deployment and Automatic Migration Tutorial
+# SparklightAIGEO Blue/Green Deployment and Automatic Migration Tutorial
 
 [简体中文](blue-green-deployment-usage.md) | English
 
 For site and server administrators. This tutorial covers fresh installation, enrollment, updates through the admin UI or CLI, automatic migrations, backups, and recovery.
 
-It follows the implementation merged in [GEOFlow PR #122](https://github.com/yaojingang/GEOFlow/pull/122) and [updater PR #16](https://github.com/yaojingang/geoflow-updater/pull/16). Historical candidates and recovery fixes are recorded in the [host acceptance report](reports/2026-09-09-blue-green-host-acceptance_en.md). All [11 dual-architecture acceptance jobs](https://github.com/yaojingang/geoflow-updater/actions/runs/34324570077) for the official version passed.
+It follows the implementation merged in [SparklightAIGEO PR #122](https://github.com/SparklightAI/SparklightAIGEO/pull/122) and [updater PR #16](https://sparklight-ai.com/updater/pull/16). Historical candidates and recovery fixes are recorded in the [host acceptance report](reports/2026-09-09-blue-green-host-acceptance_en.md). All [11 dual-architecture acceptance jobs](https://sparklight-ai.com/updater/actions/runs/34324570077) for the official version passed.
 
-> **Official release, September 9, 2026:** [GEOFlow v3.1.0](https://github.com/yaojingang/GEOFlow/releases/tag/v3.1.0) and [Updater v0.4.0](https://github.com/yaojingang/geoflow-updater/releases/tag/v0.4.0) are published, with matching dual-architecture images and a public signed update source at release sequence `3`. This release uses `maintenance`; both the 3.0.0 to 3.1.0 upgrade and initial blue/green conversion require a maintenance window. Existing sites should follow the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md).
+> **Official release, September 9, 2026:** [SparklightAIGEO v3.1.0](https://github.com/SparklightAI/SparklightAIGEO/releases/tag/v3.1.0) and [Updater v0.4.0](https://sparklight-ai.com/updater/releases/tag/v0.4.0) are published, with matching dual-architecture images and a public signed update source at release sequence `3`. This release uses `maintenance`; both the 3.0.0 to 3.1.0 upgrade and initial blue/green conversion require a maintenance window. Existing sites should follow the [3.1 upgrade instructions](deployment/SPARKLIGHTAIGEO_V3_1_UPGRADE_en.md).
 
 ## 1. Choose your path
 
-[GEOFlow Updater](https://github.com/yaojingang/geoflow-updater) is a separate host-side tool for signed installation, upgrades, backups, and recovery.
+[SparklightAIGEO Updater](https://sparklight-ai.com/updater) is a separate host-side tool for signed installation, upgrades, backups, and recovery.
 
 | Current installation | Path |
 |---|---|
-| New server with no GEOFlow installation | [Install GEOFlow Updater](#3-install-or-upgrade-updater) → [Install the site](#4-new-server-install-the-site) → [Configure authorization](#6-configure-authorization-for-the-admin-ui) → [Verify](#9-automatic-migrations-and-verification) |
-| Existing standard Docker deployment without updater management | [Install GEOFlow Updater](#3-install-or-upgrade-updater) → [Enroll during maintenance](#5-existing-site-enroll-and-convert-the-layout) → [Configure authorization](#6-configure-authorization-for-the-admin-ui) → [Run a planned update to convert the layout](#8-routine-updates-through-the-server-cli) |
+| New server with no SparklightAIGEO installation | [Install SparklightAIGEO Updater](#3-install-or-upgrade-updater) → [Install the site](#4-new-server-install-the-site) → [Configure authorization](#6-configure-authorization-for-the-admin-ui) → [Verify](#9-automatic-migrations-and-verification) |
+| Existing standard Docker deployment without updater management | [Install SparklightAIGEO Updater](#3-install-or-upgrade-updater) → [Enroll during maintenance](#5-existing-site-enroll-and-convert-the-layout) → [Configure authorization](#6-configure-authorization-for-the-admin-ui) → [Run a planned update to convert the layout](#8-routine-updates-through-the-server-cli) |
 | Existing managed deployment | Preview and update through the [admin UI](#7-routine-updates-through-the-admin-ui) or [server CLI](#8-routine-updates-through-the-server-cli) |
 | Problems after an update | [Check the failure state](#11-troubleshooting-and-interrupted-operations), then choose [application switch-back](#102-switch-the-application-back-and-keep-current-data) or [full data recovery](#103-restore-data-from-a-full-recovery-point) |
 
@@ -57,7 +57,7 @@ systemctl --version
 
 ### 3.2 Download and verify
 
-Download the archive for your architecture and `checksums.txt` from the [Updater v0.4.0 release](https://github.com/yaojingang/geoflow-updater/releases/tag/v0.4.0) into a dedicated directory.
+Download the archive for your architecture and `checksums.txt` from the [Updater v0.4.0 release](https://sparklight-ai.com/updater/releases/tag/v0.4.0) into a dedicated directory.
 
 The matching updater version for this release is `0.4.0`. These commands require GitHub CLI:
 
@@ -66,7 +66,7 @@ UPDATER_VERSION='0.4.0'
 UPDATER_ARCH='amd64'
 UPDATER_ARCHIVE="geoflow-updater_${UPDATER_VERSION}_linux_${UPDATER_ARCH}.tar.gz"
 
-gh attestation verify "$UPDATER_ARCHIVE" --repo yaojingang/geoflow-updater
+gh attestation verify "$UPDATER_ARCHIVE" --repo {updater-repo}
 sha256sum --check checksums.txt --ignore-missing
 ```
 
@@ -125,7 +125,7 @@ For an already managed instance, go directly to [section 7](#7-routine-updates-t
 
 ### 5.1 Prepare for enrollment
 
-The site directory must contain `.env.prod`, `storage/`, and the current `version.json`. The installed version must match the signed release used for enrollment. If it does not, follow the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md) to reach the matching signed version during maintenance. Do not edit `version.json` to bypass this check.
+The site directory must contain `.env.prod`, `storage/`, and the current `version.json`. The installed version must match the signed release used for enrollment. If it does not, follow the [3.1 upgrade instructions](deployment/SPARKLIGHTAIGEO_V3_1_UPGRADE_en.md) to reach the matching signed version during maintenance. Do not edit `version.json` to bypass this check.
 
 Enrollment preserves the configured PostgreSQL and Redis major versions. Supported majors are PostgreSQL 16 or 18 and Redis 7 or 8. Verify that the image major matches the actual data directory. Schedule database major-version migrations separately.
 
@@ -183,7 +183,7 @@ The admin UI also requires the current administrator password by default; the si
 
 ## 7. Routine updates through the admin UI
 
-For the first upgrade of an enrolled `3.0.0` site, follow the [3.1 instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md) and confirm the maintenance plan through the host CLI. Use the admin workflow below after reaching 3.1.
+For the first upgrade of an enrolled `3.0.0` site, follow the [3.1 instructions](deployment/SPARKLIGHTAIGEO_V3_1_UPGRADE_en.md) and confirm the maintenance plan through the host CLI. Use the admin workflow below after reaching 3.1.
 
 1. Open “System Update Center” as a super administrator. The default path is `/geo_admin/system-updates`. Confirm that updater is connected, authorization is configured, and no operation is running or awaiting recovery.
 2. Click “Preview upgrade plan.” Preview may pull images and start temporary inspection containers. Allow it to finish; it does not apply migrations or switch traffic for this update.
@@ -253,19 +253,19 @@ The CLI waits for completion. Use a persistent terminal session for long operati
 
 ### 8.3 Use the repository wrapper
 
-The GEOFlow script `scripts/geoflow-deploy.sh` calls the installed updater and uses the same execution logic. Routine managed operations do not require a source checkout on the server.
+The SparklightAIGEO script `scripts/sparklightaigeo-deploy.sh` calls the installed updater and uses the same execution logic. Routine managed operations do not require a source checkout on the server.
 
-From the GEOFlow source root, the equivalent maintenance workflow starts with:
+From the SparklightAIGEO source root, the equivalent maintenance workflow starts with:
 
 ```bash
-sudo ./scripts/geoflow-deploy.sh status --instance primary --json
-sudo ./scripts/geoflow-deploy.sh update --instance primary --dry-run --json
+sudo ./scripts/sparklightaigeo-deploy.sh status --instance primary --json
+sudo ./scripts/sparklightaigeo-deploy.sh update --instance primary --dry-run --json
 ```
 
 Review the new preview and update `GEOFLOW_PLAN_SHA256`, then run:
 
 ```bash
-sudo ./scripts/geoflow-deploy.sh update \
+sudo ./scripts/sparklightaigeo-deploy.sh update \
   --instance primary \
   --plan-sha256 "$GEOFLOW_PLAN_SHA256" \
   --allow-maintenance
@@ -336,7 +336,7 @@ sudo geoflow-updater switch-back --instance primary --json
 The equivalent wrapper command is:
 
 ```bash
-sudo ./scripts/geoflow-deploy.sh rollback --application --instance primary
+sudo ./scripts/sparklightaigeo-deploy.sh rollback --application --instance primary
 ```
 
 This reactivates the retained application while continuing to use the current database and business files. Writes made since the update are preserved.
@@ -362,7 +362,7 @@ sudo geoflow-updater rollback \
 The equivalent wrapper command is:
 
 ```bash
-sudo ./scripts/geoflow-deploy.sh rollback --data \
+sudo ./scripts/sparklightaigeo-deploy.sh rollback --data \
   --instance primary \
   --recovery-point "$GEOFLOW_RECOVERY_POINT"
 ```
@@ -405,17 +405,17 @@ Before sharing diagnostics, remove passwords, tokens, authorization URIs, and pr
 
 Site administrators select and confirm plans through the workflow above. Publishers declare online compatibility and validate it against the corresponding candidate release.
 
-**Official acceptance, September 9, 2026:** The [official candidate](https://github.com/yaojingang/geoflow-updater/actions/runs/34322064152) paired with Updater `0.4.0` passed native amd64 and arm64 container checks, fresh installation, upgrade/restoration, online-mechanism and same-version enrollment/conversion acceptance: [all 11 jobs passed](https://github.com/yaojingang/geoflow-updater/actions/runs/34324570077). [Paired publication](https://github.com/yaojingang/geoflow-updater/actions/runs/34342933580) and [update-source deployment](https://github.com/yaojingang/geoflow-updater/actions/runs/34343146320) are complete. Earlier `0.4.0-rc.4` results remain in the [historical acceptance report](reports/2026-09-09-blue-green-host-acceptance_en.md).
+**Official acceptance, September 9, 2026:** The [official candidate](https://sparklight-ai.com/updater/actions/runs/34322064152) paired with Updater `0.4.0` passed native amd64 and arm64 container checks, fresh installation, upgrade/restoration, online-mechanism and same-version enrollment/conversion acceptance: [all 11 jobs passed](https://sparklight-ai.com/updater/actions/runs/34324570077). [Paired publication](https://sparklight-ai.com/updater/actions/runs/34342933580) and [update-source deployment](https://sparklight-ai.com/updater/actions/runs/34343146320) are complete. Earlier `0.4.0-rc.4` results remain in the [historical acceptance report](reports/2026-09-09-blue-green-host-acceptance_en.md).
 
 - `deployment/upgrade-plan.json` pins migration-file digests. After adding migrations, update and review the manifest, then run `python3 deployment/generate-upgrade-plan.py --check`.
 - A schema 3 release manifest includes the complete plan as the TUF-signed target `releases/<version>/upgrade-plan.json`. Maintenance plans require protocol 3 or later; online plans require protocol 4 or later. Application-plan and preview schemas have their own versions.
-- The [candidate acceptance workflow](https://github.com/yaojingang/geoflow-updater/actions/workflows/planned-acceptance.yml) runs application and ingress checks on native amd64 and arm64 hosts, plus separate full upgrade/restore, first-install retry, and online-switch rehearsals. Restoration checks cover the database, Redis, files, configuration, and migration history. Interruption cases include a frozen scheduler and failed-recovery retry state.
+- The [candidate acceptance workflow](https://sparklight-ai.com/updater/actions/workflows/planned-acceptance.yml) runs application and ingress checks on native amd64 and arm64 hosts, plus separate full upgrade/restore, first-install retry, and online-switch rehearsals. Restoration checks cover the database, Redis, files, configuration, and migration history. Interruption cases include a frozen scheduler and failed-recovery retry state.
 - Online rehearsal uses a separately signed fixture with identical application code. It checks login sessions, queued job handover, cross-slot realtime messages, reconnect, and application switch-back that preserves data. Production online compatibility still needs acceptance for the actual old-version/new-version pair. Ordinary publication currently accepts maintenance plans.
-- Publishers review complete results for the same candidate on both architectures and obtain release, security, and product approvals. Automated checks require each mandatory case. Runtime fixes require a new candidate build and another acceptance run. The legacy `phase-c-rehearsal.yml` accepts schema 2 candidates only. See [host acceptance instructions](https://github.com/yaojingang/geoflow-updater/blob/main/docs/planned-host-acceptance.md).
+- Publishers review complete results for the same candidate on both architectures and obtain release, security, and product approvals. Automated checks require each mandatory case. Runtime fixes require a new candidate build and another acceptance run. The legacy `phase-c-rehearsal.yml` accepts schema 2 candidates only. See [host acceptance instructions](https://sparklight-ai.com/updater/blob/main/docs/planned-host-acceptance.md).
 - Application and upgrade processes use UID 33. Runtime processes disable repeated permission scans and automatic cache optimization; pre-switch upgrade steps warm each slot's view cache. Existing APP_KEY, business storage, and session identity are preserved, and the protected `.env.prod` is mounted read-only.
 - Deployment state is stored under `/var/lib/geoflow-updater`; full recovery points are under `/var/backups/geoflow-updater`. Updater manages these directories. Include the site's `.env.prod` and `storage/` in your operational data management.
 
-Related documentation: [Deployment design (Chinese)](superpowers/plans/2026-09-08-blue-green-deployment-design.md), [Implementation validation (Chinese)](reports/2026-09-08-blue-green-implementation-validation.md), [Legacy 3.0 upgrade guide (Chinese)](deployment/GEOFLOW_V3_UPGRADE.md), [Updater blue/green deployment guide (Chinese)](https://github.com/yaojingang/geoflow-updater/blob/main/docs/blue-green-deployment.md), and [Updater release runbook](https://github.com/yaojingang/geoflow-updater/blob/main/docs/release-runbook.md).
+Related documentation: [Deployment design (Chinese)](superpowers/plans/2026-09-08-blue-green-deployment-design.md), [Implementation validation (Chinese)](reports/2026-09-08-blue-green-implementation-validation.md), [Legacy 3.0 upgrade guide (Chinese)](deployment/SPARKLIGHTAIGEO_V3_UPGRADE.md), [Updater blue/green deployment guide (Chinese)](https://sparklight-ai.com/updater/blob/main/docs/blue-green-deployment.md), and [Updater release runbook](https://sparklight-ai.com/updater/blob/main/docs/release-runbook.md).
 
 ### 12.1 Site administrator responsibilities
 

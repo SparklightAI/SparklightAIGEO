@@ -240,7 +240,7 @@ class EntrypointTest extends TestCase
     #[Test]
     public function repaired_config_warning_is_rendered_before_a_local_validation_error(): void
     {
-        $root = sys_get_temp_dir().'/geoflow-entrypoint-warning-'.bin2hex(random_bytes(6));
+        $root = sys_get_temp_dir().'/sparklightaigeo-entrypoint-warning-'.bin2hex(random_bytes(6));
         $directory = $root.'/home/.config/geoflow';
         mkdir($directory, 0700, true);
         mkdir($root.'/cwd', 0700, true);

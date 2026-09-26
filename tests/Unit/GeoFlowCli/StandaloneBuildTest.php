@@ -20,7 +20,7 @@ class StandaloneBuildTest extends TestCase
         file_put_contents($directory.'/bin/composer', "#!/bin/sh\nmkdir -p vendor\nprintf '%s\\n' '<?php' > vendor/autoload.php\n");
         chmod($directory.'/bin/composer', 0755);
         try {
-            $process = new Process(array_merge([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-geoflow-cli.php', '--output='.$directory.'/output'], $options), $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
+            $process = new Process(array_merge([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-sparklightaigeo-cli.php', '--output='.$directory.'/output'], $options), $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
             $process->run();
             $this->assertNotSame(0, $process->getExitCode());
             $this->assertSame($pointer, file_get_contents($directory.'/output/current.json'));
@@ -48,7 +48,7 @@ class StandaloneBuildTest extends TestCase
         file_put_contents($directory.'/bin/composer', "#!/bin/sh\nmkdir -p vendor\nprintf '%s\\n' '<?php' > vendor/autoload.php\n");
         chmod($directory.'/bin/composer', 0755);
         try {
-            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-geoflow-cli.php', '--output', $directory.'/output'], $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
+            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-sparklightaigeo-cli.php', '--output', $directory.'/output'], $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
             $process->run();
             $this->assertSame(0, $process->getExitCode(), $process->getErrorOutput());
             $result = json_decode($process->getOutput(), true);
@@ -73,7 +73,7 @@ class StandaloneBuildTest extends TestCase
         file_put_contents($directory.'/signing.key', base64_encode($secret));
         chmod($directory.'/signing.key', 0600);
         try {
-            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-geoflow-cli.php', '--output='.$directory.'/output', '--signing-key-file='.$directory.'/signing.key', '--key-id=test-only'], $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
+            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-sparklightaigeo-cli.php', '--output='.$directory.'/output', '--signing-key-file='.$directory.'/signing.key', '--key-id=test-only'], $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
             $process->run();
             $this->assertSame(0, $process->getExitCode(), $process->getErrorOutput());
             $result = json_decode($process->getOutput(), true);
@@ -109,7 +109,7 @@ class StandaloneBuildTest extends TestCase
         file_put_contents($directory.'/bin/composer', "#!/bin/sh\nexit 42\n");
         chmod($directory.'/bin/composer', 0755);
         try {
-            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-geoflow-cli.php', '--output='.$directory.'/output'], $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
+            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-sparklightaigeo-cli.php', '--output='.$directory.'/output'], $directory, ['PATH' => $directory.'/bin'.PATH_SEPARATOR.getenv('PATH')]);
             $process->run();
             $this->assertNotSame(0, $process->getExitCode());
             $this->assertStringContainsString('Standalone Composer install failed.', $process->getErrorOutput());
@@ -127,7 +127,7 @@ class StandaloneBuildTest extends TestCase
         mkdir($directory, 0700);
         file_put_contents($directory.'/invalid-key', 'invalid');
         try {
-            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-geoflow-cli.php', '--output='.$directory.'/output', '--signing-key-file='.$directory.'/invalid-key', '--key-id=test-only'], $directory);
+            $process = new Process([PHP_BINARY, '-d', 'phar.readonly=0', dirname(__DIR__, 3).'/scripts/build-sparklightaigeo-cli.php', '--output='.$directory.'/output', '--signing-key-file='.$directory.'/invalid-key', '--key-id=test-only'], $directory);
             $process->run();
             $this->assertNotSame(0, $process->getExitCode());
             $this->assertStringContainsString('Invalid Ed25519 signing key.', $process->getErrorOutput());

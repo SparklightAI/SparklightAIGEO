@@ -196,10 +196,10 @@ final class AiVisibilityCompetitorWorkflowTest extends TestCase
         $this->model();
         config()->set('geoflow.site_name', 'Our Site');
         config()->set('geoflow.site_full_name', 'Our Site Company');
-        $run = $this->sample('Our Site and 多次元 and GEOFlow and Acme.');
-        MarkdownContentWriterAgent::fake(['[{"name":"Our Site"},{"name":"多次元"},{"name":"GEOFlow"},{"name":"Acme"},{"name":"Invented"}]'])->preventStrayPrompts();
+        $run = $this->sample('Our Site and 多次元 and SparklightAIGEO and Acme.');
+        MarkdownContentWriterAgent::fake(['[{"name":"Our Site"},{"name":"多次元"},{"name":"SparklightAIGEO"},{"name":"Acme"},{"name":"Invented"}]'])->preventStrayPrompts();
         $result = app(AiVisibilityCompetitorDetectionService::class)->detectRun($run->id);
-        $this->assertSame(['多次元', 'GEOFlow', 'Acme'], $result);
+        $this->assertSame(['多次元', 'SparklightAIGEO', 'Acme'], $result);
         $this->assertSame([], app(AiVisibilityCompetitorDetectionService::class)->pendingRunIds());
         $this->assertSame(1, app(AiVisibilityCompetitorReportService::class)->stats()['total_samples']);
         $this->assertSame(1, app(AiVisibilityAnalyticsService::class)->overview()['polling']['runs']);

@@ -1,4 +1,4 @@
-# GEOFlow AI 质检快速链路 v2 实施与 Review 报告
+# SparklightAIGEO AI 质检快速链路 v2 实施与 Review 报告
 
 > 2026-08-29 追加说明：文章 #504 暴露出 35 秒供应商超时与失败态误渲染问题。当前运行预算已经调整为 160 秒模型请求、180 秒业务截止、190 秒 Job 和 195 秒 Worker，执行版本默认使用 `fast_v2`。现行故障处理与迭代方案见 `docs/reviews/2026-08-29-ai-quality-incident-504-and-iteration-plan.md`；下文保留当时的 60 秒设计记录，用于变更审计。
 

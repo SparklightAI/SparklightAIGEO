@@ -7,6 +7,7 @@ name: ${COMPOSE_PROJECT_NAME:-geoflow-laravel-prod}
 x-prod-app-build-args: &prod_app_build_args
   COMPOSER_IMAGE: ${COMPOSER_IMAGE:-composer:2}
   PHP_FPM_IMAGE: ${PHP_FPM_IMAGE:-php:8.4-fpm-bookworm}
+  NODE_IMAGE: ${NODE_IMAGE:-node:22-bookworm-slim}
   PECL_REDIS_VERSION: ${PECL_REDIS_VERSION:-6.3.0}
   COMPOSER_PACKAGIST_MIRROR: ${COMPOSER_PACKAGIST_MIRROR:-}
   HTTP_PROXY: ${DOCKER_BUILD_HTTP_PROXY:-}

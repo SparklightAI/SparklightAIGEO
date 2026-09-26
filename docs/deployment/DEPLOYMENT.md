@@ -1,8 +1,8 @@
-# GEOFlow Laravel 生产 Docker 部署
+# SparklightAIGEO Laravel 生产 Docker 部署
 
 签名受管安装、自动迁移与蓝绿切换见 [联合部署操作指引](../blue-green-deployment-usage.md)。本文保留单套 Compose 的手动部署流程；历史安全迁移仍须停机排空。已完成安全基线和布局转换的实例，可在签名在线计划与兼容性检查通过后使用 updater 在线升级。
 
-已有实例升级到 `v3.0.0`，请先阅读 [3.0 升级教程](GEOFLOW_V3_UPGRADE.md)，按当前部署方式选择路径。本文的首次安装步骤仅用于空库；升级时保留原数据库主版本、数据挂载与 `APP_KEY`。
+已有实例升级到 `v3.0.0`，请先阅读 [3.0 升级教程](SPARKLIGHTAIGEO_V3_UPGRADE.md)，按当前部署方式选择路径。本文的首次安装步骤仅用于空库；升级时保留原数据库主版本、数据挂载与 `APP_KEY`。
 
 本文对应仓库中的生产编排文件：
 
@@ -36,23 +36,23 @@
 一键部署脚本仅用于全新、空数据库安装。如果希望在常见云服务器、VPS 或面板服务器上先做环境自检，再自动完成首次生产 Docker 部署，可以使用仓库中的参考脚本：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yaojingang/GEOFlow/main/deploy-scripts/geoflow-docker-deploy.sh -o geoflow-docker-deploy.sh
-bash geoflow-docker-deploy.sh
+curl -fsSL https://raw.githubusercontent.com/SparklightAI/SparklightAIGEO/main/deploy-scripts/sparklightaigeo-docker-deploy.sh -o sparklightaigeo-docker-deploy.sh
+bash sparklightaigeo-docker-deploy.sh
 ```
 
 脚本会完成：
 
 - 检查 CPU、内存、磁盘、Docker、Docker Compose 与端口占用
-- 克隆或更新 GEOFlow 源码
+- 克隆或更新 SparklightAIGEO 源码
 - 生成 `.env.prod` 并写入生产默认配置
 - 启动 PostgreSQL、Redis、Nginx、PHP-FPM、队列、调度和 Reverb
 - 执行迁移、写入默认管理员、清理并重建 Laravel 缓存
-- 调用 `deploy-scripts/geoflow-healthcheck.sh` 做部署后自检
+- 调用 `deploy-scripts/sparklightaigeo-healthcheck.sh` 做部署后自检
 
 如需部署成功后删除临时脚本，可使用：
 
 ```bash
-GEOFLOW_SELF_DELETE=1 bash geoflow-docker-deploy.sh
+GEOFLOW_SELF_DELETE=1 bash sparklightaigeo-docker-deploy.sh
 ```
 
 完整变量说明见 `deploy-scripts/README.md`。
@@ -177,7 +177,7 @@ $COMPOSE_PROD run --rm app php artisan geoflow:security-audit
 $COMPOSE_PROD run --rm app php artisan geoflow:security-audit --json
 ```
 
-退出码 `0` 表示没有 finding；退出码 `1` 表示发现问题、需要复核的私网出站例外，或审计无法安全完成。JSON 包含 `schema_version`、`status`、按 severity 汇总的 `summary` 和按稳定 code 排序的 `findings`，不会输出路径、URL、token、owner 或哈希原文。该命令用于 GEOFlow 运行数据与安全配置检查，依赖漏洞检查仍需单独执行 `composer audit`。
+退出码 `0` 表示没有 finding；退出码 `1` 表示发现问题、需要复核的私网出站例外，或审计无法安全完成。JSON 包含 `schema_version`、`status`、按 severity 汇总的 `summary` 和按稳定 code 排序的 `findings`，不会输出路径、URL、token、owner 或哈希原文。该命令用于 SparklightAIGEO 运行数据与安全配置检查，依赖漏洞检查仍需单独执行 `composer audit`。
 
 完成审计处理，再次确认运行中的容器全部来自新镜像，然后将 `GEOFLOW_MANAGED_IMAGE_DELETION_ENABLED=true` 写入生产环境配置，并重新创建会执行图片清理的新版本进程：
 

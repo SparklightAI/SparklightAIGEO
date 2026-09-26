@@ -185,7 +185,7 @@ class WordPressMediaSyncServiceTest extends TestCase
     private function makeArticleId(): int
     {
         $category = Category::query()->create(['name' => 'Tech', 'slug' => 'tech']);
-        $author = Author::query()->create(['name' => 'GEOFlow']);
+        $author = Author::query()->create(['name' => 'SparklightAIGEO']);
         $article = Article::query()->create([
             'title' => 'Hello',
             'slug' => 'hello',

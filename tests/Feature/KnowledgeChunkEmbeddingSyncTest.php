@@ -36,9 +36,9 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $model = $this->createEmbeddingModel();
         $knowledgeBase = KnowledgeBase::query()->create([
-            'name' => 'GEOFlow 知识库',
+            'name' => 'SparklightAIGEO 知识库',
             'description' => '',
-            'content' => 'GEOFlow 是面向 GEO 内容工程的系统。',
+            'content' => 'SparklightAIGEO 是面向 GEO 内容工程的系统。',
             'character_count' => 24,
             'file_type' => 'markdown',
             'word_count' => 24,
@@ -46,7 +46,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            'GEOFlow 是面向 GEO 内容工程的系统，支持知识库、关键词库和标题库协同生成内容。'
+            'SparklightAIGEO 是面向 GEO 内容工程的系统，支持知识库、关键词库和标题库协同生成内容。'
         );
 
         $chunk = $knowledgeBase->chunks()->firstOrFail();
@@ -106,11 +106,11 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
         $knowledgeBase = KnowledgeBase::query()->create([
             'name' => '证据化知识库',
             'description' => '用于验证来源和治理元数据',
-            'content' => 'GEOFlow 知识库需要保留来源、业务线和审核状态。',
+            'content' => 'SparklightAIGEO 知识库需要保留来源、业务线和审核状态。',
             'character_count' => 28,
             'file_type' => 'markdown',
             'word_count' => 28,
-            'source_name' => 'GEOFlow 官方文档',
+            'source_name' => 'SparklightAIGEO 官方文档',
             'source_url' => 'https://example.com/geoflow',
             'source_type' => 'document',
             'business_line' => 'GEO 内容工程',
@@ -121,7 +121,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            "# 证据化知识库\n\nGEOFlow 知识库需要保留来源、业务线和审核状态。"
+            "# 证据化知识库\n\nSparklightAIGEO 知识库需要保留来源、业务线和审核状态。"
         );
 
         $chunk = $knowledgeBase->chunks()->firstOrFail();
@@ -129,7 +129,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->assertSame((int) $knowledgeBase->id, (int) ($metadata['knowledge_base_id'] ?? 0));
         $this->assertSame('证据化知识库', (string) ($metadata['knowledge_base_name'] ?? ''));
-        $this->assertSame('GEOFlow 官方文档', (string) ($metadata['source_name'] ?? ''));
+        $this->assertSame('SparklightAIGEO 官方文档', (string) ($metadata['source_name'] ?? ''));
         $this->assertSame('https://example.com/geoflow', (string) ($metadata['source_url'] ?? ''));
         $this->assertSame('GEO 内容工程', (string) ($metadata['business_line'] ?? ''));
         $this->assertSame('2026-05-01', (string) ($metadata['effective_date'] ?? ''));
@@ -153,18 +153,18 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            "# GEOFlow 总览\n\nGEOFlow 是面向 GEO 内容工程的系统。\n\n## 多站分发\n\n分发管理负责把文章同步到多个目标站点。\n\n## 素材库\n\n素材库负责沉淀知识、关键词、标题和图片。"
+            "# SparklightAIGEO 总览\n\nSparklightAIGEO 是面向 GEO 内容工程的系统。\n\n## 多站分发\n\n分发管理负责把文章同步到多个目标站点。\n\n## 素材库\n\n素材库负责沉淀知识、关键词、标题和图片。"
         );
 
         $chunks = $knowledgeBase->chunks()->orderBy('chunk_index')->pluck('content')->all();
         $firstChunk = $knowledgeBase->chunks()->orderBy('chunk_index')->firstOrFail();
 
         $this->assertCount(3, $chunks);
-        $this->assertStringContainsString('# GEOFlow 总览', $chunks[0]);
+        $this->assertStringContainsString('# SparklightAIGEO 总览', $chunks[0]);
         $this->assertStringContainsString('## 多站分发', $chunks[1]);
         $this->assertStringContainsString('## 素材库', $chunks[2]);
         $this->assertSame('structured_rule', (string) $firstChunk->getAttribute('chunk_strategy'));
-        $this->assertSame('GEOFlow 总览', (string) $firstChunk->getAttribute('chunk_title'));
+        $this->assertSame('SparklightAIGEO 总览', (string) $firstChunk->getAttribute('chunk_title'));
         Http::assertNothingSent();
     }
 
@@ -185,7 +185,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
             'file_type' => 'markdown',
             'word_count' => 0,
         ]);
-        $longParagraph = str_repeat('GEOFlow 语义切片需要稳定处理超长段落。', 30);
+        $longParagraph = str_repeat('SparklightAIGEO 语义切片需要稳定处理超长段落。', 30);
 
         $this->syncKnowledge((int) $knowledgeBase->id, $longParagraph);
 
@@ -237,14 +237,14 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            "# 平台定位\n\nGEOFlow 负责内容工程后台。\n\n## 分发能力\n\n分发管理同步文章到渠道站点。\n\n## 素材能力\n\n素材库沉淀业务事实。"
+            "# 平台定位\n\nSparklightAIGEO 负责内容工程后台。\n\n## 分发能力\n\n分发管理同步文章到渠道站点。\n\n## 素材能力\n\n素材库沉淀业务事实。"
         );
 
         $chunks = $knowledgeBase->chunks()->orderBy('chunk_index')->pluck('content')->all();
         $firstChunk = $knowledgeBase->chunks()->orderBy('chunk_index')->firstOrFail();
 
         $this->assertCount(2, $chunks);
-        $this->assertSame("# 平台定位\n\nGEOFlow 负责内容工程后台。", $chunks[0]);
+        $this->assertSame("# 平台定位\n\nSparklightAIGEO 负责内容工程后台。", $chunks[0]);
         $this->assertStringContainsString('## 分发能力', $chunks[1]);
         $this->assertStringContainsString('## 素材能力', $chunks[1]);
         $this->assertSame('semantic_llm', (string) $firstChunk->getAttribute('chunk_strategy'));
@@ -382,7 +382,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
         $model = $this->createChatModel();
         SiteSetting::query()->create(['setting_key' => 'knowledge_chunk_strategy', 'setting_value' => 'semantic_llm']);
         SiteSetting::query()->create(['setting_key' => 'knowledge_chunking_model_id', 'setting_value' => (string) $model->id]);
-        $content = "# 平台定位\n\nGEOFlow 负责内容工程后台。\n\n## 分发能力\n\n旧 token 不得调用语义规划模型。";
+        $content = "# 平台定位\n\nSparklightAIGEO 负责内容工程后台。\n\n## 分发能力\n\n旧 token 不得调用语义规划模型。";
         $currentToken = '9cb1ef40-b81e-48a1-a101-bb2b3141fe20';
         $rotatedToken = '50dfda20-ffeb-43f8-b025-843c433b465f';
         $knowledgeBase = KnowledgeBase::query()->create([
@@ -805,9 +805,9 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
             'api_url' => 'https://generativelanguage.googleapis.com/v1beta',
         ]);
         $knowledgeBase = KnowledgeBase::query()->create([
-            'name' => 'GEOFlow Guide',
+            'name' => 'SparklightAIGEO Guide',
             'description' => '',
-            'content' => 'GEOFlow 是面向 GEO 内容工程的系统。',
+            'content' => 'SparklightAIGEO 是面向 GEO 内容工程的系统。',
             'character_count' => 24,
             'file_type' => 'markdown',
             'word_count' => 24,
@@ -815,7 +815,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            'GEOFlow 是面向 GEO 内容工程的系统，支持知识库、关键词库和标题库协同生成内容。'
+            'SparklightAIGEO 是面向 GEO 内容工程的系统，支持知识库、关键词库和标题库协同生成内容。'
         );
 
         $chunk = $knowledgeBase->chunks()->firstOrFail();
@@ -825,7 +825,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents'
             && $request->hasHeader('x-goog-api-key', 'test-api-key')
-            && ($request['requests'][0]['content']['parts'][0]['text'] ?? '') === 'title: GEOFlow Guide | text: GEOFlow 是面向 GEO 内容工程的系统，支持知识库、关键词库和标题库协同生成内容。'
+            && ($request['requests'][0]['content']['parts'][0]['text'] ?? '') === 'title: SparklightAIGEO Guide | text: SparklightAIGEO 是面向 GEO 内容工程的系统，支持知识库、关键词库和标题库协同生成内容。'
             && ! isset($request['requests'][0]['taskType'])
             && ! isset($request['taskType']));
     }
@@ -848,7 +848,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
         $knowledgeBase = KnowledgeBase::query()->create([
             'name' => '火山向量知识库',
             'description' => '',
-            'content' => 'GEOFlow 支持火山方舟 Doubao Embedding。',
+            'content' => 'SparklightAIGEO 支持火山方舟 Doubao Embedding。',
             'character_count' => 35,
             'file_type' => 'markdown',
             'word_count' => 35,
@@ -856,7 +856,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            'GEOFlow 支持火山方舟 Doubao Embedding，适合国内环境下的知识库向量化。'
+            'SparklightAIGEO 支持火山方舟 Doubao Embedding，适合国内环境下的知识库向量化。'
         );
 
         $chunk = $knowledgeBase->chunks()->firstOrFail();
@@ -868,7 +868,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
         Http::assertSent(fn ($request): bool => $request->url() === 'https://ark.cn-beijing.volces.com/api/v3/embeddings'
             && $request->hasHeader('Authorization', 'Bearer test-api-key')
             && $request['model'] === 'doubao-embedding-text-240515'
-            && ($request['input'][0] ?? '') === 'GEOFlow 支持火山方舟 Doubao Embedding，适合国内环境下的知识库向量化。'
+            && ($request['input'][0] ?? '') === 'SparklightAIGEO 支持火山方舟 Doubao Embedding，适合国内环境下的知识库向量化。'
             && ! array_key_exists('dimensions', (array) $request->data()));
     }
 
@@ -911,7 +911,7 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
 
         $this->syncKnowledge(
             (int) $knowledgeBase->id,
-            'GEOFlow 校验 Doubao Embedding 不发送 dimensions 参数。',
+            'SparklightAIGEO 校验 Doubao Embedding 不发送 dimensions 参数。',
             true
         );
 
@@ -1096,13 +1096,13 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
             'api_url' => 'https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:embedContent',
         ]);
 
-        $vector = $this->queryEmbeddingVector('如何使用 GEOFlow?');
+        $vector = $this->queryEmbeddingVector('如何使用 SparklightAIGEO?');
 
         $this->assertSame([0.7, 0.8, 0.9], $vector);
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents'
             && $request->hasHeader('x-goog-api-key', 'test-api-key')
-            && ($request['requests'][0]['content']['parts'][0]['text'] ?? '') === 'task: search result | query: 如何使用 GEOFlow?'
+            && ($request['requests'][0]['content']['parts'][0]['text'] ?? '') === 'task: search result | query: 如何使用 SparklightAIGEO?'
             && ! isset($request['requests'][0]['taskType'])
             && ! isset($request['taskType']));
     }
@@ -1134,14 +1134,14 @@ class KnowledgeChunkEmbeddingSyncTest extends TestCase
             'api_url' => 'https://ark.cn-beijing.volces.com/api/v3',
         ]);
 
-        $vector = $this->queryEmbeddingVector('GEOFlow 知识库如何向量化？');
+        $vector = $this->queryEmbeddingVector('SparklightAIGEO 知识库如何向量化？');
 
         $this->assertSame([0.61, 0.62, 0.63], $vector);
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://ark.cn-beijing.volces.com/api/v3/embeddings'
             && $request->hasHeader('Authorization', 'Bearer test-api-key')
             && $request['model'] === 'doubao-embedding-text-240515'
-            && ($request['input'][0] ?? '') === 'GEOFlow 知识库如何向量化？'
+            && ($request['input'][0] ?? '') === 'SparklightAIGEO 知识库如何向量化？'
             && ! array_key_exists('dimensions', (array) $request->data()));
     }
 

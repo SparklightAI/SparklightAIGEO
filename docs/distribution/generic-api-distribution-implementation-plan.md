@@ -1,10 +1,10 @@
-# GEOFlow 通用 API 分发渠道开发方案
+# SparklightAIGEO 通用 API 分发渠道开发方案
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use `executing-plans` or `subagent-driven-development` to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** 在现有 GEOFlow 分发管理中新增“通用 API 渠道”，让文章发布、更新、删除和站点设置同步可以通过可配置 HTTP API 对接第三方 CMS、自动化平台和自研内容系统。
+**Goal:** 在现有 SparklightAIGEO 分发管理中新增“通用 API 渠道”，让文章发布、更新、删除和站点设置同步可以通过可配置 HTTP API 对接第三方 CMS、自动化平台和自研内容系统。
 
-**Architecture:** 沿用当前 `DistributionPublisherInterface`、`DistributionPublisherManager`、`DistributionPayloadBuilder` 和 `ArticleDistribution` 队列机制，新增 `generic_http_api` 渠道类型和 `GenericHttpApiPublisher`。第一版不追求“自动适配所有平台”，而是提供稳定的 GEOFlow 标准载荷、认证配置、端点配置、响应字段映射和可测试的通用 HTTP 分发能力。
+**Architecture:** 沿用当前 `DistributionPublisherInterface`、`DistributionPublisherManager`、`DistributionPayloadBuilder` 和 `ArticleDistribution` 队列机制，新增 `generic_http_api` 渠道类型和 `GenericHttpApiPublisher`。第一版不追求“自动适配所有平台”，而是提供稳定的 SparklightAIGEO 标准载荷、认证配置、端点配置、响应字段映射和可测试的通用 HTTP 分发能力。
 
 **Tech Stack:** Laravel 12、Eloquent、Blade、Laravel HTTP Client、PHPUnit Feature/Unit Tests、现有分发队列 `distribution`。
 
@@ -35,7 +35,7 @@
   - Bearer Token
   - Basic Auth
   - Header API Key
-  - GEOFlow HMAC 签名
+  - SparklightAIGEO HMAC 签名
 - 支持每个动作配置独立 HTTP 方法和路径。
 - 支持响应字段映射：
   - `remote_id`
@@ -58,7 +58,7 @@
 
 后台“新建分发渠道”增加第三个选项：
 
-1. GEOFlow Agent
+1. SparklightAIGEO Agent
 2. WordPress REST
 3. 通用 API
 
@@ -195,9 +195,9 @@
   "generic_auth_type": "bearer",
   "generic_basic_username": "",
   "generic_header_name": "X-API-Key",
-  "generic_hmac_key_id_header": "X-GEOFlow-Key-Id",
-  "generic_hmac_signature_header": "X-GEOFlow-Signature",
-  "generic_hmac_timestamp_header": "X-GEOFlow-Timestamp",
+  "generic_hmac_key_id_header": "X-SparklightAIGEO-Key-Id",
+  "generic_hmac_signature_header": "X-SparklightAIGEO-Signature",
+  "generic_hmac_timestamp_header": "X-SparklightAIGEO-Timestamp",
   "generic_timeout_seconds": 30,
   "generic_success_statuses": [200, 201, 202, 204],
   "generic_health_method": "GET",
@@ -218,7 +218,7 @@
 
 第一版 `generic_payload_wrapper` 只支持：
 
-- `none`：直接发送 GEOFlow 标准载荷
+- `none`：直接发送 SparklightAIGEO 标准载荷
 - `data`：发送 `{ "data": <payload> }`
 
 不做任意字段模板转换。
@@ -291,10 +291,10 @@
 
 - `Content-Type: application/json`
 - `Accept: application/json`
-- `User-Agent: GEOFlow/2.x`
-- `X-GEOFlow-Event`
-- `X-GEOFlow-Idempotency-Key`
-- `X-GEOFlow-Payload-SHA256`
+- `User-Agent: SparklightAIGEO/2.x`
+- `X-SparklightAIGEO-Event`
+- `X-SparklightAIGEO-Idempotency-Key`
+- `X-SparklightAIGEO-Payload-SHA256`
 
 HMAC 模式可复用现有 `DistributionSigningService`，但要注意通用 API 的 path 是用户配置路径，不是固定 `/geoflow-agent/v1/...`。
 
@@ -444,7 +444,7 @@ HMAC 模式可复用现有 `DistributionSigningService`，但要注意通用 API
 
 - 后台可以创建、编辑、查看通用 API 渠道。
 - 敏感值不会明文回显。
-- 现有 GEOFlow Agent 和 WordPress 页面不回归。
+- 现有 SparklightAIGEO Agent 和 WordPress 页面不回归。
 
 ### Phase 2：通用 HTTP Publisher
 
@@ -523,7 +523,7 @@ Payload 包装：none
 
 ### 8.3 兼容性
 
-- GEOFlow Agent 渠道仍可创建、下载站点包、分发文章。
+- SparklightAIGEO Agent 渠道仍可创建、下载站点包、分发文章。
 - WordPress REST 渠道仍可创建、同步图片、分类和标签。
 - 任务创建/编辑页面仍能选择三类渠道。
 - 数据分析和分发队列页面能正常显示通用 API 渠道。
@@ -586,7 +586,7 @@ Payload 包装：none
 
 ### 11.3 风险检查
 
-最脆弱假设是：目标系统能够接收 GEOFlow 标准 JSON 或能通过 n8n/Make 等中间层转换。若该假设不成立，应新增原生 Connector，而不是继续扩大通用 API 的配置复杂度。
+最脆弱假设是：目标系统能够接收 SparklightAIGEO 标准 JSON 或能通过 n8n/Make 等中间层转换。若该假设不成立，应新增原生 Connector，而不是继续扩大通用 API 的配置复杂度。
 
 ### 11.4 可回滚性
 

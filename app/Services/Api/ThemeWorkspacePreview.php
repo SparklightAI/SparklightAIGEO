@@ -47,7 +47,7 @@ final class ThemeWorkspacePreview
         $pages = [];
         foreach ($paths as $page => $path) {
             $query = match ($page) {
-                'search' => ['search' => 'GEOFlow'], 'empty-state' => ['search' => 'geoflow-empty-'.bin2hex(random_bytes(12))], default => []
+                'search' => ['search' => 'SparklightAIGEO'], 'empty-state' => ['search' => 'geoflow-empty-'.bin2hex(random_bytes(12))], default => []
             };
             $pages[$page] = $path === null ? ['available' => false, 'reason' => 'published_content_required'] : [
                 'available' => true, 'path' => $path, 'query' => $query,

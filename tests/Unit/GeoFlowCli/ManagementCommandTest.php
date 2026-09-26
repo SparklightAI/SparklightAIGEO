@@ -88,7 +88,7 @@ class ManagementCommandTest extends TestCase
         $saved = $this->configuration->load($this->configuration->profilePath('production'));
         $this->assertSame(str_repeat('a', 32), $saved['recovery_epoch']);
         $this->runCommand($factory, ['--profile', 'production', 'task', 'delete', '4', '--yes']);
-        $this->assertTrue($factory->recorded()[1][0]->hasHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32)));
+        $this->assertTrue($factory->recorded()[1][0]->hasHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32)));
         $session = $this->session()['data'];
         $session['recovery'] = ['supported' => true, 'epoch' => str_repeat('a', 32)];
         $first = OperationJournal::prepare($this->configuration, $session, 'tasks.enqueue', [], 'recovery-request-1');
@@ -115,7 +115,7 @@ class ManagementCommandTest extends TestCase
             $this->assertStringContainsString('恢复代次', $exception->getMessage());
         }
         $this->assertCount(3, $factory->recorded());
-        $this->assertTrue($factory->recorded()[2][0]->hasHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32)));
+        $this->assertTrue($factory->recorded()[2][0]->hasHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32)));
         $this->assertFileDoesNotExist($this->configuration->profilePath('production'));
     }
 
@@ -132,7 +132,7 @@ class ManagementCommandTest extends TestCase
         $this->runCommand($factory, ['task', 'delete', '4', '--yes']);
         $this->assertCount(2, $factory->recorded());
         $this->assertSame('GET', $factory->recorded()[0][0]->method());
-        $this->assertTrue($factory->recorded()[1][0]->hasHeader('X-GEOFlow-Recovery-Epoch', str_repeat('b', 32)));
+        $this->assertTrue($factory->recorded()[1][0]->hasHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('b', 32)));
     }
 
     public function test_named_profile_ignores_unknown_working_directory_configuration(): void

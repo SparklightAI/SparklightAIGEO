@@ -1,10 +1,16 @@
-# GEOFlow Contributor License Agreement
+# SparklightAIGEO Contributor License Agreement
 
-Version 1.0 — effective 2026-08-30
+Version 2.0 — effective 2026-09-25
 
-Thank you for contributing to GEOFlow. This Contributor License Agreement
-("Agreement") records the rights granted by contributors to Yao Jingang
-("Licensor") for contributions to the GEOFlow project.
+Thank you for contributing to SparklightAIGEO. This Contributor License Agreement
+("Agreement") records the rights granted by contributors to 深圳星火之光传媒有限公司
+("Licensor", 星火之光AI / SparkLight AI, https://sparklight-ai.com) for contributions to
+the SparklightAIGEO project.
+
+Version 2.0 supersedes version 1.0 and records the change of the Licensor entity and of
+the project name. Rights already granted by contributors under version 1.0 remain in
+effect and are vested in the Licensor named above; no contributor is required to re-sign
+for contributions previously accepted. New contributions are accepted under this version.
 
 This is a legally binding agreement. Read it carefully before accepting it.
 
@@ -14,12 +20,12 @@ This is a legally binding agreement. Read it carefully before accepting it.
 whose behalf an authorized representative accepts it.
 
 "Contribution" means any original work of authorship that You intentionally
-submit to the GEOFlow repository or its project-managed contribution channels,
+submit to the SparklightAIGEO repository or its project-managed contribution channels,
 including source code, documentation, tests, designs, and other materials. A
 submission conspicuously marked "Not a Contribution" is excluded.
 
 "Submit" means sending a Contribution through a pull request, commit, patch,
-issue, or another electronic channel managed by the GEOFlow project.
+issue, or another electronic channel managed by the SparklightAIGEO project.
 
 ## 2. Copyright license
 
@@ -33,8 +39,8 @@ perform, sublicense, and distribute Your Contribution and derivative works.
 
 The Licensor may license an accepted Contribution under any license, including
 copyleft, permissive, commercial, or proprietary licenses. When the Licensor
-includes Your Contribution in GEOFlow, the Contribution will also remain
-available as part of GEOFlow under the public license used for the project on
+includes Your Contribution in SparklightAIGEO, the Contribution will also remain
+available as part of SparklightAIGEO under the public license used for the project on
 the date of submission.
 
 ## 3. Patent license
@@ -42,9 +48,9 @@ the date of submission.
 You grant the Licensor a perpetual, worldwide, non-exclusive, transferable,
 royalty-free, irrevocable patent license, with the right to sublicense through
 multiple tiers, to make, have made, use, offer to sell, sell, import, and
-otherwise transfer Your Contribution alone or in combination with GEOFlow.
+otherwise transfer Your Contribution alone or in combination with SparklightAIGEO.
 This grant covers only patent claims that You control and that are necessarily
-infringed by Your Contribution or by its combination with GEOFlow as it existed
+infringed by Your Contribution or by its combination with SparklightAIGEO as it existed
 when You submitted the Contribution.
 
 ## 4. Your representations
@@ -78,7 +84,7 @@ kind, to the maximum extent permitted by applicable law.
 
 ## 7. Acceptance and scope
 
-You accept this Agreement by completing the CLA declaration in a GEOFlow pull
+You accept this Agreement by completing the CLA declaration in a SparklightAIGEO pull
 request from Your authenticated GitHub account, or by providing a separately
 signed copy when requested by the Licensor. The declaration must identify the
 Agreement version, Your contributor type, Your legal name or legal entity name,
@@ -86,7 +92,7 @@ and the date of acceptance.
 
 The Effective Date for You is the date of Your first valid acceptance. This
 Agreement covers that Contribution and all later Contributions You submit to
-GEOFlow, unless the Licensor publishes a new version and requires renewed
+SparklightAIGEO, unless the Licensor publishes a new version and requires renewed
 acceptance.
 
 For an entity, the person accepting this Agreement represents that they are
@@ -100,11 +106,11 @@ This Agreement is the complete agreement between You and the Licensor about
 the rights granted for Your Contributions. If any provision is unenforceable,
 the remaining provisions continue in effect. A failure to enforce a provision
 is not a waiver. The Licensor may assign this Agreement together with ownership
-or stewardship of GEOFlow; any other assignment requires written agreement.
+or stewardship of SparklightAIGEO; any other assignment requires written agreement.
 
 ## 中文说明（便于理解）
 
-贡献者继续拥有自己贡献内容的版权，同时授予 Yao Jingang 永久、全球、免费、不可撤销且可多级转授权的著作权与必要专利许可。该授权允许 GEOFlow 将贡献内容继续以 AGPL 开源，也允许在商业版、闭源版或其他专有许可中使用。企业名义贡献须由有权代表企业的人接受本协议。中文说明仅用于帮助理解，具有约束力的条款以上述英文正文为准。
+贡献者继续拥有自己贡献内容的版权，同时授予 深圳星火之光传媒有限公司 永久、全球、免费、不可撤销且可多级转授权的著作权与必要专利许可。该授权允许 SparklightAIGEO 将贡献内容继续以 AGPL 开源，也允许在商业版、闭源版或其他专有许可中使用。企业名义贡献须由有权代表企业的人接受本协议。中文说明仅用于帮助理解，具有约束力的条款以上述英文正文为准。
 
 ## Template attribution
 

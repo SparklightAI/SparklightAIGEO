@@ -1,6 +1,6 @@
-# GEOFlow 部署脚本 / Deployment Scripts
+# SparklightAIGEO 部署脚本 / Deployment Scripts
 
-这个目录用于存放 GEOFlow 的参考部署脚本，方便技术人员在常见云服务器、VPS、Docker 主机或面板服务器上快速完成环境自检和生产部署。
+这个目录用于存放 SparklightAIGEO 的参考部署脚本，方便技术人员在常见云服务器、VPS、Docker 主机或面板服务器上快速完成环境自检和生产部署。
 
 脚本默认走仓库现有的 `docker-compose.prod.yml` 生产链路，不绕开项目标准部署方式。
 
@@ -8,8 +8,8 @@
 
 | 脚本 | 用途 |
 | --- | --- |
-| `geoflow-docker-deploy.sh` | 生产 Docker 首次空库一键部署脚本。会自检服务器、准备 `.env.prod`、部署 PostgreSQL、Redis、Web、App、常规队列、AI 质检队列、调度和 Reverb，并在最后执行健康检查。 |
-| `geoflow-healthcheck.sh` | 部署后健康检查脚本。可单独检查全部必需容器、Laravel 健康端点和数据库连接。 |
+| `sparklightaigeo-docker-deploy.sh` | 生产 Docker 首次空库一键部署脚本。会自检服务器、准备 `.env.prod`、部署 PostgreSQL、Redis、Web、App、常规队列、AI 质检队列、调度和 Reverb，并在最后执行健康检查。 |
+| `sparklightaigeo-healthcheck.sh` | 部署后健康检查脚本。可单独检查全部必需容器、Laravel 健康端点和数据库连接。 |
 | `start-docker-pull-tunnel.sh` | **本机 Mac**：SSH 反向隧道，把 Clash HTTP 代理暴露给 ECS。 |
 | `pull-images-once-via-tunnel.sh` | **ECS 一次性拉镜像**：经隧道 + `skopeo`，**不重启 docker**，不影响运行中容器。 |
 | `build-once-via-tunnel.sh` | **ECS 一次性 build**：临时代理仅作用于本次 `docker compose build`，**不重启 docker**。 |
@@ -38,8 +38,8 @@
 仅在全新空数据库的服务器执行：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yaojingang/GEOFlow/main/deploy-scripts/geoflow-docker-deploy.sh -o geoflow-docker-deploy.sh
-bash geoflow-docker-deploy.sh
+curl -fsSL https://raw.githubusercontent.com/SparklightAI/SparklightAIGEO/main/deploy-scripts/sparklightaigeo-docker-deploy.sh -o sparklightaigeo-docker-deploy.sh
+bash sparklightaigeo-docker-deploy.sh
 ```
 
 已有数据的实例禁止使用该脚本升级，也禁止滚动升级。请执行 `docs/deployment/DEPLOYMENT.md` 3.1 节的 down、停止并排空全部旧进程和在途请求、一次性确认、迁移、全量启动新版本、readiness、启用删除门禁流程。
@@ -71,14 +71,14 @@ GEOFLOW_APP_DIR=/opt/geoflow \
 GEOFLOW_WEB_PORT=18080 \
 GEOFLOW_REVERB_PORT=18081 \
 GEOFLOW_ADMIN_BASE_PATH=geo_admin \
-bash geoflow-docker-deploy.sh
+bash sparklightaigeo-docker-deploy.sh
 ```
 
 常用变量：
 
 | 变量 | 默认值 | 说明 |
 | --- | --- | --- |
-| `GEOFLOW_REPO_URL` | `https://github.com/yaojingang/GEOFlow.git` | 源码仓库地址 |
+| `GEOFLOW_REPO_URL` | `https://github.com/SparklightAI/SparklightAIGEO.git` | 源码仓库地址 |
 | `GEOFLOW_BRANCH` | `main` | 部署分支 |
 | `GEOFLOW_APP_DIR` | `/opt/geoflow` | 服务器部署目录 |
 | `GEOFLOW_INSTALL_DOCKER` | `auto` | `1` 自动安装 Docker；`0` 缺少 Docker 时直接失败 |
@@ -93,10 +93,10 @@ bash geoflow-docker-deploy.sh
 如果你把部署脚本下载到临时目录，部署成功后希望自动删除它：
 
 ```bash
-GEOFLOW_SELF_DELETE=1 bash geoflow-docker-deploy.sh
+GEOFLOW_SELF_DELETE=1 bash sparklightaigeo-docker-deploy.sh
 ```
 
-这个动作只会删除当前执行的脚本文件，不会删除已部署的 GEOFlow 源码目录。
+这个动作只会删除当前执行的脚本文件，不会删除已部署的 SparklightAIGEO 源码目录。
 
 ## 手动健康检查
 
@@ -104,7 +104,7 @@ GEOFLOW_SELF_DELETE=1 bash geoflow-docker-deploy.sh
 
 ```bash
 cd /opt/geoflow
-bash deploy-scripts/geoflow-healthcheck.sh
+bash deploy-scripts/sparklightaigeo-healthcheck.sh
 ```
 
 ## 一级目录部署
@@ -140,14 +140,14 @@ proxy_set_header X-Forwarded-Host $host;
 
 ---
 
-This folder contains reference scripts for technical operators who want a faster, repeatable GEOFlow deployment path.
+This folder contains reference scripts for technical operators who want a faster, repeatable SparklightAIGEO deployment path.
 
 ## Scripts
 
 | Script | Purpose |
 | --- | --- |
-| `geoflow-docker-deploy.sh` | First install on a fresh empty production database. It checks the server, prepares `.env.prod`, deploys PostgreSQL, Redis, web, app, queue, scheduler and Reverb, then runs a healthcheck. |
-| `geoflow-healthcheck.sh` | Post-deployment healthcheck. It validates Docker Compose services, the Laravel health endpoint and database connectivity. |
+| `sparklightaigeo-docker-deploy.sh` | First install on a fresh empty production database. It checks the server, prepares `.env.prod`, deploys PostgreSQL, Redis, web, app, queue, scheduler and Reverb, then runs a healthcheck. |
+| `sparklightaigeo-healthcheck.sh` | Post-deployment healthcheck. It validates Docker Compose services, the Laravel health endpoint and database connectivity. |
 
 ## Recommended Server Profile
 
@@ -172,8 +172,8 @@ Recommended for production:
 On a fresh server with an empty database, run:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/yaojingang/GEOFlow/main/deploy-scripts/geoflow-docker-deploy.sh -o geoflow-docker-deploy.sh
-bash geoflow-docker-deploy.sh
+curl -fsSL https://raw.githubusercontent.com/SparklightAI/SparklightAIGEO/main/deploy-scripts/sparklightaigeo-docker-deploy.sh -o sparklightaigeo-docker-deploy.sh
+bash sparklightaigeo-docker-deploy.sh
 ```
 
 Do not use this script to upgrade an existing deployment, and do not perform a rolling upgrade. Follow the stopped-and-drained upgrade protocol in section 3.1 of `docs/deployment/DEPLOYMENT.md`.
@@ -205,14 +205,14 @@ GEOFLOW_APP_DIR=/opt/geoflow \
 GEOFLOW_WEB_PORT=18080 \
 GEOFLOW_REVERB_PORT=18081 \
 GEOFLOW_ADMIN_BASE_PATH=geo_admin \
-bash geoflow-docker-deploy.sh
+bash sparklightaigeo-docker-deploy.sh
 ```
 
 Optional variables:
 
 | Variable | Default | Description |
 | --- | --- | --- |
-| `GEOFLOW_REPO_URL` | `https://github.com/yaojingang/GEOFlow.git` | Source repository URL |
+| `GEOFLOW_REPO_URL` | `https://github.com/SparklightAI/SparklightAIGEO.git` | Source repository URL |
 | `GEOFLOW_BRANCH` | `main` | Branch to deploy |
 | `GEOFLOW_APP_DIR` | `/opt/geoflow` | Server installation directory |
 | `GEOFLOW_INSTALL_DOCKER` | `auto` | `1` to install Docker automatically, `0` to fail if Docker is missing |
@@ -227,10 +227,10 @@ Optional variables:
 If you download the script to a temporary location and want it removed after deployment:
 
 ```bash
-GEOFLOW_SELF_DELETE=1 bash geoflow-docker-deploy.sh
+GEOFLOW_SELF_DELETE=1 bash sparklightaigeo-docker-deploy.sh
 ```
 
-This only removes the executed script file. It does not remove the deployed GEOFlow source code.
+This only removes the executed script file. It does not remove the deployed SparklightAIGEO source code.
 
 ## Manual Healthcheck
 
@@ -238,7 +238,7 @@ Run after DNS, HTTPS or reverse proxy changes:
 
 ```bash
 cd /opt/geoflow
-bash deploy-scripts/geoflow-healthcheck.sh
+bash deploy-scripts/sparklightaigeo-healthcheck.sh
 ```
 
 ## Subdirectory Deployment

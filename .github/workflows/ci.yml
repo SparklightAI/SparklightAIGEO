@@ -56,10 +56,10 @@ jobs:
         run: php scripts/export-management-coverage.php --check
 
       - name: Validate standalone CLI dependency lock
-        run: composer validate --strict --working-dir=packages/geoflow-cli
+        run: composer validate --strict --working-dir=packages/sparklightaigeo-cli
 
-      - name: Test GEOFlow skill package and compatibility helpers
-        run: python3 -B .agents/skills/geoflow/evals/test_geoflow_scripts.py
+      - name: Test SparklightAIGEO skill package and compatibility helpers
+        run: python3 -B .agents/skills/sparklightaigeo/evals/test_sparklightaigeo_scripts.py
 
       - name: Build production assets
         run: npm run build
@@ -68,7 +68,7 @@ jobs:
         run: composer test
 
       - name: Verify signed standalone CLI in an isolated installation
-        run: php packages/geoflow-cli/smoke.php
+        run: php packages/sparklightaigeo-cli/smoke.php
 
       - name: Run JavaScript test suite
         run: npm run test:analytics
@@ -95,7 +95,7 @@ jobs:
         run: composer audit --locked --no-interaction
 
       - name: Audit standalone CLI dependencies
-        run: composer audit --locked --no-interaction --working-dir=packages/geoflow-cli
+        run: composer audit --locked --no-interaction --working-dir=packages/sparklightaigeo-cli
 
       - name: Audit JavaScript dependencies
         run: npm audit --audit-level=high --registry=https://registry.npmjs.org

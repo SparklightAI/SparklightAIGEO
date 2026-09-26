@@ -108,27 +108,27 @@ class AdminSiteSettingsPageTest extends TestCase
         ]);
 
         $expectedThemes = [
-            'geoflow-template-01-ink-editorial' => 'GEOFlow 01 Ink Editorial',
-            'geoflow-template-02-market-briefing' => 'GEOFlow 02 Market Briefing',
-            'geoflow-template-03-salmon-insight' => 'GEOFlow 03 Salmon Insight',
-            'geoflow-template-04-red-opinion' => 'GEOFlow 04 Red Opinion',
-            'geoflow-template-05-wire-clean' => 'GEOFlow 05 Wire Clean',
-            'geoflow-template-06-public-broadcast' => 'GEOFlow 06 Public Broadcast',
-            'geoflow-template-07-breaking-red' => 'GEOFlow 07 Breaking Red',
-            'geoflow-template-08-section-blue' => 'GEOFlow 08 Section Blue',
-            'geoflow-template-09-tech-spectrum' => 'GEOFlow 09 Tech Spectrum',
-            'geoflow-template-10-wired-feature' => 'GEOFlow 10 Wired Feature',
-            'geoflow-template-11-product-newsroom' => 'GEOFlow 11 Product Newsroom',
-            'geoflow-template-12-saas-gradient' => 'GEOFlow 12 SaaS Gradient',
-            'geoflow-template-13-linear-system' => 'GEOFlow 13 Linear System',
-            'geoflow-template-14-knowledge-paper' => 'GEOFlow 14 Knowledge Paper',
-            'geoflow-template-15-reading-medium' => 'GEOFlow 15 Reading Medium',
-            'geoflow-template-16-newsletter-letter' => 'GEOFlow 16 Newsletter Letter',
-            'geoflow-template-17-executive-review' => 'GEOFlow 17 Executive Review',
-            'geoflow-template-18-consulting-insight' => 'GEOFlow 18 Consulting Insight',
-            'geoflow-template-19-tech-review' => 'GEOFlow 19 Tech Review',
-            'geoflow-template-20-research-journal' => 'GEOFlow 20 Research Journal',
-            'geoflow-template-21-enterprise-signature' => 'GEOFlow 21 Enterprise Signature',
+            'geoflow-template-01-ink-editorial' => 'SparklightAIGEO 01 Ink Editorial',
+            'geoflow-template-02-market-briefing' => 'SparklightAIGEO 02 Market Briefing',
+            'geoflow-template-03-salmon-insight' => 'SparklightAIGEO 03 Salmon Insight',
+            'geoflow-template-04-red-opinion' => 'SparklightAIGEO 04 Red Opinion',
+            'geoflow-template-05-wire-clean' => 'SparklightAIGEO 05 Wire Clean',
+            'geoflow-template-06-public-broadcast' => 'SparklightAIGEO 06 Public Broadcast',
+            'geoflow-template-07-breaking-red' => 'SparklightAIGEO 07 Breaking Red',
+            'geoflow-template-08-section-blue' => 'SparklightAIGEO 08 Section Blue',
+            'geoflow-template-09-tech-spectrum' => 'SparklightAIGEO 09 Tech Spectrum',
+            'geoflow-template-10-wired-feature' => 'SparklightAIGEO 10 Wired Feature',
+            'geoflow-template-11-product-newsroom' => 'SparklightAIGEO 11 Product Newsroom',
+            'geoflow-template-12-saas-gradient' => 'SparklightAIGEO 12 SaaS Gradient',
+            'geoflow-template-13-linear-system' => 'SparklightAIGEO 13 Linear System',
+            'geoflow-template-14-knowledge-paper' => 'SparklightAIGEO 14 Knowledge Paper',
+            'geoflow-template-15-reading-medium' => 'SparklightAIGEO 15 Reading Medium',
+            'geoflow-template-16-newsletter-letter' => 'SparklightAIGEO 16 Newsletter Letter',
+            'geoflow-template-17-executive-review' => 'SparklightAIGEO 17 Executive Review',
+            'geoflow-template-18-consulting-insight' => 'SparklightAIGEO 18 Consulting Insight',
+            'geoflow-template-19-tech-review' => 'SparklightAIGEO 19 Tech Review',
+            'geoflow-template-20-research-journal' => 'SparklightAIGEO 20 Research Journal',
+            'geoflow-template-21-enterprise-signature' => 'SparklightAIGEO 21 Enterprise Signature',
         ];
 
         $catalogIds = collect(app(SiteThemeCatalog::class)->all())
@@ -905,7 +905,7 @@ class AdminSiteSettingsPageTest extends TestCase
             'sort_order' => 10,
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
 
         Article::query()->create([

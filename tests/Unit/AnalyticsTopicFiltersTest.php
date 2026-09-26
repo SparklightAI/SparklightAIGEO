@@ -15,7 +15,7 @@ class AnalyticsTopicFiltersTest extends TestCase
 
         $preset = AiVisibilityAnalyticsFilter::fromRequest([
             'ai_preset' => '90d',
-            'ai_keyword' => ' GEOFlow ',
+            'ai_keyword' => ' SparklightAIGEO ',
             'ai_provider' => 'deepseek_analysis',
         ]);
         $custom = AiVisibilityAnalyticsFilter::fromRequest([
@@ -25,7 +25,7 @@ class AnalyticsTopicFiltersTest extends TestCase
         ]);
 
         $this->assertSame('2026-05-05', $preset->dateFrom->toDateString());
-        $this->assertSame('GEOFlow', $preset->keyword);
+        $this->assertSame('SparklightAIGEO', $preset->keyword);
         $this->assertSame('deepseek_analysis', $preset->provider);
         $this->assertSame('2026-07-30', $custom->dateFrom->toDateString());
         $this->assertSame('2026-08-02', $custom->dateTo->toDateString());

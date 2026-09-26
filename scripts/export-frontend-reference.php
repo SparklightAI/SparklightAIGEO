@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /**
- * Convert a reviewed database export into the versioned GEOFlow frontend reference pack.
+ * Convert a reviewed database export into the versioned SparklightAIGEO frontend reference pack.
  *
  * Usage: php scripts/export-frontend-reference.php <output-directory>
  * The JSON source is read from STDIN so production database credentials never enter the pack.
@@ -25,11 +25,11 @@ $categories = [
     [
         'slug' => 'geoflow-getting-started',
         'name' => '功能指南',
-        'description' => '从快速上手到知识库、模型、任务、审核与分发的 GEOFlow 功能参考。',
+        'description' => '从快速上手到知识库、模型、任务、审核与分发的 SparklightAIGEO 功能参考。',
         'sort_order' => 10,
     ],
     [
-        'slug' => 'geoflow-deployment-operations',
+        'slug' => 'sparklightaigeo-deployment-operations',
         'name' => '部署运营',
         'description' => '覆盖安装、升级、容器、反向代理、队列、安全与日常运维的参考内容。',
         'sort_order' => 20,
@@ -76,11 +76,11 @@ $manifest = [
     'version' => 'frontend-reference-v1',
     'release_version' => '2.3.0',
     'default_theme' => 'geoflow-template-21-enterprise-signature',
-    'description' => 'GEOFlow 首次安装使用的官网参考内容，已有站点升级时不会自动导入。',
+    'description' => 'SparklightAIGEO 首次安装使用的官网参考内容，已有站点升级时不会自动导入。',
     'author' => [
-        'name' => 'GEOFlow 编辑部',
+        'name' => 'SparklightAIGEO 编辑部',
         'email' => 'editor@geoflow.local',
-        'bio' => 'GEOFlow 开源项目官网参考内容作者。',
+        'bio' => 'SparklightAIGEO 开源项目官网参考内容作者。',
     ],
     'categories' => $categories,
     'articles' => $manifestArticles,
@@ -101,7 +101,7 @@ function sanitizeReferenceText(string $value): string
             '2026-08-08',
             'http://127.0.0.1:18080',
             'http://localhost:18080',
-            'GEOFlow 前台包含首页、分类页、归档页和文章页四种页型。v2.1.0 中 APIHot 主题覆盖全部页型',
+            'SparklightAIGEO 前台包含首页、分类页、归档页和文章页四种页型。v2.1.0 中 APIHot 主题覆盖全部页型',
             '该版本在 2.1.0 的基础上新增安全加固',
             'v2.3.0 对受管图片新增了 `managed_path_hash` 回填要求',
             '归档页可按年月或标签过滤',
@@ -112,9 +112,9 @@ function sanitizeReferenceText(string $value): string
         [
             '2.3.0',
             '2026-08-09',
-            'http://geoflow-app:8080',
-            'http://geoflow-app:8080',
-            'GEOFlow 前台包含首页、分类页、文章页、关于页和归档页五种页型。v2.3.0 中 Enterprise Signature 21 主题覆盖全部页型',
+            'http://sparklightaigeo-app:8080',
+            'http://sparklightaigeo-app:8080',
+            'SparklightAIGEO 前台包含首页、分类页、文章页、关于页和归档页五种页型。v2.3.0 中 Enterprise Signature 21 主题覆盖全部页型',
             '该版本汇总了 2.1.0 以来的安全加固，并新增默认官网主题与参考内容',
             '早期安全版本对受管图片新增了 `managed_path_hash` 回填要求',
             '归档页按年份和月份自动聚合',

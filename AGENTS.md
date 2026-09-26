@@ -1,4 +1,4 @@
-# GEOFlow Agent Instructions
+# SparklightAIGEO Agent Instructions
 
 Before working in this repository, read and follow [the project rules](docs/agent-config/AGENTS.md).
 

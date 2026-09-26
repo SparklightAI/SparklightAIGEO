@@ -2,7 +2,7 @@
 
 - 测试时间：2026-08-30 22:26—22:35（Asia/Shanghai）
 - 模型：DeepSeek V4 Pro（记录 ID 3，`deepseek-v4-pro`）
-- 知识库：23「GEOFlow 官方分发主题与生态知识（2026-08）」
+- 知识库：23「SparklightAIGEO 官方分发主题与生态知识（2026-08）」
 - 原子事实 revision：ID 1 / v1，状态 `ready`
 - 活动事实哈希：`7d8b465ddcdc6083fd72971a227a149f7548939cc3b21635903466c0b37906a7`
 - 知识库源哈希：`ecb52f51ea7bd6eb7e631a5665efde510dae15098dd13a8098eb7e46b3f7cb2f`
@@ -32,11 +32,11 @@
 
 | 文章 | 黄金结论 | 原子混合：三次决策 / 分数 | 完整知识库：三次决策 / 分数 | 原子输入/输出 Token 合计 | 知识库输入/输出 Token 合计 | 原子/知识库耗时合计 |
 | --- | --- | --- | --- | ---: | ---: | ---: |
-| 449《GEOFlow 2.1.1 是什么》 | blocked | blocked / blocked / blocked；65 / 65 / 65 | needs_review ×3；100 ×3 | 12,645 / 2,480 | 14,451 / 3,477 | 39.89s / 51.08s |
-| 486《GEOFlow 2.1.1 如何升级》 | blocked | blocked / blocked / blocked；65 / 65 / 65 | needs_review ×3；100 ×3 | 11,814 / 3,801 | 14,484 / 4,423 | 55.21s / 62.04s |
-| 467《GEOFlow Agent 目标站点包怎么用》 | passed | needs_review / passed / needs_review；100 ×3 | needs_review / needs_review / passed；100 ×3 | 17,712 / 1,498 | 17,880 / 1,341 | 25.68s / 23.49s |
-| 471《GEOFlow 如何连接 WordPress》 | passed | needs_review ×3；100 ×3 | needs_review / needs_review / passed；100 ×3 | 11,712 / 3,410 | 11,937 / 2,404 | 51.58s / 39.65s |
-| 473《GEOFlow 主题工作流怎么用》 | passed | passed / needs_review / needs_review；100 ×3 | passed / passed / needs_review；100 ×3 | 18,483 / 2,135 | 19,011 / 1,332 | 34.72s / 23.81s |
+| 449《SparklightAIGEO 2.1.1 是什么》 | blocked | blocked / blocked / blocked；65 / 65 / 65 | needs_review ×3；100 ×3 | 12,645 / 2,480 | 14,451 / 3,477 | 39.89s / 51.08s |
+| 486《SparklightAIGEO 2.1.1 如何升级》 | blocked | blocked / blocked / blocked；65 / 65 / 65 | needs_review ×3；100 ×3 | 11,814 / 3,801 | 14,484 / 4,423 | 55.21s / 62.04s |
+| 467《SparklightAIGEO Agent 目标站点包怎么用》 | passed | needs_review / passed / needs_review；100 ×3 | needs_review / needs_review / passed；100 ×3 | 17,712 / 1,498 | 17,880 / 1,341 | 25.68s / 23.49s |
+| 471《SparklightAIGEO 如何连接 WordPress》 | passed | needs_review ×3；100 ×3 | needs_review / needs_review / passed；100 ×3 | 11,712 / 3,410 | 11,937 / 2,404 | 51.58s / 39.65s |
+| 473《SparklightAIGEO 主题工作流怎么用》 | passed | passed / needs_review / needs_review；100 ×3 | passed / passed / needs_review；100 ×3 | 18,483 / 2,135 | 19,011 / 1,332 | 34.72s / 23.81s |
 
 原子模式的版本冲突问题均为 `knowledge_contradiction`，并携带文章原句、标准答案、确定性比较方法、revision 与证据引用。安全文章没有高严重度事实问题；其 `needs_review` 来源为通用模型覆盖门禁或不确定性。
 

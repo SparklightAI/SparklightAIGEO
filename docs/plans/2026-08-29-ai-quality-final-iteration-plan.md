@@ -1,4 +1,4 @@
-# GEOFlow AI 质检最终迭代方案（待确认）
+# SparklightAIGEO AI 质检最终迭代方案（待确认）
 
 > Review 日期：2026-08-29
 >

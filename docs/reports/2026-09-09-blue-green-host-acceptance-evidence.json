@@ -42,7 +42,7 @@
   "architectures": {
     "linux-amd64": {
       "result": "pass",
-      "evidence_link": "https://github.com/yaojingang/geoflow-updater/actions/runs/34312377078",
+      "evidence_link": "https://sparklight-ai.com/updater/actions/runs/34312377078",
       "container": {
         "schema_version": 1,
         "platform": "linux-amd64",
@@ -352,7 +352,7 @@
     },
     "linux-arm64": {
       "result": "pass",
-      "evidence_link": "https://github.com/yaojingang/geoflow-updater/actions/runs/34312377078",
+      "evidence_link": "https://sparklight-ai.com/updater/actions/runs/34312377078",
       "container": {
         "schema_version": 1,
         "platform": "linux-arm64",

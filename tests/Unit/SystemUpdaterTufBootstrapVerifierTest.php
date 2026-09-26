@@ -52,7 +52,7 @@ class SystemUpdaterTufBootstrapVerifierTest extends TestCase
                     'linux-amd64' => [
                         'sha256' => str_repeat('a', 64),
                         'size' => 1,
-                        'url' => 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
+                        'url' => 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
                     ],
                 ],
                 'expires' => '2028-08-25T00:00:00Z',
@@ -115,7 +115,7 @@ class SystemUpdaterTufBootstrapVerifierTest extends TestCase
                 'linux-amd64' => [
                     'sha256' => str_repeat('a', 64),
                     'size' => 12345,
-                    'url' => 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
+                    'url' => 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
                 ],
             ],
             'expires' => '2099-01-01T00:00:00Z',

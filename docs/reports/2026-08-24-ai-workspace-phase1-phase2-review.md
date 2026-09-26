@@ -1,8 +1,8 @@
-# 🥷 GEOFlow AI 工作台前两阶段 Review 与优化报告
+# 🥷 SparklightAIGEO AI 工作台前两阶段 Review 与优化报告
 
 日期：2026-08-24
 验收环境：`http://localhost:18080/admin/ai-workspace`
-代码基准：`GEOFlow` 当前集成工作树
+代码基准：`SparklightAIGEO` 当前集成工作树
 
 ## 结论
 

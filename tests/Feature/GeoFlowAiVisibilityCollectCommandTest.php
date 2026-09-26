@@ -28,9 +28,9 @@ class GeoFlowAiVisibilityCollectCommandTest extends TestCase
                 'Result' => [
                     'WebResults' => [
                         [
-                            'Title' => 'GEOFlow',
+                            'Title' => 'SparklightAIGEO',
                             'Url' => 'https://example.com/geoflow',
-                            'Snippet' => 'GEOFlow visibility source',
+                            'Snippet' => 'SparklightAIGEO visibility source',
                         ],
                     ],
                 ],
@@ -74,18 +74,18 @@ class GeoFlowAiVisibilityCollectCommandTest extends TestCase
         ]);
 
         $this->artisan('geoflow:ai-visibility:collect', [
-            'keywords' => ['GEOFlow'],
+            'keywords' => ['SparklightAIGEO'],
         ])
-            ->expectsOutputToContain('GEOFlow')
+            ->expectsOutputToContain('SparklightAIGEO')
             ->assertSuccessful();
 
         $this->assertDatabaseHas('ai_visibility_runs', [
-            'keyword' => 'GEOFlow',
+            'keyword' => 'SparklightAIGEO',
             'provider_type' => AiVisibilityRun::PROVIDER_DOUBAO_SEARCH_CUSTOM,
             'status' => AiVisibilityRun::STATUS_COMPLETED,
         ]);
         $this->assertDatabaseHas('ai_visibility_runs', [
-            'keyword' => 'GEOFlow',
+            'keyword' => 'SparklightAIGEO',
             'provider_type' => AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
             'status' => AiVisibilityRun::STATUS_COMPLETED,
         ]);

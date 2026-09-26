@@ -34,7 +34,7 @@ class ReleaseVersionMappingTest extends TestCase
     public function test_default_update_metadata_uses_the_latest_published_release_asset(): void
     {
         $this->assertSame(
-            'https://github.com/yaojingang/GEOFlow/releases/latest/download/version.json',
+            'https://github.com/SparklightAI/SparklightAIGEO/releases/latest/download/version.json',
             config('geoflow.update_metadata_url'),
         );
         $this->assertStringNotContainsString(
@@ -59,22 +59,22 @@ class ReleaseVersionMappingTest extends TestCase
 
         $this->assertSame("v{$version}", $tag);
         $this->assertSame(
-            "https://github.com/yaojingang/GEOFlow/releases/download/{$tag}/GEOFlow-{$tag}.zip",
+            "https://github.com/SparklightAI/SparklightAIGEO/releases/download/{$tag}/SparklightAIGEO-{$tag}.zip",
             $manifest['archive_url'],
         );
         $this->assertSame(
-            "https://github.com/yaojingang/GEOFlow/releases/tag/{$tag}",
+            "https://github.com/SparklightAI/SparklightAIGEO/releases/tag/{$tag}",
             $payload['release_url'],
         );
         $this->assertSame(
-            "https://github.com/yaojingang/GEOFlow/blob/{$tag}/docs/CHANGELOG.md",
+            "https://github.com/SparklightAI/SparklightAIGEO/blob/{$tag}/docs/CHANGELOG.md",
             $payload['changelog_url_zh'],
         );
         $this->assertSame(
-            "https://github.com/yaojingang/GEOFlow/blob/{$tag}/docs/CHANGELOG_en.md",
+            "https://github.com/SparklightAI/SparklightAIGEO/blob/{$tag}/docs/CHANGELOG_en.md",
             $payload['changelog_url_en'],
         );
-        $this->assertSame("GEOFlow v{$version}", $payload['title_zh']);
-        $this->assertSame("GEOFlow v{$version}", $payload['title_en']);
+        $this->assertSame("SparklightAIGEO v{$version}", $payload['title_zh']);
+        $this->assertSame("SparklightAIGEO v{$version}", $payload['title_en']);
     }
 }

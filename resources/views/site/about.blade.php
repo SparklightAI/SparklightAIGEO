@@ -7,7 +7,7 @@
         $aboutSchema = [
             $schemaAtContext => 'https://schema.org',
             $schemaAtType => 'AboutPage',
-            'name' => $aboutTitle ?? '关于 GEOFlow',
+            'name' => $aboutTitle ?? '关于 SparklightAIGEO',
             'description' => $pageDescription,
             'url' => $canonicalUrl ?? route('site.about'),
         ];
@@ -23,7 +23,7 @@
                     @unless(!empty($isHostedAbout))
                         <p class="text-sm font-medium text-blue-600 mb-4">开源项目</p>
                     @endunless
-                    <h1 class="article-hero-title font-semibold text-gray-900 mb-4 leading-tight">{{ $aboutTitle ?? '关于 GEOFlow' }}</h1>
+                    <h1 class="article-hero-title font-semibold text-gray-900 mb-4 leading-tight">{{ $aboutTitle ?? '关于 SparklightAIGEO' }}</h1>
                     @if(!empty($isHostedAbout))
                         <p class="article-kicker text-gray-600 max-w-3xl whitespace-pre-line">{{ $aboutContent !== '' ? $aboutContent : $pageDescription }}</p>
                         @if($contactEmail !== '')

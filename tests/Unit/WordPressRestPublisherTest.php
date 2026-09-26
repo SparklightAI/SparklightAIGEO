@@ -345,7 +345,7 @@ class WordPressRestPublisherTest extends TestCase
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => 'Hello World',

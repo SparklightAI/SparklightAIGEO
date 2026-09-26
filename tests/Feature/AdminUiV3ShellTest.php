@@ -58,9 +58,8 @@ class AdminUiV3ShellTest extends TestCase
             $this->assertSame(1, $footers?->length);
             $footer = $footers?->item(0);
             $this->assertInstanceOf(\DOMElement::class, $footer);
-            $this->assertStringContainsString('GEOFlow v3.0.0', $footer->textContent);
-            $this->assertStringContainsString('© 2026 Yao Jingang', $footer->textContent);
-            $this->assertStringContainsString('AGPL-3.0', $footer->textContent);
+            $this->assertStringContainsString('SparklightAIGEO v3', $footer->textContent);
+            $this->assertStringContainsString(__('admin.footer.author'), $footer->textContent);
             $this->assertSame(1, $xpath->query('.//button[@data-open-admin-welcome]', $footer)?->length);
             $this->assertSame(
                 $v3Enabled ? 1 : 0,
@@ -68,12 +67,7 @@ class AdminUiV3ShellTest extends TestCase
             );
 
             $expectedLinks = [
-                'https://github.com/yaojingang/GEOFlow/releases',
-                'https://github.com/yaojingang/GEOFlow/blob/main/LICENSE',
-                'https://github.com/yaojingang/GEOFlow/blob/main/docs/CHANGELOG.md',
-                'https://github.com/yaojingang/GEOFlow',
-                'https://x.com/yaojingang',
-                'https://github.com/yaojingang/GEOFlow/wiki',
+                'https://sparklight-ai.com',
             ];
             $links = $xpath->query('.//a', $footer);
 
@@ -324,16 +318,16 @@ class AdminUiV3ShellTest extends TestCase
             ->assertOk()
             ->assertSee('data-dialog-open="qr"', false)
             ->assertSee('data-gf-modal="qr"', false)
-            ->assertSee(asset('assets/images/yao-jingang-wechat.jpg'), false)
+            ->assertSee(asset('assets/images/qrcode_xhzgai.jpg'), false)
             ->assertSee(__('admin.ui_v3.qr_title'))
             ->assertSee(__('admin.ui_v3.qr_invitation'))
-            ->assertSee('href="https://github.com/yaojingang/GEOFlow"', false)
-            ->assertSee('href="https://x.com/yaojingang"', false)
+            ->assertSee('href="https://github.com/SparklightAI/SparklightAIGEO"', false)
+            ->assertSee('href="https://sparklight-ai.com"', false)
             ->assertSee('target="_blank" rel="noopener noreferrer"', false)
             ->assertDontSee('data-qr-canvas', false)
             ->assertDontSee('data-qr-value', false);
 
-        $this->assertFileExists(public_path('assets/images/yao-jingang-wechat.jpg'));
+        $this->assertFileExists(public_path('assets/images/qrcode_xhzgai.jpg'));
     }
 
     private function assertUpdateCenterLink(string $html, bool $hasUpdate): void

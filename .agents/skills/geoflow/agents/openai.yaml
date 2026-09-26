@@ -1,4 +1,0 @@
-interface:
-  display_name: "GEOFlow"
-  short_description: "Manage GEOFlow content, drafts and planned updates"
-  default_prompt: "Use $geoflow with the selected CLI profile. Discover identity and capabilities, use saved plans and stable request IDs for Updater actions, preserve draft versions, verify receipts, and report unavailable operations."

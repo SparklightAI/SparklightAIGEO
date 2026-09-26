@@ -1,4 +1,4 @@
-# GEOFlow 远程管理预览版覆盖说明
+# SparklightAIGEO 远程管理预览版覆盖说明
 
 版本：CLI `0.3.0-preview.1`；管理协议 `1.0`。本页描述当前实现，完整目标见已确认升级方案 v1.1。
 
@@ -34,4 +34,4 @@ A 的剩余工作包括统一新旧操作契约、完整业务 schema、官方�
 
 ## 使用与验收
 
-运行实例操作优先使用 [skill 的远程 CLI 流程](../../.agents/skills/geoflow/references/remote-cli-workflow.md)。本地测试、模拟服务、实际安装测试与真实线上验收分开记录。完整 A+B 验收要求两类主题各两轮修改、预览、发布、回滚；当前仅草稿/预览层可测试，不满足该完整验收。
+运行实例操作优先使用 [skill 的远程 CLI 流程](../../.agents/skills/sparklightaigeo/references/remote-cli-workflow.md)。本地测试、模拟服务、实际安装测试与真实线上验收分开记录。完整 A+B 验收要求两类主题各两轮修改、预览、发布、回滚；当前仅草稿/预览层可测试，不满足该完整验收。

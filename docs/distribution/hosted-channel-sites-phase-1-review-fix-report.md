@@ -1,4 +1,4 @@
-# GEOFlow 托管渠道站点阶段一 Review 与修复报告
+# SparklightAIGEO 托管渠道站点阶段一 Review 与修复报告
 
 ## 1. 报告信息
 
@@ -30,7 +30,7 @@
 
 1. 渠道保持 `paused`，profile 临时进入 `online + noindex`。
 2. 渠道配置保存一次性 `hosted_site_activation_token`。
-3. 托管公开面检测到令牌时，只接受 `X-GEOFlow-Hosted-Activation` 的精确匹配值。
+3. 托管公开面检测到令牌时，只接受 `X-SparklightAIGEO-Hosted-Activation` 的精确匹配值。
 4. 普通请求、错误令牌和进程中断后的请求均返回 `503 + noindex`。
 5. 在线检查完成并提交 `active` 后清除令牌。
 

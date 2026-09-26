@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Add WordPress REST API as a first-class distribution channel so GEOFlow can configure, test, publish, update, delete, and manage content on WordPress sites.
+**Goal:** Add WordPress REST API as a first-class distribution channel so SparklightAIGEO can configure, test, publish, update, delete, and manage content on WordPress sites.
 
-**Architecture:** Introduce a distribution publisher interface and route each channel through a publisher based on `distribution_channels.channel_type`. Keep the existing GEOFlow target-site Agent behavior behind a `geoflow_agent` publisher, and add a new `wordpress_rest` publisher that talks to WordPress Core REST API using Application Password authentication. WordPress-specific non-secret settings live in `distribution_channels.channel_config`, while the Application Password remains encrypted in `distribution_channel_secrets.secret_ciphertext`.
+**Architecture:** Introduce a distribution publisher interface and route each channel through a publisher based on `distribution_channels.channel_type`. Keep the existing SparklightAIGEO target-site Agent behavior behind a `geoflow_agent` publisher, and add a new `wordpress_rest` publisher that talks to WordPress Core REST API using Application Password authentication. WordPress-specific non-secret settings live in `distribution_channels.channel_config`, while the Application Password remains encrypted in `distribution_channel_secrets.secret_ciphertext`.
 
 **Tech Stack:** Laravel 12, Blade admin UI, Tailwind classes used by the current admin, Eloquent, PostgreSQL JSON columns, Laravel HTTP client, Redis queue, PHPUnit feature/unit tests, WordPress Core REST API.
 
@@ -48,8 +48,8 @@
 
 - WordPress plugin-enhanced GEO/LLM features such as `llms.txt`, TXT maps, schema policy, SEO plugin fields, and remote template controls.
 - WordPress.com OAuth flow. First implementation targets self-hosted WordPress or WordPress environments that expose standard `/wp-json/wp/v2/*` routes and Application Passwords.
-- Full Gutenberg block generation. First implementation sends sanitized HTML generated from GEOFlow Markdown.
-- Bidirectional WordPress-to-GEOFlow sync. First implementation is GEOFlow to WordPress.
+- Full Gutenberg block generation. First implementation sends sanitized HTML generated from SparklightAIGEO Markdown.
+- Bidirectional WordPress-to-SparklightAIGEO sync. First implementation is SparklightAIGEO to WordPress.
 
 ---
 
@@ -98,7 +98,7 @@
   - Validate WordPress-specific config.
   - Store WordPress username in `channel_config`.
   - Store Application Password encrypted in `DistributionChannelSecret`.
-  - Do not generate GEOFlow `gfsec_*` secrets for WordPress.
+  - Do not generate SparklightAIGEO `gfsec_*` secrets for WordPress.
   - Call publisher manager for health and site settings sync.
 - Modify `resources/views/admin/distribution/create.blade.php`
   - Add channel type selector.
@@ -1331,7 +1331,7 @@ For WordPress update, only replace secret if `wordpress_application_password` is
 In create/edit forms:
 
 - Channel type segmented radio.
-- Existing GEOFlow Agent fields visible for `geoflow_agent`.
+- Existing SparklightAIGEO Agent fields visible for `geoflow_agent`.
 - WordPress fields visible for `wordpress_rest`.
 
 Use simple data attributes and a small inline script:
@@ -1367,7 +1367,7 @@ In `show.blade.php`:
 WordPress guide copy:
 
 - Create Application Password in WordPress user profile.
-- Paste username and Application Password into GEOFlow.
+- Paste username and Application Password into SparklightAIGEO.
 - Click health check.
 - Publish a test article as draft first.
 
@@ -1469,7 +1469,7 @@ Add a WordPress section:
 ```markdown
 ## WordPress 渠道
 
-GEOFlow 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress 站点。管理员需要在 WordPress 用户资料页创建 Application Password，并在 GEOFlow 分发渠道中选择“WordPress 站点”后填写站点地址、用户名和 Application Password。
+SparklightAIGEO 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress 站点。管理员需要在 WordPress 用户资料页创建 Application Password，并在 SparklightAIGEO 分发渠道中选择“WordPress 站点”后填写站点地址、用户名和 Application Password。
 
 首版支持发布、更新、删除、图片上传到媒体库、分类/标签同步和基础站点设置同步。`llms.txt`、TXT 地图和 Schema 深度控制属于后续 WordPress Connector 插件增强能力。
 ```
@@ -1486,7 +1486,7 @@ GEOFlow 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress �
 - 新增 WordPress REST API 分发渠道设计与实现：
   - 支持 Application Password 鉴权。
   - 支持文章发布、更新、删除、图片上传、分类/标签同步和基础站点设置同步。
-  - 分发渠道后台按 GEOFlow Agent 与 WordPress 站点展示不同配置和接入引导。
+  - 分发渠道后台按 SparklightAIGEO Agent 与 WordPress 站点展示不同配置和接入引导。
 ```
 
 `docs/CHANGELOG_en.md`:
@@ -1499,7 +1499,7 @@ GEOFlow 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress �
 - Added WordPress REST API distribution channel support:
   - Supports Application Password authentication.
   - Supports post publish, update, delete, media upload, category/tag sync, and basic site settings sync.
-  - Shows different configuration and onboarding guidance for GEOFlow Agent and WordPress channels.
+  - Shows different configuration and onboarding guidance for SparklightAIGEO Agent and WordPress channels.
 ```
 
 - [ ] **Step 3: Run focused regression**
@@ -1534,7 +1534,7 @@ git commit -m "Document WordPress distribution support"
 ## Rollout Notes
 
 - Existing `geoflow_agent` channels must continue to publish exactly as before.
-- WordPress channels should not show target-site package download, rewrite rules, or GEOFlow Agent secret instructions.
+- WordPress channels should not show target-site package download, rewrite rules, or SparklightAIGEO Agent secret instructions.
 - WordPress Application Password should never be displayed after save. If reveal is needed later, reuse the current super-admin password confirmation flow.
 - On first real WordPress test, use default post status `draft` to avoid publishing accidental public content.
 - If WordPress returns `401` or `403`, show a specific message about Application Password, username, HTTPS, and user capabilities.

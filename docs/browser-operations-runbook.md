@@ -1,4 +1,4 @@
-# GEOFlow Chrome 运营助手运行手册
+# SparklightAIGEO Chrome 运营助手运行手册
 
 ## 能力边界
 
@@ -6,7 +6,7 @@ Chrome 运营助手从人工发布工作台读取已分配工作单，使用用�
 
 首个页面适配器支持知乎问题页的纯文字回答。其他平台使用通用模式，包括领取、打开目标页、复制正文和回传结果。
 
-浏览器队列只展示已分配、已生成浏览器载荷且带目标 URL 的工作单。一个 Chrome Profile 连接一个 GEOFlow 实例；需要同时使用多个平台账号时，为每个账号建立独立 Chrome Profile。
+浏览器队列只展示已分配、已生成浏览器载荷且带目标 URL 的工作单。一个 Chrome Profile 连接一个 SparklightAIGEO 实例；需要同时使用多个平台账号时，为每个账号建立独立 Chrome Profile。
 
 ## 部署
 
@@ -19,7 +19,7 @@ Chrome 运营助手从人工发布工作台读取已分配工作单，使用用�
 
 ## 配对与撤销
 
-扩展申请的配对码有效期为 10 分钟。管理员必须登录 GEOFlow 并核对配对码后批准。批准后签发的 Token 只有 `browser-operations:read` 和 `browser-operations:execute` 权限。
+扩展申请的配对码有效期为 10 分钟。管理员必须登录 SparklightAIGEO 并核对配对码后批准。批准后签发的 Token 只有 `browser-operations:read` 和 `browser-operations:execute` 权限。
 
 管理员可以从“账户与权限 > 浏览器连接”撤销自己的连接，超级管理员可以撤销所有连接。修改管理员密码也会撤销该账户的全部 Token。
 

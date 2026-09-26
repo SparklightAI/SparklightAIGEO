@@ -29,7 +29,7 @@
                 </a>
                 <a href="{{ route('site.about') }}">
                     <i data-lucide="info" class="w-6 h-6"></i>
-                    <span>关于 GEOFlow</span>
+                    <span>关于 SparklightAIGEO</span>
                 </a>
                 <a href="{{ route('site.home', ['search' => $category->name]) }}">
                     <i data-lucide="search" class="w-6 h-6"></i>

@@ -1,6 +1,6 @@
-# GEOFlow UI V3 候选验收环境
+# SparklightAIGEO UI V3 候选验收环境
 
-UI V3 已合入 GEOFlow 主代码库。`18080` 是最终统一入口，`28080` 仅用于切换后的 48 小时候选观察和回退验证。候选环境使用独立 Compose 项目、数据库卷、Redis、端口和浏览器 Session，不写入正式数据库。
+UI V3 已合入 SparklightAIGEO 主代码库。`18080` 是最终统一入口，`28080` 仅用于切换后的 48 小时候选观察和回退验证。候选环境使用独立 Compose 项目、数据库卷、Redis、端口和浏览器 Session，不写入正式数据库。
 
 ## 地址
 

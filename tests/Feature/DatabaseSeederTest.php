@@ -128,14 +128,14 @@ class DatabaseSeederTest extends TestCase
 
         $this->seed(FrontendDemoSeeder::class);
 
-        $this->assertSame('GEOFlow Support', SiteSetting::query()->where('setting_key', 'site_name')->value('setting_value'));
+        $this->assertSame('SparklightAIGEO Support', SiteSetting::query()->where('setting_key', 'site_name')->value('setting_value'));
 
         $category->refresh();
         $this->assertSame('Mac 支持', $category->name);
         $this->assertSame(10, $category->sort_order);
 
         $author->refresh();
-        $this->assertSame('GEOFlow 编辑部', $author->name);
+        $this->assertSame('SparklightAIGEO 编辑部', $author->name);
 
         $article = Article::query()->where('slug', 'how-to-reinstall-macos')->firstOrFail();
         $this->assertSame('如何重新安装 macOS', $article->title);

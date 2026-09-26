@@ -15,7 +15,7 @@ final class SyncSystemKnowledgeCommand extends Command
         {--verify : Read only and verify the synchronized official version or preserved customization}
         {--json : Emit a structured synchronization report}';
 
-    protected $description = 'Create or safely update GEOFlow system knowledge without overwriting customized content';
+    protected $description = 'Create or safely update SparklightAIGEO system knowledge without overwriting customized content';
 
     public function handle(SystemKnowledgeBaseManager $manager, SystemKnowledgeMediaManager $media): int
     {

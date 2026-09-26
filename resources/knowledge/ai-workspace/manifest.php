@@ -2,12 +2,12 @@
 
 return [
     'ai_workspace_manual' => [
-        'name' => 'GEOFlow 后台功能与操作指南（AI 工作台专用）',
-        'description' => 'GEOFlow AI 工作台用于解释后台功能、流程、原理、故障恢复和可信站内入口的系统知识。',
+        'name' => 'SparklightAIGEO 后台功能与操作指南（AI 工作台专用）',
+        'description' => 'SparklightAIGEO AI 工作台用于解释后台功能、流程、原理、故障恢复和可信站内入口的系统知识。',
         'official_version' => '2026.08.28.1',
         'authoritative_locale' => 'zh_CN',
         'content_file' => 'geoflow-admin-guide.zh_CN.md',
-        'content_hash' => '785808eb8003af5f00b36d6af7c71782a73fbb1b0f74c02539b8eb5ff116bce6',
+        'content_hash' => '41b6e03047f016d3657eebb0b4892c9aec5bcbba1635c7a79ad58eec107edd01',
         'minimum_han_characters' => 10_000,
         'required_sections' => [
             '## 一、系统总览与工作方法',

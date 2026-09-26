@@ -1,10 +1,10 @@
-# GEOFlow 文章固定链接规则最终方案
+# SparklightAIGEO 文章固定链接规则最终方案
 
 日期：2026-09-12
 
 状态：方案审查完成，待产品确认后实施
 
-适用范围：GEOFlow Laravel 主站、第一方托管站、GEOFlow Agent 目标站包的文章详情页
+适用范围：SparklightAIGEO Laravel 主站、第一方托管站、SparklightAIGEO Agent 目标站包的文章详情页
 
 ## 1. 最终结论
 
@@ -18,7 +18,7 @@
 
 1. 主站端到端能力，包含规则引擎、后台入口、旧链接跳转、稳定 slug、SEO 输出和内置主题改造。
 2. 第一方托管站能力，包含逐站策略、托管域名路由和远端地址刷新。
-3. GEOFlow Agent 目标站包能力，包含能力协商、设置同步、动态路由和静态构建切换。
+3. SparklightAIGEO Agent 目标站包能力，包含能力协商、设置同步、动态路由和静态构建切换。
 
 默认规则保持 `/article/{slug}`。升级后未主动修改设置的站点不会改变现有 URL。
 
@@ -39,7 +39,7 @@
 | 托管站远端 URL 在多处硬编码 | Publisher、Reconciler、失败恢复均拼接 `/article/` | 所有第一方站点地址改用同一生成器；规则切换后刷新当前分发记录的规范地址 |
 | Agent 静态路径和伪静态配置固定 | 包内静态文件、动态匹配、宝塔规则均假设 `/article/` | 目标包加入同构规则引擎、路径到静态缓存映射和通用安全重写；切换通过暂存构建后原子生效 |
 | 任意存储的内部链接可能继续使用旧格式 | 轮播、广告、文章正文允许保存相对 URL | 保留兼容 301；预览页报告结构化设置中的旧链接数量，不自动改写正文和外部输入内容 |
-| 外部分发平台拥有自己的 URL 契约 | WordPress REST 返回平台自身 permalink | WordPress 和 Generic HTTP API 保持平台 URL，不套用 GEOFlow 固定链接规则 |
+| 外部分发平台拥有自己的 URL 契约 | WordPress REST 返回平台自身 permalink | WordPress 和 Generic HTTP API 保持平台 URL，不套用 SparklightAIGEO 固定链接规则 |
 
 ## 3. 已核实的系统基础
 
@@ -55,7 +55,7 @@ Laravel 路由缓存要求路由定义在应用启动时保持静态。固定链
 
 ## 4. 外部项目设计参考
 
-| 项目 | 可复用思路 | GEOFlow 采用方式 |
+| 项目 | 可复用思路 | SparklightAIGEO 采用方式 |
 | --- | --- | --- |
 | [WordPress Permalinks](https://wordpress.org/documentation/article/customize-permalinks/) | 预设结构、自定义标签、统一 permalink 生成、旧 slug 跳转 | 提供预设与受约束模板；保留旧规则和旧 slug 的 301 |
 | [WordPress `get_permalink`](https://github.com/WordPress/wordpress-develop/blob/trunk/src/wp-includes/link-template.php) | URL 生成集中在单一入口 | `SiteUrlGenerator` 只委托固定链接服务，不再拼接路径 |
@@ -335,7 +335,7 @@ Laravel 路由缓存要求路由定义在应用启动时保持静态。固定链
 
 队列任务按 `profile_id + policy_revision` 幂等。若任务执行时 revision 已变化，旧任务停止，最新 revision 的任务继续。
 
-## 15. GEOFlow Agent 目标站包
+## 15. SparklightAIGEO Agent 目标站包
 
 目标站包把前端能力版本从 `1.2` 升至 `1.3`，增加：
 
@@ -354,10 +354,10 @@ Laravel 路由缓存要求路由定义在应用启动时保持静态。固定链
 
 设置同步采用以下顺序：
 
-1. GEOFlow 读取实时 frontend capabilities，核对 schema 和远端 revision。
+1. SparklightAIGEO 读取实时 frontend capabilities，核对 schema 和远端 revision。
 2. 远端接收带 `expected_revision` 的设置，先校验并在独占 staging 目录完成静态缓存构建。
 3. 构建成功后原子切换设置文件和当前静态 manifest，再返回新 revision。
-4. GEOFlow 保存渠道设置和远端 revision；若本地保存失败，下一次同步通过远端 capabilities 对账并幂等补写。
+4. SparklightAIGEO 保存渠道设置和远端 revision；若本地保存失败，下一次同步通过远端 capabilities 对账并幂等补写。
 5. 任一步失败时，远端继续使用旧设置和旧静态 manifest。
 
 静态模式不再把公开 URL 直接等同于 `article/{slug}/index.html`。构建器按规范路径生成私有静态缓存，并写入 `request_path → cache_file` manifest。前端控制器先用固定链接规则解析请求，再从当前 manifest 输出预渲染内容。这样可以一致支持 `/{slug}.html`、日期路径、ID 路径和无扩展路径。
@@ -369,7 +369,7 @@ Apache、Nginx 和宝塔规则增加安全的应用路径回退：
 - `config.php`、storage、构建 manifest 和私有静态缓存继续拒绝公网访问。
 - 老版本生成的公开 `article/{slug}` 静态目录只在新 manifest 生效后按包拥有清单移入可恢复暂存区，避免旧文件绕过 301。
 
-文章发布、更新、删除、首页模块、canonical、JSON-LD、`sitemap.txt`、`llms.txt` 和返回给 GEOFlow 的 `remote_url` 全部调用目标包固定链接函数。静态构建失败不会覆盖已生效页面。
+文章发布、更新、删除、首页模块、canonical、JSON-LD、`sitemap.txt`、`llms.txt` 和返回给 SparklightAIGEO 的 `remote_url` 全部调用目标包固定链接函数。静态构建失败不会覆盖已生效页面。
 
 ## 16. 缓存、性能与并发
 

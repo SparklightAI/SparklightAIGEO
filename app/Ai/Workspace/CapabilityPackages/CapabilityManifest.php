@@ -30,7 +30,7 @@ final class CapabilityManifest
         return [
             'system.capabilities.explain' => [
                 'name' => '系统能力说明',
-                'description' => '解释 GEOFlow 已登记能力并返回对应后台入口。',
+                'description' => '解释 SparklightAIGEO 已登记能力并返回对应后台入口。',
                 'maturity' => 'advisory',
                 'risk' => 'low',
                 'permission' => 'admin',

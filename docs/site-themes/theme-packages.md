@@ -1,4 +1,4 @@
-# GEOFlow 标准模板包
+# SparklightAIGEO 标准模板包
 
 超级管理员可以在「网站设置 → 站点模板」导出所选模板，或使用「导入模板」上传标准 ZIP。流程为：导出、上传检查、确认可信来源并安装、预览、单独启用。安装保存到持久化 storage，公开站点继续使用当前主题。
 
@@ -25,7 +25,7 @@ public/themes/{theme_id}/...
 `package.json` 的 `format` 为 `geoflow-theme-package`，`format_version` 为 `1`，包含：
 
 - `theme`：`id`、`name`、`version`。
-- `created_at`、`exported_with`：实际 GEOFlow、PHP、Laravel 版本，以及 `contracts`。
+- `created_at`、`exported_with`：实际 SparklightAIGEO、PHP、Laravel 版本，以及 `contracts`。
 - `requires`：版本范围、`contracts: {"site-theme-view-resolver": 1}`，以及 `views`、`routes`、`assets` 运行依赖列表。
 - `distribution`：原有分发范围和客户私有备注。
 - `pages`：六类页面的 `provided` 和 `fallback` 列表。
@@ -34,7 +34,7 @@ public/themes/{theme_id}/...
 
 `manifest.json` 的原始内容保留。`base_template_id` 表示设计来源；实际引用其他内置模板文件时，依赖检查会验证这些文件存在。来自其他已安装包的依赖链暂不支持。公共视图和素材由目标实例提供，检查阶段核验它们是否存在。
 
-导出默认锁定当前 GEOFlow 版本。包作者可以在 manifest 的 `requires` 中声明经过验证的版本范围，并列出动态引用的视图、路由与素材。无法确定且未声明的依赖会阻止导出或检查；已声明的动态依赖在检查报告中保留提示。
+导出默认锁定当前 SparklightAIGEO 版本。包作者可以在 manifest 的 `requires` 中声明经过验证的版本范围，并列出动态引用的视图、路由与素材。无法确定且未声明的依赖会阻止导出或检查；已声明的动态依赖在检查报告中保留提示。
 
 依赖扫描支持 `includeIsolated`，忽略 `@verbatim` 与 `@@` 转义指令。`includeIf` 的静态引用可以缺失；`includeFirst` 在每次检查时确认至少一个候选存在，导出不会将单个候选固定为必需依赖。manifest 或包内显式声明的依赖仍必须满足。
 

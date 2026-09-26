@@ -87,7 +87,7 @@ final class AiWorkspaceQueueConfigurationTest extends TestCase
                 '$COMPOSE_PROD up -d --remove-orphans app web queue ai-quality-queue ai-quality-backfill-queue ai-optimization-queue knowledge-queue scheduler reverb',
                 'docker compose --env-file .env.prod -f docker-compose.prod.yml up -d --remove-orphans --build',
             ],
-            'deploy-scripts/geoflow-docker-deploy.sh' => [
+            'deploy-scripts/sparklightaigeo-docker-deploy.sh' => [
                 '"${COMPOSE[@]}" up -d --remove-orphans app web queue ai-quality-queue ai-quality-backfill-queue ai-optimization-queue knowledge-queue scheduler reverb',
             ],
         ] as $file => $commands) {

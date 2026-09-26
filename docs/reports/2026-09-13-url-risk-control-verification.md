@@ -1,4 +1,4 @@
-# GEOFlow URL 风险管控验证报告
+# SparklightAIGEO URL 风险管控验证报告
 
 日期：2026-09-13。实施基线：[已确认方案](../superpowers/plans/2026-09-13-url-change-risk-control-final-plan.md)。
 

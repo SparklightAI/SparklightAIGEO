@@ -229,7 +229,7 @@ class HostedSitePublicRenderingTest extends TestCase
             ->assertOk()
             ->assertSee('关于 Alpha Publication')
             ->assertSee('Independent Alpha coverage.')
-            ->assertDontSee('GEOFlow');
+            ->assertDontSee('SparklightAIGEO');
     }
 
     public function test_automatically_approved_assigned_article_is_visible_on_its_hosted_site(): void
@@ -291,11 +291,11 @@ class HostedSitePublicRenderingTest extends TestCase
             ->assertServiceUnavailable()
             ->assertHeader('X-Robots-Tag', 'noindex, nofollow');
 
-        $this->withHeader('X-GEOFlow-Hosted-Activation', 'wrong-secret')
+        $this->withHeader('X-SparklightAIGEO-Hosted-Activation', 'wrong-secret')
             ->get('http://alpha.sites.test/')
             ->assertServiceUnavailable();
 
-        $this->withHeader('X-GEOFlow-Hosted-Activation', 'activation-secret')
+        $this->withHeader('X-SparklightAIGEO-Hosted-Activation', 'activation-secret')
             ->get('http://alpha.sites.test/')
             ->assertOk()
             ->assertSee('Alpha Site');

@@ -127,7 +127,7 @@ class TufBootstrapVerifier
             }
             $assetData = $this->object($asset, 'bootstrap asset');
             $this->assertExactKeys($assetData, ['sha256', 'size', 'url'], 'bootstrap asset');
-            $expectedPrefix = 'https://github.com/yaojingang/geoflow-updater/releases/download/v'.$version.'/';
+            $expectedPrefix = 'https://sparklight-ai.com/updater/releases/download/v'.$version.'/';
             $url = $assetData['url'] ?? null;
             if (! is_string($url)
                 || ! str_starts_with($url, $expectedPrefix)

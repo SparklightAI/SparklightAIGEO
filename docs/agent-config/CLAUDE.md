@@ -1,4 +1,4 @@
-# GEOFlow Claude Instructions
+# SparklightAIGEO Claude Instructions
 
 Laravel Boost support is installed for this repository.
 

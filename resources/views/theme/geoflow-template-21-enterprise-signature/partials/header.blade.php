@@ -1,7 +1,7 @@
 @php
     $currentPath = request()->path();
     $isHome = $currentPath === '' || $currentPath === '/';
-    $repositoryUrl = 'https://github.com/yaojingang/GEOFlow';
+    $repositoryUrl = 'https://github.com/SparklightAI/SparklightAIGEO';
 @endphp
 
 <header class="ent-header" data-ent-header>
@@ -85,7 +85,7 @@
             @foreach($navCategories as $categoryItem)
                 <a href="{{ route('site.category', $categoryItem->slug) }}" class="{{ request()->is('category/'.$categoryItem->slug) ? 'is-active' : '' }}">{{ $categoryItem->name }}</a>
             @endforeach
-            <a href="{{ route('site.about') }}" class="{{ request()->routeIs('site.about') ? 'is-active' : '' }}">关于 GEOFlow</a>
+            <a href="{{ route('site.about') }}" class="{{ request()->routeIs('site.about') ? 'is-active' : '' }}">关于 SparklightAIGEO</a>
             <a href="{{ $repositoryUrl }}" target="_blank" rel="noopener noreferrer">GitHub 开源仓库</a>
         </div>
     </nav>

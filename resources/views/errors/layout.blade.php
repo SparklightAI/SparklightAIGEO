@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('code') · GEOFlow</title>
+    <title>@yield('code') · SparklightAIGEO</title>
     <link rel="stylesheet" href="{{ asset('css/admin-error-v3.css') }}">
 </head>
 <body class="gf-error-page">
@@ -12,6 +12,7 @@
         $isAdminError = $adminPrefix !== '' && request()->is($adminPrefix, $adminPrefix.'/*');
     @endphp
     <main class="gf-error-card">
+        <img class="gf-error-brand" src="{{ asset('brand/sparklight-wordmark.png') }}" alt="星火之光AI SparkLight AI">
         <div class="gf-error-card__mark" aria-hidden="true">@yield('code')</div>
         <span>@yield('code')</span>
         <h1>@yield('title')</h1>

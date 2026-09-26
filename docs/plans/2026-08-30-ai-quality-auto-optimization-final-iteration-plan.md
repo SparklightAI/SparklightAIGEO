@@ -1,4 +1,4 @@
-🥷 # GEOFlow AI 质检自动优化最终迭代方案（待确认）
+🥷 # SparklightAIGEO AI 质检自动优化最终迭代方案（待确认）
 
 > 状态：最终版，等待确认后实施
 >
@@ -711,8 +711,8 @@ ai_quality_optimization_active_leases
 - `app/Console/GeoFlowCli/CommandSpec.php`
 - `app/Console/GeoFlowCli/ArticleHandler.php`
 - `app/Console/GeoFlowCli/OperationRegistry.php`
-- `docs/GEOFLOW_CLI.md`
-- `docs/GEOFLOW_CLI_en.md`
+- `docs/SPARKLIGHTAIGEO_CLI.md`
+- `docs/SPARKLIGHTAIGEO_CLI_en.md`
 - `docs/ai-quality-inspection-runbook.md`
 
 ### 新增文件

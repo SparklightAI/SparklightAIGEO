@@ -45,7 +45,7 @@ class KnowledgeFactLibraryTest extends TestCase
         $library = KnowledgeFactLibrary::query()->create(['knowledge_base_id' => $base->id]);
         $otherLibrary = KnowledgeFactLibrary::query()->create(['knowledge_base_id' => $other->id]);
         foreach (range(1, 26) as $index) {
-            $library->facts()->create(['stable_key' => 'workbench.fact.'.$index, 'label' => '指标 '.$index, 'subject' => 'GEOFlow', 'predicate' => '值为', 'value_type' => 'string']);
+            $library->facts()->create(['stable_key' => 'workbench.fact.'.$index, 'label' => '指标 '.$index, 'subject' => 'SparklightAIGEO', 'predicate' => '值为', 'value_type' => 'string']);
         }
         $otherLibrary->facts()->create(['stable_key' => 'other.secret', 'label' => '其他库秘密指标', 'subject' => '其他', 'predicate' => '值为', 'value_type' => 'string']);
 

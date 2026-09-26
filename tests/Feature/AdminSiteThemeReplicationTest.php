@@ -1771,7 +1771,7 @@ class AdminSiteThemeReplicationTest extends TestCase
 <body>
     <header><nav><a href="/">Home</a><a href="/blog">Blog</a></nav></header>
     <main>
-        <section class="hero"><h1>{$title}</h1><p>Structured content example for GEOFlow.</p></section>
+        <section class="hero"><h1>{$title}</h1><p>Structured content example for SparklightAIGEO.</p></section>
         <article class="card"><h2>Example article card</h2><p>Useful content summary.</p></article>
         <aside class="sidebar">Related resources</aside>
     </main>

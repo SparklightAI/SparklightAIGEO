@@ -17,9 +17,9 @@ class AtomicFactInspectionTest extends TestCase
 
     public function test_ready_revision_deterministically_blocks_a_critical_version_conflict(): void
     {
-        [$base, $library] = $this->readyLibrary('product.public_version', '公开版本号', 'version', 'GEOFlow 当前公开版本为 v2.1.0。', 'v2.1.0');
+        [$base, $library] = $this->readyLibrary('product.public_version', '公开版本号', 'version', 'SparklightAIGEO 当前公开版本为 v2.1.0。', 'v2.1.0');
 
-        $result = app(ArticleAtomicFactInspector::class)->inspect('GEOFlow 2.1.1 是什么？本文介绍 v2.1.1。', [$base->id]);
+        $result = app(ArticleAtomicFactInspector::class)->inspect('SparklightAIGEO 2.1.1 是什么？本文介绍 v2.1.1。', [$base->id]);
 
         $this->assertSame('hybrid', $result['mode']);
         $this->assertSame(1, $result['contradicted_count']);
@@ -31,7 +31,7 @@ class AtomicFactInspectionTest extends TestCase
 
     public function test_unmentioned_fact_is_not_covered_and_does_not_create_an_issue(): void
     {
-        [$base] = $this->readyLibrary('product.wordpress', 'WordPress 连接能力', 'string', 'GEOFlow 支持连接 WordPress。', '支持 WordPress');
+        [$base] = $this->readyLibrary('product.wordpress', 'WordPress 连接能力', 'string', 'SparklightAIGEO 支持连接 WordPress。', '支持 WordPress');
 
         $result = app(ArticleAtomicFactInspector::class)->inspect('这篇文章只介绍主题工作流。', [$base->id]);
 
@@ -45,14 +45,14 @@ class AtomicFactInspectionTest extends TestCase
             'product.public_version',
             '公开版本',
             'version',
-            'GEOFlow 当前公开版本为 v2.1.0。',
+            'SparklightAIGEO 当前公开版本为 v2.1.0。',
             'v2.1.0',
-            'GEOFlow',
+            'SparklightAIGEO',
             '当前公开版本为',
         );
 
         $result = app(ArticleAtomicFactInspector::class)->inspect(
-            'GEOFlow Agent 渠道支持下载目标站点包。',
+            'SparklightAIGEO Agent 渠道支持下载目标站点包。',
             [$base->id],
         );
 
@@ -67,9 +67,9 @@ class AtomicFactInspectionTest extends TestCase
             'knowledge.markdown_editor',
             '知识库Markdown编辑器',
             'string',
-            'GEOFlow知识库详情页新增Markdown编辑器。',
+            'SparklightAIGEO知识库详情页新增Markdown编辑器。',
             'Markdown编辑器',
-            'GEOFlow知识库详情页',
+            'SparklightAIGEO知识库详情页',
             '新增',
         );
 
@@ -319,7 +319,7 @@ class AtomicFactInspectionTest extends TestCase
         string $type,
         string $answer,
         string $value,
-        string $subject = 'GEOFlow',
+        string $subject = 'SparklightAIGEO',
         string $predicate = '值为',
         string $unit = '',
         string $importance = 'critical',

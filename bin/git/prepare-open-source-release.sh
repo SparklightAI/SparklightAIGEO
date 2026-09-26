@@ -33,9 +33,9 @@ esac
 
 TARGET_ORIGIN=$(git -C "$TARGET_ROOT" remote get-url origin 2>/dev/null || true)
 case "$TARGET_ORIGIN" in
-  https://github.com/yaojingang/GEOFlow|https://github.com/yaojingang/GEOFlow.git|git@github.com:yaojingang/GEOFlow.git|ssh://git@github.com/yaojingang/GEOFlow.git) ;;
+  https://github.com/SparklightAI/SparklightAIGEO|https://github.com/SparklightAI/SparklightAIGEO.git|git@github.com:SparklightAI/SparklightAIGEO.git|ssh://git@github.com/SparklightAI/SparklightAIGEO.git) ;;
   *)
-    echo "Refusing to sync into a repository that is not the official GEOFlow public remote." >&2
+    echo "Refusing to sync into a repository that is not the official SparklightAIGEO public remote." >&2
     exit 1
     ;;
 esac

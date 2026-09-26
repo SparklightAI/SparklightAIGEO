@@ -1,16 +1,16 @@
-# GEOFlow 分发管理模块页面设计与技术实施方案
+# SparklightAIGEO 分发管理模块页面设计与技术实施方案
 
 > 版本：v0.1
 > 日期：2026-05-17
 > 状态：方案评审稿
-> 目标：把 GEOFlow 从单站内容生成与发布系统，升级为可以集中管理多个目标网站内容生产、审核、分发、同步和回滚的多站点内容中控系统。
+> 目标：把 SparklightAIGEO 从单站内容生成与发布系统，升级为可以集中管理多个目标网站内容生产、审核、分发、同步和回滚的多站点内容中控系统。
 
 ## 1. 方案结论
 
 “分发管理”模块可行，但核心实现不建议依赖前端 JS 包直接控制目标站点。更稳妥的架构是：
 
 ```text
-GEOFlow 中控系统
+SparklightAIGEO 中控系统
 -> 分发队列
 -> 签名 API
 -> 目标站服务端 Agent
@@ -21,14 +21,14 @@ JS 文件包可以作为前台嵌入、展示组件或安装辅助存在，但�
 
 ## 2. 核心目标
 
-- 在 GEOFlow 后台新增一级模块“分发管理”。
+- 在 SparklightAIGEO 后台新增一级模块“分发管理”。
 - 管理多个目标站点或内容分发渠道。
 - 创建任务时可选择一个或多个分发渠道。
-- 文章仍由 GEOFlow 生成、审核、入库和管理。
+- 文章仍由 SparklightAIGEO 生成、审核、入库和管理。
 - 发布时通过队列把内容同步到目标站点。
-- 每个目标站点通过服务端 Agent 接收 GEOFlow 的签名请求。
+- 每个目标站点通过服务端 Agent 接收 SparklightAIGEO 的签名请求。
 - 支持每个渠道的模板、分类、作者、发布状态、日志和失败重试。
-- 不影响现有 GEOFlow 站内文章生成、审核、发布和前台展示逻辑。
+- 不影响现有 SparklightAIGEO 站内文章生成、审核、发布和前台展示逻辑。
 
 ## 3. 边界与不做事项
 
@@ -37,8 +37,8 @@ JS 文件包可以作为前台嵌入、展示组件或安装辅助存在，但�
 - 不做纯前端 JS 写入目标站点。
 - 不直接支持所有第三方平台 API。
 - 不做复杂的跨站主题在线编辑器。
-- 不让分发失败影响 GEOFlow 本地文章状态。
-- 不把目标站数据库权限暴露给 GEOFlow。
+- 不让分发失败影响 SparklightAIGEO 本地文章状态。
+- 不把目标站数据库权限暴露给 SparklightAIGEO。
 - 不做无鉴权的远程 Webhook。
 
 第一阶段重点是把底座做稳：
@@ -54,7 +54,7 @@ JS 文件包可以作为前台嵌入、展示组件或安装辅助存在，但�
 
 ```mermaid
 flowchart LR
-    A["GEOFlow 后台"] --> B["任务中心"]
+    A["SparklightAIGEO 后台"] --> B["任务中心"]
     B --> C["文章生成与审核"]
     C --> D["本地文章库"]
     D --> E["分发编排服务"]
@@ -63,12 +63,12 @@ flowchart LR
     G --> H["目标站服务端 Agent"]
     H --> I["目标站文章库 / CMS / 静态文件"]
     H --> J["目标站日志"]
-    F --> K["GEOFlow 分发日志"]
+    F --> K["SparklightAIGEO 分发日志"]
 ```
 
 架构原则：
 
-- GEOFlow 是内容主库，目标站是分发副本。
+- SparklightAIGEO 是内容主库，目标站是分发副本。
 - 分发动作必须异步执行。
 - 每个目标站使用独立密钥、独立状态和独立日志。
 - 远程失败只影响对应渠道的分发状态，不影响本地文章发布。
@@ -107,7 +107,7 @@ flowchart LR
 
 它负责：
 
-- 接收 GEOFlow 的签名请求。
+- 接收 SparklightAIGEO 的签名请求。
 - 校验来源、签名、时间戳、nonce 和幂等 key。
 - 把文章写入目标站数据库、CMS 或静态文件。
 - 返回远程文章 ID、远程 URL 和执行结果。
@@ -128,9 +128,9 @@ flowchart LR
 
 ### 5.4 渠道模板
 
-渠道模板用于控制目标站的页面样式和结构。第一阶段建议复用 GEOFlow 当前已有 themes 机制。后续可扩展为：
+渠道模板用于控制目标站的页面样式和结构。第一阶段建议复用 SparklightAIGEO 当前已有 themes 机制。后续可扩展为：
 
-- GEOFlow 托管模板。
+- SparklightAIGEO 托管模板。
 - Agent 安装包模板。
 - 静态站模板。
 - JS 嵌入组件模板。
@@ -196,10 +196,10 @@ flowchart LR
 | --- | --- | --- |
 | 渠道名称 | 文本框 | 必填，2-80 字 |
 | 目标域名 | URL 输入框 | 必填，自动补全协议 |
-| 渠道类型 | 下拉选择 | 默认 `GEOFlow Agent` |
+| 渠道类型 | 下拉选择 | 默认 `SparklightAIGEO Agent` |
 | Agent API 地址 | URL 输入框 | 可自动根据域名生成 |
 | 前台模板 | 下拉选择 | 读取现有 themes |
-| 默认发布方式 | 单选 | 草稿、直接发布、跟随 GEOFlow |
+| 默认发布方式 | 单选 | 草稿、直接发布、跟随 SparklightAIGEO |
 | 图片策略 | 单选 | 使用远程 URL、同步到目标站、不分发图片 |
 | 分类策略 | 单选 | 自动创建、手动映射、使用默认分类 |
 | 作者策略 | 单选 | 自动创建、手动映射、使用默认作者 |
@@ -595,7 +595,7 @@ POST /geoflow-agent/v1/articles
     "source_id": 123,
     "title": "GEO 内容系统如何提升 AI 搜索可见度",
     "slug": "geo-content-system-ai-search-visibility",
-    "excerpt": "本文介绍 GEOFlow 如何通过知识库、标题库和任务队列沉淀可信内容。",
+    "excerpt": "本文介绍 SparklightAIGEO 如何通过知识库、标题库和任务队列沉淀可信内容。",
     "content_html": "<h2>...</h2>",
     "content_markdown": "## ...",
     "status": "published",
@@ -605,11 +605,11 @@ POST /geoflow-agent/v1/articles
       "slug": "tech"
     },
     "author": {
-      "name": "姚金刚"
+      "name": "深圳星火之光传媒有限公司"
     },
     "seo": {
       "meta_title": "GEO 内容系统如何提升 AI 搜索可见度",
-      "meta_description": "GEOFlow 多站点内容生成与分发方案。",
+      "meta_description": "SparklightAIGEO 多站点内容生成与分发方案。",
       "keywords": ["GEO", "AI 搜索", "内容系统"]
     },
     "assets": []
@@ -644,14 +644,14 @@ DELETE /geoflow-agent/v1/articles/{remote_id}
 
 ## 10. 签名机制
 
-GEOFlow 请求目标 Agent 时必须带这些 header：
+SparklightAIGEO 请求目标 Agent 时必须带这些 header：
 
 ```text
-X-GEOFlow-Key-Id: gfch_xxx
-X-GEOFlow-Timestamp: 2026-05-17T10:00:00+08:00
-X-GEOFlow-Nonce: 64-byte-random
-X-GEOFlow-Idempotency-Key: article-123-channel-5-create-v1
-X-GEOFlow-Signature: hex-hmac-sha256
+X-SparklightAIGEO-Key-Id: gfch_xxx
+X-SparklightAIGEO-Timestamp: 2026-05-17T10:00:00+08:00
+X-SparklightAIGEO-Nonce: 64-byte-random
+X-SparklightAIGEO-Idempotency-Key: article-123-channel-5-create-v1
+X-SparklightAIGEO-Signature: hex-hmac-sha256
 ```
 
 签名原文：
@@ -760,7 +760,7 @@ health:read
 - Agent 异常不应阻塞文章生成任务。
 - 分发队列应设置最大并发和速率限制。
 
-## 13. 和现有 GEOFlow 模块的关系
+## 13. 和现有 SparklightAIGEO 模块的关系
 
 ### 13.1 任务管理
 
@@ -772,11 +772,11 @@ health:read
 
 ### 13.3 网站设置
 
-网站设置继续管理 GEOFlow 本站。分发渠道里的模板只影响目标渠道。
+网站设置继续管理 SparklightAIGEO 本站。分发渠道里的模板只影响目标渠道。
 
 ### 13.4 API Token
 
-现有 API Token 机制可继续服务 GEOFlow 自身 API。目标站 Agent 使用独立的 channel secret，不建议复用管理员 API Token。
+现有 API Token 机制可继续服务 SparklightAIGEO 自身 API。目标站 Agent 使用独立的 channel secret，不建议复用管理员 API Token。
 
 ### 13.5 队列系统
 
@@ -790,7 +790,7 @@ distribution
 
 ### 阶段一：后台与数据底座
 
-目标：让 GEOFlow 能创建分发渠道，并在任务中绑定渠道。
+目标：让 SparklightAIGEO 能创建分发渠道，并在任务中绑定渠道。
 
 包含：
 
@@ -911,7 +911,7 @@ distribution
 用于验证完整链路：
 
 ```text
-创建文章 -> 发布文章 -> 创建分发任务 -> 队列执行 -> Fake Agent 返回成功 -> GEOFlow 保存远程 URL
+创建文章 -> 发布文章 -> 创建分发任务 -> 队列执行 -> Fake Agent 返回成功 -> SparklightAIGEO 保存远程 URL
 ```
 
 ### 15.4 安全测试
@@ -929,7 +929,7 @@ distribution
 
 | 风险 | 影响 | 应对 |
 | --- | --- | --- |
-| 目标站 Agent 安装复杂 | 用户接入成本高 | 第一阶段先支持 GEOFlow 托管和 PHP/Laravel Agent |
+| 目标站 Agent 安装复杂 | 用户接入成本高 | 第一阶段先支持 SparklightAIGEO 托管和 PHP/Laravel Agent |
 | 远程站点 API 不稳定 | 分发失败 | 队列重试、失败隔离、人工重发 |
 | Token 泄露 | 远程站点被写入垃圾内容 | 独立 secret、可吊销、scope、域名验证 |
 | 分类/作者不一致 | 内容落库失败 | 渠道级映射和默认兜底 |
@@ -966,10 +966,10 @@ distribution
 - 功能完整性：覆盖渠道管理、任务绑定、文章分发、Agent 通信、日志、重试和安全。
 - 安全边界：避免前端 JS 持有写权限，采用服务端签名 API。
 - 架构兼容：不破坏现有任务、文章、模板和 API Token 机制。
-- 可迭代性：支持先做 GEOFlow 内部底座，再扩展 Agent 和第三方平台。
+- 可迭代性：支持先做 SparklightAIGEO 内部底座，再扩展 Agent 和第三方平台。
 - 风险控制：明确远程失败不影响本地发布，删除默认下架。
 
 建议进入开发前，先确认两个产品决策：
 
-- 第一版是否优先做 `GEOFlow Agent`，暂不做 WordPress 插件。
+- 第一版是否优先做 `SparklightAIGEO Agent`，暂不做 WordPress 插件。
 - 远程删除动作第一版是否统一设计为“下架”，不做物理删除。

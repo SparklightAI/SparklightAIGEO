@@ -1,10 +1,10 @@
-# GEOFlow UI V3 与 AI 工作台融合实施报告
+# SparklightAIGEO UI V3 与 AI 工作台融合实施报告
 
 ## 1. 实施结论
 
 - 实施日期：2026-08-23
 - 最终入口：`http://localhost:18080/admin`
-- 最终代码库：`GEOFlow`
+- 最终代码库：`SparklightAIGEO`
 - 集成分支：`codex/geoflow-ui-v3-unification`
 - UI 与 AI 工作台集成提交：`10e77a2`
 - 网关、Agent 参数保真和上线修复提交：`552e15e`
@@ -25,7 +25,7 @@
 - 已备份旧数据库、UI V3 数据库、旧文件存储、两个 Git Bundle 和两个环境文件。
 - 环境文件备份权限设置为仅当前用户可读写。
 - 数据库与文件存储恢复演练已通过。
-- 恢复目录：`/Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow-recovery/20260823`
+- 恢复目录：`/Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO-recovery/20260823`
 
 ### 2.2 UI V3 与后台融合
 
@@ -166,7 +166,7 @@
 - 文件摘要：`geoflow-storage-app-files.sha256`
 - Git 备份：`geoflow-repository.bundle`
 
-恢复文件统一位于 `/Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow-recovery/20260823`。
+恢复文件统一位于 `/Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO-recovery/20260823`。
 
 ## 8. 观察期退出条件
 
@@ -177,4 +177,4 @@
 - 站点设置、关键表和旧文件摘要保持一致。
 - Runtime 分批开放得到明确确认。
 
-观察通过后可删除旧 UI、临时回退开关、28080 Compose 候选环境和独立 `GEOFlow-UI-V3` 目录。删除前继续保留当前归档分支和恢复包。
+观察通过后可删除旧 UI、临时回退开关、28080 Compose 候选环境和独立 `SparklightAIGEO-UI-V3` 目录。删除前继续保留当前归档分支和恢复包。

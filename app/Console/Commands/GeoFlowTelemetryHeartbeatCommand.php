@@ -9,7 +9,7 @@ class GeoFlowTelemetryHeartbeatCommand extends Command
 {
     protected $signature = 'geoflow:telemetry:heartbeat';
 
-    protected $description = 'Send one anonymous GEOFlow deployment activity event per day';
+    protected $description = 'Send one anonymous SparklightAIGEO deployment activity event per day';
 
     public function handle(AnonymousUsageTelemetry $telemetry): int
     {

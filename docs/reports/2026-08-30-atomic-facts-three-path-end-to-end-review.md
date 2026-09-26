@@ -30,9 +30,9 @@
 
 | 文章 ID | 标题 | 最终状态 |
 |---:|---|---|
-| 526 | GEOFlow 主题与首页模块怎么配置?前台搭建全攻略 | draft / pending |
-| 527 | GEOFlow 多站点分发实战:一次生成,多渠道发布 | draft / pending |
-| 528 | GEOFlow 连接 WordPress 的配置步骤与常见问题 | draft / pending |
+| 526 | SparklightAIGEO 主题与首页模块怎么配置?前台搭建全攻略 | draft / pending |
+| 527 | SparklightAIGEO 多站点分发实战:一次生成,多渠道发布 | draft / pending |
+| 528 | SparklightAIGEO 连接 WordPress 的配置步骤与常见问题 | draft / pending |
 
 生成期间模型接口出现两次瞬时 `Outbound request failed`。任务队列依照既有重试策略恢复，三条任务执行记录最终完成，没有产生重复文章。文章 526 的首轮质检出现 `provider_timeout`，在模型连通性探测恢复后重新质检成功。
 
@@ -67,13 +67,13 @@
 
 #### 1. 通用主体扩大召回范围
 
-现象：`subject=GEOFlow` 使“公开版本”事实关联到大量仅包含 GEOFlow 品牌词的主张。首轮文章 527 出现 10 条无关歧义，原子覆盖率为 0。
+现象：`subject=SparklightAIGEO` 使“公开版本”事实关联到大量仅包含 SparklightAIGEO 品牌词的主张。首轮文章 527 出现 10 条无关歧义，原子覆盖率为 0。
 
 根因：召回器把主体、谓词、标签和别名视为同等的独立命中条件。
 
 修复：
 
-- `GEOFlow` 等通用产品主体不再独立触发召回。
+- `SparklightAIGEO` 等通用产品主体不再独立触发召回。
 - 版本事实保留“主体 + 版本号”的确定性专用召回。
 - 具体主体继续参与召回，例如 `WordPress REST渠道`。
 
@@ -105,7 +105,7 @@
 ### 运行结果
 
 - 知识库 ID：22
-- 名称：`GEOFlow 官方模型与 RAG 知识（2026-08）`
+- 名称：`SparklightAIGEO 官方模型与 RAG 知识（2026-08）`
 - 事实库 ID：2
 - Generation run：3
 - 目标数：10

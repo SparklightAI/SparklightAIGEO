@@ -6,7 +6,7 @@
 
 实施说明：三种召回方式、任务与文章配置、准备度与来源快照、失效对账、API 与审计、历史回填、管理端界面和自动化测试均已落地。本文件保留实施前的决策依据、风险门禁与验收口径。
 
-适用范围：GEOFlow 任务管理、文章编辑、AI 质检主链路、质检 API、自动优化与发布门禁
+适用范围：SparklightAIGEO 任务管理、文章编辑、AI 质检主链路、质检 API、自动优化与发布门禁
 
 关联依据：`docs/plans/2026-08-30-atomic-facts-system-iteration-plan.md`、`docs/reports/2026-08-30-kb23-atomic-facts-post-upgrade-5-article-benchmark.md`
 

@@ -1,4 +1,4 @@
-# GEOFlow 商业演示稿内容计划
+# SparklightAIGEO 商业演示稿内容计划
 
 状态：`PASS`
 
@@ -6,9 +6,9 @@
 
 ### 输入
 
-- 主题与权威来源：GEOFlow 3.0 当前仓库、`README.md`、后台官方功能指南、路由与能力发现结果、24 张 3.0 脱敏后台截图
+- 主题与权威来源：SparklightAIGEO 3.0 当前仓库、`README.md`、后台官方功能指南、路由与能力发现结果、24 张 3.0 脱敏后台截图
 - 受众现状：企业负责人、品牌/增长负责人、内容运营负责人或技术负责人，理解 GEO 的方向，但尚未形成一套可持续执行系统
-- 受众目标：理解 GEOFlow 的工作原理、五类核心能力、适用场景、部署价值与商业授权方案
+- 受众目标：理解 SparklightAIGEO 的工作原理、五类核心能力、适用场景、部署价值与商业授权方案
 - 目标：用于产品介绍、客户沟通和商业转化，推动确认授权主体、部署环境与交付边界
 - 场景：15—25 分钟现场演讲，也支持会后独立阅读
 - 交付密度：`balanced`
@@ -20,7 +20,7 @@
 
 ### 内容简报
 
-- 核心承诺：GEOFlow 把可信知识、AI 内容生产、质量门禁、多站点分发与数据反馈接进同一条可持续运营链路
+- 核心承诺：SparklightAIGEO 把可信知识、AI 内容生产、质量门禁、多站点分发与数据反馈接进同一条可持续运营链路
 - 受众张力：企业拥有资料、内容团队与发布渠道，但事实来源、生产规则、审核结论、渠道结果和运营数据常常分散
 - 受众转变：从“使用若干 AI 工具生产内容”转向“建设一套可治理、可审计、可扩展的 GEO 内容基础设施”
 - 决策结果：认可私有化部署与终身商业授权的长期资产价值
@@ -33,7 +33,7 @@
 ### 商业决策字段
 
 - 决策人：企业负责人、品牌/增长负责人、内容运营负责人、技术负责人
-- 决策请求：确认购买人民币 100,000 元的 GEOFlow 终身商业授权部署方案，并进入交付范围确认
+- 决策请求：确认购买人民币 100,000 元的 SparklightAIGEO 终身商业授权部署方案，并进入交付范围确认
 - 推荐：以私有化部署建立统一 GEO 内容运营底座，先跑通知识、内容、质检、分发、数据五条主链路
 - 影响：资料、规则、审核、发布和数据沉淀在同一系统，支持持续运营与二次扩展
 - 风险：知识质量、模型与第三方渠道稳定性、运维责任、授权与服务边界需要在项目启动前明确
@@ -56,7 +56,7 @@
 
 | 章节 | 作用 | 核心判断 | 来源与证据 | 进入方式 | 转场 | 页数 | 节奏 |
 | --- | --- | --- | --- | --- | --- | ---: | --- |
-| 开场与价值 | 建立部署价值 | GEOFlow 是企业 GEO 的持续运营底座 | README 定位、当前仓库规模 | 从碎片化工作切入 | 系统如何把链路接起来 | 2 | anchor |
+| 开场与价值 | 建立部署价值 | SparklightAIGEO 是企业 GEO 的持续运营底座 | README 定位、当前仓库规模 | 从碎片化工作切入 | 系统如何把链路接起来 | 2 | anchor |
 | 原理与闭环 | 解释系统机制 | 可信事实经过生产、质检、发布与反馈形成运营闭环 | README 流程、官方指南 | 承接价值主张 | 五类能力如何落地 | 1 | anchor |
 | 五类核心能力 | 用真实界面证明可用性 | 知识、内容、质检、分发、数据在同一后台协同 | 12 张脱敏截图、源码能力 | 从流程进入模块 | 系统层亮点与扩展性 | 5 | dense |
 | 亮点与场景 | 说明适配范围 | 可治理、可审计、可扩展决定长期价值 | README 3.0 能力与场景 | 从模块提升到系统层 | 商业方案如何落地 | 2 | balanced |
@@ -72,7 +72,7 @@
 - id: P01
   section: 开场与价值
   role: cover
-  title: GEOFlow
+  title: SparklightAIGEO
   key_message: 一套面向企业官网与多站点运营的 GEO 智能运营系统
   source_refs: [README 产品定位, 用户价格要求]
   evidence_type: fact
@@ -84,7 +84,7 @@
 - id: P02
   section: 开场与价值
   role: executive-summary
-  title: GEOFlow 把分散的 GEO 工作接成一条持续运营链
+  title: SparklightAIGEO 把分散的 GEO 工作接成一条持续运营链
   key_message: 统一后台让事实、生产、审核、发布与结果具备共同上下文
   source_refs: [README 解决什么问题, 官方指南系统总览]
   evidence_type: reasoning
@@ -101,7 +101,7 @@
   source_refs: [README 流程图, 官方指南完整运行链路]
   evidence_type: reasoning
   content_blocks: [知识与素材, 任务与内容, AI 质检与人工审核, 官网与多渠道, 数据与 AI 可见性]
-  speaker_intent: 解释 GEOFlow 的核心原理
+  speaker_intent: 解释 SparklightAIGEO 的核心原理
   next_beat: 从知识入口开始看真实系统
   density: anchor
 
@@ -145,7 +145,7 @@
   section: 五类核心能力
   role: evidence
   title: 一次审核完成后，内容可以进入官网、托管站点与外部渠道
-  key_message: 分发涵盖 GEOFlow Agent、WordPress REST、通用 HTTP API 与人工发布
+  key_message: 分发涵盖 SparklightAIGEO Agent、WordPress REST、通用 HTTP API 与人工发布
   source_refs: [官方指南内容分发与托管站点, 三张脱敏截图]
   evidence_type: fact
   content_blocks: [渠道健康, 幂等与重试, 托管站点, 人工发布工单, Chrome 运营助手]
@@ -169,7 +169,7 @@
   section: 亮点与场景
   role: recommendation
   title: 产品亮点集中在可运营、可审计与可扩展
-  key_message: GEOFlow 3.0 已覆盖团队协作、开发接口、安全治理与系统运维
+  key_message: SparklightAIGEO 3.0 已覆盖团队协作、开发接口、安全治理与系统运维
   source_refs: [README 3.0 核心能力与主要升级, 当前仓库能力发现]
   evidence_type: fact
   content_blocks: [Admin UI V3, 六种语言与 PWA, API v1 与 CLI, Agent Skill, 签名更新与回滚, 权限与审计]
@@ -192,7 +192,7 @@
 - id: P11
   section: 商业授权与决策
   role: decision
-  title: 10 万元获得 GEOFlow 终身商业授权部署
+  title: 10 万元获得 SparklightAIGEO 终身商业授权部署
   key_message: 用一次授权建立可长期使用和扩展的企业 GEO 底座
   source_refs: [用户价格要求, README 商业授权说明]
   evidence_type: fact
@@ -232,7 +232,7 @@
 ### 证据
 
 - 主要产品主张均来自当前源码、README 或官方后台指南
-- 截图来自 GEOFlow 3.0 内置脱敏帮助素材
+- 截图来自 SparklightAIGEO 3.0 内置脱敏帮助素材
 - 未提供客户结果与 ROI，演示稿不展示任何虚构成效数据
 - 价格来自用户明确要求；服务与授权细节标注为合同确认项
 

@@ -20,7 +20,7 @@
     },
     {
       "name": "2026_04_18_100000_create_geoflow_admins_and_site_settings_tables",
-      "sha256": "d9d64b4654fcbab286289fdc8a4882d6f53608102045cc6a7761b90b57736507",
+      "sha256": "c1618bd57350ad1b4b38c43d9e25a068d33d186e986062dce02b44e2abe037f8",
       "online": false
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "name": "2026_04_18_120000_geoflow_legacy_schema",
-      "sha256": "98d631a596267b7b5b242e86d5a517b481eda0f01a071d904e90371ebdbf01ed",
+      "sha256": "02efcdb37654104c8547cfe04dad854688e3207dbbdeaf3f6c957345256902bf",
       "online": false
     },
     {
@@ -40,7 +40,7 @@
     },
     {
       "name": "2026_04_18_120002_sqlite_geoflow_minimal_for_testing",
-      "sha256": "5814589369131466c642df7c147e692fe77faadcc0402f86f0a537607fbdbc14",
+      "sha256": "239f9572fc882066c69ff2169f1dcbfb37fb9ff89cfa391d64efaecdeba22333",
       "online": false
     },
     {
@@ -80,7 +80,7 @@
     },
     {
       "name": "2026_04_26_100000_add_english_geo_content_prompts",
-      "sha256": "e36599c6d5a180f4b9a3d8aa4a2fa54dc84ee4982240a529fb42b8bdab5adf5b",
+      "sha256": "993e33adc880e313bd190d712bcfaf0222759b635e82cbf10f201d11c167ec81",
       "online": false
     },
     {

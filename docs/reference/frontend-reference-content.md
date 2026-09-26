@@ -1,6 +1,6 @@
 # 前台参考内容与默认主题
 
-GEOFlow v2.3.0 将官网参考内容作为可版本化、可测试的安装资产交付。全新部署在初始化完成后可直接预览完整官网，已部署站点的升级会保留现有数据。
+SparklightAIGEO v2.3.0 将官网参考内容作为可版本化、可测试的安装资产交付。全新部署在初始化完成后可直接预览完整官网，已部署站点的升级会保留现有数据。
 
 ## 交付内容
 
@@ -8,7 +8,7 @@ GEOFlow v2.3.0 将官网参考内容作为可版本化、可测试的安装资�
 |---|---:|---|
 | 参考文章 | 50 篇 Markdown | `database/seeders/data/frontend-reference-v1/articles/` |
 | 功能指南 | 35 篇 | 分类 slug `geoflow-getting-started` |
-| 部署运营 | 15 篇 | 分类 slug `geoflow-deployment-operations` |
+| 部署运营 | 15 篇 | 分类 slug `sparklightaigeo-deployment-operations` |
 | 文章与分类元数据 | 1 份 JSON | `database/seeders/data/frontend-reference-v1/manifest.json` |
 | 默认官网主题 | 1 套 | `geoflow-template-21-enterprise-signature` |
 | 独立内容页 | 3 类 | `/about`、`/archive`、`/archive/{year}/{month}` |

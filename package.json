@@ -1,6 +1,6 @@
 {
     "$schema": "https://www.schemastore.org/package.json",
-    "name": "geoflow",
+    "name": "sparklightaigeo",
     "private": true,
     "license": "AGPL-3.0-only",
     "type": "module",

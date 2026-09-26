@@ -1577,8 +1577,8 @@
         @endif
         @if(! $isEdit)
             <div id="article-title-picker-modal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4 sm:p-6" aria-hidden="true">
-                <div class="absolute inset-0 bg-[rgba(15,23,42,0.48)]" data-title-picker-close></div>
-                <div class="relative flex max-h-[min(780px,calc(100dvh-2rem))] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-[0_24px_72px_rgba(15,23,42,0.28)]" role="dialog" aria-modal="true" aria-labelledby="article-title-picker-title">
+                <div class="absolute inset-0 bg-[rgba(30, 34, 56,0.48)]" data-title-picker-close></div>
+                <div class="relative flex max-h-[min(780px,calc(100dvh-2rem))] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-white shadow-[0_24px_72px_rgba(30, 34, 56,0.28)]" role="dialog" aria-modal="true" aria-labelledby="article-title-picker-title">
                     <div class="flex items-start justify-between gap-4 border-b border-gray-200 px-5 py-4 sm:px-6">
                         <div>
                             <div class="flex items-center gap-2">
@@ -1681,13 +1681,13 @@
     <link rel="stylesheet" href="{{ asset('vendor/cropperjs/cropper.min.css') }}">
     <style>
         .article-markdown-editor .vditor {
-            border-color: #d1d5db;
+            border-color: #dcd8d1;
             border-radius: 0.5rem;
             overflow: hidden;
         }
         .article-markdown-editor .vditor-toolbar {
-            border-bottom-color: #e5e7eb;
-            background: #f9fafb;
+            border-bottom-color: #ece9e4;
+            background: #fbf8f4;
         }
         .article-markdown-editor .vditor-reset,
         .article-markdown-editor .vditor-ir pre.vditor-reset,
@@ -1705,7 +1705,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(15, 23, 42, 0.48);
+            background: rgba(30, 34, 56, 0.48);
             padding: 24px;
         }
         .article-image-modal__panel {
@@ -1714,7 +1714,7 @@
             overflow: hidden;
             border-radius: 16px;
             background: #fff;
-            box-shadow: 0 24px 72px rgba(15, 23, 42, 0.28);
+            box-shadow: 0 24px 72px rgba(30, 34, 56, 0.28);
         }
         @media (max-width: 480px) {
             .article-image-modal__backdrop { padding: 16px; }
@@ -1727,7 +1727,7 @@
             align-items: center;
             justify-content: center;
             border-radius: 8px;
-            background: #f8fafc;
+            background: #f7f4ef;
             overflow: hidden;
         }
         .article-image-crop-stage img {
@@ -1746,10 +1746,10 @@
             z-index: 70;
             width: 220px;
             overflow: hidden;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #ece9e4;
             border-radius: 10px;
             background: #fff;
-            box-shadow: 0 18px 48px rgba(15, 23, 42, 0.18);
+            box-shadow: 0 18px 48px rgba(30, 34, 56, 0.18);
         }
         .article-editor-context-menu[hidden] {
             display: none;
@@ -1760,13 +1760,13 @@
             align-items: center;
             gap: 10px;
             padding: 10px 12px;
-            color: #374151;
+            color: #3e4152;
             font-size: 14px;
             text-align: left;
         }
         .article-editor-context-menu button:hover {
-            background: #eff6ff;
-            color: #1d4ed8;
+            background: #eff0fa;
+            color: #232752;
         }
         .ai-quality-located {
             outline: 3px solid rgba(245, 158, 11, 0.65);

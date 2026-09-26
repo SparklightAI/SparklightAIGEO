@@ -1,5 +1,6 @@
 ARG COMPOSER_IMAGE=composer:2
 ARG PHP_FPM_IMAGE=php:8.4-fpm-bookworm
+ARG NODE_IMAGE=node:22-bookworm-slim
 ARG PECL_REDIS_VERSION=6.3.0
 ARG HTTP_PROXY
 ARG HTTPS_PROXY
@@ -33,7 +34,7 @@ RUN if [ -n "${COMPOSER_PACKAGIST_MIRROR}" ]; then \
     fi
 
 COPY composer.json composer.lock ./
-RUN --mount=type=cache,id=geoflow-composer-dist,target=/tmp/composer-cache,sharing=locked \
+RUN --mount=type=cache,id=sparklightaigeo-composer-dist,target=/tmp/composer-cache,sharing=locked \
     set -eu; \
     export COMPOSER_CACHE_DIR=/tmp/composer-cache; \
     for attempt in 1 2 3; do \
@@ -71,7 +72,7 @@ RUN mkdir -p \
     --no-scripts \
  && BROADCAST_CONNECTION=null php artisan package:discover --ansi
 
-FROM node:22-bookworm-slim AS assets
+FROM ${NODE_IMAGE} AS assets
 
 WORKDIR /app
 
@@ -140,10 +141,10 @@ RUN apt-get update \
 
 COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/99-opcache.ini
 COPY docker/php/php-docker-overrides.ini /usr/local/etc/php/conf.d/99-overrides.ini
-COPY docker/php-fpm/www.conf /usr/local/etc/php-fpm.d/zz-geoflow.conf
-COPY docker/entrypoint.prod.sh /usr/local/bin/geoflow-entrypoint-prod
+COPY docker/php-fpm/www.conf /usr/local/etc/php-fpm.d/zz-sparklightaigeo.conf
+COPY docker/entrypoint.prod.sh /usr/local/bin/sparklightaigeo-entrypoint-prod
 
-RUN chmod +x /usr/local/bin/geoflow-entrypoint-prod
+RUN chmod +x /usr/local/bin/sparklightaigeo-entrypoint-prod
 
 COPY --from=vendor /app /var/www/html
 COPY --from=assets /app/public/build /var/www/html/public/build
@@ -152,5 +153,5 @@ COPY --from=assets /app/public/build /var/www/html/public/build
 RUN ln -sT /var/www/html/storage/app/public public/storage \
  && chown -R www-data:www-data storage bootstrap/cache
 
-ENTRYPOINT ["/usr/local/bin/geoflow-entrypoint-prod"]
+ENTRYPOINT ["/usr/local/bin/sparklightaigeo-entrypoint-prod"]
 CMD ["php-fpm", "-F"]

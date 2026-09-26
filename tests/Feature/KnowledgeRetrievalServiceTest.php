@@ -15,8 +15,8 @@ class KnowledgeRetrievalServiceTest extends TestCase
     public function test_retrieval_context_includes_evidence_metadata_and_citation_ids(): void
     {
         $knowledgeBase = $this->createKnowledgeBase([
-            'name' => 'GEOFlow 白皮书',
-            'source_name' => 'GEOFlow 官方文档',
+            'name' => 'SparklightAIGEO 白皮书',
+            'source_name' => 'SparklightAIGEO 官方文档',
             'source_url' => 'https://example.com/geoflow-whitepaper',
             'business_line' => 'GEO 内容工程',
             'effective_date' => '2026-05-01',
@@ -27,10 +27,10 @@ class KnowledgeRetrievalServiceTest extends TestCase
         KnowledgeChunk::query()->create([
             'knowledge_base_id' => (int) $knowledgeBase->id,
             'chunk_index' => 0,
-            'content' => 'GEOFlow 负责把知识库、标题库和分发渠道串联为内容工程流程。',
+            'content' => 'SparklightAIGEO 负责把知识库、标题库和分发渠道串联为内容工程流程。',
             'content_hash' => hash('sha256', 'chunk-0'),
             'chunk_title' => '平台定位',
-            'section_path' => 'GEOFlow 白皮书 > 平台定位',
+            'section_path' => 'SparklightAIGEO 白皮书 > 平台定位',
             'chunk_strategy' => 'structured_rule',
             'metadata_json' => '{}',
             'source_hash' => hash('sha256', 'source-0'),
@@ -40,7 +40,7 @@ class KnowledgeRetrievalServiceTest extends TestCase
 
         $context = app(KnowledgeRetrievalService::class)->retrieveContext(
             (int) $knowledgeBase->id,
-            'GEOFlow 内容工程 知识库 分发渠道',
+            'SparklightAIGEO 内容工程 知识库 分发渠道',
             1,
             1600
         );
@@ -48,12 +48,12 @@ class KnowledgeRetrievalServiceTest extends TestCase
         $this->assertStringContainsString('【知识库证据】', $context);
         $this->assertStringContainsString('【证据 K1】', $context);
         $this->assertStringContainsString('标题：平台定位', $context);
-        $this->assertStringContainsString('章节：GEOFlow 白皮书 > 平台定位', $context);
-        $this->assertStringContainsString('来源：GEOFlow 官方文档', $context);
+        $this->assertStringContainsString('章节：SparklightAIGEO 白皮书 > 平台定位', $context);
+        $this->assertStringContainsString('来源：SparklightAIGEO 官方文档', $context);
         $this->assertStringContainsString('链接：https://example.com/geoflow-whitepaper', $context);
         $this->assertStringContainsString('业务线：GEO 内容工程', $context);
         $this->assertStringContainsString('治理：风险=low 审核=reviewed', $context);
-        $this->assertStringContainsString('GEOFlow 负责把知识库', $context);
+        $this->assertStringContainsString('SparklightAIGEO 负责把知识库', $context);
     }
 
     public function test_hybrid_retrieval_ranks_keyword_and_section_match_first(): void

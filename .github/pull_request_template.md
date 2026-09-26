@@ -8,8 +8,8 @@
 
 ## CLA 声明 / CLA declaration
 
-可构成版权作品的贡献必须接受 [GEOFlow Contributor License Agreement v1.0](https://github.com/yaojingang/GEOFlow/blob/main/CLA.md)。
-Copyrightable contributions require acceptance of the [GEOFlow Contributor License Agreement v1.0](https://github.com/yaojingang/GEOFlow/blob/main/CLA.md).
+可构成版权作品的贡献必须接受 [SparklightAIGEO Contributor License Agreement v1.0](https://github.com/SparklightAI/SparklightAIGEO/blob/main/CLA.md)。
+Copyrightable contributions require acceptance of the [SparklightAIGEO Contributor License Agreement v1.0](https://github.com/SparklightAI/SparklightAIGEO/blob/main/CLA.md).
 
 以下内容会公开显示。如需私下签署，请将姓名字段填写为 `Private CLA requested`，并在合并前与维护者完成单独签署。
 The following information is public. To sign privately, enter `Private CLA requested` in the name field and complete a separate signature with the maintainer before merge.
@@ -19,7 +19,7 @@ The following information is public. To sign privately, enter `Private CLA reque
 - 企业授权代表姓名及职务（如适用）/ Authorized representative and title (if applicable):
 - GitHub 用户名 / GitHub username:
 - 接受日期 / Date accepted (`YYYY-MM-DD`):
-- [ ] 我已阅读并接受 GEOFlow CLA v1.0，并确认有权授予其中约定的权利。I have read and accept the GEOFlow CLA v1.0 and confirm that I have authority to grant the rights described in it.
+- [ ] 我已阅读并接受 SparklightAIGEO CLA v1.0，并确认有权授予其中约定的权利。I have read and accept the SparklightAIGEO CLA v1.0 and confirm that I have authority to grant the rights described in it.
 
 ## 检查清单 / Checklist
 

@@ -358,7 +358,7 @@ class UnixSocketAgentClient implements CoordinatedAgentClient
             stream_set_timeout($socket, $readTimeout);
             $authorizationHeader = $authorizationCode === null
                 ? ''
-                : "X-GEOFlow-Updater-Authorization: {$authorizationCode}\r\n";
+                : "X-SparklightAIGEO-Updater-Authorization: {$authorizationCode}\r\n";
             $request = "{$method} {$path} HTTP/1.0\r\n"
                 ."Host: geoflow-updater\r\n"
                 ."Authorization: Bearer {$token}\r\n"

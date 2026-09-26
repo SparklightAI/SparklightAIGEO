@@ -697,8 +697,8 @@ class WorkerExecutionService
         }
 
         return Author::query()->firstOrCreate(
-            ['name' => 'GEOFlow'],
-            ['bio' => 'Default GEOFlow author for automated content generation.']
+            ['name' => 'SparklightAIGEO'],
+            ['bio' => 'Default SparklightAIGEO author for automated content generation.']
         );
     }
 

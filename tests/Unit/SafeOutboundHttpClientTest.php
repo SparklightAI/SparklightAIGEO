@@ -1635,7 +1635,7 @@ class SafeOutboundHttpClientTest extends TestCase
             ->withHeaders([
                 'Accept' => 'application/json',
                 'Accept-Language' => 'zh-CN',
-                'User-Agent' => 'GEOFlow Test',
+                'User-Agent' => 'SparklightAIGEO Test',
                 'Cookie' => 'session=secret',
                 'X-Api-Key' => 'api-secret',
                 'X-Signature' => 'hmac-secret',
@@ -1664,7 +1664,7 @@ class SafeOutboundHttpClientTest extends TestCase
         $this->assertSame([''], $captured[1]['signature']);
         $this->assertSame(['application/json'], $captured[1]['accept']);
         $this->assertSame(['zh-CN'], $captured[1]['language']);
-        $this->assertSame(['GEOFlow Test'], $captured[1]['user_agent']);
+        $this->assertSame(['SparklightAIGEO Test'], $captured[1]['user_agent']);
     }
 
     #[Test]

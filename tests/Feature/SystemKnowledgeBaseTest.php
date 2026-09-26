@@ -38,7 +38,7 @@ final class SystemKnowledgeBaseTest extends TestCase
         self::assertSame(1, DB::table('knowledge_base_revisions')->count());
 
         $knowledgeBase = KnowledgeBase::query()->findOrFail($binding->knowledge_base_id);
-        self::assertSame('GEOFlow 后台功能与操作指南（AI 工作台专用）', $knowledgeBase->name);
+        self::assertSame('SparklightAIGEO 后台功能与操作指南（AI 工作台专用）', $knowledgeBase->name);
         self::assertSame('markdown', $knowledgeBase->file_type);
         self::assertSame('reviewed', $knowledgeBase->review_status);
         self::assertSame('low', $knowledgeBase->risk_level);
@@ -171,7 +171,7 @@ final class SystemKnowledgeBaseTest extends TestCase
             ->assertRedirect();
 
         $knowledgeBase->refresh();
-        self::assertSame('GEOFlow 后台功能与操作指南（AI 工作台专用）', $knowledgeBase->name);
+        self::assertSame('SparklightAIGEO 后台功能与操作指南（AI 工作台专用）', $knowledgeBase->name);
         self::assertSame('markdown', $knowledgeBase->file_type);
         self::assertNotSame('伪造的系统知识说明', $knowledgeBase->description);
         self::assertSame(1, $knowledgeBase->revisions()->count());

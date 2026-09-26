@@ -72,10 +72,8 @@ class AdminDashboardQuickStartTest extends TestCase
             ->assertSee(__('admin.dashboard.navigation.admin_users_title'))
             ->assertSee(__('admin.dashboard.navigation.distribution_channels_title'))
             ->assertSee(__('admin.dashboard.navigation.distribution_jobs_title'))
-            ->assertSee(__('admin.dashboard.skill_resources.title'))
-            ->assertSee(__('admin.dashboard.skill_resources.template_title'))
-            ->assertSee(__('admin.dashboard.skill_resources.design_title'))
-            ->assertSee(__('admin.dashboard.skill_resources.cli_title'))
+            ->assertDontSee(__('admin.dashboard.skill_resources.title'))
+            ->assertDontSee('https://github.com/yaojingang/yao-geo-skills', false)
             ->assertSee(__('admin.dashboard.quick_start.title'))
             ->assertSee(__('admin.dashboard.quick_start.api_title'))
             ->assertSee(__('admin.dashboard.quick_start.material_title'))
@@ -119,10 +117,7 @@ class AdminDashboardQuickStartTest extends TestCase
             ->assertSee(route('admin.admin-users.index'), false)
             ->assertSee(route('admin.distribution.index'), false)
             ->assertSee(route('admin.distribution.create'), false)
-            ->assertSee(route('admin.distribution.jobs'), false)
-            ->assertSee('https://github.com/yaojingang/yao-geo-skills/tree/main/skills/yao-geoflow-template', false)
-            ->assertSee('https://github.com/yaojingang/yao-geo-skills/tree/main/skills/yao-geoflow-design', false)
-            ->assertSee('https://github.com/yaojingang/yao-geo-skills/tree/main/skills/yao-geoflow-cli', false);
+            ->assertSee(route('admin.distribution.jobs'), false);
 
         $html = $response->getContent();
         $this->assertGreaterThanOrEqual(1, substr_count($html, route('admin.knowledge-bases.index')));
@@ -330,7 +325,7 @@ class AdminDashboardQuickStartTest extends TestCase
         $this->assertStringContainsString(__('admin.footer.project_intro_link'), $secondHtml);
     }
 
-    public function test_admin_footer_links_to_locale_specific_help_docs(): void
+    public function test_admin_footer_shows_brand_release_and_author_link_only(): void
     {
         $admin = Admin::query()->create([
             'username' => 'dashboard_help_docs_admin',
@@ -341,31 +336,33 @@ class AdminDashboardQuickStartTest extends TestCase
             'status' => 'active',
         ]);
 
-        $zhHtml = $this->actingAs($admin, 'admin')
+        $response = $this->actingAs($admin, 'admin')
             ->get(route('admin.dashboard'))
-            ->assertOk()
-            ->getContent();
+            ->assertOk();
 
-        $this->assertStringContainsString(__('admin.footer.help_docs_link'), $zhHtml);
-        $this->assertStringContainsString('https://github.com/yaojingang/GEOFlow/wiki', $zhHtml);
-        $this->assertStringNotContainsString('https://github.com/yaojingang/GEOFlow/wiki/Home-English', $zhHtml);
-        $this->assertStringContainsString(
-            'https://github.com/yaojingang/GEOFlow/blob/main/docs/CHANGELOG.md',
-            $zhHtml,
-        );
+        $document = new \DOMDocument;
+        $document->loadHTML($response->getContent(), LIBXML_NOERROR | LIBXML_NOWARNING | LIBXML_NONET);
+        $xpath = new \DOMXPath($document);
+        $footer = $xpath->query('//*[@data-admin-product-footer]')?->item(0);
 
-        session(['locale' => 'en']);
+        $this->assertInstanceOf(\DOMElement::class, $footer);
 
-        $enHtml = $this->actingAs($admin->fresh(), 'admin')
-            ->get(route('admin.dashboard'))
-            ->assertOk()
-            ->getContent();
+        $footerHtml = (string) $document->saveHTML($footer);
 
-        $this->assertStringContainsString('Help docs', $enHtml);
-        $this->assertStringContainsString('https://github.com/yaojingang/GEOFlow/wiki/Home-English', $enHtml);
-        $this->assertStringContainsString(
-            'https://github.com/yaojingang/GEOFlow/blob/main/docs/CHANGELOG_en.md',
-            $enHtml,
-        );
+        $this->assertStringContainsString('SparklightAIGEO v3', $footer->textContent);
+        $this->assertStringNotContainsString('beta', $footer->textContent);
+        $this->assertStringContainsString(__('admin.footer.author_name'), $footer->textContent);
+        $this->assertStringNotContainsString(__('admin.footer.help_docs_link'), $footer->textContent);
+        $this->assertStringNotContainsString('AGPL-3.0', $footerHtml);
+
+        $links = $xpath->query('.//a', $footer);
+
+        $this->assertSame(1, $links?->length);
+
+        $authorLink = $links?->item(0);
+
+        $this->assertInstanceOf(\DOMElement::class, $authorLink);
+        $this->assertSame('https://sparklight-ai.com', $authorLink->getAttribute('href'));
+        $this->assertSame(__('admin.footer.author_name'), trim($authorLink->textContent));
     }
 }

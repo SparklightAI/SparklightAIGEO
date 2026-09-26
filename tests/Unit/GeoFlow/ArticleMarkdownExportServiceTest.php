@@ -77,7 +77,7 @@ class ArticleMarkdownExportServiceTest extends TestCase
             'slug' => 'first-geo-article',
             'excerpt' => '测试摘要',
             'category' => '内容工程',
-            'author' => 'GEOFlow',
+            'author' => 'SparklightAIGEO',
             'original_keyword' => '',
             'keywords' => 'GEO,结构化数据',
             'meta_description' => '测试 SEO 描述',
@@ -273,7 +273,7 @@ class ArticleMarkdownExportServiceTest extends TestCase
     {
         return [
             Category::query()->create(['name' => '内容工程', 'slug' => 'content-engineering']),
-            Author::query()->create(['name' => 'GEOFlow']),
+            Author::query()->create(['name' => 'SparklightAIGEO']),
         ];
     }
 

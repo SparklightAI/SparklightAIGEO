@@ -41,7 +41,7 @@
                 </nav>
                 <span class="ent-kicker">Monthly archive</span>
                 <h1>{{ $periodLabel }}</h1>
-                <p>本月发布的 GEOFlow 实践、产品进展和行业洞察。</p>
+                <p>本月发布的 SparklightAIGEO 实践、产品进展和行业洞察。</p>
             </div>
             <div class="ent-page-index">
                 <span>Month index</span>

@@ -14,7 +14,7 @@ return [
     'export_boundary' => 'Inclui arquivos, recursos e observações privadas do tema. Artigos, categorias, contas, leads e configurações permanecem no site de origem.',
     'download' => 'Baixar ZIP do tema',
     'expires' => 'Disponível até :time, somente para sua conta de administrador.',
-    'upload_intro' => 'Envie um ZIP padrão do GEOFlow para verificar integridade e compatibilidade.',
+    'upload_intro' => 'Envie um ZIP padrão do SparklightAIGEO para verificar integridade e compatibilidade.',
     'upload_boundary' => 'A verificação apenas lê os arquivos. Após a instalação, visualize os seis tipos de página e ative o tema separadamente.',
     'choose_file' => 'Selecionar ZIP do tema',
     'upload_limit' => 'Limite atual: :size MiB. Padrões: 500 arquivos, 5 MiB por arquivo e 25 MiB descompactados.',

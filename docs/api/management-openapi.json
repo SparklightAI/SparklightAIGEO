@@ -1,7 +1,7 @@
 {
     "openapi": "3.1.0",
     "info": {
-        "title": "GEOFlow remote management preview",
+        "title": "SparklightAIGEO remote management preview",
         "version": "1.0"
     },
     "servers": [

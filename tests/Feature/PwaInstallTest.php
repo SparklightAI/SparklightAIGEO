@@ -22,18 +22,18 @@ final class PwaInstallTest extends TestCase
         self::assertSame('app', $manifest['start_url']);
         self::assertSame('./', $manifest['scope']);
         self::assertSame('standalone', $manifest['display']);
-        self::assertSame('GEOFlow', $manifest['name']);
+        self::assertSame('SparklightAIGEO', $manifest['name']);
         self::assertContains('192x192', array_column($manifest['icons'], 'sizes'));
         self::assertContains('512x512', array_column($manifest['icons'], 'sizes'));
         self::assertContains('maskable', array_column($manifest['icons'], 'purpose'));
 
         foreach ([192, 512] as $size) {
-            $path = public_path("icons/geoflow-app-{$size}.png");
+            $path = public_path("icons/sparklightaigeo-app-{$size}.png");
             self::assertFileExists($path);
             self::assertSame([$size, $size], array_slice((array) getimagesize($path), 0, 2));
         }
 
-        $maskableIcon = public_path('icons/geoflow-app-maskable-512.png');
+        $maskableIcon = public_path('icons/sparklightaigeo-app-maskable-512.png');
         self::assertFileExists($maskableIcon);
         self::assertSame([512, 512], array_slice((array) getimagesize($maskableIcon), 0, 2));
 
@@ -73,7 +73,7 @@ final class PwaInstallTest extends TestCase
             ->assertOk()
             ->assertSee('rel="manifest"', false)
             ->assertSee('/manifest.webmanifest', false)
-            ->assertSee('/icons/geoflow-app-192.png', false);
+            ->assertSee('/icons/sparklightaigeo-app-192.png', false);
 
         $this->get(route('admin.login'))
             ->assertOk()

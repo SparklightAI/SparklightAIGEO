@@ -32,7 +32,7 @@ final class ManagementHandler
             }
             $catalog = $this->runtime->apiClient()->send('catalog')->payload['data'] ?? [];
             if (! is_array($catalog) || ! isset($catalog['models'], $catalog['categories'])) {
-                throw new CliException('无法确认目标是兼容的 GEOFlow 实例，请检查地址与部署前缀');
+                throw new CliException('无法确认目标是兼容的 SparklightAIGEO 实例，请检查地址与部署前缀');
             }
             $this->runtime->writeJson(['success' => true, 'data' => ['protocol' => 'legacy-v1', 'management_supported' => false, 'upgrade_required' => true]]);
 

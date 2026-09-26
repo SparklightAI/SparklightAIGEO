@@ -1,4 +1,4 @@
-# GEOFlow 文章批量导出 Markdown 升级方案
+# SparklightAIGEO 文章批量导出 Markdown 升级方案
 
 > 状态：已确认并完成实施
 >
@@ -135,7 +135,7 @@
 
 ### 5.2 弹窗视觉与可访问性
 
-- 复用 `resources/views/admin/tasks/index.blade.php` 中原生 `<dialog>` 的宽度、圆角、阴影、遮罩和响应式边界，保持 GEOFlow 后台现有视觉语言。
+- 复用 `resources/views/admin/tasks/index.blade.php` 中原生 `<dialog>` 的宽度、圆角、阴影、遮罩和响应式边界，保持 SparklightAIGEO 后台现有视觉语言。
 - 加载中拦截 Esc 和遮罩点击，避免请求仍在进行时界面误报结束；错误态和完成态允许关闭。
 - 弹窗使用 `aria-modal="true"`、`aria-labelledby`、`aria-live="polite"` 和 `aria-busy`；各状态标题与实时区域提供当前进度说明。
 - 打开弹窗后把焦点放到状态容器；关闭后把焦点还给“执行”按钮。
@@ -269,7 +269,7 @@ ZIP 外层下载文件名保持 ASCII，符合 Laravel/Symfony 文件下载要�
 
 格式：`{顺序}-{文章ID}-{安全标题}.md`
 
-示例：`001-499-GEOFlow-页面如何被-AI-更好理解.md`
+示例：`001-499-SparklightAIGEO-页面如何被-AI-更好理解.md`
 
 规则：
 
@@ -286,13 +286,13 @@ ZIP 外层下载文件名保持 ASCII，符合 Laravel/Symfony 文件下载要�
 ```markdown
 ---
 id: 499
-title: "GEOFlow 页面如何被 AI 更好理解？"
+title: "SparklightAIGEO 页面如何被 AI 更好理解？"
 slug: "geoflow-ai-structured-data"
 excerpt: "文章摘要"
 category: "GEO 内容工程"
-author: "GEOFlow"
-original_keyword: "GEOFlow 结构化数据"
-keywords: "GEOFlow,结构化数据"
+author: "SparklightAIGEO"
+original_keyword: "SparklightAIGEO 结构化数据"
+keywords: "SparklightAIGEO,结构化数据"
 meta_description: "SEO 描述"
 status: "published"
 review_status: "approved"
@@ -304,7 +304,7 @@ updated_at: "2026-08-27T10:08:00+08:00"
 published_at: "2026-08-27T10:08:00+08:00"
 ---
 
-# GEOFlow 页面如何被 AI 更好理解？
+# SparklightAIGEO 页面如何被 AI 更好理解？
 
 这里开始原始 Markdown 正文。
 ```
@@ -418,7 +418,7 @@ published_at: "2026-08-27T10:08:00+08:00"
 13. `app/Providers/AppServiceProvider.php`
 14. `app/Support/AdminUiRegistry.php`
 15. `bootstrap/app.php`
-16. `docker/nginx/geoflow-app.conf`
+16. `docker/nginx/sparklightaigeo-app.conf`
 17. `resources/views/admin/articles/index.blade.php`
 18. `resources/js/app.js`
 19. `tests/Feature/AdminUiV3FullPageSmokeTest.php`

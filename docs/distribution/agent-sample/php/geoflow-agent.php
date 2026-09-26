@@ -45,13 +45,13 @@ function geoflow_verify_request(string $expectedKeyId, string $secret, string $m
         ]);
     }
 
-    $keyId = geoflow_header('X-GEOFlow-Key-Id');
-    $timestamp = geoflow_header('X-GEOFlow-Timestamp');
-    $nonce = geoflow_header('X-GEOFlow-Nonce');
-    $bodyHash = geoflow_header('X-GEOFlow-Body-SHA256');
-    $signature = geoflow_header('X-GEOFlow-Signature');
-    $event = geoflow_header('X-GEOFlow-Event');
-    $idempotencyKey = geoflow_header('X-GEOFlow-Idempotency-Key');
+    $keyId = geoflow_header('X-SparklightAIGEO-Key-Id');
+    $timestamp = geoflow_header('X-SparklightAIGEO-Timestamp');
+    $nonce = geoflow_header('X-SparklightAIGEO-Nonce');
+    $bodyHash = geoflow_header('X-SparklightAIGEO-Body-SHA256');
+    $signature = geoflow_header('X-SparklightAIGEO-Signature');
+    $event = geoflow_header('X-SparklightAIGEO-Event');
+    $idempotencyKey = geoflow_header('X-SparklightAIGEO-Idempotency-Key');
 
     if ($keyId === '' || $timestamp === '' || $nonce === '' || $bodyHash === '' || $signature === '' || $event === '' || $idempotencyKey === '') {
         geoflow_json(401, [

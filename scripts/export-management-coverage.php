@@ -33,7 +33,7 @@ $coverage = [
         'C' => ['full_backend_adapters'], 'D' => ['hosted_and_agent_frontends'], 'E' => ['cross_platform', 'multi_replica', 'restore_acceptance', 'stable_release'],
     ],
 ];
-$openapi = ['openapi' => '3.1.0', 'info' => ['title' => 'GEOFlow remote management preview', 'version' => ManagementOperationRegistry::PROTOCOL_VERSION], 'servers' => [['url' => '/api/v1']], 'paths' => [], 'components' => ['securitySchemes' => ['bearerAuth' => ['type' => 'http', 'scheme' => 'bearer']]], 'x-schema-completeness' => 'partial: nested business schemas remain pending'];
+$openapi = ['openapi' => '3.1.0', 'info' => ['title' => 'SparklightAIGEO remote management preview', 'version' => ManagementOperationRegistry::PROTOCOL_VERSION], 'servers' => [['url' => '/api/v1']], 'paths' => [], 'components' => ['securitySchemes' => ['bearerAuth' => ['type' => 'http', 'scheme' => 'bearer']]], 'x-schema-completeness' => 'partial: nested business schemas remain pending'];
 foreach ($management as $name => $operation) {
     $entry = ['operationId' => $name, 'security' => [['bearerAuth' => []]], 'x-required-scope' => $operation['scope'], 'x-idempotent' => $operation['idempotent'], 'x-receipt' => $operation['receipt'] ?? false, 'responses' => ['200' => ['description' => 'Successful API envelope'], '401' => ['description' => 'Authentication required'], '403' => ['description' => 'Permission denied'], '409' => ['description' => 'Baseline or request identity conflict']]];
     preg_match_all('/\{([^}]+)\}/', $operation['path'], $matches);

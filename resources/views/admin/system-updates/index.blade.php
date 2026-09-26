@@ -9,7 +9,7 @@
         $releaseDate = (string) ($releaseNotice['release_date'] ?? '');
         $releaseType = (string) ($releaseNotice['release_type'] ?? '');
         $releaseSummary = (string) ($releaseNotice['summary'] ?? '');
-        $releaseUrl = (string) ($releaseNotice['url'] ?? 'https://github.com/yaojingang/GEOFlow/releases');
+        $releaseUrl = (string) ($releaseNotice['url'] ?? 'https://github.com/SparklightAI/SparklightAIGEO/releases');
         $recentRuns = $summary['recent_runs'] ?? collect();
         $recentBackups = $summary['recent_backups'] ?? collect();
         $historyScope = (string) ($summary['history_scope'] ?? 'recent');
@@ -48,7 +48,7 @@
         $updaterHostRoot = trim((string) config('geoflow.updater_host_root'));
         $updaterHostRootConfigured = str_starts_with($updaterHostRoot, '/');
         $updaterInstanceId = (string) config('geoflow.updater_instance_id', 'primary');
-        $updaterProjectUrl = 'https://github.com/yaojingang/geoflow-updater';
+        $updaterProjectUrl = 'https://sparklight-ai.com/updater';
         $updaterReleasesUrl = $updaterProjectUrl.'/releases';
         $updaterReleaseCandidateWorkflowUrl = $updaterProjectUrl.'/actions/workflows/release-candidate.yml';
         $updaterReleaseWorkflowUrl = $updaterProjectUrl.'/actions/workflows/release.yml';
@@ -653,7 +653,7 @@
             aria-modal="true"
             aria-labelledby="system-updater-error-title"
             aria-describedby="system-updater-error-summary"
-            class="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[min(42rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 text-left shadow-[0_24px_72px_rgba(15,23,42,0.28)] backdrop:bg-[rgba(15,23,42,0.48)]"
+            class="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[min(42rem,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-gray-200 bg-white p-0 text-left shadow-[0_24px_72px_rgba(30, 34, 56,0.28)] backdrop:bg-[rgba(30, 34, 56,0.48)]"
         >
             <div class="flex max-h-[calc(100dvh-2rem)] flex-col">
                 <div class="flex items-start gap-4 border-b border-gray-100 px-5 py-5 sm:px-6">

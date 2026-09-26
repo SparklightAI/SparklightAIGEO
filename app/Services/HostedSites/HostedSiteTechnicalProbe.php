@@ -112,7 +112,7 @@ final class HostedSiteTechnicalProbe
                 ->timeout($timeout)
                 ->withHeaders([
                     'Accept' => 'text/html,application/xml,text/plain;q=0.9,*/*;q=0.5',
-                    'User-Agent' => 'GEOFlow Hosted Site Preflight/1.0',
+                    'User-Agent' => 'SparklightAIGEO Hosted Site Preflight/1.0',
                     ...$extraHeaders,
                 ]);
             $response = $this->safeHttp->get($request, $url, 1_048_576, 0);

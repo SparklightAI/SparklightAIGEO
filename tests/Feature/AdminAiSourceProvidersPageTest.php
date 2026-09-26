@@ -533,10 +533,10 @@ class AdminAiSourceProvidersPageTest extends TestCase
                 'Result' => [
                     'WebResults' => [
                         [
-                            'Title' => 'GEOFlow Source',
+                            'Title' => 'SparklightAIGEO Source',
                             'Url' => 'https://example.com/geoflow',
-                            'Snippet' => 'GEOFlow source result',
-                            'Summary' => 'GEOFlow summary',
+                            'Snippet' => 'SparklightAIGEO source result',
+                            'Summary' => 'SparklightAIGEO summary',
                         ],
                     ],
                 ],
@@ -559,7 +559,7 @@ class AdminAiSourceProvidersPageTest extends TestCase
 
         $response = $this->actingAs($this->createAdmin(), 'admin')
             ->postJson(route('admin.ai-source-providers.test', ['providerId' => (int) $provider->id]), [
-                'query' => 'GEOFlow',
+                'query' => 'SparklightAIGEO',
             ]);
 
         $response->assertOk()
@@ -576,7 +576,7 @@ class AdminAiSourceProvidersPageTest extends TestCase
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://open.feedcoopapi.com/search_api/web_search'
             && $request->hasHeader('Authorization', 'Bearer test-search-key')
-            && $request['Query'] === 'GEOFlow'
+            && $request['Query'] === 'SparklightAIGEO'
             && $request['Count'] === 3
             && ($request['NeedSummary'] ?? null) === true
             && ($request['Filter']['NeedContent'] ?? null) === false
@@ -624,7 +624,7 @@ class AdminAiSourceProvidersPageTest extends TestCase
             ->postJson(route('admin.ai-source-providers.model-bindings.test'), [
                 'binding_type' => 'deepseek',
                 'model_id' => (int) $model->id,
-                'query' => 'GEOFlow',
+                'query' => 'SparklightAIGEO',
             ]);
 
         $response->assertOk()
@@ -784,7 +784,7 @@ class AdminAiSourceProvidersPageTest extends TestCase
         $payload = [
             'binding_type' => 'deepseek',
             'model_id' => (int) $model->id,
-            'query' => 'GEOFlow',
+            'query' => 'SparklightAIGEO',
         ];
 
         $this->actingAs($admin, 'admin')
@@ -853,7 +853,7 @@ class AdminAiSourceProvidersPageTest extends TestCase
             ->postJson(route('admin.ai-source-providers.model-bindings.test'), [
                 'binding_type' => 'ark',
                 'model_id' => (int) $model->id,
-                'query' => 'GEOFlow',
+                'query' => 'SparklightAIGEO',
             ]);
 
         $response->assertOk()

@@ -466,7 +466,7 @@ class AdminArticleMarkdownExportTest extends TestCase
             ['slug' => 'markdown-export'],
             ['name' => 'Markdown 导出'],
         );
-        $author = Author::query()->firstOrCreate(['name' => 'GEOFlow']);
+        $author = Author::query()->firstOrCreate(['name' => 'SparklightAIGEO']);
 
         return Article::query()->create(array_merge([
             'title' => 'Markdown 导出文章 '.Str::random(6),

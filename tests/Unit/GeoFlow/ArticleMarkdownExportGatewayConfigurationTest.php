@@ -10,7 +10,7 @@ final class ArticleMarkdownExportGatewayConfigurationTest extends TestCase
 {
     public function test_nginx_limits_the_prepare_request_before_php_parses_it(): void
     {
-        $configuration = file_get_contents(dirname(__DIR__, 3).'/docker/nginx/geoflow-app.conf');
+        $configuration = file_get_contents(dirname(__DIR__, 3).'/docker/nginx/sparklightaigeo-app.conf');
 
         self::assertIsString($configuration);
         self::assertStringContainsString(

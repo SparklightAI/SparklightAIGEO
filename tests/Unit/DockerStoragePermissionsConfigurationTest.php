@@ -145,7 +145,7 @@ SH;
         $this->assertIsString($dockerfile);
         $this->assertStringContainsString('COMPOSER_MAX_PARALLEL_HTTP=4', $dockerfile);
         $this->assertStringContainsString(
-            '--mount=type=cache,id=geoflow-composer-dist,target=/tmp/composer-cache,sharing=locked',
+            '--mount=type=cache,id=sparklightaigeo-composer-dist,target=/tmp/composer-cache,sharing=locked',
             $dockerfile,
         );
         $this->assertStringContainsString('for attempt in 1 2 3; do', $dockerfile);
@@ -375,7 +375,7 @@ SH;
 
     private function usesApplicationImage(string $serviceBlock): bool
     {
-        return str_contains($serviceBlock, 'image: geoflow-app')
+        return str_contains($serviceBlock, 'image: sparklightaigeo-app')
             || str_contains($serviceBlock, 'image: ${GEOFLOW_APP_IMAGE')
             || str_contains($serviceBlock, 'image: ${COMPOSE_PROJECT_NAME');
     }
@@ -421,7 +421,7 @@ SH;
             $root,
             array_merge(
                 [
-                    'GEOFLOW_APP_IMAGE' => 'geoflow-app:test',
+                    'GEOFLOW_APP_IMAGE' => 'sparklightaigeo-app:test',
                     'GEOFLOW_WEB_IMAGE' => 'geoflow-web:test',
                 ],
                 $environment

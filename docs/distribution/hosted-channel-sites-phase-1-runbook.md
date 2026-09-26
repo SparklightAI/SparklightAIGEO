@@ -1,4 +1,4 @@
-# GEOFlow 托管渠道站点阶段一运行手册
+# SparklightAIGEO 托管渠道站点阶段一运行手册
 
 ## 适用范围
 

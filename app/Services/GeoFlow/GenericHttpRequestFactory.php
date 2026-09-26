@@ -33,10 +33,10 @@ class GenericHttpRequestFactory
         $headers = [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'User-Agent' => 'GEOFlow/2.0 Generic API Publisher',
-            'X-GEOFlow-Event' => $event,
-            'X-GEOFlow-Idempotency-Key' => $idempotencyKey,
-            'X-GEOFlow-Payload-SHA256' => hash('sha256', $body),
+            'User-Agent' => 'SparklightAIGEO/2.0 Generic API Publisher',
+            'X-SparklightAIGEO-Event' => $event,
+            'X-SparklightAIGEO-Idempotency-Key' => $idempotencyKey,
+            'X-SparklightAIGEO-Payload-SHA256' => hash('sha256', $body),
         ];
 
         $request = Http::timeout((int) $config['generic_timeout_seconds'])

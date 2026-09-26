@@ -1,4 +1,4 @@
-# GEOFlow 21 Enterprise Signature 首页编排
+# SparklightAIGEO 21 Enterprise Signature 首页编排
 
 ## 目标
 
@@ -21,7 +21,7 @@
 
 ## 数据与空状态
 
-- 站点名称、描述、导航、文章、归档和表单使用 GEOFlow 当前数据。
+- 站点名称、描述、导航、文章、归档和表单使用 SparklightAIGEO 当前数据。
 - 客户、案例、节点和指标均带有演示标签。
 - 精选文章为空时显示三张演示资源卡。
 - 最新文章为空时显示内容建设提示。

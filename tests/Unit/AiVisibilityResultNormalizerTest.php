@@ -16,20 +16,20 @@ class AiVisibilityResultNormalizerTest extends TestCase
                     'type' => 'web_search_call',
                     'id' => 'ws_123',
                     'status' => 'completed',
-                    'action' => ['query' => 'GEOFlow'],
+                    'action' => ['query' => 'SparklightAIGEO'],
                 ],
                 [
                     'type' => 'message',
                     'content' => [
                         [
                             'type' => 'output_text',
-                            'text' => 'GEOFlow 是一个面向 AI 可见性的内容系统。',
+                            'text' => 'SparklightAIGEO 是一个面向 AI 可见性的内容系统。',
                             'annotations' => [
                                 [
                                     'type' => 'url_citation',
-                                    'title' => 'GEOFlow Docs',
+                                    'title' => 'SparklightAIGEO Docs',
                                     'url' => 'https://www.example.com/geoflow',
-                                    'text' => 'GEOFlow Docs',
+                                    'text' => 'SparklightAIGEO Docs',
                                 ],
                             ],
                         ],
@@ -42,7 +42,7 @@ class AiVisibilityResultNormalizerTest extends TestCase
             ],
         ], ['payload' => ['model' => 'doubao-seed']], 'doubao-seed', 120);
 
-        $this->assertSame('GEOFlow 是一个面向 AI 可见性的内容系统。', $result->answerText);
+        $this->assertSame('SparklightAIGEO 是一个面向 AI 可见性的内容系统。', $result->answerText);
         $this->assertSame('doubao-seed', $result->modelId);
         $this->assertSame(120, $result->latencyMs);
         $this->assertCount(1, $result->sources);

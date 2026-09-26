@@ -268,11 +268,11 @@ file_put_contents(
 );
 
 $fullReviewReport = <<<'MARKDOWN'
-# GEOFlow UI V3 全页面 Review 报告
+# SparklightAIGEO UI V3 全页面 Review 报告
 
 ## 结论
 
-GEOFlow UI V3 已完成全量审查与复验，88 个可视页面和 14 个辅助 GET 流程全部通过。83 个公共壳层页面在 1440、1280、1024、768、375、320 六档视口共完成 498 次页面检查，最终遗留问题为 0。
+SparklightAIGEO UI V3 已完成全量审查与复验，88 个可视页面和 14 个辅助 GET 流程全部通过。83 个公共壳层页面在 1440、1280、1024、768、375、320 六档视口共完成 498 次页面检查，最终遗留问题为 0。
 
 ## 覆盖范围
 
@@ -346,7 +346,7 @@ MARKDOWN;
 file_put_contents($outputDirectory.'/full-review-report.md', $fullReviewReport.PHP_EOL);
 
 $fixReport = <<<'MARKDOWN'
-# GEOFlow UI V3 修复报告
+# SparklightAIGEO UI V3 修复报告
 
 ## 修复汇总
 

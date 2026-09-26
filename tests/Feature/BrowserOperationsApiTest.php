@@ -129,8 +129,8 @@ class BrowserOperationsApiTest extends TestCase
 
         $this->withHeaders([
             'Authorization' => 'Bearer '.$cliToken,
-            'X-GEOFlow-Browser-Protocol' => '99',
-            'X-GEOFlow-Client-Version' => '0.1.0',
+            'X-SparklightAIGEO-Browser-Protocol' => '99',
+            'X-SparklightAIGEO-Client-Version' => '0.1.0',
         ])->getJson('/api/v1/manual-publications')
             ->assertStatus(426)
             ->assertJsonPath('error.code', 'upgrade_required');
@@ -139,11 +139,11 @@ class BrowserOperationsApiTest extends TestCase
     public function test_browser_token_can_claim_heartbeat_and_complete_an_assigned_publication(): void
     {
         $admin = $this->admin();
-        $persona = ManualPublicationPersona::query()->create(['name' => 'GEOFlow 专家']);
+        $persona = ManualPublicationPersona::query()->create(['name' => 'SparklightAIGEO 专家']);
         $account = ManualPublicationAccount::query()->create([
             'persona_id' => $persona->id,
             'platform' => ManualPublicationAccount::PLATFORM_ZHIHU,
-            'account_name' => 'GEOFlow 知乎账号',
+            'account_name' => 'SparklightAIGEO 知乎账号',
             'profile_url' => 'https://www.zhihu.com/people/geoflow',
         ]);
         $publication = ManualPublication::query()->create([
@@ -418,8 +418,8 @@ class BrowserOperationsApiTest extends TestCase
     private function browserHeaders(): array
     {
         return [
-            'X-GEOFlow-Browser-Protocol' => '1',
-            'X-GEOFlow-Client-Version' => '0.1.0',
+            'X-SparklightAIGEO-Browser-Protocol' => '1',
+            'X-SparklightAIGEO-Client-Version' => '0.1.0',
         ];
     }
 

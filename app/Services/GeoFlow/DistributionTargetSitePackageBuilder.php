@@ -206,7 +206,7 @@ HTACCESS;
             .'<link rel="stylesheet" href="assets/css/site.css?v='.$assetVersion.'"><script defer src="assets/js/site.js?v='.$assetVersion.'"></script>'
             .'</head><body class="'.$this->h($themeClass).'"><header><div class="wrap bar"><div class="brand">'.$this->h($siteName).'</div></div></header><main class="wrap">'
             .$experienceHtml
-            .'<div class="empty">暂无文章。请先从 GEOFlow 发布一篇绑定此渠道的文章。</div></main>'
+            .'<div class="empty">暂无文章。请先从 SparklightAIGEO 发布一篇绑定此渠道的文章。</div></main>'
             .'<footer><div class="wrap">'.$this->h($copyright).'</div></footer></body></html>';
     }
 
@@ -1419,15 +1419,15 @@ function matchArticlePermalinkPattern(string $pattern, string $path): ?array
 
 function normalizeSiteSettings(array $settings, array $config = []): array
 {
-    $siteName = trim((string) ($settings['site_name'] ?? $config['site_name'] ?? 'GEOFlow Target Site'));
-    $siteName = $siteName !== '' ? $siteName : 'GEOFlow Target Site';
+    $siteName = trim((string) ($settings['site_name'] ?? $config['site_name'] ?? 'SparklightAIGEO Target Site'));
+    $siteName = $siteName !== '' ? $siteName : 'SparklightAIGEO Target Site';
     $frontMode = (string) ($settings['front_mode'] ?? $config['front_mode'] ?? 'static');
     $frontMode = in_array($frontMode, ['static', 'rewrite'], true) ? $frontMode : 'static';
 
     return [
         'site_name' => $siteName,
         'site_subtitle' => trim((string) ($settings['site_subtitle'] ?? $config['site_subtitle'] ?? '')),
-        'site_description' => trim((string) ($settings['site_description'] ?? $config['site_description'] ?? '由 GEOFlow 自动分发和管理的目标站点。')),
+        'site_description' => trim((string) ($settings['site_description'] ?? $config['site_description'] ?? '由 SparklightAIGEO 自动分发和管理的目标站点。')),
         'site_keywords' => trim((string) ($settings['site_keywords'] ?? $config['site_keywords'] ?? '')),
         'copyright_info' => trim((string) ($settings['copyright_info'] ?? $config['copyright_info'] ?? '© '.date('Y').' '.$siteName)),
         'site_logo' => trim((string) ($settings['site_logo'] ?? $config['site_logo'] ?? '')),
@@ -2132,7 +2132,7 @@ function mirrorActiveSiteState(array $config, array $settings, array $manifest):
         writeJsonFile(siteSettingsFile($config), $settings, 'site_settings_not_writable');
         writeJsonFile(staticManifestFile($config), $manifest, 'static_manifest_not_writable');
     } catch (Throwable $exception) {
-        error_log('GEOFlow Agent compatibility state mirror failed: '.get_class($exception));
+        error_log('SparklightAIGEO Agent compatibility state mirror failed: '.get_class($exception));
     }
 }
 
@@ -2229,14 +2229,14 @@ function retireLegacyStaticArticle(array $config, string $slug): void
 
     $retiredDirectory = storageRoot($config).'/retired-static';
     if (! is_dir($retiredDirectory) && ! mkdir($retiredDirectory, 0755, true) && ! is_dir($retiredDirectory)) {
-        error_log('GEOFlow Agent could not create the retired static file directory.');
+        error_log('SparklightAIGEO Agent could not create the retired static file directory.');
 
         return;
     }
 
     $retiredFile = $retiredDirectory.'/'.gmdate('YmdHis').'-'.safeFileName($slug).'-'.bin2hex(random_bytes(4)).'.html';
     if (! @rename($legacyFile, $retiredFile)) {
-        error_log('GEOFlow Agent could not retire a legacy static article.');
+        error_log('SparklightAIGEO Agent could not retire a legacy static article.');
 
         return;
     }
@@ -2577,13 +2577,13 @@ function verifySignedRequest(array $config, string $method, string $path, string
         jsonResponse(500, ['ok' => false, 'error' => 'agent_not_configured']);
     }
 
-    $keyId = requestHeader('X-GEOFlow-Key-Id');
-    $timestamp = requestHeader('X-GEOFlow-Timestamp');
-    $nonce = requestHeader('X-GEOFlow-Nonce');
-    $idempotencyKey = requestHeader('X-GEOFlow-Idempotency-Key');
-    $bodyHash = requestHeader('X-GEOFlow-Body-SHA256');
-    $signature = requestHeader('X-GEOFlow-Signature');
-    $event = requestHeader('X-GEOFlow-Event');
+    $keyId = requestHeader('X-SparklightAIGEO-Key-Id');
+    $timestamp = requestHeader('X-SparklightAIGEO-Timestamp');
+    $nonce = requestHeader('X-SparklightAIGEO-Nonce');
+    $idempotencyKey = requestHeader('X-SparklightAIGEO-Idempotency-Key');
+    $bodyHash = requestHeader('X-SparklightAIGEO-Body-SHA256');
+    $signature = requestHeader('X-SparklightAIGEO-Signature');
+    $event = requestHeader('X-SparklightAIGEO-Event');
 
     if ($keyId === '' || $timestamp === '' || $nonce === '' || $idempotencyKey === '' || $bodyHash === '' || $signature === '' || $event === '') {
         jsonResponse(401, ['ok' => false, 'error' => 'missing_signature_headers']);
@@ -3147,7 +3147,7 @@ function renderHomePage(array $config): void
         echo '<section class="hero"><h1>'.h($siteName).'</h1><p>'.h((string) $settings['site_description']).'</p></section>';
     }
     if ($articles === []) {
-        echo '<div class="card empty">暂无文章。请先从 GEOFlow 发布一篇绑定此渠道的文章。</div>';
+        echo '<div class="card empty">暂无文章。请先从 SparklightAIGEO 发布一篇绑定此渠道的文章。</div>';
         pageFooter($config);
         return;
     }
@@ -3386,7 +3386,7 @@ function renderArticlePage(array $config, string $slug): void
         "mainEntityOfPage"=>$articleUrl,
         "author"=>[
             "@type"=>"Person",
-            "name"=>is_array($article['author'] ?? null) ? (string) ($article['author']['name'] ?? 'GEOFlow') : 'GEOFlow',
+            "name"=>is_array($article['author'] ?? null) ? (string) ($article['author']['name'] ?? 'SparklightAIGEO') : 'SparklightAIGEO',
         ],
         "publisher"=>[
             "@type"=>"Organization",
@@ -3477,7 +3477,7 @@ function renderLlmsText(array $config): string
     $siteName = textMapLine((string) $settings['site_name']);
     $description = textMapLine((string) $settings['site_description']);
     $lines = [
-        '# '.($siteName !== '' ? $siteName : 'GEOFlow Target Site'),
+        '# '.($siteName !== '' ? $siteName : 'SparklightAIGEO Target Site'),
         '',
     ];
     if ($description !== '') {

@@ -22,8 +22,8 @@
 
 <div class="overflow-x-auto">
     <svg viewBox="0 0 {{ $width }} {{ $height }}" class="h-56 min-w-[38rem] w-full" role="img">
-        <line x1="0" y1="{{ $height - 6 }}" x2="{{ $width }}" y2="{{ $height - 6 }}" stroke="#e5e7eb" />
-        <polyline points="{{ $buildPoints($primaryKey) }}" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+        <line x1="0" y1="{{ $height - 6 }}" x2="{{ $width }}" y2="{{ $height - 6 }}" stroke="#ece9e4" />
+        <polyline points="{{ $buildPoints($primaryKey) }}" fill="none" stroke="#2d326b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
         <polyline points="{{ $buildPoints($secondaryKey) }}" fill="none" stroke="#059669" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
     </svg>
 </div>

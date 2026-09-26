@@ -1,4 +1,4 @@
-# GEOFlow 21 Enterprise Signature 预览记录
+# SparklightAIGEO 21 Enterprise Signature 预览记录
 
 ## 预览状态
 
@@ -52,4 +52,4 @@
 
 - 发布前替换客户、案例、全球节点和指标等演示信息。
 - 检查增长中心内官网表单的字段、成功提示和启用状态，并在首页模块中明确指定该表单。
-- 通过后台站点设置选择 `GEOFlow 21 Enterprise Signature` 后再进行正式验收。
+- 通过后台站点设置选择 `SparklightAIGEO 21 Enterprise Signature` 后再进行正式验收。

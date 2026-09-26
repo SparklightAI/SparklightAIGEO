@@ -30,11 +30,11 @@ class AiVisibilityServiceTest extends TestCase
                 'Result' => [
                     'WebResults' => [
                         [
-                            'Title' => 'GEOFlow 介绍',
-                            'SiteName' => 'GEOFlow',
+                            'Title' => 'SparklightAIGEO 介绍',
+                            'SiteName' => 'SparklightAIGEO',
                             'Url' => 'https://example.com/geoflow',
-                            'Snippet' => 'GEOFlow 帮助内容进入 AI 回答。',
-                            'Summary' => 'GEOFlow 的 AI 可见性能力。',
+                            'Snippet' => 'SparklightAIGEO 帮助内容进入 AI 回答。',
+                            'Summary' => 'SparklightAIGEO 的 AI 可见性能力。',
                             'Content' => '完整搜索结果内容',
                             'RankScore' => 0.91,
                         ],
@@ -45,24 +45,24 @@ class AiVisibilityServiceTest extends TestCase
 
         $provider = $this->createSearchProvider();
 
-        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow AI 可见性', [
+        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO AI 可见性', [
             'count' => 2,
         ]);
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
         $this->assertSame(AiVisibilityRun::PROVIDER_DOUBAO_SEARCH_CUSTOM, $run->provider_type);
-        $this->assertSame('GEOFlow AI 可见性', $run->keyword);
+        $this->assertSame('SparklightAIGEO AI 可见性', $run->keyword);
         $this->assertSame(1, $run->sources()->count());
         $this->assertSame(1, (int) $provider->fresh()->used_today);
         $this->assertDatabaseHas('ai_visibility_sources', [
             'ai_visibility_run_id' => (int) $run->id,
-            'title' => 'GEOFlow 介绍',
+            'title' => 'SparklightAIGEO 介绍',
             'domain' => 'example.com',
         ]);
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://open.feedcoopapi.com/search_api/web_search'
             && $request->hasHeader('Authorization', 'Bearer test-search-key')
-            && $request['Query'] === 'GEOFlow AI 可见性'
+            && $request['Query'] === 'SparklightAIGEO AI 可见性'
             && $request['Count'] === 2
             && ($request['Filter']['NeedContent'] ?? null) === true);
     }
@@ -93,12 +93,12 @@ class AiVisibilityServiceTest extends TestCase
             ],
         ]);
 
-        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow');
+        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO');
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://open.feedcoopapi.com/search_api/web_search'
-            && $request['Query'] === 'GEOFlow'
+            && $request['Query'] === 'SparklightAIGEO'
             && $request['Count'] === 4
             && ($request['NeedSummary'] ?? null) === false
             && ($request['AuthInfoLevel'] ?? null) === 'high'
@@ -129,7 +129,7 @@ class AiVisibilityServiceTest extends TestCase
                                 'text' => '豆包返回的可见性回答。',
                                 'annotations' => [
                                     [
-                                        'title' => 'GEOFlow source',
+                                        'title' => 'SparklightAIGEO source',
                                         'url' => 'https://example.com/source',
                                     ],
                                 ],
@@ -155,8 +155,8 @@ class AiVisibilityServiceTest extends TestCase
         $run = app(AiVisibilityService::class)->runDoubaoArkResponses(
             SystemAiIdentity::visibilityCollection(),
             $model,
-            'GEOFlow',
-            '请搜索 GEOFlow',
+            'SparklightAIGEO',
+            '请搜索 SparklightAIGEO',
         );
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
@@ -165,7 +165,7 @@ class AiVisibilityServiceTest extends TestCase
         $this->assertSame(1, (int) $model->fresh()->used_today);
         $this->assertDatabaseHas('ai_visibility_sources', [
             'ai_visibility_run_id' => (int) $run->id,
-            'title' => 'GEOFlow source',
+            'title' => 'SparklightAIGEO source',
             'domain' => 'example.com',
         ]);
 
@@ -173,7 +173,7 @@ class AiVisibilityServiceTest extends TestCase
             && $request->hasHeader('Authorization', 'Bearer test-model-key')
             && $request['model'] === 'doubao-seed-2-0-lite-260428'
             && ($request['tools'][0]['type'] ?? null) === 'web_search'
-            && ($request['input'][0]['content'][0]['text'] ?? null) === '请搜索 GEOFlow');
+            && ($request['input'][0]['content'][0]['text'] ?? null) === '请搜索 SparklightAIGEO');
     }
 
     public function test_it_marks_doubao_search_custom_run_failed_with_provider_body(): void
@@ -188,7 +188,7 @@ class AiVisibilityServiceTest extends TestCase
         $provider = $this->createSearchProvider();
 
         try {
-            app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow');
+            app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO');
             $this->fail('Expected Doubao Search Custom failure to throw.');
         } catch (RuntimeException $exception) {
             $this->assertSame('ai_provider_auth_failed', $exception->getMessage());
@@ -212,7 +212,7 @@ class AiVisibilityServiceTest extends TestCase
         ]);
 
         try {
-            app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow');
+            app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO');
             $this->fail('Expected exhausted source provider to throw.');
         } catch (RuntimeException $exception) {
             $this->assertSame('ai_source_provider_quota_exhausted', $exception->getMessage());
@@ -240,7 +240,7 @@ class AiVisibilityServiceTest extends TestCase
             'usage_date' => now()->subDay()->toDateString(),
         ]);
 
-        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow');
+        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO');
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
         $provider->refresh();
@@ -263,7 +263,7 @@ class AiVisibilityServiceTest extends TestCase
             app(AiVisibilityService::class)->runDoubaoArkResponses(
                 SystemAiIdentity::visibilityCollection(),
                 $model,
-                'GEOFlow',
+                'SparklightAIGEO',
             );
             $this->fail('Expected inactive model to throw.');
         } catch (RuntimeException $exception) {
@@ -287,8 +287,8 @@ class AiVisibilityServiceTest extends TestCase
         $run = app(AiVisibilityService::class)->runDeepSeekAnalysis(
             SystemAiIdentity::visibilityCollection(),
             $model,
-            'GEOFlow',
-            '请分析 GEOFlow 的 AI 可见性',
+            'SparklightAIGEO',
+            '请分析 SparklightAIGEO 的 AI 可见性',
         );
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
@@ -321,7 +321,7 @@ class AiVisibilityServiceTest extends TestCase
             ],
         ]);
 
-        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow');
+        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO');
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
         Http::assertSentCount(1);
@@ -351,7 +351,7 @@ class AiVisibilityServiceTest extends TestCase
             ],
         ]);
 
-        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'GEOFlow');
+        $run = app(AiVisibilityService::class)->runDoubaoSearchCustom($provider, 'SparklightAIGEO');
 
         $this->assertSame(AiVisibilityRun::STATUS_COMPLETED, $run->status);
         Http::assertSentCount(1);

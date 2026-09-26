@@ -64,7 +64,7 @@ services:
 
   app:
     image: ${GEOFLOW_APP_IMAGE:?GEOFLOW_APP_IMAGE is required for prebuilt deployment}
-    container_name: geoflow-app-prod
+    container_name: sparklightaigeo-app-prod
     mem_limit: ${APP_CONTAINER_MEMORY_LIMIT:-768m}
     working_dir: /var/www/html
     environment:

@@ -11,7 +11,7 @@ use RuntimeException;
 use Throwable;
 
 /**
- * GEOFlow 常驻 worker（Laravel 版）：
+ * SparklightAIGEO 常驻 worker（Laravel 版）：
  * - 领取 pending job
  * - 生成文章并回写任务统计
  * - 写入 worker 心跳供后台展示
@@ -26,7 +26,7 @@ class GeoFlowWorkerCommand extends Command
     /**
      * @var string
      */
-    protected $description = 'Run GEOFlow queue worker loop';
+    protected $description = 'Run SparklightAIGEO queue worker loop';
 
     public function __construct(
         private readonly JobQueueService $queueService,

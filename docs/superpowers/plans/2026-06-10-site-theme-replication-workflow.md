@@ -1,8 +1,8 @@
-# GEOFlow 网站模板一键复刻功能开发方案
+# SparklightAIGEO 网站模板一键复刻功能开发方案
 
 ## 目标
 
-在后台「网站设置 > 网站模板」模块增加「一键复刻模板」能力。管理员输入首页、列表页、文章详情页三个对标 URL 后，系统通过后台 Agent 分析页面结构、视觉风格、模块布局和交互特征，生成一套符合 GEOFlow 前台数据契约的新主题包。管理员可以预览首页、列表页、详情页，用文字反馈继续迭代，确认后将主题录入后台并可在现有模板列表中启用。
+在后台「网站设置 > 网站模板」模块增加「一键复刻模板」能力。管理员输入首页、列表页、文章详情页三个对标 URL 后，系统通过后台 Agent 分析页面结构、视觉风格、模块布局和交互特征，生成一套符合 SparklightAIGEO 前台数据契约的新主题包。管理员可以预览首页、列表页、详情页，用文字反馈继续迭代，确认后将主题录入后台并可在现有模板列表中启用。
 
 ## 推荐结论
 
@@ -22,7 +22,7 @@
 - 网站模板模块新增「一键复刻模板」入口。
 - 新增复刻任务创建页：输入首页、列表页、详情页 URL，填写主题名称、主题标识、基准主题和 AI 模型。
 - 新增复刻任务详情页：展示进度、日志、分析结果、生成文件、三类页面预览、调优反馈输入框。
-- 新增后台异步 Job：抓取页面、抽取 UI 特征、生成 GEOFlow Blade 模板、生成独立 CSS/JS、生成主题 manifest。
+- 新增后台异步 Job：抓取页面、抽取 UI 特征、生成 SparklightAIGEO Blade 模板、生成独立 CSS/JS、生成主题 manifest。
 - 新增草稿主题存储与确认发布机制。
 - 新增预览机制：使用本机文章、分类、站点设置数据渲染首页、列表页、详情页。
 - 新增迭代机制：用户输入调整意见后，Agent 基于上一版主题草稿生成下一版。
@@ -116,9 +116,9 @@ AI 可以生成主题蓝图、组件结构和样式 token，但不能直接决�
 
 第一版不强依赖 Playwright，避免 Docker 镜像、依赖体积和服务器权限复杂化。
 
-### 5. 主题生成必须保留 GEOFlow 数据契约
+### 5. 主题生成必须保留 SparklightAIGEO 数据契约
 
-复刻不是把外部页面改成静态 HTML，而是把外部页面的设计语言映射到 GEOFlow 的动态数据结构。
+复刻不是把外部页面改成静态 HTML，而是把外部页面的设计语言映射到 SparklightAIGEO 的动态数据结构。
 
 必须保留这些契约：
 
@@ -157,7 +157,7 @@ flowchart TD
 在「网站设置 > 网站模板」模块顶部增加一个独立操作区：
 
 - 主按钮：`一键复刻模板`
-- 副说明：`输入首页、列表页和详情页对标地址，系统会生成一套保留 GEOFlow 数据契约的新主题。`
+- 副说明：`输入首页、列表页和详情页对标地址，系统会生成一套保留 SparklightAIGEO 数据契约的新主题。`
 - 风险提示：`仅提取布局和样式特征，不复制第三方素材、商标和专有代码。`
 
 按钮位置建议放在「当前生效模板」卡片右侧或网站模板模块顶部右侧，与「保存模板」分开。它是创建新主题，不是保存当前主题。
@@ -343,7 +343,7 @@ flowchart TD
 - `ThemeReplicationAgent`
   - 调用当前可用 chat 模型，生成主题蓝图和文件生成指令。
 - `ThemeScaffoldWriter`
-  - 把蓝图写成 GEOFlow Blade、CSS、JS、manifest、tokens、mapping。
+  - 把蓝图写成 SparklightAIGEO Blade、CSS、JS、manifest、tokens、mapping。
 - `ThemePreviewRenderer`
   - 用草稿主题和本机数据渲染预览。
 - `ThemeComplianceGuard`
@@ -390,7 +390,7 @@ Agent 输入不直接塞完整 HTML，而是传结构化摘要，控制 token �
 - CSS token 摘要。
 - 截断后的代表性 class/组件片段。
 - 可选截图摘要和 computed style 摘要。
-- 当前 GEOFlow 主题契约说明。
+- 当前 SparklightAIGEO 主题契约说明。
 - 当前基准主题的文件结构说明。
 - 用户风格偏好和迭代反馈。
 
@@ -403,7 +403,7 @@ Agent 输出 JSON，不直接输出任意 PHP 代码：
   "theme": {
     "name": "Example Inspired",
     "id": "example-inspired-20260610",
-    "description": "A reference-inspired GEOFlow theme..."
+    "description": "A reference-inspired SparklightAIGEO theme..."
   },
   "tokens": {
     "colors": {},
@@ -438,12 +438,12 @@ Agent 输出 JSON，不直接输出任意 PHP 代码：
 
 Agent 提示词必须明确：
 
-- 目标是生成 GEOFlow 主题，不是复制站点。
+- 目标是生成 SparklightAIGEO 主题，不是复制站点。
 - 只参考布局、色彩、排版、模块组织和交互方式。
 - 不得使用第三方品牌名作为站点品牌。
 - 不得引用第三方图片、Logo、广告素材和专有文案。
 - 输出必须是 JSON，不输出解释性正文。
-- 所有模板必须保留 GEOFlow 的动态数据变量和 SEO/Schema 能力。
+- 所有模板必须保留 SparklightAIGEO 的动态数据变量和 SEO/Schema 能力。
 - 若源页面结构不足，应基于基准主题补齐，而不是生成空页面。
 
 ### AI 失败与降级
@@ -481,14 +481,14 @@ public/themes/{theme_id}/
 
 - CSS 必须放在 `public/themes/{theme_id}/theme.css`。
 - JS 必须放在 `public/themes/{theme_id}/theme.js`，只允许轻量交互。
-- Blade 只允许使用 GEOFlow 已有变量和组件约定。
+- Blade 只允许使用 SparklightAIGEO 已有变量和组件约定。
 - 不允许生成数据库查询、文件写入、网络请求、`@php` 大段逻辑、`eval`、`shell_exec`、外链脚本。
-- 图片默认使用 GEOFlow 本地文章图、站点 Logo 或占位背景，不复制对标站图片。
+- 图片默认使用 SparklightAIGEO 本地文章图、站点 Logo 或占位背景，不复制对标站图片。
 - SEO、Schema、文章 Markdown 渲染、分类导航、归档路由必须保留。
 - `layout.blade.php` 必须引用 `asset('themes/{theme_id}/theme.css')`。
 - 不允许在 Blade 中内联大段 `<style>`，页面级小样式也应进入 `theme.css`。
 - 不允许在 Blade 中内联大段 `<script>`，轻量交互进入 `theme.js`。
-- `manifest.json` 必须写入 `mode: "replicated"`、`source_reference_url`、`created_by: "GEOFlow Theme Replication"` 和合规 notes。
+- `manifest.json` 必须写入 `mode: "replicated"`、`source_reference_url`、`created_by: "SparklightAIGEO Theme Replication"` 和合规 notes。
 
 ### 文件生成白名单
 
@@ -791,4 +791,4 @@ php artisan test
 
 ## 最终判断
 
-这个功能值得做，但必须把它定位成「参考风格生成 GEOFlow 主题」，不是「复制第三方网站」。最稳妥的实现是异步生成草稿主题、后台预览、人工确认录入。这样既能满足用户快速做模板的目标，也能把 AI 不稳定、版权、安全和前台稳定性风险控制在可接受范围内。
+这个功能值得做，但必须把它定位成「参考风格生成 SparklightAIGEO 主题」，不是「复制第三方网站」。最稳妥的实现是异步生成草稿主题、后台预览、人工确认录入。这样既能满足用户快速做模板的目标，也能把 AI 不稳定、版权、安全和前台稳定性风险控制在可接受范围内。

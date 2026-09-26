@@ -36,7 +36,7 @@ server {
     limit_conn geoflow_video_connections 4;
     limit_conn_status 429;
 
-    include /etc/nginx/snippets/geoflow-app.conf;
+    include /etc/nginx/snippets/sparklightaigeo-app.conf;
 
     location = /manifest.webmanifest {
         access_log off;
@@ -130,7 +130,7 @@ server {
         try_files /__geoflow_host_must_resolve__ /index.php?$query_string;
     }
 
-    include /etc/nginx/snippets/geoflow-app.conf;
+    include /etc/nginx/snippets/sparklightaigeo-app.conf;
 
     location ~ ^/(?:geo_admin|api|horizon|reverb|broadcasting|up|telescope|_debugbar)(?:/|$) {
         return 404;

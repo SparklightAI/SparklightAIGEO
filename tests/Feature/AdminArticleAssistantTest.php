@@ -143,7 +143,7 @@ class AdminArticleAssistantTest extends TestCase
             'name' => '内容分类',
             'slug' => 'assistant-content',
         ]);
-        $author = Author::query()->create(['name' => 'GEOFlow']);
+        $author = Author::query()->create(['name' => 'SparklightAIGEO']);
         $library = TitleLibrary::query()->create(['name' => '创建标题库']);
         $title = Title::query()->create([
             'library_id' => $library->id,
@@ -185,7 +185,7 @@ class AdminArticleAssistantTest extends TestCase
             'name' => '内容分类',
             'slug' => 'assistant-mismatch',
         ]);
-        $author = Author::query()->create(['name' => 'GEOFlow']);
+        $author = Author::query()->create(['name' => 'SparklightAIGEO']);
         $library = TitleLibrary::query()->create(['name' => '来源标题库']);
         $title = Title::query()->create([
             'library_id' => $library->id,
@@ -910,7 +910,7 @@ class AdminArticleAssistantTest extends TestCase
         ], $overrides));
     }
 
-    private function createKnowledgeBase(string $content = 'GEOFlow 知识库提供经过审核的产品资料。'): KnowledgeBase
+    private function createKnowledgeBase(string $content = 'SparklightAIGEO 知识库提供经过审核的产品资料。'): KnowledgeBase
     {
         $knowledgeBase = KnowledgeBase::query()->create([
             'name' => 'GEO 产品知识库',

@@ -547,7 +547,7 @@ final class AiVisibilitySystemModelUsageTelemetryTest extends TestCase
 
         $runs = app(AiVisibilityCollectionService::class)->collect(
             SystemAiIdentity::visibilityCollection(),
-            'GEOFlow',
+            'SparklightAIGEO',
         );
 
         $run = $runs['analysis_run'];
@@ -569,7 +569,7 @@ final class AiVisibilitySystemModelUsageTelemetryTest extends TestCase
         $this->assertSame(1, (int) $model->fresh()->total_used);
         $serialized = json_encode($event->getAttributes(), JSON_THROW_ON_ERROR);
         $this->assertStringNotContainsString('visibility-secret-key', $serialized);
-        $this->assertStringNotContainsString('GEOFlow', $serialized);
+        $this->assertStringNotContainsString('SparklightAIGEO', $serialized);
         $this->assertStringNotContainsString('api.deepseek.com', $serialized);
     }
 
@@ -601,14 +601,14 @@ final class AiVisibilitySystemModelUsageTelemetryTest extends TestCase
         $service->runDeepSeekAnalysis(
             SystemAiIdentity::visibilityCollection(),
             $model,
-            'GEOFlow',
+            'SparklightAIGEO',
             $basePrompt,
             $firstSources,
         );
         $service->runDeepSeekAnalysis(
             SystemAiIdentity::visibilityCollection(),
             $model,
-            'GEOFlow',
+            'SparklightAIGEO',
             $basePrompt,
             $secondSources,
         );
@@ -647,7 +647,7 @@ final class AiVisibilitySystemModelUsageTelemetryTest extends TestCase
 
         $runs = app(AiVisibilityCollectionService::class)->collect(
             SystemAiIdentity::visibilityCollection(),
-            'GEOFlow',
+            'SparklightAIGEO',
         );
 
         $run = $runs['ark_run'];
@@ -670,11 +670,11 @@ final class AiVisibilitySystemModelUsageTelemetryTest extends TestCase
         $this->assertSame(1, (int) $model->fresh()->total_used);
         $serialized = json_encode($event->getAttributes(), JSON_THROW_ON_ERROR);
         $this->assertStringNotContainsString('visibility-secret-key', $serialized);
-        $this->assertStringNotContainsString('GEOFlow', $serialized);
+        $this->assertStringNotContainsString('SparklightAIGEO', $serialized);
         $this->assertStringNotContainsString('ark.cn-beijing', $serialized);
         $prepared = app(DoubaoArkResponsesClient::class)->prepareRequest(
             $model,
-            '请基于公开网络信息回答目标关键词「GEOFlow」相关问题，并在可用时保留引用来源。请重点说明主流 AI 可能会如何理解这个关键词。',
+            '请基于公开网络信息回答目标关键词「SparklightAIGEO」相关问题，并在可用时保留引用来源。请重点说明主流 AI 可能会如何理解这个关键词。',
         );
         $this->assertSame(
             hash('sha256', $prepared->digestPayload),
@@ -734,7 +734,7 @@ final class AiVisibilitySystemModelUsageTelemetryTest extends TestCase
                 'type' => 'message',
                 'content' => [[
                     'type' => 'output_text',
-                    'text' => 'GEOFlow 可见性回答。',
+                    'text' => 'SparklightAIGEO 可见性回答。',
                 ]],
             ]],
             'usage' => [

@@ -40,13 +40,13 @@ class DistributionSigningService
         return [
             'Content-Type' => 'application/json',
             'Accept' => 'application/json',
-            'X-GEOFlow-Key-Id' => (string) $secret->key_id,
-            'X-GEOFlow-Timestamp' => $timestamp,
-            'X-GEOFlow-Nonce' => $nonce,
-            'X-GEOFlow-Idempotency-Key' => $idempotencyKey,
-            'X-GEOFlow-Body-SHA256' => $bodyHash,
-            'X-GEOFlow-Signature' => $signature,
-            'X-GEOFlow-Event' => $event,
+            'X-SparklightAIGEO-Key-Id' => (string) $secret->key_id,
+            'X-SparklightAIGEO-Timestamp' => $timestamp,
+            'X-SparklightAIGEO-Nonce' => $nonce,
+            'X-SparklightAIGEO-Idempotency-Key' => $idempotencyKey,
+            'X-SparklightAIGEO-Body-SHA256' => $bodyHash,
+            'X-SparklightAIGEO-Signature' => $signature,
+            'X-SparklightAIGEO-Event' => $event,
         ];
     }
 }

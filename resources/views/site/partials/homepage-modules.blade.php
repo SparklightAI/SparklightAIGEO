@@ -1,11 +1,11 @@
 @php
     $modules = collect($homepageModules ?? [])->filter(fn ($module) => is_array($module) && !empty($module['enabled']))->values();
     $style = array_merge([
-        'accent_color' => '#2563eb',
+        'accent_color' => '#2d326b',
         'background_color' => '#ffffff',
         'surface_color' => '#ffffff',
-        'text_color' => '#111827',
-        'muted_color' => '#6b7280',
+        'text_color' => '#1e2238',
+        'muted_color' => '#6e7181',
         'container_width' => 'default',
         'section_spacing' => 'normal',
         'radius' => 'soft',

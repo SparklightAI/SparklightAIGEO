@@ -6,7 +6,7 @@ import { configureTrustedStorage } from '../../browser-extension/src/lib/storage
 import { hasConflictingActiveTask, resumeClaimedTask } from '../../browser-extension/src/lib/task-state.js';
 import { runZhihuAnswerAdapter } from '../../browser-extension/src/adapters/zhihu-answer.js';
 
-test('GEOFlow base URL accepts HTTPS and local HTTP while rejecting unsafe shapes', () => {
+test('SparklightAIGEO base URL accepts HTTPS and local HTTP while rejecting unsafe shapes', () => {
     assert.equal(normalizeGeoflowBaseUrl('https://geo.example.com/'), 'https://geo.example.com');
     assert.equal(normalizeGeoflowBaseUrl('http://localhost:8000/'), 'http://localhost:8000');
     assert.throws(() => normalizeGeoflowBaseUrl('http://geo.example.com'), /HTTPS/);
@@ -168,7 +168,7 @@ test('browser client discovers recovery epoch before writes and preserves uncert
         await assert.rejects(client.request('/api/v1/browser-operations/publications/1/claim', { method: 'POST', body: {}, idempotencyKey: 'original-key' }), /Could not reach/);
         assert.equal(calls.length, 2);
         assert.equal(calls[0].method, 'GET');
-        assert.equal(calls[1].headers['X-GEOFlow-Recovery-Epoch'], 'a'.repeat(32));
+        assert.equal(calls[1].headers['X-SparklightAIGEO-Recovery-Epoch'], 'a'.repeat(32));
         assert.equal(calls[1].headers['X-Idempotency-Key'], 'original-key');
     } finally {
         globalThis.fetch = originalFetch;

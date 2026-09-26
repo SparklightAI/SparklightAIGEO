@@ -4,7 +4,7 @@
 
 状态：待确认，尚未开始实施
 
-适用范围：GEOFlow 后台管理员、AI 配置器、内容生成与优化、任务队列、AI Workspace、知识检索、系统采集配置、API Token、审计与用量归因
+适用范围：SparklightAIGEO 后台管理员、AI 配置器、内容生成与优化、任务队列、AI Workspace、知识检索、系统采集配置、API Token、审计与用量归因
 
 ## 1. 最终结论
 
@@ -69,7 +69,7 @@
 
 - 后台控制器：模型配置、任务、文章、文章助手、AI 优化、知识库、知识事实、标题库、素材和仪表盘。
 - API：文章接口与模型目录。
-- GEOFlow 服务：任务执行、智能故障切换、AI 质检、AI 优化、标题生成、知识事实、企业知识、URL 导入和目录服务。
+- SparklightAIGEO 服务：任务执行、智能故障切换、AI 质检、AI 优化、标题生成、知识事实、企业知识、URL 导入和目录服务。
 - AI Workspace：模型就绪检查和运行时选模。
 - 系统能力：知识切片、Embedding、站点主题复制和命令行评测。
 
@@ -125,7 +125,7 @@ app/Services/GeoFlow/WorkerExecutionService.php
 | Langfuse | 每条记录携带项目上下文，服务端在所有入口校验项目权限，队列保留项目上下文 | 每次 AI 执行显式携带管理员访问身份、访问版本和策略版本 |
 | LiteLLM | Virtual Key 绑定所有者、模型许可范围和用量统计 | 模型绑定所有者，调用事件记录配置所有者和实际执行管理员 |
 | Open WebUI | 资源、主体和权限分离，并提供有效权限预览 | 界面展示“我的模型”“共享模型”和有效访问预览，管理权与使用权分别校验 |
-| Dify | 模型供应商凭据按租户隔离，控制器从当前租户上下文解析配置 | GEOFlow 从当前管理员或持久化任务身份解析个人与共享候选池 |
+| Dify | 模型供应商凭据按租户隔离，控制器从当前租户上下文解析配置 | SparklightAIGEO 从当前管理员或持久化任务身份解析个人与共享候选池 |
 
 官方参考：
 
@@ -140,7 +140,7 @@ app/Services/GeoFlow/WorkerExecutionService.php
 - [Dify Provider 数据模型](https://github.com/langgenius/dify/blob/main/api/models/provider.py)
 - [Dify 模型供应商控制器](https://github.com/langgenius/dify/blob/main/api/controllers/console/workspace/model_providers.py)
 
-采用这些机制时保持 GEOFlow 当前单后台、两级管理员的产品复杂度。本轮使用“普通管理员绑定一位共享提供方”模型。按单模型授权、管理员组授权和跨组织授权可以在未来演进为标准授权表，本轮不提前引入。
+采用这些机制时保持 SparklightAIGEO 当前单后台、两级管理员的产品复杂度。本轮使用“普通管理员绑定一位共享提供方”模型。按单模型授权、管理员组授权和跨组织授权可以在未来演进为标准授权表，本轮不提前引入。
 
 ## 5. 核心领域定义
 

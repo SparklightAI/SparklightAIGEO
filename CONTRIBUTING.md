@@ -1,6 +1,6 @@
-# Contributing to GEOFlow
+# Contributing to SparklightAIGEO
 
-感谢你参与 GEOFlow。提交 Issue、建议和代码前，请先阅读下面的规则。
+感谢你参与 SparklightAIGEO。提交 Issue、建议和代码前，请先阅读下面的规则。
 
 ## 贡献流程
 
@@ -12,7 +12,9 @@
 
 ## Contributor License Agreement
 
-可构成版权作品的贡献在合并前必须接受 [GEOFlow Contributor License Agreement v1.0](CLA.md)。贡献者保留其贡献的版权，同时授予项目维护者将贡献用于 AGPL 开源版本及商业或专有许可版本所需的权利。
+可构成版权作品的贡献在合并前必须接受 [SparklightAIGEO Contributor License Agreement v2.0](CLA.md)。贡献者保留其贡献的版权，同时授予项目维护者将贡献用于 AGPL 开源版本及商业或专有许可版本所需的权利。
+
+本项目由**深圳星火之光传媒有限公司**（品牌：星火之光AI / SparkLight AI，官网 <https://sparklight-ai.com>）维护。项目维护者、CLA 授权主体与版权归属主体均为该公司；商业授权、品牌合作与安全问题请联系官网公布的联系方式。
 
 首次提交 Pull Request 时，请填写模板中的 CLA 声明：
 
@@ -29,7 +31,7 @@ Pull Request 内容是公开的。如不希望公开法定姓名，请在 Pull R
 
 ## 第三方内容
 
-请勿提交无权授权的代码、文档、图片、数据或其他材料。确需包含第三方内容时，应在 Pull Request 中明确来源、作者、许可证和修改情况，并确认其许可证与 GEOFlow 的分发方式兼容。
+请勿提交无权授权的代码、文档、图片、数据或其他材料。确需包含第三方内容时，应在 Pull Request 中明确来源、作者、许可证和修改情况，并确认其许可证与 SparklightAIGEO 的分发方式兼容。
 
 ## 安全问题
 
@@ -38,7 +40,7 @@ Pull Request 内容是公开的。如不希望公开法定姓名，请在 Pull R
 ## English summary
 
 Copyrightable contributions require acceptance of the
-[GEOFlow Contributor License Agreement v1.0](CLA.md) before merge. Contributors
+[SparklightAIGEO Contributor License Agreement v1.0](CLA.md) before merge. Contributors
 retain copyright while granting the project the rights needed to distribute
 their contributions under AGPL and separate commercial or proprietary terms.
 Use the CLA declaration in the pull request template. Entity contributions must

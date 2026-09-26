@@ -134,7 +134,7 @@ class AiVisibilityAnalyticsService
                 'days' => $days,
             ],
             'brand' => [
-                'name' => $brandAliases[0] ?? 'GEOFlow',
+                'name' => $brandAliases[0] ?? 'SparklightAIGEO',
                 'aliases' => $brandAliases,
                 'owned_hosts' => $ownedHosts,
             ],
@@ -234,7 +234,7 @@ class AiVisibilityAnalyticsService
                 'days' => $days,
             ],
             'brand' => [
-                'name' => $this->brandAliases()[0] ?? 'GEOFlow',
+                'name' => $this->brandAliases()[0] ?? 'SparklightAIGEO',
                 'aliases' => $this->brandAliases(),
                 'owned_hosts' => $this->ownedHosts(),
             ],
@@ -942,7 +942,7 @@ class AiVisibilityAnalyticsService
         $siteAliases = collect([
             config('geoflow.site_name'),
             config('geoflow.site_full_name'),
-            'GEOFlow',
+            'SparklightAIGEO',
         ])
             ->map(fn (mixed $alias): string => trim((string) $alias))
             ->filter(fn (string $alias): bool => $alias !== '' && mb_strlen($alias) >= 2);

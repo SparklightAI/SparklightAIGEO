@@ -1,9 +1,9 @@
 {
     "$schema": "https://getcomposer.org/schema.json",
-    "name": "yaojingang/geoflow",
+    "name": "sparklightai/sparklightaigeo",
     "type": "project",
     "description": "Open-source GEO operations platform for enterprise websites, with trusted knowledge, AI quality gates, human review, multi-site delivery, and analytics.",
-    "keywords": ["geoflow", "geo", "generative-engine-optimization", "content-engineering", "laravel", "multi-site", "ai"],
+    "keywords": ["sparklightaigeo", "geo", "generative-engine-optimization", "content-engineering", "laravel", "multi-site", "ai"],
     "license": "AGPL-3.0-only",
     "require": {
         "php": "^8.3",

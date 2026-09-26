@@ -72,7 +72,7 @@ explicit historical restore workflow. Old targets use `host_only` continuation.
 The request also contains `client_request_id`, `actor`, and `scope`. The request
 ID matches `[A-Za-z0-9][A-Za-z0-9._-]{7,127}`. Scope is `updater:update` for update
 and switch-back, `updater:backup` for backup, or `updater:restore` for restore.
-The six-digit code is sent only in `X-GEOFlow-Updater-Authorization`. Core verifies
+The six-digit code is sent only in `X-SparklightAIGEO-Updater-Authorization`. Core verifies
 the password and never forwards it. No secret contributes to the business hash.
 
 Canonical business hashing: sort the six business keys alphabetically, encode

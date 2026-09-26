@@ -15,7 +15,7 @@ class FrontendDependencySecurityBaselineTest extends TestCase
         );
         $packages = $lock['packages'];
 
-        $this->assertSame('geoflow', $lock['name']);
+        $this->assertSame('sparklightaigeo', $lock['name']);
         $this->assertVersionAtLeast($packages, 'axios', '1.18.1');
         $this->assertVersionAtLeast($packages, 'concurrently', '9.2.4');
         $this->assertVersionAtLeast($packages, 'shell-quote', '1.9.0');

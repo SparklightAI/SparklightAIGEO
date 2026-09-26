@@ -275,7 +275,7 @@ Test expectations:
 Run:
 
 ```bash
-docker exec geoflow-app php artisan test tests/Feature/AdminAnalyticsPageTest.php --filter=analytics_page
+docker exec sparklightaigeo-app php artisan test tests/Feature/AdminAnalyticsPageTest.php --filter=analytics_page
 ```
 
 Expected before implementation: route not defined or page not found.
@@ -313,7 +313,7 @@ immediately after `dashboard`.
 - [ ] Step 5: Run test and targeted header tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Feature/AdminAnalyticsPageTest.php tests/Feature/AdminHeaderNotificationTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Feature/AdminAnalyticsPageTest.php tests/Feature/AdminHeaderNotificationTest.php --compact
 ```
 
 Expected: pass.
@@ -364,7 +364,7 @@ The view payload must stay the same so the dashboard UI does not change.
 - [ ] Step 4: Run dashboard tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Feature/AdminDashboardQuickStartTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Feature/AdminDashboardQuickStartTest.php --compact
 ```
 
 Expected: pass.
@@ -413,7 +413,7 @@ Use `GET` form so filtered URLs are shareable.
 - [ ] Step 4: Run filter tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Unit/AnalyticsFilterTest.php tests/Feature/AdminAnalyticsPageTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Unit/AnalyticsFilterTest.php tests/Feature/AdminAnalyticsPageTest.php --compact
 ```
 
 Expected: pass.
@@ -476,7 +476,7 @@ Charts:
 - [ ] Step 5: Run feature tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Feature/AdminAnalyticsPageTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Feature/AdminAnalyticsPageTest.php --compact
 ```
 
 Expected: pass.
@@ -520,7 +520,7 @@ Each model should define:
 - [ ] Step 4: Run schema tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Unit/AnalyticsSchemaMigrationTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Unit/AnalyticsSchemaMigrationTest.php --compact
 ```
 
 Expected: pass.
@@ -583,7 +583,7 @@ Classifier should return:
 - [ ] Step 4: Run unit tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Unit/AccessLogParserTest.php tests/Unit/CrawlerClassifierTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Unit/AccessLogParserTest.php tests/Unit/CrawlerClassifierTest.php --compact
 ```
 
 Expected: pass.
@@ -648,7 +648,7 @@ Behavior:
 - [ ] Step 4: Run importer tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Unit/AnalyticsLogImporterTest.php tests/Feature/AnalyticsImportCommandTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Unit/AnalyticsLogImporterTest.php tests/Feature/AnalyticsImportCommandTest.php --compact
 ```
 
 Expected: pass.
@@ -705,7 +705,7 @@ Charts/tables:
 - [ ] Step 4: Run analytics page tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Feature/AdminAnalyticsPageTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Feature/AdminAnalyticsPageTest.php --compact
 ```
 
 Expected: pass.
@@ -721,7 +721,7 @@ Expected: pass.
 - [ ] Step 1: Run formatter.
 
 ```bash
-docker exec geoflow-app ./vendor/bin/pint app/Http/Controllers/Admin/AnalyticsController.php app/Services/Admin/AdminDashboardMetricsService.php app/Services/Admin/Analytics tests/Feature/AdminAnalyticsPageTest.php tests/Unit/AnalyticsFilterTest.php tests/Unit/AccessLogParserTest.php tests/Unit/CrawlerClassifierTest.php tests/Unit/AnalyticsLogImporterTest.php
+docker exec sparklightaigeo-app ./vendor/bin/pint app/Http/Controllers/Admin/AnalyticsController.php app/Services/Admin/AdminDashboardMetricsService.php app/Services/Admin/Analytics tests/Feature/AdminAnalyticsPageTest.php tests/Unit/AnalyticsFilterTest.php tests/Unit/AccessLogParserTest.php tests/Unit/CrawlerClassifierTest.php tests/Unit/AnalyticsLogImporterTest.php
 ```
 
 Expected: PASS.
@@ -729,7 +729,7 @@ Expected: PASS.
 - [ ] Step 2: Run targeted analytics tests.
 
 ```bash
-docker exec geoflow-app php artisan test tests/Feature/AdminAnalyticsPageTest.php tests/Unit/AnalyticsFilterTest.php tests/Unit/AccessLogParserTest.php tests/Unit/CrawlerClassifierTest.php tests/Unit/AnalyticsLogImporterTest.php --compact
+docker exec sparklightaigeo-app php artisan test tests/Feature/AdminAnalyticsPageTest.php tests/Unit/AnalyticsFilterTest.php tests/Unit/AccessLogParserTest.php tests/Unit/CrawlerClassifierTest.php tests/Unit/AnalyticsLogImporterTest.php --compact
 ```
 
 Expected: all pass.
@@ -737,7 +737,7 @@ Expected: all pass.
 - [ ] Step 3: Run full suite.
 
 ```bash
-docker exec geoflow-app php artisan test --compact
+docker exec sparklightaigeo-app php artisan test --compact
 ```
 
 Expected: all pass.
@@ -745,7 +745,7 @@ Expected: all pass.
 - [ ] Step 4: Clear cache.
 
 ```bash
-docker exec geoflow-app php artisan optimize:clear
+docker exec sparklightaigeo-app php artisan optimize:clear
 ```
 
 Expected: config, cache, compiled, events, routes, and views cleared.

@@ -384,7 +384,7 @@
         @endif
 
         <dialog
-            class="fixed inset-0 m-auto w-[min(640px,calc(100vw-2rem))] max-w-none overflow-hidden overscroll-contain rounded-2xl border-0 bg-white p-0 text-left text-gray-900 shadow-[0_24px_72px_rgba(15,23,42,0.28)] backdrop:bg-[rgba(15,23,42,0.48)]"
+            class="fixed inset-0 m-auto w-[min(640px,calc(100vw-2rem))] max-w-none overflow-hidden overscroll-contain rounded-2xl border-0 bg-white p-0 text-left text-gray-900 shadow-[0_24px_72px_rgba(30, 34, 56,0.28)] backdrop:bg-[rgba(30, 34, 56,0.48)]"
             data-ai-model-test-dialog
             role="dialog"
             aria-modal="true"

@@ -25,8 +25,8 @@ class ApiClientTest extends TestCase
         $client->send('capabilities');
         $client->send('task.update', ['task' => 4], body: ['name' => 'changed']);
         $client->send('catalog');
-        $this->assertTrue($factory->recorded()[1][0]->hasHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32)));
-        $this->assertFalse($factory->recorded()[2][0]->hasHeader('X-GEOFlow-Recovery-Epoch'));
+        $this->assertTrue($factory->recorded()[1][0]->hasHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32)));
+        $this->assertFalse($factory->recorded()[2][0]->hasHeader('X-SparklightAIGEO-Recovery-Epoch'));
     }
 
     #[Test]

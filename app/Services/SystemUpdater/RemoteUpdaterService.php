@@ -70,7 +70,7 @@ final class RemoteUpdaterService
         if (! in_array($input['action'], $capabilities['actions'], true)) {
             throw new ApiException('updater_action_unavailable', '宿主机当前不支持此动作', 409);
         }
-        $this->recovery->assertWriteEpoch($request->routeIs('admin.system-updates.updater.*') ? ($input['expected_epoch'] ?? null) : $request->header('X-GEOFlow-Recovery-Epoch'));
+        $this->recovery->assertWriteEpoch($request->routeIs('admin.system-updates.updater.*') ? ($input['expected_epoch'] ?? null) : $request->header('X-SparklightAIGEO-Recovery-Epoch'));
         $payload = ['action' => $input['action'], 'expected_epoch' => $state['epoch'], 'actor' => $this->actorIdentity($actor)];
         if (isset($input['recovery_point_id'])) {
             $payload['recovery_point_id'] = $input['recovery_point_id'];

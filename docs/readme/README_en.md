@@ -1,29 +1,29 @@
-# GEOFlow 3.2 Beta
+# SparklightAIGEO 3.2 Beta
 
 > Languages: [简体中文](../../README.md) | [English](README_en.md) | [日本語](README_ja.md) | [Español](README_es.md) | [Русский](README_ru.md) | [Português (BR)](README_pt_BR.md)
 
 > An open-source GEO operations platform for enterprise websites
 
-GEOFlow connects trusted knowledge, AI content production, quality gates, human review, multi-site delivery, and analytics in one operating workflow. Brand, growth, and content teams can use it to run an enterprise website, a GEO content channel, an industry source site, or an internal content operations platform while keeping source material, decisions, publishing results, and operational data in one system.
+SparklightAIGEO connects trusted knowledge, AI content production, quality gates, human review, multi-site delivery, and analytics in one operating workflow. Brand, growth, and content teams can use it to run an enterprise website, a GEO content channel, an industry source site, or an internal content operations platform while keeping source material, decisions, publishing results, and operational data in one system.
 
-[Quick start](#quick-start) · [Interface preview](#interface-preview) · [Core capabilities](#geoflow-30-core-capabilities) · [Deployment guide](../deployment/DEPLOYMENT.md) · [Blue/green deployment](../blue-green-deployment-usage_en.md) · [Changelog](../CHANGELOG_en.md) · [Website](https://www.geoflow.me)
+[Quick start](#quick-start) · [Interface preview](#interface-preview) · [Core capabilities](#sparklightaigeo-30-core-capabilities) · [Deployment guide](../deployment/DEPLOYMENT.md) · [Blue/green deployment](../blue-green-deployment-usage_en.md) · [Changelog](../CHANGELOG_en.md) · [Website](https://sparklight-ai.com)
 
 [![Source version](https://img.shields.io/badge/source-3.2.0--beta.1-2563eb)](../../version.json)
-[![Latest release](https://img.shields.io/github/v/release/yaojingang/GEOFlow?display_name=tag)](https://github.com/yaojingang/GEOFlow/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/SparklightAI/SparklightAIGEO?display_name=tag)](https://github.com/SparklightAI/SparklightAIGEO/releases/latest)
 [![PHP](https://img.shields.io/badge/PHP-8.3%2B-777bb4)](https://www.php.net/)
-[![CI](https://github.com/yaojingang/GEOFlow/actions/workflows/ci.yml/badge.svg)](https://github.com/yaojingang/GEOFlow/actions/workflows/ci.yml)
+[![CI](https://github.com/SparklightAI/SparklightAIGEO/actions/workflows/ci.yml/badge.svg)](https://github.com/SparklightAI/SparklightAIGEO/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](../../LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/yaojingang/GEOFlow?style=social)](https://github.com/yaojingang/GEOFlow/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/SparklightAI/SparklightAIGEO?style=social)](https://github.com/SparklightAI/SparklightAIGEO/stargazers)
 
-> **Version note:** The current source version is the `3.2.0-beta.1` preview. The latest stable release is `3.1.0`. See [`version.json`](../../version.json) for the exact source version and [GitHub Releases](https://github.com/yaojingang/GEOFlow/releases) for official releases and upgrade notes. Production deployments should use a stable release or pin a reviewed commit.
+> **Version note:** The current source version is the `3.2.0-beta.1` preview. The latest stable release is `3.1.0`. See [`version.json`](../../version.json) for the exact source version and [GitHub Releases](https://github.com/SparklightAI/SparklightAIGEO/releases) for official releases and upgrade notes. Production deployments should use a stable release or pin a reviewed commit.
 
 ---
 
-## What GEOFlow is built to solve
+## What SparklightAIGEO is built to solve
 
 Enterprise GEO programs need brand knowledge, model configuration, content production, quality review, website engineering, channel delivery, and performance analysis. When these jobs live in separate tools, teams lose the links between source material, review decisions, and published results.
 
-GEOFlow puts the operating workflow in one admin system:
+SparklightAIGEO puts the operating workflow in one admin system:
 
 ```mermaid
 flowchart LR
@@ -47,16 +47,16 @@ The system records knowledge sources, task settings, model calls, quality eviden
 
 <table>
   <tr>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/01-ai-workspace-start.webp" alt="GEOFlow Admin UI V3 illustrated help workspace" /><br /><sub>Illustrated help workspace</sub></td>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/03-analytics-overview.webp" alt="GEOFlow Admin UI V3 analytics overview" /><br /><sub>Analytics overview</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/01-ai-workspace-start.webp" alt="SparklightAIGEO Admin UI V3 illustrated help workspace" /><br /><sub>Illustrated help workspace</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/03-analytics-overview.webp" alt="SparklightAIGEO Admin UI V3 analytics overview" /><br /><sub>Analytics overview</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/05-task-list.webp" alt="GEOFlow Admin UI V3 task management" /><br /><sub>Task management</sub></td>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/10-article-quality.webp" alt="GEOFlow Admin UI V3 article AI quality inspection" /><br /><sub>Article AI quality inspection</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/05-task-list.webp" alt="SparklightAIGEO Admin UI V3 task management" /><br /><sub>Task management</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/10-article-quality.webp" alt="SparklightAIGEO Admin UI V3 article AI quality inspection" /><br /><sub>Article AI quality inspection</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/19-hosted-sites.webp" alt="GEOFlow Admin UI V3 hosted channel sites" /><br /><sub>Hosted channel sites</sub></td>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/20-manual-publication.webp" alt="GEOFlow Admin UI V3 manual publishing workspace" /><br /><sub>Manual publishing workspace</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/19-hosted-sites.webp" alt="SparklightAIGEO Admin UI V3 hosted channel sites" /><br /><sub>Hosted channel sites</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/20-manual-publication.webp" alt="SparklightAIGEO Admin UI V3 manual publishing workspace" /><br /><sub>Manual publishing workspace</sub></td>
   </tr>
 </table>
 
@@ -64,16 +64,16 @@ These sanitized screens come from the built-in 3.0 help library and cover knowle
 
 ---
 
-## GEOFlow 3.0 core capabilities
+## SparklightAIGEO 3.0 core capabilities
 
 | Capability | How 3.0 handles the work |
 |------------|--------------------------|
 | Trusted knowledge and content production | Manage knowledge bases, title libraries, keywords, images, authors, prompts, and AI models in one place. Knowledge bases support structured chunking, optional semantic planning, vector retrieval, and a stable fallback path. |
 | AI quality gates | Check knowledge evidence, data and citations, advertising rules, and publishing context. Store category scores, source locations, regulatory references, revision advice, and history. Articles that need review, are blocked, fail inspection, or have stale results remain drafts. |
 | Review and operations collaboration | Manage drafts, reviews, publishing, trash, and bulk Markdown export. The manual publishing workspace records identities, account references, assignees, schedules, risk notes, receipts, and audit history. |
-| Enterprise websites and multi-site delivery | The local frontend outputs SEO metadata, Open Graph, Schema, sitemaps, and `llms.txt`. Delivery channels include hosted sites, GEOFlow Agent, WordPress REST, and generic HTTP APIs. |
+| Enterprise websites and multi-site delivery | The local frontend outputs SEO metadata, Open Graph, Schema, sitemaps, and `llms.txt`. Delivery channels include hosted sites, SparklightAIGEO Agent, WordPress REST, and generic HTTP APIs. |
 | Analytics and operations | Analytics cover content, distribution, traffic, top content, AI crawlers, and trends. The independent Updater handles signed updates, full backups, environment validation, and restore-point rollback. |
-| Team and developer access | Admin UI V3 supports six languages, responsive layouts, PWA installation, and illustrated help. API v1, GEOFlow CLI, and the bundled Agent Skill support automation and extension work. |
+| Team and developer access | Admin UI V3 supports six languages, responsive layouts, PWA installation, and illustrated help. API v1, SparklightAIGEO CLI, and the bundled Agent Skill support automation and extension work. |
 
 ### Major changes in 3.0
 
@@ -84,13 +84,13 @@ These sanitized screens come from the built-in 3.0 help library and cover knowle
 - The Chrome operations assistant uses device pairing and a least-privilege token to claim manual publishing tasks, fill drafts for review, and return execution evidence. An operator confirms the final publication.
 - Title libraries support batch AI generation for up to 100,000 entries, resume, cancellation, retries, and stable deduplication. Deleted tasks retain 90 days of audit data.
 - API v1 and `bin/geoflow` cover catalogs, tasks, runs, materials, articles, and browser operations protocols.
-- The independent GEOFlow Updater uses a local Unix socket for updates, full backups, environment validation, and restore-point rollback. High-risk actions require an administrator password and a six-digit authenticator code.
+- The independent SparklightAIGEO Updater uses a local Unix socket for updates, full backups, environment validation, and restore-point rollback. High-risk actions require an administrator password and a six-digit authenticator code.
 
 See the [Chinese changelog](../CHANGELOG.md) and [English changelog](../CHANGELOG_en.md) for the complete history.
 
 ---
 
-## Where GEOFlow fits
+## Where SparklightAIGEO fits
 
 | Scenario | Recommended setup | Main capabilities |
 |----------|-------------------|-------------------|
@@ -100,7 +100,7 @@ See the [Chinese changelog](../CHANGELOG.md) and [English changelog](../CHANGELO
 | Internal content operations | Keep the public frontend secondary and let brand, growth, and content teams manage production and review | Asset libraries, API, CLI, manual publishing, permissions, audit history |
 | Multi-brand or multi-site operations | Manage multiple sites, categories, or publishing destinations from one admin system | Hosted sites, Agent, WordPress, generic APIs, delivery logs |
 
-GEOFlow is designed for teams with real business source material, named review owners, and an ongoing operations plan. Knowledge quality, human judgment, and regular maintenance determine whether users and AI systems can trust the published content.
+SparklightAIGEO is designed for teams with real business source material, named review owners, and an ongoing operations plan. Knowledge quality, human judgment, and regular maintenance determine whether users and AI systems can trust the published content.
 
 ---
 
@@ -123,10 +123,10 @@ The [deployment guide](../deployment/DEPLOYMENT.md) and the release notes for th
 
 | Component | Current source version or status | Notes |
 |-----------|----------------------------------|-------|
-| GEOFlow Core | `3.2.0-beta.1` | Laravel application, admin, frontend, API, queues, and distribution system |
-| GEOFlow CLI | `0.4.0-preview.1` | Bundled as `bin/geoflow`; supports macOS, Linux, and WSL |
+| SparklightAIGEO Core | `3.2.0-beta.1` | Laravel application, admin, frontend, API, queues, and distribution system |
+| SparklightAIGEO CLI | `0.4.0-preview.1` | Bundled as `bin/geoflow`; supports macOS, Linux, and WSL |
 | Chrome operations assistant | `0.1.0` | Source and packaged output live in `browser-extension/` and `dist/browser-extension/` |
-| GEOFlow Updater | Independent component | Use a signed version explicitly compatible with the target release; see [geoflow-updater](https://github.com/yaojingang/geoflow-updater) |
+| SparklightAIGEO Updater | Independent component | Use a signed version explicitly compatible with the target release; see [geoflow-updater](https://sparklight-ai.com/updater) |
 | Target-site Agent | Generated per channel | Each channel can build a preconfigured PHP package with a homepage, article pages, static assets, Schema, sitemap, and `llms.txt` |
 
 Runtime requirements:
@@ -146,8 +146,8 @@ Runtime requirements:
 ### Docker for development and evaluation
 
 ```bash
-git clone https://github.com/yaojingang/GEOFlow.git
-cd GEOFlow
+git clone https://github.com/SparklightAI/SparklightAIGEO.git
+cd SparklightAIGEO
 cp .env.example .env
 docker compose build
 docker compose up -d --remove-orphans
@@ -175,11 +175,11 @@ docker compose --env-file .env.prod -f docker-compose.prod.yml up -d app web que
 
 See [`docs/deployment/DEPLOYMENT.md`](../deployment/DEPLOYMENT.md) for production setup, health checks, reverse proxy configuration, and recovery.
 
-For signed managed installation, enrollment, automatic migrations, online or maintenance updates, and recovery, see the [blue/green deployment tutorial](../blue-green-deployment-usage_en.md), also available on the [Wiki](https://github.com/yaojingang/GEOFlow/wiki/Blue-Green-Deployment-and-Automatic-Migrations). Check its release prerequisites before using the new workflow.
+For signed managed installation, enrollment, automatic migrations, online or maintenance updates, and recovery, see the [blue/green deployment tutorial](../blue-green-deployment-usage_en.md), also available on the [Wiki](https://github.com/SparklightAI/SparklightAIGEO/wiki/Blue-Green-Deployment-and-Automatic-Migrations). Check its release prerequisites before using the new workflow.
 
 ### Upgrading from 2.x
 
-See the [3.0 upgrade tutorial (Chinese)](../deployment/GEOFLOW_V3_UPGRADE.md) for deployment-specific steps, backups, data backfills, Updater enrollment, acceptance checks, and recovery. The [documentation center](../README.md) and [Wiki guide](https://github.com/yaojingang/GEOFlow/wiki/v3.0.0-升级教程) link to the same instructions.
+See the [3.0 upgrade tutorial (Chinese)](../deployment/SPARKLIGHTAIGEO_V3_UPGRADE.md) for deployment-specific steps, backups, data backfills, Updater enrollment, acceptance checks, and recovery. The [documentation center](../README.md) and [Wiki guide](https://github.com/SparklightAI/SparklightAIGEO/wiki/v3.0.0-升级教程) link to the same instructions.
 
 Back up the database, `.env`, uploads, and `storage`. Drain old processes before running migrations, rebuilding frontend assets, and restarting services. Early 2.x installations also need the managed-image readiness check and security audit. Enable hosted sites only after wildcard DNS, wildcard TLS, trusted proxies, and Nginx are configured.
 
@@ -189,17 +189,17 @@ Existing deployments should follow the complete [drain and safe migration proced
 
 ## Developer entry points
 
-### GEOFlow CLI
+### SparklightAIGEO CLI
 
 `bin/geoflow` manages catalogs, tasks, runs, materials, and articles through API v1. It supports secure configuration, login, JSON files or stdin, delete confirmation, and structured errors.
 
-[CLI guide in Chinese](../GEOFLOW_CLI.md) | [CLI guide in English](../GEOFLOW_CLI_en.md)
+[CLI guide in Chinese](../SPARKLIGHTAIGEO_CLI.md) | [CLI guide in English](../SPARKLIGHTAIGEO_CLI_en.md)
 
-### GEOFlow Agent Skill
+### SparklightAIGEO Agent Skill
 
-The repository includes a unified [GEOFlow Agent Skill](../../.agents/skills/geoflow/) for Laravel development, admin operations, public frontend work, theme packages, channel sites, and legacy migrations. Tools that support Agent Skills can discover it from the repository, and Codex users can invoke it with `$geoflow`.
+The repository includes a unified [SparklightAIGEO Agent Skill](../../.agents/skills/sparklightaigeo/) for Laravel development, admin operations, public frontend work, theme packages, channel sites, and legacy migrations. Tools that support Agent Skills can discover it from the repository, and Codex users can invoke it with `$geoflow`.
 
-See the [Skill README](../../.agents/skills/geoflow/README.md) for installation and rollback instructions.
+See the [Skill README](../../.agents/skills/sparklightaigeo/README.md) for installation and rollback instructions.
 
 ### Development and tests
 
@@ -218,9 +218,9 @@ Read the [contribution guide](../../CONTRIBUTING.md) before submitting changes.
 
 ## Open-source and commercial licensing
 
-The current version of GEOFlow is licensed under the [GNU Affero General Public License v3.0](../../LICENSE). Versions previously released under Apache-2.0 keep their original license; the historical text is available at [`docs/licenses/Apache-2.0.txt`](../licenses/Apache-2.0.txt).
+The current version of SparklightAIGEO is licensed under the [GNU Affero General Public License v3.0](../../LICENSE). Versions previously released under Apache-2.0 keep their original license; the historical text is available at [`docs/licenses/Apache-2.0.txt`](../licenses/Apache-2.0.txt).
 
-**Individuals and businesses can use the open-source edition of GEOFlow free of license fees, including for commercial purposes.** The scenarios below require no separate GEOFlow commercial license when you comply with AGPL-3.0. Internal company use, serving clients, and charging for services do not by themselves require purchasing a commercial license.
+**Individuals and businesses can use the open-source edition of SparklightAIGEO free of license fees, including for commercial purposes.** The scenarios below require no separate SparklightAIGEO commercial license when you comply with AGPL-3.0. Internal company use, serving clients, and charging for services do not by themselves require purchasing a commercial license.
 
 | Use case | Licensing terms |
 |----------|-----------------|
@@ -229,25 +229,25 @@ The current version of GEOFlow is licensed under the [GNU Affero General Public 
 | Operating your own corporate website, brand site, GEO subchannel, or industry reference site | Free to use, including for commercial operations |
 | Agencies, studios, or consultants producing content or managing content operations for clients | Free to use; you may charge for content production, consulting, and operational services |
 | Providing deployment, training, maintenance, or custom development to clients | Free to use and charge for services; delivering software copies requires compliance with applicable AGPL distribution and source-code obligations |
-| Providing hosting or online services (SaaS) based on GEOFlow | Free to use and charge for services; modified versions served over a network must offer interacting users a way to obtain the complete Corresponding Source at no charge |
+| Providing hosting or online services (SaaS) based on SparklightAIGEO | Free to use and charge for services; modified versions served over a network must offer interacting users a way to obtain the complete Corresponding Source at no charge |
 | Custom development, redistribution, and AGPL-compliant rebranding or OEM delivery | Free to use; retain required notices and comply with applicable same-license and source-code obligations. Trademark rights require separate consideration. |
 | Needing an exception to AGPL source-code or other obligations, such as white-label, OEM, or proprietary integrations that require code to remain closed when those obligations apply | Request a separate commercial license from the copyright holder and use the software under the signed agreement |
 
-Before using GEOFlow:
+Before using SparklightAIGEO:
 
-- **Internal company use remains subject to applicable terms.** If employees interact with a modified GEOFlow over a network, AGPL section 13 requires prominently offering them a way to obtain the complete Corresponding Source at no charge. The same requirement applies to modified network services offered to external users. Who must be offered source depends on how the software is used and distributed; the license does not require publishing it in a public GitHub repository, and recipients retain their redistribution rights under the license.
-- **Business data and software source code are assessed separately.** Independent knowledge-base materials, client data, and generated articles generally do not need to be disclosed under AGPL merely because GEOFlow was used. Outputs containing covered program code or other covered works must be assessed based on their content.
+- **Internal company use remains subject to applicable terms.** If employees interact with a modified SparklightAIGEO over a network, AGPL section 13 requires prominently offering them a way to obtain the complete Corresponding Source at no charge. The same requirement applies to modified network services offered to external users. Who must be offered source depends on how the software is used and distributed; the license does not require publishing it in a public GitHub repository, and recipients retain their redistribution rights under the license.
+- **Business data and software source code are assessed separately.** Independent knowledge-base materials, client data, and generated articles generally do not need to be disclosed under AGPL merely because SparklightAIGEO was used. Outputs containing covered program code or other covered works must be assessed based on their content.
 - **Free refers to software license fees.** Users bear the costs of servers, domains, model API calls, third-party services, and separately purchased technical support.
 
 These examples explain the existing license and add no exceptions. [LICENSE](../../LICENSE) defines the applicable rights and obligations; see [AGPL section 13](https://www.gnu.org/licenses/agpl-3.0.html#section13) and [GNU's explanation of program output](https://www.gnu.org/licenses/gpl-faq.en.html#WhatCaseIsOutputGPL). Seek legal review for complex proprietary integrations or delivery arrangements involving multiple entities.
 
-Start a commercial licensing inquiry through a [GitHub Issue](https://github.com/yaojingang/GEOFlow/issues/new). Issues are public, so do not include contracts, pricing, customer records, or other confidential information. The discussion can move to a private channel after the initial contact. The license text and any signed agreement define the applicable obligations.
+Start a commercial licensing inquiry through a [GitHub Issue](https://github.com/SparklightAI/SparklightAIGEO/issues/new). Issues are public, so do not include contracts, pricing, customer records, or other confidential information. The discussion can move to a private channel after the initial contact. The license text and any signed agreement define the applicable obligations.
 
-External contributors keep copyright in their contributions and must accept the [GEOFlow Contributor License Agreement v1.0](../../CLA.md) before merge. The CLA allows the project to maintain the AGPL edition and offer separate commercial licenses.
+External contributors keep copyright in their contributions and must accept the [SparklightAIGEO Contributor License Agreement v1.0](../../CLA.md) before merge. The CLA allows the project to maintain the AGPL edition and offer separate commercial licenses.
 
 ### Anonymous telemetry
 
-Anonymous telemetry is disabled by default. When a deployer enables it and configures an HTTPS collection endpoint, an authenticated admin page sends at most one activity event per day. The payload is limited to a random instance ID, an irreversible administrator digest, the GEOFlow version, and the event type.
+Anonymous telemetry is disabled by default. When a deployer enables it and configures an HTTPS collection endpoint, an authenticated admin page sends at most one activity event per day. The payload is limited to a random instance ID, an irreversible administrator digest, the SparklightAIGEO version, and the event type.
 
 ```dotenv
 GEOFLOW_TELEMETRY_ENABLED=false
@@ -269,4 +269,4 @@ The payload excludes domains, page paths, administrator accounts, email addresse
 
 ## Star history
 
-[![Star History Chart](https://star-history.dera.page/svg?repos=yaojingang/GEOFlow&type=Date)](https://star-history.dera.page/#yaojingang/GEOFlow&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=SparklightAI/SparklightAIGEO&type=Date)](https://star-history.dera.page/#SparklightAI/SparklightAIGEO&Date)

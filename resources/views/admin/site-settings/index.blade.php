@@ -744,12 +744,12 @@
                             @foreach (['accent_color', 'background_color', 'surface_color', 'text_color'] as $styleField)
                                 <div>
                                     <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.style_'.$styleField) }}</label>
-                                    <input type="text" name="homepage_style[{{ $styleField }}]" value="{{ $homepageFormStyle[$styleField] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#2563eb">
+                                    <input type="text" name="homepage_style[{{ $styleField }}]" value="{{ $homepageFormStyle[$styleField] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#2d326b">
                                 </div>
                             @endforeach
                             <div>
                                 <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.style_muted_color') }}</label>
-                                <input type="text" name="homepage_style[muted_color]" value="{{ $homepageFormStyle['muted_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#6b7280">
+                                <input type="text" name="homepage_style[muted_color]" value="{{ $homepageFormStyle['muted_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#6e7181">
                             </div>
                             <div>
                                 <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.container_width') }}</label>
@@ -842,7 +842,7 @@
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_accent_color') }}</label>
-                                            <input type="text" name="homepage_modules[{{ $index }}][accent_color]" value="{{ $module['accent_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#2563eb">
+                                            <input type="text" name="homepage_modules[{{ $index }}][accent_color]" value="{{ $module['accent_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#2d326b">
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_surface_color') }}</label>
@@ -850,11 +850,11 @@
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_text_color') }}</label>
-                                            <input type="text" name="homepage_modules[{{ $index }}][text_color]" value="{{ $module['text_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#111827">
+                                            <input type="text" name="homepage_modules[{{ $index }}][text_color]" value="{{ $module['text_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#1e2238">
                                         </div>
                                         <div>
                                             <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_muted_color') }}</label>
-                                            <input type="text" name="homepage_modules[{{ $index }}][muted_color]" value="{{ $module['muted_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#6b7280">
+                                            <input type="text" name="homepage_modules[{{ $index }}][muted_color]" value="{{ $module['muted_color'] ?? '' }}" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#6e7181">
                                         </div>
                                     </div>
                                 </details>
@@ -1248,8 +1248,8 @@
                                                     <div>
                                                         <label class="mb-2 block text-sm font-medium text-gray-700">{{ __('admin.site_settings.ads.text_field_color') }}</label>
                                                         <div class="flex overflow-hidden rounded-md border border-gray-300 bg-white shadow-sm focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
-                                                            <input type="color" value="{{ $link['text_color'] ?? '#2563eb' }}" class="h-10 w-12 border-0 bg-white p-1" aria-label="{{ __('admin.site_settings.ads.text_field_color') }}">
-                                                            <input type="text" name="text_ad_modules[{{ $index }}][links][{{ $linkIndex }}][text_color]" value="{{ $link['text_color'] ?? '#2563eb' }}" class="min-w-0 flex-1 border-0 px-3 py-2 focus:ring-0" placeholder="#2563eb">
+                                                            <input type="color" value="{{ $link['text_color'] ?? '#2d326b' }}" class="h-10 w-12 border-0 bg-white p-1" aria-label="{{ __('admin.site_settings.ads.text_field_color') }}">
+                                                            <input type="text" name="text_ad_modules[{{ $index }}][links][{{ $linkIndex }}][text_color]" value="{{ $link['text_color'] ?? '#2d326b' }}" class="min-w-0 flex-1 border-0 px-3 py-2 focus:ring-0" placeholder="#2d326b">
                                                         </div>
                                                     </div>
                                                     <div class="lg:col-span-2">
@@ -1431,7 +1431,7 @@
                     </div>
                     <div>
                         <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_accent_color') }}</label>
-                        <input type="text" name="homepage_modules[__INDEX__][accent_color]" value="" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#2563eb">
+                        <input type="text" name="homepage_modules[__INDEX__][accent_color]" value="" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#2d326b">
                     </div>
                     <div>
                         <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_surface_color') }}</label>
@@ -1439,11 +1439,11 @@
                     </div>
                     <div>
                         <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_text_color') }}</label>
-                        <input type="text" name="homepage_modules[__INDEX__][text_color]" value="" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#111827">
+                        <input type="text" name="homepage_modules[__INDEX__][text_color]" value="" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#1e2238">
                     </div>
                     <div>
                         <label class="mb-2 block text-xs font-medium text-gray-600">{{ __('admin.site_settings.homepage.field_muted_color') }}</label>
-                        <input type="text" name="homepage_modules[__INDEX__][muted_color]" value="" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#6b7280">
+                        <input type="text" name="homepage_modules[__INDEX__][muted_color]" value="" class="w-full rounded-md border border-gray-300 px-3 py-2 text-sm shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="#6e7181">
                     </div>
                 </div>
             </details>
@@ -1698,8 +1698,8 @@
                 <div>
                     <label class="mb-2 block text-sm font-medium text-gray-700">{{ __('admin.site_settings.ads.text_field_color') }}</label>
                     <div class="flex overflow-hidden rounded-md border border-gray-300 bg-white shadow-sm focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500">
-                        <input type="color" value="#2563eb" class="h-10 w-12 border-0 bg-white p-1" aria-label="{{ __('admin.site_settings.ads.text_field_color') }}">
-                        <input type="text" name="text_ad_modules[__INDEX__][links][__LINK_INDEX__][text_color]" value="#2563eb" class="min-w-0 flex-1 border-0 px-3 py-2 focus:ring-0" placeholder="#2563eb">
+                        <input type="color" value="#2d326b" class="h-10 w-12 border-0 bg-white p-1" aria-label="{{ __('admin.site_settings.ads.text_field_color') }}">
+                        <input type="text" name="text_ad_modules[__INDEX__][links][__LINK_INDEX__][text_color]" value="#2d326b" class="min-w-0 flex-1 border-0 px-3 py-2 focus:ring-0" placeholder="#2d326b">
                     </div>
                 </div>
                 <div class="lg:col-span-2">

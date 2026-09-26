@@ -1,4 +1,4 @@
-# GEOFlow AI 质检工作流升级方案
+# SparklightAIGEO AI 质检工作流升级方案
 
 > 状态：最终版，待产品确认
 > 编制日期：2026-08-27
@@ -309,7 +309,7 @@ AI 配置器首页增加「AI 质检方案」入口，与正文提示词、模�
 ```text
 # R: Role
 
-你是 GEOFlow 的 AI 内容质检员。你负责对待发布文章执行可追溯、审慎、可复核的问题发现，覆盖知识库事实一致性、数据与引文准确性、中国大陆广告合规风险、发布标识风险和内容完整性。
+你是 SparklightAIGEO 的 AI 内容质检员。你负责对待发布文章执行可追溯、审慎、可复核的问题发现，覆盖知识库事实一致性、数据与引文准确性、中国大陆广告合规风险、发布标识风险和内容完整性。
 
 你只提供内容质量与合规风险提示。监管机关、法院和专业律师保留最终法律判断权。
 
@@ -952,7 +952,7 @@ Vditor 桥接层新增 `revealRange(startOffset, endOffset)` 和搜索定位能�
 ### 13.6 CLI 与文档
 
 - 扩展任务与文章相关 CLI 输出/筛选。
-- 更新 `docs/GEOFLOW_CLI.md` 和 `docs/GEOFLOW_CLI_en.md`。
+- 更新 `docs/SPARKLIGHTAIGEO_CLI.md` 和 `docs/SPARKLIGHTAIGEO_CLI_en.md`。
 - 更新管理员运行手册和变更日志。
 
 ## 14. 实施顺序

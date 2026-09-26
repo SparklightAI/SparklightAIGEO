@@ -14,7 +14,7 @@ return [
     'export_boundary' => '包含模板自身的頁面、素材和私有備註。文章、分類、帳號、潛在客戶和網站設定保留在原網站。',
     'download' => '下載模板 ZIP',
     'expires' => '下載連結有效至 :time，僅目前管理員可用。',
-    'upload_intro' => '上傳 GEOFlow 匯出的標準模板 ZIP，先檢查完整性和相容性。',
+    'upload_intro' => '上傳 SparklightAIGEO 匯出的標準模板 ZIP，先檢查完整性和相容性。',
     'upload_boundary' => '檢查過程只讀取檔案。安裝後可預覽六類頁面，並在網站設定中單獨啟用。',
     'choose_file' => '選擇模板 ZIP',
     'upload_limit' => '目前上傳上限 :size MiB。預設最多 500 個檔案，單一檔案 5 MiB，解壓縮總量 25 MiB。',

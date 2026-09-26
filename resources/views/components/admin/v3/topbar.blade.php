@@ -51,7 +51,7 @@
                     <strong>{{ __('admin.header.notifications.title') }}</strong>
                     <p>{{ $hasUpdate ? __('admin.header.notifications.update_available', ['version' => (string) ($updateState['latest_version'] ?? '')]) : __('admin.header.notifications.no_update_desc') }}</p>
                     <div class="gf-popover__actions">
-                        <a class="gf-button gf-button--small" href="{{ $updateLinks['github'] ?? 'https://github.com/yaojingang/GEOFlow' }}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a class="gf-button gf-button--small" href="{{ $updateLinks['github'] ?? 'https://github.com/SparklightAI/SparklightAIGEO' }}" target="_blank" rel="noopener noreferrer">GitHub</a>
                     </div>
                 </div>
             @endif

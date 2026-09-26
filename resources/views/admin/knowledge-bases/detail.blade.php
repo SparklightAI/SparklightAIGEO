@@ -34,8 +34,8 @@
         }
 
         .knowledge-markdown-editor .vditor-toolbar {
-            background: #f9fafb;
-            border-bottom-color: #e5e7eb;
+            background: #fbf8f4;
+            border-bottom-color: #ece9e4;
             padding: 8px 10px;
             position: sticky;
             top: 0;
@@ -52,13 +52,13 @@
         }
 
         .knowledge-markdown-editor .vditor-reset {
-            color: #111827;
+            color: #1e2238;
         }
 
         .knowledge-markdown-editor .vditor-reset h1,
         .knowledge-markdown-editor .vditor-reset h2,
         .knowledge-markdown-editor .vditor-reset h3 {
-            color: #111827;
+            color: #1e2238;
             letter-spacing: 0;
         }
 
@@ -69,20 +69,20 @@
         .knowledge-markdown-editor .vditor-outline {
             width: 210px;
             flex: 0 0 210px;
-            border-right-color: #e5e7eb;
-            background: #f8fafc;
+            border-right-color: #ece9e4;
+            background: #f7f4ef;
             scrollbar-width: thin;
-            scrollbar-color: #cbd5e1 transparent;
+            scrollbar-color: #dcd8d1 transparent;
         }
 
         .knowledge-markdown-editor .vditor-outline__title {
             position: sticky;
             top: 0;
             z-index: 1;
-            border-bottom: 1px solid #e5e7eb;
-            background: #f8fafc;
+            border-bottom: 1px solid #ece9e4;
+            background: #f7f4ef;
             padding: 12px 14px 10px;
-            color: #64748b;
+            color: #6e7181;
             font-size: 12px;
             font-weight: 700;
             letter-spacing: 0.04em;
@@ -95,7 +95,7 @@
         .knowledge-markdown-editor .vditor-outline__content:empty::before {
             display: block;
             padding: 18px 10px;
-            color: #94a3b8;
+            color: #9a9ca8;
             content: attr(data-empty-label);
             font-size: 12px;
             line-height: 1.6;
@@ -113,15 +113,15 @@
             min-width: 0;
             border-radius: 6px;
             padding: 6px 8px;
-            color: #475569;
+            color: #565a6b;
             font-size: 13px;
             line-height: 1.45;
             transition: background-color 120ms ease, color 120ms ease, transform 80ms ease;
         }
 
         .knowledge-markdown-editor .vditor-outline li > span:hover {
-            background: #f1f5f9;
-            color: #0f172a;
+            background: #f1ede7;
+            color: #1e2238;
         }
 
         .knowledge-markdown-editor .vditor-outline li > span:active {
@@ -134,7 +134,7 @@
         }
 
         .knowledge-markdown-editor .vditor-outline li > span[data-heading-level="1"] {
-            color: #0f172a;
+            color: #1e2238;
             font-weight: 700;
         }
 

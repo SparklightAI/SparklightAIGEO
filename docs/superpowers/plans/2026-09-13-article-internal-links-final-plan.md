@@ -1,4 +1,4 @@
-**GEOFlow 文章内链管理最终方案（待确认）**
+**SparklightAIGEO 文章内链管理最终方案（待确认）**
 
 日期：2026-09-13。适用范围：主站后台「网站设置」及文章详情页。本文件替代上一轮聊天中的方案，当前完成的是设计复审和文档编写，业务功能尚未实施。
 
@@ -89,7 +89,7 @@
 
 缓存的正常有效期由管理员选择，默认生成后 1 小时，命中不会延长这个时间。到期后的访问只申请后台重排；即使重算后仍是同一组文章，也视为正常结果。当前文章关键词或分类修改后，通过来源特征变化识别过时结果，实时移除旧名单中已不相关的条目，并申请刷新；完整排序在后台完成。其他文章的新建或修改，在既有页面到期、有访问且刷新完成后参与重新评估。
 
-此方向借鉴 Ghost 的标签关联和主题卡片复用，以及 Hugo 的索引匹配与稳定排序。实现使用 GEOFlow 现有数据和模板，不接入它们的运行服务。[Ghost 官方示例](https://ghost.org/tutorials/read-next/)、[Hugo 相关内容实现](https://github.com/gohugoio/hugo/blob/master/related/inverted_index.go)
+此方向借鉴 Ghost 的标签关联和主题卡片复用，以及 Hugo 的索引匹配与稳定排序。实现使用 SparklightAIGEO 现有数据和模板，不接入它们的运行服务。[Ghost 官方示例](https://ghost.org/tutorials/read-next/)、[Hugo 相关内容实现](https://github.com/gohugoio/hugo/blob/master/related/inverted_index.go)
 
 **随机推荐保存固定批次，定期换批，并处理小样本重复。**
 

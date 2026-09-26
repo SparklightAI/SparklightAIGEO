@@ -1,4 +1,4 @@
-# GEOFlow Changelog
+# SparklightAIGEO Changelog
 
 This document tracks user-facing updates in the public repository. For future GitHub pushes, update this file together with the Chinese version in `CHANGELOG.md`.
 
@@ -30,7 +30,7 @@ This document tracks user-facing updates in the public repository. For future Gi
 - Site settings now provide six permalink presets and constrained custom patterns built from `{slug}`, `{id}`, `{category}`, `{year}`, `{month}`, and `{day}`.
 - Activation uses a check-and-preview confirmation flow with a downloadable migration map. Historical patterns, old slugs, old categories, mismatched dates, and `/article/{slug}` compatibility URLs redirect once to the current canonical URL.
 - Canonical metadata, Open Graph, JSON-LD, internal article links, sitemaps, view analytics, and first-party hosted-site remote URLs now share the same permalink generator.
-- First-party hosted sites can use independent policies. GEOFlow Agent target packages now advertise capability 1.3 with dynamic matching, a private static manifest, atomic activation, and Apache, Nginx, and BaoTa fallbacks.
+- First-party hosted sites can use independent policies. SparklightAIGEO Agent target packages now advertise capability 1.3 with dynamic matching, a private static manifest, atomic activation, and Apache, Nginx, and BaoTa fallbacks.
 
 ## 2026-09-11
 
@@ -43,14 +43,14 @@ This document tracks user-facing updates in the public repository. For future Gi
 ### Idempotent WordPress distribution
 
 - WordPress distribution now reuses the known remote post ID for each article and channel. Saving unchanged content skips delivery, while content or channel changes update the same remote post.
-- When a WordPress create request times out, returns a server error, or omits a valid ID, GEOFlow reconciles the result by slug across post statuses. Results that cannot be identified uniquely are marked for manual reconciliation and excluded from automatic retries.
+- When a WordPress create request times out, returns a server error, or omits a valid ID, SparklightAIGEO reconciles the result by slug across post statuses. Results that cannot be identified uniquely are marked for manual reconciliation and excluded from automatic retries.
 - Immediate admin updates and deletions use dedicated action records while retaining the publish mapping. Remote ID conflicts preserve the known identity and block further overwrites.
 
 ## 2026-09-09
 
 ### v3.1.0
 
-- GEOFlow Updater `0.4.0` adds blue/green deployment, signed plan previews, automatic migrations and backfills, full backups and recovery, with separate admin actions for application switch-back preserving live data and complete data restoration.
+- SparklightAIGEO Updater `0.4.0` adds blue/green deployment, signed plan previews, automatic migrations and backfills, full backups and recovery, with separate admin actions for application switch-back preserving live data and complete data restoration.
 - AI Workspace can collect task parameters through conversation and create task drafts, with clearer connection, model-readiness and failure states.
 - Site themes support package import, isolated preview, installation and export; installed themes survive application upgrades, while imported packages must declare compatibility with the current Core version.
 - AI visibility supports bulk keyword collection, competitor detection, competitor mention statistics and source analysis.
@@ -59,7 +59,7 @@ This document tracks user-facing updates in the public repository. For future Gi
 - Fix invalid empty-string comparisons against PostgreSQL UUID lease fields during task recovery, and include companion Updater fixes for interrupted recovery, scheduler draining, startup health and network recreation.
 - Component versions: Core `3.1.0`, Updater `0.4.0`, bundled CLI `0.2.0`, and Chrome operations assistant `0.1.0`; official releases provide the source ZIP, SHA-256, version document and signed dual-architecture updater packages.
 
-See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrolled `3.0.0` sites confirm the first maintenance upgrade through the host CLI; unenrolled older sites first upgrade to the matching signed version during maintenance, then enroll. This release uses a maintenance plan, and initial blue/green conversion requires a maintenance window.
+See the [3.1 upgrade instructions](deployment/SPARKLIGHTAIGEO_V3_1_UPGRADE_en.md). Enrolled `3.0.0` sites confirm the first maintenance upgrade through the host CLI; unenrolled older sites first upgrade to the matching signed version during maintenance, then enroll. This release uses a maintenance plan, and initial blue/green conversion requires a maintenance window.
 
 ### README version guidance
 
@@ -89,7 +89,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 
 #### License and contribution governance
 
-- New GEOFlow versions and repository revisions from this change onward use the GNU Affero General Public License v3.0 only. Versions previously released under Apache-2.0 retain their original license.
+- New SparklightAIGEO versions and repository revisions from this change onward use the GNU Affero General Public License v3.0 only. Versions previously released under Apache-2.0 retain their original license.
 - Separate commercial terms are available from the copyright holder for proprietary modifications, white-label or OEM distribution, proprietary product integration, and other uses that cannot comply with AGPL-3.0.
 - Added a Contributor License Agreement, contribution guide, and pull request declaration. Contributors retain copyright while granting the project the sublicensing rights needed to use accepted contributions in both AGPL and commercial or proprietary versions.
 
@@ -99,7 +99,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 - Improved AI quality reliability and explainability across long-form inspection, evidence positioning, result validation, scoring, invalidation, dedicated queues, health checks, quota control, versioned prompts, and task-level optimization policy.
 - Unified confirmation dialogs for sensitive admin actions across articles, tasks, models, material libraries, and knowledge bases, with clear targets, impact summaries, input validation, pending states, and recovery guidance.
 - Refined Admin UI V3 with collapsible quality results, clearer page identity, and a shared footer on every admin page for the version, changelog, license, copyright, author X profile, GitHub repository, and help links, including short-page and mobile layouts.
-- Extended API v1 and the GEOFlow CLI with article AI optimization operations, and added Docker timeout, retry, health check, queue, and worker configuration for quality inspection and optimization workloads.
+- Extended API v1 and the SparklightAIGEO CLI with article AI optimization operations, and added Docker timeout, retry, health check, queue, and worker configuration for quality inspection and optimization workloads.
 
 #### Article, Update Center, and admin experience updates
 
@@ -110,12 +110,12 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 - Improved the System Update Center:
   - New-version notices show the version, release type, release date, summary, and official GitHub Release destination.
   - Stable update checks now read `version.json` from the latest published Release and follow only official GitHub release-asset redirects, so development versions on `main` no longer announce an update early.
-  - Release links stay within the official GEOFlow repository and are generated from validated tags, preventing remote metadata from redirecting administrators elsewhere.
+  - Release links stay within the official SparklightAIGEO repository and are generated from validated tags, preventing remote metadata from redirecting administrators elsewhere.
   - Manual knowledge sync steps now explain their purpose, current status, and copyable command. Super administrators can open the Update Center directly from the top-bar update icon.
 - Refined Admin UI V3 page identity:
   - The top bar now carries concise page titles and semantic icons, while Analytics and the operations dashboard remove repeated headings and secondary actions.
   - Analytics metrics now share consistent height, numeric alignment, and density. AI help carousel controls use tighter spacing.
-  - The welcome page now presents the GEOFlow 3.0 positioning, core capabilities, use cases, and four-step onboarding path.
+  - The welcome page now presents the SparklightAIGEO 3.0 positioning, core capabilities, use cases, and four-step onboarding path.
 
 #### Core capabilities
 
@@ -140,7 +140,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - Interrupted operations use a durable recovery_required state and a cross-process lock for reconciliation. Both executors check the other execution path before administrator or queue mutations begin.
   - Administrator passwords are excluded from audit payloads and failed-input flashing. Agent failures stay in server logs, and the application validates bounded Unix-socket response fields at the trust boundary.
 - Added the Phase A independent updater bridge:
-  - The System Update Center now shows GEOFlow Updater connection status and environment diagnostics, and can prepare and privately download a signed installer.
+  - The System Update Center now shows SparklightAIGEO Updater connection status and environment diagnostics, and can prepare and privately download a signed installer.
   - Installer preparation verifies the embedded two-of-three offline root, targets-role signature, platform, size, and SHA-256. Downloads use the shared safe outbound gateway.
   - Private installer state retains the signed expiry and revalidates file type, path, size, and digest on download. Symlinks, expired state, and modified files are rejected.
   - The website reads updater status through an instance-authenticated local Unix socket and does not mount the Docker socket.
@@ -177,7 +177,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - Manual Publication adds browser payloads, claim leases, execution evidence, outcome review states, and stricter account and target URL validation.
   - Title libraries support queued AI generation of up to 100,000 titles with progress recovery, cancellation, retries, and stable deduplication. Deleted tasks enter a 90-day audited trash, and article lists can export selected content as a Markdown ZIP.
   - The v2.3 Manual Publication identity snapshot, complete transition history, lock-scoped assignee reauthorization, full 90-day exact duplicate checks, and searchable paginated article picker remain intact for both upgraded and fresh databases.
-- Expanded API v1 and the GEOFlow CLI:
+- Expanded API v1 and the SparklightAIGEO CLI:
   - `bin/geoflow` 0.2.0 covers catalogs, tasks, runs, materials, and articles with secure configuration, login, JSON file or stdin input, deletion confirmation, and structured errors.
   - API v1 adds browser device authorization, session, and Manual Publication protocols while preserving authorization, idempotency, version negotiation, and error contracts.
 - Clarified installation, upgrade, and deployment boundaries:
@@ -187,8 +187,8 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - The public `/archive` and monthly archive URLs continue to serve content lists and theme templates, preserving links and indexing semantics published in v2.3.
   - An empty anonymous telemetry endpoint sends no browser activity request. Operators must explicitly enable telemetry and configure an HTTPS collector endpoint.
 - Component compatibility and release gates:
-  - GEOFlow is `3.0.0`, the bundled CLI is `0.2.0`, and the Chrome operations assistant is `0.1.0`.
-  - The independent updater must use a signed release authorization bound to the final GEOFlow `3.0.0` commit and app/web image digests. The release gate requires real amd64 and arm64 host rehearsals, with the exact compatible updater version recorded in the GitHub Release.
+  - SparklightAIGEO is `3.0.0`, the bundled CLI is `0.2.0`, and the Chrome operations assistant is `0.1.0`.
+  - The independent updater must use a signed release authorization bound to the final SparklightAIGEO `3.0.0` commit and app/web image digests. The release gate requires real amd64 and arm64 host rehearsals, with the exact compatible updater version recorded in the GitHub Release.
   - The published Release includes the Core ZIP, its SHA-256 file, and a standalone `version.json` asset, followed by a readback of the Latest metadata version and tag.
 
 ## 2026-08-09
@@ -293,7 +293,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 - Improved Distribution Management and target-site synchronization:
   - Tasks now include distribution strategies for local, channel-only, and local-plus-channel publishing.
   - Article lists show clearer distribution status, remote-copy links, sync state, and failure information.
-  - Distribution Management can sync target-site settings for selected active GEOFlow Agent channels.
+  - Distribution Management can sync target-site settings for selected active SparklightAIGEO Agent channels.
   - Target-site packages now follow the same SEO metadata contract as local frontend pages.
 - Improved deployment and runtime stability:
   - Added install-state tracking and default-data seed guards so existing deployments are not polluted by repeated demo data after restarts, migrations, or upgrades.
@@ -350,7 +350,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 
 ### v2.0.2
 
-- Upgraded the admin dashboard into a GEOFlow automation workflow panel:
+- Upgraded the admin dashboard into a SparklightAIGEO automation workflow panel:
   - Shows how APIs, material libraries, tasks, articles, distribution, Analytics, and site settings connect in the automated production flow.
   - Keeps the three-step setup guide and companion Skill shortcuts while removing duplicated dashboard metric cards.
 - Improved Analytics data accuracy:
@@ -394,7 +394,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 - Added WordPress REST API distribution channel support:
   - Supports WordPress Application Password authentication, with encrypted storage and no plaintext reveal.
   - Supports post publish, update, delete, media upload, category/tag sync, and basic site settings sync.
-  - Shows different configuration fields and onboarding guidance for GEOFlow Agent and WordPress REST channels.
+  - Shows different configuration fields and onboarding guidance for SparklightAIGEO Agent and WordPress REST channels.
   - Reuses the unified distribution queue, remote metadata, health checks, remote edit/delete actions, and distribution logs for WordPress channels.
 
 ### Documentation
@@ -412,7 +412,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - The admin now includes distribution channel listing, creation, editing, detail pages, queue view, logs, connection tests, pause/enable actions, secret reset, and remote article management.
   - Channel secrets are shown once after creation, and super admins can temporarily reveal them again by verifying the current login password.
   - Tasks and articles can be bound to distribution channels. After local publishing, articles can automatically enter the distribution queue, with distribution status visible on task and article lists.
-  - The distribution queue supports remote-copy editing and deletion. Remote edits also update the local GEOFlow article, and remote deletion refreshes the target homepage and map files.
+  - The distribution queue supports remote-copy editing and deletion. Remote edits also update the local SparklightAIGEO article, and remote deletion refreshes the target homepage and map files.
 - Added target-site packages and static-site delivery:
   - Channel detail pages can download target-site packages preconfigured with the current channel secret, site settings, and deployment path.
   - Packages include a PHP Agent, homepage, article detail pages, static assets, sitemap, TXT map, Apache `.htaccess`, and Nginx rewrite-rule examples.
@@ -432,7 +432,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - Kept the three-step setup guide and grouped common entries into Single-Site Operations, Multi-Site Distribution, and companion Skill resources.
   - Added prompt configuration and user management entries under single-site operations, plus target packages, distribution queue/logs, and related skills under multi-site distribution.
 - Improved the first-deployment guide:
-  - `GEOFlow 2.0 First Deployment Guide` now uses a compact white Kami-style document layout with smaller title and body typography.
+  - `SparklightAIGEO 2.0 First Deployment Guide` now uses a compact white Kami-style document layout with smaller title and body typography.
   - Copy now covers dashboard navigation, Analytics, single-site operations, multi-site distribution, and backup checks before production.
 - Completed Portuguese admin localization:
   - Incorporated and completed the `pt_BR` admin translations from PR #27, covering navigation, notifications, authors, frontend copy, materials, AI configuration, Analytics, Distribution Management, and all current admin language keys.
@@ -501,7 +501,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 - Added a NetEase News-inspired frontend theme:
   - Added the `netease-news-20260429` frontend theme
   - Homepage, category, and article pages now support a cleaner two-column news-style reading layout
-  - Preserves GEOFlow article, category, author, SEO, and Schema data contracts
+  - Preserves SparklightAIGEO article, category, author, SEO, and Schema data contracts
 - Added a TDWH English theme fork:
   - Added the `tdwh-english-20260501` English theme sample
   - Provides a clearer internationalized homepage, listing page, and article page structure for English content sites
@@ -511,12 +511,12 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
 ### v1.2.x
 
 - Fixed the author fallback logic during task-based article generation:
-  - If a task has no author configured, GEOFlow now uses an existing author automatically
-  - If the configured author no longer exists, GEOFlow falls back to an available author
-  - If no author exists in the system, GEOFlow creates a default `GEOFlow` author
+  - If a task has no author configured, SparklightAIGEO now uses an existing author automatically
+  - If the configured author no longer exists, SparklightAIGEO falls back to an available author
+  - If no author exists in the system, SparklightAIGEO creates a default `SparklightAIGEO` author
   - This prevents PostgreSQL `NOT NULL` failures caused by writing `null` into `articles.author_id`
 - Improved AI parsing compatibility for `URL Smart Import`:
-  - When one AI model fails, GEOFlow continues with the next available model
+  - When one AI model fails, SparklightAIGEO continues with the next available model
   - Keyword and title stages can now parse plain-text AI lists, reducing failures caused by non-standard JSON responses
   - Error messages keep the model name and concrete failure reason for easier API key, response format, and provider debugging
 - Upgraded the admin dashboard:
@@ -537,7 +537,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - The frontend shell follows the admin language selection
 - Added `Smart Model Failover` for tasks:
   - Tasks can now use `Fixed Model` or `Smart Failover`
-  - When the primary model fails, GEOFlow automatically tries the next available chat model by priority
+  - When the primary model fails, SparklightAIGEO automatically tries the next available chat model by priority
 - Improved provider endpoint handling:
   - Supports versioned chat and embedding endpoints for OpenAI, DeepSeek, MiniMax, Zhipu GLM, and Volcengine Ark
   - Model settings now accept either a base URL or a full endpoint
@@ -557,7 +557,7 @@ See the [3.1 upgrade instructions](deployment/GEOFLOW_V3_1_UPGRADE_en.md). Enrol
   - footer now includes a `Project Intro` entry that reopens the panel
   - implementation notes are documented in `project/ADMIN_WELCOME_en.md`
 - Added the companion `geoflow-template` skill entry:
-  - maps reference URLs into GEOFlow-compatible theme packages
+  - maps reference URLs into SparklightAIGEO-compatible theme packages
   - outputs `tokens.json`, `mapping.json`, and preview-first theme plans
 - Upgraded default GEO prompt templates:
   - Long-form templates now cover article generation, ranking articles, keywords, and descriptions

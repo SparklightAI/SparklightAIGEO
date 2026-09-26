@@ -40,8 +40,8 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
         Storage::fake('local');
         $archive = 'verified updater archive';
         $digest = hash('sha256', $archive);
-        $url = 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz';
-        $manifestUrl = 'https://github.com/yaojingang/geoflow-updater/releases/latest/download/bootstrap-manifest.json';
+        $url = 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz';
+        $manifestUrl = 'https://sparklight-ai.com/updater/releases/latest/download/bootstrap-manifest.json';
         config(['geoflow.updater_bootstrap_manifest_url' => $manifestUrl]);
 
         Http::preventStrayRequests();
@@ -77,7 +77,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
     public function test_it_maps_safe_outbound_failures_to_stable_preparation_reasons(): void
     {
         Storage::fake('local');
-        $manifestUrl = 'https://github.com/yaojingang/geoflow-updater/releases/latest/download/bootstrap-manifest.json';
+        $manifestUrl = 'https://sparklight-ai.com/updater/releases/latest/download/bootstrap-manifest.json';
         config(['geoflow.updater_bootstrap_manifest_url' => $manifestUrl]);
         $this->mock(TufBootstrapVerifier::class, function (MockInterface $mock): void {
             $mock->shouldNotReceive('verify');
@@ -123,7 +123,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
     public function test_it_removes_a_download_when_the_archive_digest_is_wrong(): void
     {
         Storage::fake('local');
-        $url = 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz';
+        $url = 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz';
         Http::fake([
             '*' => Http::response('tampered archive'),
         ]);
@@ -180,7 +180,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
                 'expires' => now()->addDay()->utc()->format('Y-m-d\TH:i:s\Z'),
                 'assets' => [
                     'linux-amd64' => [
-                        'url' => 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
+                        'url' => 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
                         'sha256' => str_repeat('0', 64),
                         'size' => 7,
                     ],
@@ -229,7 +229,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
                 'expires' => now()->addDay()->utc()->format('Y-m-d\TH:i:s\Z'),
                 'assets' => [
                     'linux-amd64' => [
-                        'url' => 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
+                        'url' => 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
                         'sha256' => hash('sha256', 'verified archive'),
                         'size' => strlen('verified archive'),
                     ],
@@ -249,7 +249,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
     public function test_it_rejects_a_manifest_redirect_outside_the_official_github_release_service(): void
     {
         Storage::fake('local');
-        $manifestUrl = 'https://github.com/yaojingang/geoflow-updater/releases/latest/download/bootstrap-manifest.json';
+        $manifestUrl = 'https://sparklight-ai.com/updater/releases/latest/download/bootstrap-manifest.json';
         Http::fake([
             $manifestUrl => Http::response('', 302, ['Location' => 'https://example.test/bootstrap-manifest.json']),
         ]);
@@ -292,7 +292,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
                 'expires' => now()->addDay()->utc()->format('Y-m-d\TH:i:s\Z'),
                 'assets' => [
                     'linux-amd64' => [
-                        'url' => 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
+                        'url' => 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
                         'sha256' => hash('sha256', 'official archive'),
                         'size' => strlen('official archive'),
                     ],
@@ -312,8 +312,8 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
     public function test_prepare_rejects_a_signed_release_below_the_highest_accepted_sequence(): void
     {
         Storage::fake('local');
-        $manifestUrl = 'https://github.com/yaojingang/geoflow-updater/releases/latest/download/bootstrap-manifest.json';
-        $url = 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.2.0/geoflow-updater_0.2.0_linux_amd64.tar.gz';
+        $manifestUrl = 'https://sparklight-ai.com/updater/releases/latest/download/bootstrap-manifest.json';
+        $url = 'https://sparklight-ai.com/updater/releases/download/v0.2.0/geoflow-updater_0.2.0_linux_amd64.tar.gz';
         $archive = 'sequence seventeen archive';
         Http::fake([
             $manifestUrl => Http::response('{"signed":{},"signatures":[]}'),
@@ -337,7 +337,7 @@ class SystemUpdaterBootstrapServiceTest extends TestCase
                     'expires' => now()->addDay()->utc()->format('Y-m-d\TH:i:s\Z'),
                     'assets' => [
                         'linux-amd64' => [
-                            'url' => 'https://github.com/yaojingang/geoflow-updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
+                            'url' => 'https://sparklight-ai.com/updater/releases/download/v0.1.0/geoflow-updater_0.1.0_linux_amd64.tar.gz',
                             'sha256' => str_repeat('a', 64),
                             'size' => 1,
                         ],

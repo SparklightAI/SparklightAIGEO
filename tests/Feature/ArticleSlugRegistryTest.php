@@ -64,7 +64,7 @@ class ArticleSlugRegistryTest extends TestCase
     private function article(string $slug): Article
     {
         $category = Category::query()->firstOrCreate(['slug' => 'ai'], ['name' => 'AI']);
-        $author = Author::query()->firstOrCreate(['email' => 'slug@example.test'], ['name' => 'GEOFlow']);
+        $author = Author::query()->firstOrCreate(['email' => 'slug@example.test'], ['name' => 'SparklightAIGEO']);
 
         return Article::query()->create([
             'title' => $slug,

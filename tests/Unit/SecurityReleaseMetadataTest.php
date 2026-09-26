@@ -18,19 +18,19 @@ class SecurityReleaseMetadataTest extends TestCase
         $this->assertSame('minor', $manifest['release_type']);
         $this->assertTrue(Semver::satisfies($manifest['version'], $manifest['version']));
         $this->assertSame(
-            'https://github.com/yaojingang/GEOFlow/releases/download/v3.2.0-beta.1/GEOFlow-v3.2.0-beta.1.zip',
+            'https://github.com/SparklightAI/SparklightAIGEO/releases/download/v3.2.0-beta.1/SparklightAIGEO-v3.2.0-beta.1.zip',
             $manifest['archive_url'],
         );
         $this->assertSame(
-            'https://github.com/yaojingang/GEOFlow/releases/tag/v3.2.0-beta.1',
+            'https://github.com/SparklightAI/SparklightAIGEO/releases/tag/v3.2.0-beta.1',
             $payload['release_url'],
         );
         $this->assertSame(
-            'https://github.com/yaojingang/GEOFlow/blob/v3.2.0-beta.1/docs/CHANGELOG.md',
+            'https://github.com/SparklightAI/SparklightAIGEO/blob/v3.2.0-beta.1/docs/CHANGELOG.md',
             $payload['changelog_url_zh'],
         );
         $this->assertSame(
-            'https://github.com/yaojingang/GEOFlow/blob/v3.2.0-beta.1/docs/CHANGELOG_en.md',
+            'https://github.com/SparklightAI/SparklightAIGEO/blob/v3.2.0-beta.1/docs/CHANGELOG_en.md',
             $payload['changelog_url_en'],
         );
 
@@ -84,12 +84,12 @@ class SecurityReleaseMetadataTest extends TestCase
 
     public function test_v300_release_runbook_requires_the_stable_metadata_asset_and_signed_updater_gate(): void
     {
-        $runbook = (string) file_get_contents(base_path('docs/deployment/GEOFLOW_V3_RELEASE.md'));
-        $notes = (string) file_get_contents(base_path('docs/deployment/GEOFLOW_V3_RELEASE_NOTES.md'));
+        $runbook = (string) file_get_contents(base_path('docs/deployment/SPARKLIGHTAIGEO_V3_RELEASE.md'));
+        $notes = (string) file_get_contents(base_path('docs/deployment/SPARKLIGHTAIGEO_V3_RELEASE_NOTES.md'));
 
         foreach ([
-            'GEOFlow-v3.0.0.zip',
-            'GEOFlow-v3.0.0.zip.sha256',
+            'SparklightAIGEO-v3.0.0.zip',
+            'SparklightAIGEO-v3.0.0.zip.sha256',
             'releases/latest/download/version.json',
             'release_sequence=2',
             'linux/amd64',
@@ -109,12 +109,12 @@ class SecurityReleaseMetadataTest extends TestCase
             'git verify-tag --raw v3.0.0',
             'GEOFLOW_REMOTE_TAG_COMMIT',
             'GEOFLOW_FINAL_VERIFY_DIR',
-            'curl -fsSL https://github.com/yaojingang/GEOFlow/releases/latest/download/version.json | cmp',
+            'curl -fsSL https://github.com/SparklightAI/SparklightAIGEO/releases/latest/download/version.json | cmp',
             'gh release verify-asset v3.0.0',
         ] as $requiredText) {
             $this->assertStringContainsString($requiredText, $runbook);
         }
-        foreach (['GEOFlow Updater v0.3.0', 'AGPL-3.0-only', 'Admin UI V3'] as $requiredText) {
+        foreach (['SparklightAIGEO Updater v0.3.0', 'AGPL-3.0-only', 'Admin UI V3'] as $requiredText) {
             $this->assertStringContainsString($requiredText, $notes);
         }
         $this->assertGreaterThanOrEqual(8, substr_count($runbook, 'set -euo pipefail'));

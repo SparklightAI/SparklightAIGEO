@@ -47,7 +47,7 @@
     <article class="ent-article-card">
         <a href="{{ $siteUrls->article($article) }}" class="ent-article-card__visual" aria-hidden="true" tabindex="-1">
             <span>{{ $categoryInitial }}</span>
-            <small>GEOFlow Insight</small>
+            <small>SparklightAIGEO Insight</small>
         </a>
         <div class="ent-article-card__body">
             <div class="ent-card-meta">

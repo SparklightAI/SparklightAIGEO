@@ -1,14 +1,14 @@
-# GEOFlow 托管渠道站点分发能力升级方案
+# SparklightAIGEO 托管渠道站点分发能力升级方案
 
 > 文档状态：待确认
 > 版本：1.0
 > 日期：2026-08-21
-> 适用范围：GEOFlow Laravel 主应用、公开站点、分发管理、任务调度、队列与部署层
+> 适用范围：SparklightAIGEO Laravel 主应用、公开站点、分发管理、任务调度、队列与部署层
 > 实施约束：本方案经确认后再进入开发，本文件本身不包含功能代码变更
 
 ## 1. 最终结论
 
-GEOFlow 可以在现有分发体系上增加“托管渠道站点”类型，通过泛解析把大量二级域名指向同一套 Laravel 应用，再由请求域名解析出站点上下文，完成站点级主题、设置、内容、SEO、表单和统计隔离。
+SparklightAIGEO 可以在现有分发体系上增加“托管渠道站点”类型，通过泛解析把大量二级域名指向同一套 Laravel 应用，再由请求域名解析出站点上下文，完成站点级主题、设置、内容、SEO、表单和统计隔离。
 
 推荐采用以下产品与技术形态：
 
@@ -23,7 +23,7 @@ GEOFlow 可以在现有分发体系上增加“托管渠道站点”类型，通
 
 ## 2. 方案 Review 结论
 
-上一版方向成立，核心模型与 GEOFlow 当前代码结构能够衔接。本轮 Review 发现并补齐了以下关键缺口。
+上一版方向成立，核心模型与 SparklightAIGEO 当前代码结构能够衔接。本轮 Review 发现并补齐了以下关键缺口。
 
 | 缺口 | 风险 | 本版处理 |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ GEOFlow 可以在现有分发体系上增加“托管渠道站点”类型，通
 ### 5.1 本期范围
 
 - 一个或多个受控根域名下的单层二级域名。
-- 单套 GEOFlow 部署、数据库、媒体存储、后台和队列。
+- 单套 SparklightAIGEO 部署、数据库、媒体存储、后台和队列。
 - 托管站点单个创建、编辑、预检、上线、暂停、维护、索引和归档。
 - 托管站点任务绑定、文章一对一归属和自动容量均衡。
 - CSV 批量预览、提交、进度、失败明细和结果导出。
@@ -127,7 +127,7 @@ GEOFlow 可以在现有分发体系上增加“托管渠道站点”类型，通
 
 ## 6. 参考项目与可复用思路
 
-| 参考 | 借鉴点 | GEOFlow 落地方式 |
+| 参考 | 借鉴点 | SparklightAIGEO 落地方式 |
 | --- | --- | --- |
 | [WordPress Multisite](https://developer.wordpress.org/advanced-administration/multisite/create-network/) | 虚拟站点共享一套程序，子域模式依赖泛解析 | 共享 Laravel 应用和数据底座，站点通过 Host 与数据库配置识别 |
 | [WordPress 网络准备说明](https://developer.wordpress.org/advanced-administration/multisite/prepare-network/) | 上线前先完成域名、服务器和网络形态选择 | 把 DNS、TLS、代理和主域隔离列入启用前检查 |
@@ -135,11 +135,11 @@ GEOFlow 可以在现有分发体系上增加“托管渠道站点”类型，通
 | [stancl Tenancy 域名解析](https://tenancyforlaravel.com/docs/v3/domains/) | 精确域名匹配、解析器缓存、找不到租户时终止请求 | 自研轻量解析器，使用精确 hostname 唯一索引和短期负缓存 |
 | [Laravel 子域路由](https://laravel.com/docs/12.x/routing#subdomain-routing) | 框架支持域名参数路由，域名路由应先于根域路由注册 | 公开站点采用 Host 中间件与路由白名单，中央路由单独保护 |
 | [Cloudflare 泛 DNS 说明](https://developers.cloudflare.com/dns/manage-dns-records/reference/wildcard-dns-records/) | 泛记录可把大量名称指向同一资源，精确记录优先 | DNS 负责接入，数据库记录决定站点是否存在和可访问 |
-| [Let's Encrypt 验证方式](https://letsencrypt.org/docs/challenge-types/) | DNS-01 支持通配符证书，验证凭据应缩小权限范围 | 推荐 CDN 托管证书或独立 DNS-01 自动化，GEOFlow 不保存 DNS 主账号凭据 |
+| [Let's Encrypt 验证方式](https://letsencrypt.org/docs/challenge-types/) | DNS-01 支持通配符证书，验证凭据应缩小权限范围 | 推荐 CDN 托管证书或独立 DNS-01 自动化，SparklightAIGEO 不保存 DNS 主账号凭据 |
 | [Google 搜索垃圾政策](https://developers.google.com/search/docs/essentials/spam-policies) | 大量低价值页面和门页会带来搜索风险 | 新站默认 noindex，质量门禁通过后逐站开放索引 |
 | [Google Sitemap 指南](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap) | 单文件上限 50,000 个 URL 或 50MB，URL 应使用绝对地址 | 按站生成 Sitemap 索引与分片，每片不超过 50,000 条 |
 
-本方案吸收这些项目的架构原则，不引入完整多租户依赖。当前共享内容与共享后台的边界下，轻量站点上下文更适合 GEOFlow。
+本方案吸收这些项目的架构原则，不引入完整多租户依赖。当前共享内容与共享后台的边界下，轻量站点上下文更适合 SparklightAIGEO。
 
 ## 7. 总体架构
 
@@ -503,7 +503,7 @@ GET|HEAD /sitemaps/*
 - `seo_title_template`
 - `seo_description_template`
 
-当前关于页中的 GEOFlow 固定文案需要改为站点设置驱动，并为主站保留现有默认内容。
+当前关于页中的 SparklightAIGEO 固定文案需要改为站点设置驱动，并为主站保留现有默认内容。
 
 ### 12.3 表单隔离
 
@@ -1151,13 +1151,13 @@ php artisan route:list --json
 
 ### 27.1 推荐方案：共享应用内的轻量站点上下文
 
-适用于共享部署、数据库、内容源、媒体和中央后台。它对现有 GEOFlow 分发体系改动集中，单站闭环可以较快上线，后续也能扩展到批量和容量调度。
+适用于共享部署、数据库、内容源、媒体和中央后台。它对现有 SparklightAIGEO 分发体系改动集中，单站闭环可以较快上线，后续也能扩展到批量和容量调度。
 
 ### 27.2 完整 Laravel 多租户框架
 
 可采用 stancl Tenancy 等方案，获得数据库、缓存、文件系统和队列的租户隔离。当前需求未要求独立数据域与独立后台，引入后会增加模型迁移、上下文切换、测试矩阵和运维成本。当项目出现独立客户租户需求时，应重新评估这条路线。
 
-### 27.3 每个站点部署一个 GEOFlow Agent
+### 27.3 每个站点部署一个 SparklightAIGEO Agent
 
 适用于法律边界、数据驻留、独立发布、独立扩缩容和故障域要求较高的站点。基础设施与升级成本随站点数量增长，更适合少量高价值独立站点。
 

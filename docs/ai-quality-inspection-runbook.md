@@ -1,4 +1,4 @@
-# GEOFlow AI 质检运行手册
+# SparklightAIGEO AI 质检运行手册
 
 ## 适用范围
 

@@ -1,8 +1,8 @@
-# GEOFlow v2.3 Reference Release Implementation Plan
+# SparklightAIGEO v2.3 Reference Release Implementation Plan
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Publish GEOFlow v2.3.0 with the Enterprise Signature theme, About and archive pages, 50 readable reference articles, and fresh-install-only sample data.
+**Goal:** Publish SparklightAIGEO v2.3.0 with the Enterprise Signature theme, About and archive pages, 50 readable reference articles, and fresh-install-only sample data.
 
 **Architecture:** The release ships a versioned reference-content package made of JSON metadata and Markdown bodies. `geoflow:install` imports it only after proving that the database is pristine, while upgrades retain every existing theme, site setting, category, author, and article.
 

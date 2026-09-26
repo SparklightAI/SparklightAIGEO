@@ -64,7 +64,7 @@ class WorkerExecutionServicePromptTest extends TestCase
             'GEO 诊断怎么做？',
             'GEO 诊断',
             '请写一篇基于事实证据的文章。',
-            "【知识库证据】\n【证据 K1】\n来源：GEOFlow 官方文档\n内容：GEO 诊断需要先定位问题。"
+            "【知识库证据】\n【证据 K1】\n来源：SparklightAIGEO 官方文档\n内容：GEO 诊断需要先定位问题。"
         );
 
         $this->assertStringContainsString('【证据 K1】', $prompt);

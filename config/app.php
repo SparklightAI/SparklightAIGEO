@@ -3,7 +3,7 @@
 /**
  * Laravel 应用核心配置（名称、环境、时区、Locale、密钥等）。
  *
- * GEOFlow 业务专用项见 config/geoflow.php。
+ * SparklightAIGEO 业务专用项见 config/geoflow.php。
  */
 
 return [

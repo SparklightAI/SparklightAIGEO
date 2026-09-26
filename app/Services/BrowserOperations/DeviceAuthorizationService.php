@@ -30,7 +30,7 @@ final class DeviceAuthorizationService
             'device_hash' => $deviceHash,
             'recovery_epoch' => $epoch,
             'user_code' => $userCode,
-            'client_name' => mb_substr(trim($clientName) ?: 'GEOFlow Chrome', 0, 80),
+            'client_name' => mb_substr(trim($clientName) ?: 'SparklightAIGEO Chrome', 0, 80),
             'status' => 'pending',
             'admin_id' => null,
             'interval' => self::POLL_INTERVAL,
@@ -122,7 +122,7 @@ final class DeviceAuthorizationService
 
             $adminId = (int) ($record['admin_id'] ?? 0);
             $created = $this->tokenService->createToken(
-                'GEOFlow Chrome '.mb_substr($clientVersion, 0, 32).' · '.($record['client_name'] ?? 'Browser'),
+                'SparklightAIGEO Chrome '.mb_substr($clientVersion, 0, 32).' · '.($record['client_name'] ?? 'Browser'),
                 $this->tokenService->getBrowserClientScopes(),
                 $adminId,
             );

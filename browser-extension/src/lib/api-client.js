@@ -26,10 +26,10 @@ export class GeoFlowApiClient {
         const headers = {
             Accept: 'application/json',
             'Content-Type': 'application/json',
-            'X-GEOFlow-Browser-Protocol': PROTOCOL_VERSION,
-            'X-GEOFlow-Client-Version': this.version,
+            'X-SparklightAIGEO-Browser-Protocol': PROTOCOL_VERSION,
+            'X-SparklightAIGEO-Client-Version': this.version,
         };
-        if (this.token && this.recoveryEpoch && !['GET', 'HEAD'].includes(method)) headers['X-GEOFlow-Recovery-Epoch'] = this.recoveryEpoch;
+        if (this.token && this.recoveryEpoch && !['GET', 'HEAD'].includes(method)) headers['X-SparklightAIGEO-Recovery-Epoch'] = this.recoveryEpoch;
         if (this.token) headers.Authorization = `Bearer ${this.token}`;
         if (idempotencyKey) headers['X-Idempotency-Key'] = idempotencyKey;
 
@@ -43,14 +43,14 @@ export class GeoFlowApiClient {
                 cache: 'no-store',
             });
         } catch {
-            throw new GeoFlowApiError('network_error', 'Could not reach GEOFlow.', 0);
+            throw new GeoFlowApiError('network_error', 'Could not reach SparklightAIGEO.', 0);
         }
 
         const envelope = await response.json().catch(() => null);
         if (! response.ok || ! envelope?.success) {
             throw new GeoFlowApiError(
                 envelope?.error?.code ?? 'http_error',
-                envelope?.error?.message ?? `GEOFlow returned HTTP ${response.status}.`,
+                envelope?.error?.message ?? `SparklightAIGEO returned HTTP ${response.status}.`,
                 response.status,
                 envelope?.error?.details ?? {},
             );
@@ -59,7 +59,7 @@ export class GeoFlowApiClient {
         if (path === '/api/v1/browser-operations/session') {
             const recovery = envelope.data?.recovery;
             if (recovery != null && recovery.supported !== false && (recovery.supported !== true || !/^[a-f0-9]{32}$/.test(recovery.epoch ?? ''))) {
-                throw new GeoFlowApiError('invalid_recovery_contract', 'GEOFlow returned an invalid recovery epoch.', 0);
+                throw new GeoFlowApiError('invalid_recovery_contract', 'SparklightAIGEO returned an invalid recovery epoch.', 0);
             }
             this.recoveryEpoch = recovery?.supported === true ? recovery.epoch : null;
             this.recoveryDiscovered = true;

@@ -778,7 +778,7 @@
             data-request-too-large-message="{{ __('admin.articles.export.errors.request_too_large') }}"
             aria-modal="true"
             aria-labelledby="article-export-dialog-label"
-            class="m-auto max-h-[calc(100dvh-2rem)] w-[min(30rem,calc(100vw-2rem))] overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-white p-0 text-left shadow-[0_24px_72px_rgba(15,23,42,0.28)] backdrop:bg-[rgba(15,23,42,0.48)]"
+            class="m-auto max-h-[calc(100dvh-2rem)] w-[min(30rem,calc(100vw-2rem))] overflow-y-auto overscroll-contain rounded-2xl border border-slate-200 bg-white p-0 text-left shadow-[0_24px_72px_rgba(30, 34, 56,0.28)] backdrop:bg-[rgba(30, 34, 56,0.48)]"
         >
             <h2 id="article-export-dialog-label" class="sr-only">{{ __('admin.articles.export.dialog_label') }}</h2>
             <div data-export-state="loading" role="status" aria-live="polite" aria-busy="true" class="px-6 py-7 sm:px-8 sm:py-8">

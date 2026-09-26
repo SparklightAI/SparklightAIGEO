@@ -1,7 +1,7 @@
 /**
  * 飞书宝藏库 - 主要JavaScript功能
  * 
- * @author 姚金刚
+ * @author 星火之光AI
  * @version 1.0
  * @date 2025-10-03
  */

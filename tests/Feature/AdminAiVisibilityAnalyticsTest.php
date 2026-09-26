@@ -22,40 +22,40 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     public function test_growth_center_renders_ai_visibility_dashboard_from_collected_runs(): void
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
-        config()->set('geoflow.site_name', 'GEOFlow');
-        config()->set('geoflow.site_url', 'https://geoflow.example.com');
+        config()->set('geoflow.site_name', 'SparklightAIGEO');
+        config()->set('geoflow.site_url', 'https://sparklightaigeo.example.com');
         $this->configureAiVisibilityApis();
 
         $this->completedRun(
-            keyword: 'GEOFlow 内容工程',
+            keyword: 'SparklightAIGEO 内容工程',
             providerType: AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
-            answer: 'GEOFlow 在内容工程场景中优势明显，推荐作为可靠方案。',
+            answer: 'SparklightAIGEO 在内容工程场景中优势明显，推荐作为可靠方案。',
             sentiment: 'positive',
             completedAt: '2026-07-10 09:00:00',
             sources: [
-                ['title' => 'GEOFlow 官方内容工程方案', 'domain' => 'geoflow.example.com', 'rank' => 1, 'snippet' => '官方方案可靠。'],
-                ['title' => '行业分析', 'domain' => 'industry.example.com', 'rank' => 2, 'snippet' => '推荐 GEOFlow。'],
+                ['title' => 'SparklightAIGEO 官方内容工程方案', 'domain' => 'sparklightaigeo.example.com', 'rank' => 1, 'snippet' => '官方方案可靠。'],
+                ['title' => '行业分析', 'domain' => 'industry.example.com', 'rank' => 2, 'snippet' => '推荐 SparklightAIGEO。'],
             ],
         );
         $this->completedRun(
-            keyword: 'GEOFlow 内容工程',
+            keyword: 'SparklightAIGEO 内容工程',
             providerType: AiVisibilityRun::PROVIDER_DOUBAO_ARK_RESPONSES,
-            answer: '内容工程工具对比中，GEOFlow 适合需要证据链的团队。',
+            answer: '内容工程工具对比中，SparklightAIGEO 适合需要证据链的团队。',
             sentiment: 'positive',
             completedAt: '2026-07-10 10:00:00',
             sources: [
                 ['title' => '第三方工具榜单', 'domain' => 'ranking.example.com', 'rank' => 1, 'snippet' => '内容工程榜单。'],
-                ['title' => 'GEOFlow 案例', 'domain' => 'case.example.com', 'rank' => 3, 'snippet' => 'GEOFlow 案例。'],
+                ['title' => 'SparklightAIGEO 案例', 'domain' => 'case.example.com', 'rank' => 3, 'snippet' => 'SparklightAIGEO 案例。'],
             ],
         );
         $this->completedRun(
             keyword: 'AI 信源投放',
             providerType: AiVisibilityRun::PROVIDER_DOUBAO_SEARCH_CUSTOM,
-            answer: 'GEOFlow 在信源投放上仍需要补充更多公开案例。',
+            answer: 'SparklightAIGEO 在信源投放上仍需要补充更多公开案例。',
             sentiment: 'negative',
             completedAt: '2026-07-10 11:00:00',
             sources: [
-                ['title' => '信源投放风险评论', 'domain' => 'review.example.com', 'rank' => 2, 'snippet' => 'GEOFlow 公开案例不足。'],
+                ['title' => '信源投放风险评论', 'domain' => 'review.example.com', 'rank' => 2, 'snippet' => 'SparklightAIGEO 公开案例不足。'],
             ],
         );
 
@@ -84,7 +84,7 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
             ->assertSee('tabular-nums', false)
             ->assertSee('100.0%', false)
             ->assertSee('25.0%', false)
-            ->assertSee('GEOFlow 内容工程')
+            ->assertSee('SparklightAIGEO 内容工程')
             ->assertSee('AI 信源投放')
             ->assertSee('ranking.example.com')
             ->assertSee(__('admin.growth_center.ai_visibility.action.content_gap'));
@@ -95,17 +95,17 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     public function test_growth_center_collapses_ai_visibility_module_until_search_api_is_configured(): void
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
-        config()->set('geoflow.site_name', 'GEOFlow');
-        config()->set('geoflow.site_url', 'https://geoflow.example.com');
+        config()->set('geoflow.site_name', 'SparklightAIGEO');
+        config()->set('geoflow.site_url', 'https://sparklightaigeo.example.com');
 
         $this->completedRun(
-            keyword: 'GEOFlow 内容工程',
+            keyword: 'SparklightAIGEO 内容工程',
             providerType: AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
-            answer: 'GEOFlow 在内容工程场景中优势明显。',
+            answer: 'SparklightAIGEO 在内容工程场景中优势明显。',
             sentiment: 'positive',
             completedAt: '2026-07-10 09:00:00',
             sources: [
-                ['title' => 'GEOFlow 官方内容工程方案', 'domain' => 'geoflow.example.com', 'rank' => 1, 'snippet' => '官方方案可靠。'],
+                ['title' => 'SparklightAIGEO 官方内容工程方案', 'domain' => 'sparklightaigeo.example.com', 'rank' => 1, 'snippet' => '官方方案可靠。'],
             ],
         );
 
@@ -144,7 +144,7 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     public function test_visibility_filter_is_applied_before_daily_keyword_sampling(): void
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
-        $this->completedRun('目标关键词', AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS, 'GEOFlow 可见', 'positive', '2026-07-10 09:00:00', []);
+        $this->completedRun('目标关键词', AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS, 'SparklightAIGEO 可见', 'positive', '2026-07-10 09:00:00', []);
         $this->completedRun('目标关键词', AiVisibilityRun::PROVIDER_DOUBAO_SEARCH_CUSTOM, '其它结果', 'neutral', '2026-07-10 10:00:00', []);
         $this->completedRun('其它关键词', AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS, '其它结果', 'neutral', '2026-07-10 11:00:00', []);
 
@@ -166,9 +166,9 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     {
         Carbon::setTestNow(Carbon::parse('2026-08-02 12:00:00'));
         $this->completedRun(
-            keyword: 'GEOFlow 查询性能',
+            keyword: 'SparklightAIGEO 查询性能',
             providerType: AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
-            answer: 'GEOFlow 可见。',
+            answer: 'SparklightAIGEO 可见。',
             sentiment: 'positive',
             completedAt: '2026-08-02 09:00:00',
             sources: [],
@@ -187,13 +187,13 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     {
         Carbon::setTestNow(Carbon::parse('2026-08-02 12:00:00'));
         $run = $this->completedRun(
-            keyword: 'GEOFlow 精简字段',
+            keyword: 'SparklightAIGEO 精简字段',
             providerType: AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
-            answer: 'GEOFlow 可见。',
+            answer: 'SparklightAIGEO 可见。',
             sentiment: 'positive',
             completedAt: '2026-08-02 09:00:00',
             sources: [
-                ['title' => 'GEOFlow 精简信源', 'domain' => 'geoflow.example.com', 'rank' => 1, 'snippet' => '官方来源。'],
+                ['title' => 'SparklightAIGEO 精简信源', 'domain' => 'sparklightaigeo.example.com', 'rank' => 1, 'snippet' => '官方来源。'],
             ],
         );
         $run->forceFill([
@@ -231,22 +231,22 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     public function test_ai_visibility_analytics_caps_daily_keyword_samples_at_five(): void
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
-        config()->set('geoflow.site_name', 'GEOFlow');
-        config()->set('geoflow.site_url', 'https://geoflow.example.com');
+        config()->set('geoflow.site_name', 'SparklightAIGEO');
+        config()->set('geoflow.site_url', 'https://sparklightaigeo.example.com');
 
         foreach (range(1, 6) as $index) {
             $this->completedRun(
-                keyword: 'GEOFlow 推荐',
+                keyword: 'SparklightAIGEO 推荐',
                 providerType: AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
-                answer: $index === 6 ? 'GEOFlow 是推荐方案。' : '推荐方案暂未覆盖指定品牌。',
+                answer: $index === 6 ? 'SparklightAIGEO 是推荐方案。' : '推荐方案暂未覆盖指定品牌。',
                 sentiment: 'neutral',
                 completedAt: sprintf('2026-07-10 09:%02d:00', $index),
                 sources: [
                     [
-                        'title' => $index === 6 ? 'GEOFlow 官方说明' : '通用工具说明',
-                        'domain' => $index === 6 ? 'geoflow.example.com' : 'neutral.example.com',
+                        'title' => $index === 6 ? 'SparklightAIGEO 官方说明' : '通用工具说明',
+                        'domain' => $index === 6 ? 'sparklightaigeo.example.com' : 'neutral.example.com',
                         'rank' => 1,
-                        'snippet' => $index === 6 ? 'GEOFlow 官方。' : '通用内容。',
+                        'snippet' => $index === 6 ? 'SparklightAIGEO 官方。' : '通用内容。',
                     ],
                 ],
             );
@@ -271,18 +271,18 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     public function test_ai_visibility_kpis_average_daily_keyword_metrics_not_raw_sample_volume(): void
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
-        config()->set('geoflow.site_name', 'GEOFlow');
-        config()->set('geoflow.site_url', 'https://geoflow.example.com');
+        config()->set('geoflow.site_name', 'SparklightAIGEO');
+        config()->set('geoflow.site_url', 'https://sparklightaigeo.example.com');
 
         foreach (range(1, 5) as $index) {
             $this->completedRun(
-                keyword: 'GEOFlow 内容工程',
+                keyword: 'SparklightAIGEO 内容工程',
                 providerType: AiVisibilityRun::PROVIDER_DEEPSEEK_ANALYSIS,
-                answer: 'GEOFlow 是可靠的内容工程方案。',
+                answer: 'SparklightAIGEO 是可靠的内容工程方案。',
                 sentiment: 'positive',
                 completedAt: sprintf('2026-07-10 09:%02d:00', $index),
                 sources: [
-                    ['title' => 'GEOFlow 官方方案', 'domain' => 'geoflow.example.com', 'rank' => 1, 'snippet' => 'GEOFlow 官方。'],
+                    ['title' => 'SparklightAIGEO 官方方案', 'domain' => 'sparklightaigeo.example.com', 'rank' => 1, 'snippet' => 'SparklightAIGEO 官方。'],
                 ],
             );
         }
@@ -310,8 +310,8 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
         config()->set('app.name', 'Laravel');
-        config()->set('geoflow.site_name', 'GEOFlow');
-        config()->set('geoflow.site_url', 'https://geoflow.example.com');
+        config()->set('geoflow.site_name', 'SparklightAIGEO');
+        config()->set('geoflow.site_url', 'https://sparklightaigeo.example.com');
 
         $this->completedRun(
             keyword: 'PHP 内容系统',
@@ -335,8 +335,8 @@ class AdminAiVisibilityAnalyticsTest extends TestCase
     public function test_ai_visibility_term_cloud_excludes_source_domain_fragments(): void
     {
         Carbon::setTestNow(Carbon::parse('2026-07-10 12:00:00'));
-        config()->set('geoflow.site_name', 'GEOFlow');
-        config()->set('geoflow.site_url', 'https://geoflow.example.com');
+        config()->set('geoflow.site_name', 'SparklightAIGEO');
+        config()->set('geoflow.site_url', 'https://sparklightaigeo.example.com');
 
         $this->completedRun(
             keyword: 'AI 搜索品牌可见度',

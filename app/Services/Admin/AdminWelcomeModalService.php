@@ -6,7 +6,7 @@ use App\Models\Admin;
 use App\Support\AdminWeb;
 
 /**
- * 后台「欢迎使用 GEOFlow」弹窗：负责版本态判断、自动打开一次、以及关闭落库所需的数据。
+ * 后台「欢迎使用 SparklightAIGEO」弹窗：负责版本态判断、自动打开一次、以及关闭落库所需的数据。
  */
 class AdminWelcomeModalService
 {
@@ -37,11 +37,11 @@ class AdminWelcomeModalService
                 'dismissUrl' => AdminWeb::routePath('admin.welcome.dismiss'),
                 'csrfToken' => csrf_token(),
                 'links' => [
-                    'x' => 'https://x.com/yaojingang',
-                    'github' => 'https://github.com/yaojingang/GEOFlow',
+                    'x' => 'https://sparklight-ai.com',
+                    'github' => 'https://github.com/SparklightAI/SparklightAIGEO',
                     'changelog' => [
-                        'zh-CN' => 'https://github.com/yaojingang/GEOFlow/blob/main/docs/CHANGELOG.md',
-                        'en' => 'https://github.com/yaojingang/GEOFlow/blob/main/docs/CHANGELOG_en.md',
+                        'zh-CN' => 'https://github.com/SparklightAI/SparklightAIGEO/blob/main/docs/CHANGELOG.md',
+                        'en' => 'https://github.com/SparklightAI/SparklightAIGEO/blob/main/docs/CHANGELOG_en.md',
                     ],
                 ],
             ],

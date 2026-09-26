@@ -45,9 +45,9 @@ class ManualPublicationServiceTest extends TestCase
 
         $this->assertSame('warning', $first->risk_status);
         $this->assertSame($article->title, $first->source_snapshot['title']);
-        $this->assertSame('GEOFlow 专家', $first->personaDisplayName());
-        $this->assertSame('GEOFlow 知乎账号', $first->accountDisplayName());
-        $this->assertSame('本账号代表 GEOFlow 团队。', $first->disclosure_snapshot);
+        $this->assertSame('SparklightAIGEO 专家', $first->personaDisplayName());
+        $this->assertSame('SparklightAIGEO 知乎账号', $first->accountDisplayName());
+        $this->assertSame('本账号代表 SparklightAIGEO 团队。', $first->disclosure_snapshot);
         $this->assertSame(0, $first->duplicate_warning_count);
         $this->assertSame(1, $second->duplicate_warning_count);
         $this->assertCount(1, $service->duplicatesFor($second));
@@ -67,8 +67,8 @@ class ManualPublicationServiceTest extends TestCase
         $account->update(['account_name' => '已更新账号']);
 
         $publication->refresh();
-        $this->assertSame('GEOFlow 专家', $publication->personaDisplayName());
-        $this->assertSame('GEOFlow 知乎账号', $publication->accountDisplayName());
+        $this->assertSame('SparklightAIGEO 专家', $publication->personaDisplayName());
+        $this->assertSame('SparklightAIGEO 知乎账号', $publication->accountDisplayName());
     }
 
     public function test_post_creation_rejects_unapproved_article_and_mismatched_account(): void
@@ -238,12 +238,12 @@ class ManualPublicationServiceTest extends TestCase
         $service = app(ManualPublicationService::class);
         $service->create($this->payload($persona, $account, $admin, [
             'article_id' => $firstArticle->getKey(),
-            'content' => 'GEOFlow 可以帮助团队管理可信内容和人工发布流程。',
+            'content' => 'SparklightAIGEO 可以帮助团队管理可信内容和人工发布流程。',
         ]), $admin);
 
         $similar = $service->create($this->payload($persona, $account, $admin, [
             'article_id' => $secondArticle->getKey(),
-            'content' => 'GEOFlow 可以帮助团队管理可信内容与人工发布流程。',
+            'content' => 'SparklightAIGEO 可以帮助团队管理可信内容与人工发布流程。',
         ]), $admin);
 
         $this->assertSame(1, $similar->duplicate_warning_count);
@@ -407,16 +407,16 @@ class ManualPublicationServiceTest extends TestCase
     private function identity(Admin $admin): array
     {
         $persona = ManualPublicationPersona::query()->create([
-            'name' => 'GEOFlow 专家',
+            'name' => 'SparklightAIGEO 专家',
             'tone' => '专业',
             'domain' => 'GEO',
-            'disclosure_text' => '本账号代表 GEOFlow 团队。',
+            'disclosure_text' => '本账号代表 SparklightAIGEO 团队。',
             'created_by_admin_id' => $admin->getKey(),
         ]);
         $account = ManualPublicationAccount::query()->create([
             'persona_id' => $persona->getKey(),
             'platform' => ManualPublicationAccount::PLATFORM_ZHIHU,
-            'account_name' => 'GEOFlow 知乎账号',
+            'account_name' => 'SparklightAIGEO 知乎账号',
             'profile_url' => 'https://www.zhihu.com/people/geoflow',
             'created_by_admin_id' => $admin->getKey(),
         ]);

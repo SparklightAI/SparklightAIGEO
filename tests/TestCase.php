@@ -50,7 +50,7 @@ abstract class TestCase extends BaseTestCase
             'DB_CONNECTION' => 'sqlite',
             'DB_DATABASE' => ':memory:',
             'DB_URL' => '',
-            'SITE_NAME' => 'GEOFlow',
+            'SITE_NAME' => 'SparklightAIGEO',
         ];
 
         foreach ($variables as $key => $value) {

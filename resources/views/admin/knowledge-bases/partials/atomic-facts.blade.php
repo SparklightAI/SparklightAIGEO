@@ -51,7 +51,7 @@
 
     @unless($systemReadOnly)
         <dialog
-            class="fixed inset-0 m-auto w-[min(560px,calc(100vw-2rem))] max-w-none overflow-hidden rounded-2xl border-0 bg-white p-0 text-left text-slate-900 shadow-[0_24px_72px_rgba(15,23,42,0.28)] backdrop:bg-[rgba(15,23,42,0.48)]"
+            class="fixed inset-0 m-auto w-[min(560px,calc(100vw-2rem))] max-w-none overflow-hidden rounded-2xl border-0 bg-white p-0 text-left text-slate-900 shadow-[0_24px_72px_rgba(30, 34, 56,0.28)] backdrop:bg-[rgba(30, 34, 56,0.48)]"
             data-atomic-fact-generation-dialog
             aria-labelledby="atomic-fact-generation-dialog-title"
             aria-describedby="atomic-fact-generation-dialog-message atomic-fact-generation-dialog-note"

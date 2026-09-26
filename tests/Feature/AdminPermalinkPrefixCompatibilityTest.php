@@ -121,7 +121,7 @@ class AdminPermalinkPrefixCompatibilityTest extends TestCase
         File::partialMock()->shouldReceive('exists')->with(base_path('.env'))->andReturn(false);
 
         $this->actingAs($admin, 'admin')->post(route('admin.site-settings.update'), [
-            'site_name' => 'GEOFlow', 'admin_base_path' => $prefix,
+            'site_name' => 'SparklightAIGEO', 'admin_base_path' => $prefix,
         ])->assertSessionHasErrors(['admin_base_path' => __('article_permalink.errors.admin_path_conflict')]);
 
         $this->assertSame($originalPrefix, config('geoflow.admin_base_path'));

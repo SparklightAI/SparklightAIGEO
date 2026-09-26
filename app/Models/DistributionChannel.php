@@ -97,15 +97,15 @@ class DistributionChannel extends Model
     public function resolvedSiteSettings(): array
     {
         $stored = is_array($this->site_settings) ? $this->site_settings : [];
-        $rawSiteName = $stored['site_name'] ?? $this->name ?? 'GEOFlow Target Site';
+        $rawSiteName = $stored['site_name'] ?? $this->name ?? 'SparklightAIGEO Target Site';
         $siteName = trim((string) $rawSiteName);
 
         return [
-            'site_name' => $siteName !== '' ? $siteName : 'GEOFlow Target Site',
+            'site_name' => $siteName !== '' ? $siteName : 'SparklightAIGEO Target Site',
             'site_subtitle' => trim((string) ($stored['site_subtitle'] ?? '')),
-            'site_description' => trim((string) ($stored['site_description'] ?? '由 GEOFlow 自动分发和管理的目标站点。')),
+            'site_description' => trim((string) ($stored['site_description'] ?? '由 SparklightAIGEO 自动分发和管理的目标站点。')),
             'site_keywords' => trim((string) ($stored['site_keywords'] ?? '')),
-            'copyright_info' => trim((string) ($stored['copyright_info'] ?? '© '.date('Y').' '.($siteName !== '' ? $siteName : 'GEOFlow Target Site'))),
+            'copyright_info' => trim((string) ($stored['copyright_info'] ?? '© '.date('Y').' '.($siteName !== '' ? $siteName : 'SparklightAIGEO Target Site'))),
             'site_logo' => trim((string) ($stored['site_logo'] ?? '')),
             'site_favicon' => trim((string) ($stored['site_favicon'] ?? '')),
             'seo_title_template' => trim((string) ($stored['seo_title_template'] ?? '{title} - {site_name}')),
@@ -541,11 +541,11 @@ class DistributionChannel extends Model
             'generic_auth_type' => in_array($authType, ['none', 'bearer', 'basic', 'header_key', 'hmac'], true) ? $authType : 'bearer',
             'generic_basic_username' => trim((string) ($stored['generic_basic_username'] ?? '')),
             'generic_header_name' => trim((string) ($stored['generic_header_name'] ?? 'X-API-Key')) ?: 'X-API-Key',
-            'generic_hmac_key_id_header' => trim((string) ($stored['generic_hmac_key_id_header'] ?? 'X-GEOFlow-Key-Id')) ?: 'X-GEOFlow-Key-Id',
-            'generic_hmac_signature_header' => trim((string) ($stored['generic_hmac_signature_header'] ?? 'X-GEOFlow-Signature')) ?: 'X-GEOFlow-Signature',
-            'generic_hmac_timestamp_header' => trim((string) ($stored['generic_hmac_timestamp_header'] ?? 'X-GEOFlow-Timestamp')) ?: 'X-GEOFlow-Timestamp',
-            'generic_hmac_nonce_header' => trim((string) ($stored['generic_hmac_nonce_header'] ?? 'X-GEOFlow-Nonce')) ?: 'X-GEOFlow-Nonce',
-            'generic_hmac_body_hash_header' => trim((string) ($stored['generic_hmac_body_hash_header'] ?? 'X-GEOFlow-Body-SHA256')) ?: 'X-GEOFlow-Body-SHA256',
+            'generic_hmac_key_id_header' => trim((string) ($stored['generic_hmac_key_id_header'] ?? 'X-SparklightAIGEO-Key-Id')) ?: 'X-SparklightAIGEO-Key-Id',
+            'generic_hmac_signature_header' => trim((string) ($stored['generic_hmac_signature_header'] ?? 'X-SparklightAIGEO-Signature')) ?: 'X-SparklightAIGEO-Signature',
+            'generic_hmac_timestamp_header' => trim((string) ($stored['generic_hmac_timestamp_header'] ?? 'X-SparklightAIGEO-Timestamp')) ?: 'X-SparklightAIGEO-Timestamp',
+            'generic_hmac_nonce_header' => trim((string) ($stored['generic_hmac_nonce_header'] ?? 'X-SparklightAIGEO-Nonce')) ?: 'X-SparklightAIGEO-Nonce',
+            'generic_hmac_body_hash_header' => trim((string) ($stored['generic_hmac_body_hash_header'] ?? 'X-SparklightAIGEO-Body-SHA256')) ?: 'X-SparklightAIGEO-Body-SHA256',
             'generic_timeout_seconds' => min(120, max(5, (int) ($stored['generic_timeout_seconds'] ?? 30))),
             'generic_success_statuses' => $this->genericSuccessStatuses($stored['generic_success_statuses'] ?? [200, 201, 202, 204]),
             'generic_health_method' => $this->genericHttpMethod($stored['generic_health_method'] ?? 'GET', ['GET', 'POST'], 'GET'),

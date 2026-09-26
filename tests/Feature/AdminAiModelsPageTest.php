@@ -535,7 +535,7 @@ class AdminAiModelsPageTest extends TestCase
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://ai.test/v1/embeddings'
             && $request['model'] === 'test-embedding-model'
-            && $request['input'] === 'GEOFlow embedding connection test');
+            && $request['input'] === 'SparklightAIGEO embedding connection test');
 
         $event = AiModelUsageEvent::query()->sole();
         $this->assertTrue(Str::isUuid((string) $event->request_id));
@@ -550,12 +550,12 @@ class AdminAiModelsPageTest extends TestCase
         $this->assertSame(4, $event->total_tokens);
         $this->assertSame(hash('sha256', json_encode([
             'model' => 'test-embedding-model',
-            'input' => 'GEOFlow embedding connection test',
+            'input' => 'SparklightAIGEO embedding connection test',
         ], JSON_THROW_ON_ERROR | JSON_UNESCAPED_SLASHES)), $event->request_payload_digest);
         $stored = json_encode($event->toArray(), JSON_THROW_ON_ERROR);
         $this->assertStringNotContainsString('test-api-key', $stored);
         $this->assertStringNotContainsString('https://ai.test', $stored);
-        $this->assertStringNotContainsString('GEOFlow embedding connection test', $stored);
+        $this->assertStringNotContainsString('SparklightAIGEO embedding connection test', $stored);
     }
 
     public function test_model_connection_holds_the_invocation_lock_until_the_result_is_accepted(): void
@@ -717,7 +717,7 @@ class AdminAiModelsPageTest extends TestCase
         Http::assertSent(fn ($request): bool => $request->url() === 'https://ark.cn-beijing.volces.com/api/v3/embeddings'
             && $request->hasHeader('Authorization', 'Bearer test-api-key')
             && $request['model'] === 'doubao-embedding-text-240515'
-            && $request['input'] === 'GEOFlow embedding connection test');
+            && $request['input'] === 'SparklightAIGEO embedding connection test');
     }
 
     public function test_admin_can_test_gemini_chat_model_connection(): void
@@ -785,7 +785,7 @@ class AdminAiModelsPageTest extends TestCase
 
         Http::assertSent(fn ($request): bool => $request->url() === 'https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-2:batchEmbedContents'
             && $request->hasHeader('x-goog-api-key', 'test-api-key')
-            && ($request['requests'][0]['content']['parts'][0]['text'] ?? '') === 'task: search result | query: GEOFlow embedding connection test'
+            && ($request['requests'][0]['content']['parts'][0]['text'] ?? '') === 'task: search result | query: SparklightAIGEO embedding connection test'
             && ! isset($request['requests'][0]['taskType'])
             && ! isset($request['taskType']));
     }

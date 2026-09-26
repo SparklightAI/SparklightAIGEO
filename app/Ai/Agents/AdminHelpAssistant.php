@@ -36,7 +36,7 @@ final class AdminHelpAssistant implements Agent, Conversational, HasProviderOpti
         );
 
         return str_replace('KNOWLEDGE_CONTEXT', $knowledgeContext, <<<'PROMPT'
-你是 GEOFlow 后台帮助助手，负责解释后台功能、流程、原理、排障方法和操作路径。
+你是 SparklightAIGEO 后台帮助助手，负责解释后台功能、流程、原理、排障方法和操作路径。
 
 回答规则：
 1. 只依据下方“后台帮助知识”中的事实回答。知识中没有的信息要明确说明，并只提出一个必要的澄清问题。

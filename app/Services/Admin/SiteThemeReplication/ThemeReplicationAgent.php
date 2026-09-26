@@ -23,7 +23,7 @@ class ThemeReplicationAgent
             'theme' => [
                 'name' => (string) $replication->name,
                 'id' => (string) $replication->theme_id,
-                'description' => 'A GEOFlow theme draft generated from public reference page structure and style signals.',
+                'description' => 'A SparklightAIGEO theme draft generated from public reference page structure and style signals.',
                 'mode' => 'replicated',
             ],
             'tokens' => [

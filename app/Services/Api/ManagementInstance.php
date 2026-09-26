@@ -24,7 +24,7 @@ final class ManagementInstance
 
         return [
             'instance_id' => $this->id(),
-            'name' => (string) config('app.name', 'GEOFlow'),
+            'name' => (string) config('app.name', 'SparklightAIGEO'),
             'core_version' => $version['version'] ?? null,
             'protocol_version' => '1.0',
             'api_version' => 'v1',

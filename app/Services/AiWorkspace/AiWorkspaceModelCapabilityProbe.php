@@ -27,7 +27,7 @@ final readonly class AiWorkspaceModelCapabilityProbe
         try {
             $result = $this->runtime->probeStreaming(
                 $model,
-                '请用一句话确认 GEOFlow 后台帮助助手流式回答可用。',
+                '请用一句话确认 SparklightAIGEO 后台帮助助手流式回答可用。',
                 $this->remainingTimeout($deadline),
                 $usageSession,
             );
@@ -75,7 +75,7 @@ final readonly class AiWorkspaceModelCapabilityProbe
         if ($attempt->requiresPlainTextFallback()) {
             $result = $this->runtime->probePlainText(
                 $model,
-                '请用一句话确认 GEOFlow 后台帮助助手普通文本回答可用。',
+                '请用一句话确认 SparklightAIGEO 后台帮助助手普通文本回答可用。',
                 $this->remainingTimeout($attempt->deadline),
                 $usageSession,
             );

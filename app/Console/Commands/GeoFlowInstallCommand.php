@@ -18,7 +18,7 @@ class GeoFlowInstallCommand extends Command
     protected $signature = 'geoflow:install
         {--force : Run first-install seeders even if an installation marker or existing data is present}';
 
-    protected $description = 'Run GEOFlow first-install seeders only for an empty database';
+    protected $description = 'Run SparklightAIGEO first-install seeders only for an empty database';
 
     /**
      * Tables that indicate the database already contains user or business data.
@@ -69,7 +69,7 @@ class GeoFlowInstallCommand extends Command
         $existingState = SystemState::query()->where('key', self::INSTALLATION_STATE_KEY)->first();
 
         if ($existingState instanceof SystemState && ! $force) {
-            $this->components->info('GEOFlow has already been initialized; first-install seeders were skipped.');
+            $this->components->info('SparklightAIGEO has already been initialized; first-install seeders were skipped.');
 
             return self::SUCCESS;
         }
@@ -80,14 +80,14 @@ class GeoFlowInstallCommand extends Command
                 'detected_tables' => $tablesWithData,
             ]);
 
-            $this->components->warn('Existing application data was detected. GEOFlow recorded the installation marker and skipped first-install seeders.');
+            $this->components->warn('Existing application data was detected. SparklightAIGEO recorded the installation marker and skipped first-install seeders.');
 
             return self::SUCCESS;
         }
 
         $this->components->info($force
-            ? 'Running GEOFlow first-install seeders with --force.'
-            : 'Running GEOFlow first-install seeders for an empty database.');
+            ? 'Running SparklightAIGEO first-install seeders with --force.'
+            : 'Running SparklightAIGEO first-install seeders for an empty database.');
 
         try {
             $this->call('db:seed', [
@@ -100,12 +100,12 @@ class GeoFlowInstallCommand extends Command
 
             $this->markInstalled($force ? 'forced_install' : 'fresh_install');
         } catch (Throwable $e) {
-            $this->error('GEOFlow first-install seeders failed: '.$e->getMessage());
+            $this->error('SparklightAIGEO first-install seeders failed: '.$e->getMessage());
 
             return self::FAILURE;
         }
 
-        $this->components->info('GEOFlow installation marker has been written.');
+        $this->components->info('SparklightAIGEO installation marker has been written.');
         $this->components->info('AI Workspace system knowledge and media have been synchronized.');
 
         return self::SUCCESS;

@@ -1,20 +1,20 @@
-# GEOFlow 网站模板复刻 Agent 实施方案
+# SparklightAIGEO 网站模板复刻 Agent 实施方案
 
 ## 1. 背景与目标
 
 当前后台的「网站设置 - 网站模板」已经支持从内置主题中选择前台模板，主题目录位于 `resources/views/theme/{主题目录名}`，并通过 `manifest.json`、Blade 页面、partials 和独立 CSS 组成一套可切换的前台展示层。
 
-本方案要新增「复刻模板」能力：管理员输入 3 个对标页面 URL，分别对应首页、列表页、文章详情页，系统 Agent 自动分析页面视觉、布局和组件风格，生成一套新的 GEOFlow 前台主题，并支持预览、自然语言微调、确认启用。
+本方案要新增「复刻模板」能力：管理员输入 3 个对标页面 URL，分别对应首页、列表页、文章详情页，系统 Agent 自动分析页面视觉、布局和组件风格，生成一套新的 SparklightAIGEO 前台主题，并支持预览、自然语言微调、确认启用。
 
-目标不是复制对标站内容，而是将其页面结构、视觉节奏、排版习惯和组件风格转换成符合 GEOFlow 数据契约的主题包。
+目标不是复制对标站内容，而是将其页面结构、视觉节奏、排版习惯和组件风格转换成符合 SparklightAIGEO 数据契约的主题包。
 
 ## 2. 核心原则
 
 1. 只复刻展示层，不改变文章、分类、SEO、知识库、任务和分发等业务数据结构。
-2. 生成主题必须沿用 GEOFlow 现有主题能力，包括 Blade、partials、独立 CSS、manifest、mapping、tokens。
+2. 生成主题必须沿用 SparklightAIGEO 现有主题能力，包括 Blade、partials、独立 CSS、manifest、mapping、tokens。
 3. Agent 只生成受控主题文件，不允许生成任意 PHP 逻辑、命令执行代码或外部请求代码。
 4. 复刻过程先生成草稿，管理员确认后才可保存为正式主题或切换为当前生效模板。
-5. 使用本机 GEOFlow 内容做预览，避免把对标站正文、图片、品牌素材复制到生产主题中。
+5. 使用本机 SparklightAIGEO 内容做预览，避免把对标站正文、图片、品牌素材复制到生产主题中。
 6. 支持反复微调，但每次微调都应形成可回退的草稿版本。
 
 ## 3. 不做的范围
@@ -230,7 +230,7 @@ app/Support/Site/GeneratedSiteThemeCatalog.php
 
 - `ThemeReferenceCrawler`：安全抓取 URL、限制内容长度、处理跳转、提取 HTML 和 CSS 线索。
 - `ThemeReferenceAnalyzer`：把页面转成结构摘要、组件摘要、颜色字体间距摘要。
-- `ThemeDraftGenerator`：基于 GEOFlow 主题骨架生成草稿文件。
+- `ThemeDraftGenerator`：基于 SparklightAIGEO 主题骨架生成草稿文件。
 - `ThemeRefinementService`：根据自然语言修改 tokens、CSS 和局部组件。
 - `ThemeSafetyValidator`：拦截危险 Blade、PHP、JS 和非法路径。
 - `GeneratedSiteThemeCatalog`：让生成主题进入后台主题列表和前台解析链路。
@@ -365,7 +365,7 @@ Agent 输出必须是结构化 JSON，不能直接输出任意文件：
 {
   "theme": {
     "name": "示例主题",
-    "description": "由 3 个参考页面生成的 GEOFlow 前台主题"
+    "description": "由 3 个参考页面生成的 SparklightAIGEO 前台主题"
   },
   "tokens": {
     "colors": {},
@@ -444,7 +444,7 @@ Agent 输出必须是结构化 JSON，不能直接输出任意文件：
 提示文案需要明确：
 
 - 复刻功能用于学习布局和视觉风格，不应复制第三方品牌资产。
-- 生成主题默认使用 GEOFlow 本地内容和本地资源。
+- 生成主题默认使用 SparklightAIGEO 本地内容和本地资源。
 - 如果引用外部字体或资源，需要管理员自行确认授权。
 
 ## 10. UI 设计建议
@@ -565,7 +565,7 @@ TDWH NetEase English
 
 可独立上线价值：
 
-- 方便把生成主题迁移到其他 GEOFlow 实例。
+- 方便把生成主题迁移到其他 SparklightAIGEO 实例。
 - 降低使用门槛。
 
 ## 12. 测试计划
@@ -624,7 +624,7 @@ TDWH NetEase English
 
 处理方式：
 
-- 固定 GEOFlow 主题骨架。
+- 固定 SparklightAIGEO 主题骨架。
 - Agent 只生成 tokens 和组件配置。
 - 通过预览和微调修正。
 
@@ -641,7 +641,7 @@ TDWH NetEase English
 
 - 明确只参考布局和视觉风格。
 - 不保存对标站正文和图片作为生产主题资产。
-- 生成主题默认使用 GEOFlow 本地内容。
+- 生成主题默认使用 SparklightAIGEO 本地内容。
 
 ### 14.4 安全风险
 
@@ -656,7 +656,7 @@ TDWH NetEase English
 
 建议采用「任务化复刻流程 + 受控主题生成 + iframe 预览 + 自然语言微调」方案。
 
-第一版不要直接做成完全自由的代码生成 Agent，而应基于现有主题系统做一个安全可控的主题工厂。这样可以快速获得可用能力，同时不破坏 GEOFlow 当前稳定的前台数据契约和后台设置逻辑。
+第一版不要直接做成完全自由的代码生成 Agent，而应基于现有主题系统做一个安全可控的主题工厂。这样可以快速获得可用能力，同时不破坏 SparklightAIGEO 当前稳定的前台数据契约和后台设置逻辑。
 
 推荐先做 Phase 1 到 Phase 3，形成从输入 URL 到生成可预览主题的闭环；再做 Phase 4 的自然语言微调和版本管理。
 

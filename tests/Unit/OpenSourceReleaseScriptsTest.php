@@ -87,7 +87,7 @@ class OpenSourceReleaseScriptsTest extends TestCase
         );
 
         $this->assertFalse($process->isSuccessful());
-        $this->assertStringContainsString('not the official GEOFlow public remote', $process->getOutput().$process->getErrorOutput());
+        $this->assertStringContainsString('not the official SparklightAIGEO public remote', $process->getOutput().$process->getErrorOutput());
         $this->assertSame("original target content\n", File::get($target.'/protected.txt'));
     }
 
@@ -105,7 +105,7 @@ class OpenSourceReleaseScriptsTest extends TestCase
         $this->assertFalse(File::exists($target.'/protected.txt'));
         $this->assertTrue(File::exists($target.'/.git'));
         $this->assertSame(
-            'https://github.com/yaojingang/GEOFlow.git',
+            'https://github.com/SparklightAI/SparklightAIGEO.git',
             trim($this->runProcess(['git', '-C', $target, 'remote', 'get-url', 'origin'])->getOutput()),
         );
     }
@@ -133,7 +133,7 @@ class OpenSourceReleaseScriptsTest extends TestCase
             $this->runProcess(['git', '-C', $repository, 'commit', '--quiet', '-m', 'fixture']);
         }
         $this->runProcess([
-            'git', '-C', $target, 'remote', 'add', 'origin', 'https://github.com/yaojingang/GEOFlow.git',
+            'git', '-C', $target, 'remote', 'add', 'origin', 'https://github.com/SparklightAI/SparklightAIGEO.git',
         ]);
 
         $this->beforeApplicationDestroyed(fn () => File::deleteDirectory($root));

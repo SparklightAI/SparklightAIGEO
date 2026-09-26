@@ -31,7 +31,7 @@
                 </nav>
                 <span class="ent-kicker">Ideas and evidence</span>
                 <h1>{{ __('site.archive_title') }}</h1>
-                <p>按时间浏览 GEOFlow 的产品实践、技术进展和 GEO 洞察。</p>
+                <p>按时间浏览 SparklightAIGEO 的产品实践、技术进展和 GEO 洞察。</p>
             </div>
             <div class="ent-page-index">
                 <span>Archive ledger</span>

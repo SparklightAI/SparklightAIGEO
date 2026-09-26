@@ -1,13 +1,13 @@
-# GEOFlow 网站模板一键生成新模板实施方案
+# SparklightAIGEO 网站模板一键生成新模板实施方案
 
 ## 1. 背景与目标
 
-当前 GEOFlow 后台「网站设置 > 网站模板」已经具备两类能力：
+当前 SparklightAIGEO 后台「网站设置 > 网站模板」已经具备两类能力：
 
 - 从 `resources/views/theme/{theme_id}` 扫描并启用现有前台模板。
 - 通过「一键复刻模板」输入首页、列表页、详情页 3 个参考 URL，生成隔离草稿、预览、迭代、打包和发布。
 
-本次新增「一键生成新模板」能力：管理员不再必须提供 3 个对标 URL，而是通过风格、行业场景、模板参考、页面密度、色彩倾向和生成数量等参数，让系统基于当前主题库和 GEOFlow 前台数据契约，一次生成 1 到 10 套候选模板。每套模板都可以预览、微调、复制、发布或归档。
+本次新增「一键生成新模板」能力：管理员不再必须提供 3 个对标 URL，而是通过风格、行业场景、模板参考、页面密度、色彩倾向和生成数量等参数，让系统基于当前主题库和 SparklightAIGEO 前台数据契约，一次生成 1 到 10 套候选模板。每套模板都可以预览、微调、复制、发布或归档。
 
 目标不是做一个任意网页生成器，而是做一个面向 GEO 内容站和多站点分发的受控主题工厂。
 
@@ -88,7 +88,7 @@
 推荐文案：
 
 - 标题：`AI 主题工厂`
-- 说明：`基于当前模板库、GEOFlow 数据契约和风格参数，批量生成可预览、可微调、可发布的新模板。`
+- 说明：`基于当前模板库、SparklightAIGEO 数据契约和风格参数，批量生成可预览、可微调、可发布的新模板。`
 - 主按钮：`一键生成新模板`
 - 副按钮：`一键复刻模板`
 
@@ -318,7 +318,7 @@ app/Services/Admin/SiteThemeReplication/ThemeGenerationAgent.php
   "theme": {
     "name": "GEO Professional Blue 01",
     "id": "geo-pro-01",
-    "description": "A professional GEOFlow content theme..."
+    "description": "A professional SparklightAIGEO content theme..."
   },
   "tokens": {
     "colors": {},

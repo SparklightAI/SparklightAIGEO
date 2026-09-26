@@ -12,8 +12,8 @@
     $localeForChangelog = app()->getLocale() === 'en' ? 'en' : 'zh-CN';
     $updateSummary = (string) ($releaseNotice['summary'] ?? '');
     $changelogLinks = is_array($updateLinks['changelog'] ?? null) ? $updateLinks['changelog'] : [];
-    $notificationChangelogUrl = (string) ($changelogLinks[$localeForChangelog] ?? $changelogLinks['zh-CN'] ?? 'https://github.com/yaojingang/GEOFlow/blob/main/docs/CHANGELOG.md');
-    $notificationGithubUrl = (string) ($updateLinks['github'] ?? 'https://github.com/yaojingang/GEOFlow');
+    $notificationChangelogUrl = (string) ($changelogLinks[$localeForChangelog] ?? $changelogLinks['zh-CN'] ?? 'https://github.com/SparklightAI/SparklightAIGEO/blob/main/docs/CHANGELOG.md');
+    $notificationGithubUrl = (string) ($updateLinks['github'] ?? 'https://github.com/SparklightAI/SparklightAIGEO');
     $notificationUpdateCenterUrl = $isUpdateCenterEnabled && $isSuperAdmin ? \App\Support\AdminWeb::routePath('admin.system-updates.index') : '';
     $notificationStatus = (string) ($updateState['status'] ?? 'disabled');
     $menu = [
@@ -295,7 +295,7 @@
 
 <style>
     .admin-locale-select {
-        background-image: linear-gradient(45deg, transparent 50%, #6b7280 50%), linear-gradient(135deg, #6b7280 50%, transparent 50%);
+        background-image: linear-gradient(45deg, transparent 50%, #6e7181 50%), linear-gradient(135deg, #6e7181 50%, transparent 50%);
         background-position: calc(100% - 8px) 52%, calc(100% - 4px) 52%;
         background-size: 4px 4px, 4px 4px;
         background-repeat: no-repeat;

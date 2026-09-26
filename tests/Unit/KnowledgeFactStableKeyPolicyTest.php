@@ -13,10 +13,10 @@ class KnowledgeFactStableKeyPolicyTest extends TestCase
     {
         $policy = new KnowledgeFactStableKeyPolicy;
 
-        $normalized = $policy->normalize($key, 'GEOFlow 模型接入', '支持的 Provider 类型包括');
+        $normalized = $policy->normalize($key, 'SparklightAIGEO 模型接入', '支持的 Provider 类型包括');
 
         self::assertMatchesRegularExpression('/\Afact\.[a-f0-9]{24}\z/', $normalized);
-        self::assertSame($normalized, $policy->normalize('fact-999', 'GEOFlow 模型接入', '支持的 Provider 类型包括'));
+        self::assertSame($normalized, $policy->normalize('fact-999', 'SparklightAIGEO 模型接入', '支持的 Provider 类型包括'));
     }
 
     public static function genericKeys(): array
@@ -28,7 +28,7 @@ class KnowledgeFactStableKeyPolicyTest extends TestCase
     {
         $policy = new KnowledgeFactStableKeyPolicy;
 
-        self::assertSame('product.public_version', $policy->normalize('product.public_version', 'GEOFlow', '当前公开版本为'));
+        self::assertSame('product.public_version', $policy->normalize('product.public_version', 'SparklightAIGEO', '当前公开版本为'));
     }
 
     public function test_different_labels_under_the_same_subject_and_predicate_do_not_collide(): void
@@ -36,8 +36,8 @@ class KnowledgeFactStableKeyPolicyTest extends TestCase
         $policy = new KnowledgeFactStableKeyPolicy;
 
         self::assertNotSame(
-            $policy->normalize('fact-1', 'GEOFlow', '包括', '支持渠道'),
-            $policy->normalize('fact-2', 'GEOFlow', '包括', '支持格式'),
+            $policy->normalize('fact-1', 'SparklightAIGEO', '包括', '支持渠道'),
+            $policy->normalize('fact-2', 'SparklightAIGEO', '包括', '支持格式'),
         );
     }
 }

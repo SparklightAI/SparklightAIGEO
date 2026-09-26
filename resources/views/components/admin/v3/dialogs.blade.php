@@ -3,8 +3,8 @@
     $isSuperAdmin = $admin->canManageProtectedWorkflows();
     $accountName = trim((string) $admin->name) ?: (string) $admin->username;
     $accountInitial = \Illuminate\Support\Str::upper(\Illuminate\Support\Str::substr($accountName, 0, 1));
-    $projectGithubUrl = 'https://github.com/yaojingang/GEOFlow';
-    $authorXUrl = 'https://x.com/yaojingang';
+    $projectGithubUrl = 'https://github.com/SparklightAI/SparklightAIGEO';
+    $authorXUrl = 'https://sparklight-ai.com';
 @endphp
 <div class="gf-modal-backdrop" data-gf-modal="account" hidden>
     <section class="gf-modal" role="dialog" aria-modal="true" aria-labelledby="gf-account-title">
@@ -24,7 +24,7 @@
     <section class="gf-modal gf-modal--community" role="dialog" aria-modal="true" aria-labelledby="gf-qr-title" aria-describedby="gf-qr-subtitle">
         <header class="gf-modal__header">
             <div>
-                <span class="gf-modal__eyebrow">GEOFlow Community</span>
+                <span class="gf-modal__eyebrow">SparklightAIGEO Community</span>
                 <h2 id="gf-qr-title">{{ __('admin.ui_v3.qr_title') }}</h2>
                 <p id="gf-qr-subtitle">{{ __('admin.ui_v3.qr_subtitle') }}</p>
             </div>
@@ -34,9 +34,9 @@
             <figure class="gf-community-dialog__qr">
                 <div class="gf-community-dialog__qr-frame">
                     <img
-                        src="{{ asset('assets/images/yao-jingang-wechat.jpg') }}"
+                        src="{{ asset('assets/images/qrcode_xhzgai.jpg') }}"
                         width="888"
-                        height="1128"
+                        height="1131"
                         alt="{{ __('admin.ui_v3.qr_image_alt') }}"
                     >
                 </div>

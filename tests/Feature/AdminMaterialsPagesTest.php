@@ -378,7 +378,7 @@ class AdminMaterialsPagesTest extends TestCase
                 'description' => '测试描述',
                 'file_type' => 'markdown',
                 'content' => "第一段内容。\n\n第二段内容。",
-                'source_name' => 'GEOFlow 官方文档',
+                'source_name' => 'SparklightAIGEO 官方文档',
                 'source_url' => 'https://example.com/geoflow',
                 'source_type' => 'document',
                 'business_line' => 'GEO 内容工程',
@@ -391,7 +391,7 @@ class AdminMaterialsPagesTest extends TestCase
         $this->assertDatabaseHas('knowledge_bases', [
             'name' => '测试知识库',
             'file_type' => 'markdown',
-            'source_name' => 'GEOFlow 官方文档',
+            'source_name' => 'SparklightAIGEO 官方文档',
             'source_url' => 'https://example.com/geoflow',
             'source_type' => 'document',
             'business_line' => 'GEO 内容工程',
@@ -945,7 +945,7 @@ class AdminMaterialsPagesTest extends TestCase
         $knowledgeBase = KnowledgeBase::query()->create([
             'name' => '待向量化知识库',
             'description' => 'desc',
-            'content' => 'GEOFlow 支持知识库切片和向量化检索。',
+            'content' => 'SparklightAIGEO 支持知识库切片和向量化检索。',
             'character_count' => 22,
             'file_type' => 'markdown',
             'word_count' => 22,
@@ -995,7 +995,7 @@ class AdminMaterialsPagesTest extends TestCase
         KnowledgeBase::query()->create([
             'name' => '待更新切片知识库',
             'description' => 'desc',
-            'content' => 'GEOFlow 支持知识库切片和向量化检索。',
+            'content' => 'SparklightAIGEO 支持知识库切片和向量化检索。',
             'character_count' => 22,
             'file_type' => 'markdown',
             'word_count' => 22,

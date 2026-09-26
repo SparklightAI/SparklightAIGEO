@@ -19,7 +19,7 @@ class GuardRecoveryWrites
     public function handle(Request $request, Closure $next): Response
     {
         if (! $request->isMethodSafe() && ! $request->routeIs('api.v1.management.updater.submit')) {
-            $this->state->assertWriteEpoch($request->header('X-GEOFlow-Recovery-Epoch'));
+            $this->state->assertWriteEpoch($request->header('X-SparklightAIGEO-Recovery-Epoch'));
         }
 
         return $next($request);

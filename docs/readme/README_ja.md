@@ -1,29 +1,29 @@
-# GEOFlow 3.2 Beta
+# SparklightAIGEO 3.2 Beta
 
 > Languages: [简体中文](../../README.md) | [English](README_en.md) | [日本語](README_ja.md) | [Español](README_es.md) | [Русский](README_ru.md) | [Português (BR)](README_pt_BR.md)
 
 > 企業サイト向けのオープンソースGEO運用プラットフォーム
 
-GEOFlowは、信頼できるナレッジ、AIコンテンツ制作、品質ゲート、人によるレビュー、複数サイトへの配信、分析を一つの運用フローにつなぎます。ブランド、グロース、コンテンツの各チームは、企業サイト、GEOコンテンツチャンネル、業界情報サイト、社内コンテンツ運用基盤を構築し、資料、判断、公開結果、運用データを同じシステムで管理できます。
+SparklightAIGEOは、信頼できるナレッジ、AIコンテンツ制作、品質ゲート、人によるレビュー、複数サイトへの配信、分析を一つの運用フローにつなぎます。ブランド、グロース、コンテンツの各チームは、企業サイト、GEOコンテンツチャンネル、業界情報サイト、社内コンテンツ運用基盤を構築し、資料、判断、公開結果、運用データを同じシステムで管理できます。
 
-[クイックスタート](#クイックスタート) · [画面プレビュー](#画面プレビュー) · [主要機能](#geoflow-30の主要機能) · [デプロイガイド](../deployment/DEPLOYMENT.md) · [変更履歴](../CHANGELOG_en.md) · [公式サイト](https://www.geoflow.me)
+[クイックスタート](#クイックスタート) · [画面プレビュー](#画面プレビュー) · [主要機能](#sparklightaigeo-30の主要機能) · [デプロイガイド](../deployment/DEPLOYMENT.md) · [変更履歴](../CHANGELOG_en.md) · [公式サイト](https://sparklight-ai.com)
 
 [![Source version](https://img.shields.io/badge/source-3.2.0--beta.1-2563eb)](../../version.json)
-[![Latest release](https://img.shields.io/github/v/release/yaojingang/GEOFlow?display_name=tag)](https://github.com/yaojingang/GEOFlow/releases/latest)
+[![Latest release](https://img.shields.io/github/v/release/SparklightAI/SparklightAIGEO?display_name=tag)](https://github.com/SparklightAI/SparklightAIGEO/releases/latest)
 [![PHP](https://img.shields.io/badge/PHP-8.3%2B-777bb4)](https://www.php.net/)
-[![CI](https://github.com/yaojingang/GEOFlow/actions/workflows/ci.yml/badge.svg)](https://github.com/yaojingang/GEOFlow/actions/workflows/ci.yml)
+[![CI](https://github.com/SparklightAI/SparklightAIGEO/actions/workflows/ci.yml/badge.svg)](https://github.com/SparklightAI/SparklightAIGEO/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](../../LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/yaojingang/GEOFlow?style=social)](https://github.com/yaojingang/GEOFlow/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/SparklightAI/SparklightAIGEO?style=social)](https://github.com/SparklightAI/SparklightAIGEO/stargazers)
 
-> **バージョンについて：** 現在のソース版はプレビュー版 `3.2.0-beta.1`、最新の安定版は `3.1.0` です。正確なソースバージョンは [`version.json`](../../version.json)、正式リリースとアップグレード手順は [GitHub Releases](https://github.com/yaojingang/GEOFlow/releases) を参照してください。本番環境では安定版リリースを使用するか、レビュー済みコミットに固定してください。
+> **バージョンについて：** 現在のソース版はプレビュー版 `3.2.0-beta.1`、最新の安定版は `3.1.0` です。正確なソースバージョンは [`version.json`](../../version.json)、正式リリースとアップグレード手順は [GitHub Releases](https://github.com/SparklightAI/SparklightAIGEO/releases) を参照してください。本番環境では安定版リリースを使用するか、レビュー済みコミットに固定してください。
 
 ---
 
-## GEOFlowが解決する課題
+## SparklightAIGEOが解決する課題
 
 企業のGEO運用には、ブランドナレッジ、モデル設定、コンテンツ制作、品質確認、サイト実装、チャンネル配信、効果分析が必要です。これらが別々のツールに分かれると、資料の出所、レビュー判断、公開結果の対応関係を追いにくくなります。
 
-GEOFlowは一つの管理画面で運用フローを管理します。
+SparklightAIGEOは一つの管理画面で運用フローを管理します。
 
 ```mermaid
 flowchart LR
@@ -47,16 +47,16 @@ flowchart LR
 
 <table>
   <tr>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/01-ai-workspace-start.webp" alt="GEOFlow Admin UI V3画像付きヘルプワークスペース" /><br /><sub>画像付きヘルプワークスペース</sub></td>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/03-analytics-overview.webp" alt="GEOFlow Admin UI V3分析概要" /><br /><sub>分析概要</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/01-ai-workspace-start.webp" alt="SparklightAIGEO Admin UI V3画像付きヘルプワークスペース" /><br /><sub>画像付きヘルプワークスペース</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/03-analytics-overview.webp" alt="SparklightAIGEO Admin UI V3分析概要" /><br /><sub>分析概要</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/05-task-list.webp" alt="GEOFlow Admin UI V3タスク管理" /><br /><sub>タスク管理</sub></td>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/10-article-quality.webp" alt="GEOFlow Admin UI V3記事AI品質検査" /><br /><sub>記事AI品質検査</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/05-task-list.webp" alt="SparklightAIGEO Admin UI V3タスク管理" /><br /><sub>タスク管理</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/10-article-quality.webp" alt="SparklightAIGEO Admin UI V3記事AI品質検査" /><br /><sub>記事AI品質検査</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/19-hosted-sites.webp" alt="GEOFlow Admin UI V3ホスト型チャンネルサイト" /><br /><sub>ホスト型チャンネルサイト</sub></td>
-    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/20-manual-publication.webp" alt="GEOFlow Admin UI V3手動投稿ワークスペース" /><br /><sub>手動投稿ワークスペース</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/19-hosted-sites.webp" alt="SparklightAIGEO Admin UI V3ホスト型チャンネルサイト" /><br /><sub>ホスト型チャンネルサイト</sub></td>
+    <td width="50%"><img src="../../resources/knowledge/ai-workspace/media/20-manual-publication.webp" alt="SparklightAIGEO Admin UI V3手動投稿ワークスペース" /><br /><sub>手動投稿ワークスペース</sub></td>
   </tr>
 </table>
 
@@ -64,16 +64,16 @@ flowchart LR
 
 ---
 
-## GEOFlow 3.0の主要機能
+## SparklightAIGEO 3.0の主要機能
 
 | 機能 | 3.0での運用方法 |
 |------|------------------|
 | 信頼できるナレッジとコンテンツ制作 | ナレッジベース、タイトル、キーワード、画像、著者、プロンプト、AIモデルを集中管理します。構造化チャンク、任意の意味計画、ベクトル検索、安定したフォールバックに対応します。 |
 | AI品質ゲート | ナレッジ根拠、データと引用、広告ルール、公開文脈を検査します。項目別スコア、原文位置、法規根拠、修正案、履歴を保存します。要確認、ブロック、異常、期限切れの結果を持つ記事は下書きに留まります。 |
 | レビューと運用連携 | 下書き、レビュー、公開、ごみ箱、Markdown一括出力を管理します。手動投稿ワークスペースは、投稿者情報、アカウント参照、担当者、予定時刻、リスク、実行証跡、監査履歴を保存します。 |
-| 企業サイトと複数サイト配信 | ローカルフロントエンドはSEOメタデータ、Open Graph、Schema、sitemap、`llms.txt` を出力します。ホストサイト、GEOFlow Agent、WordPress REST、汎用HTTP APIに配信できます。 |
+| 企業サイトと複数サイト配信 | ローカルフロントエンドはSEOメタデータ、Open Graph、Schema、sitemap、`llms.txt` を出力します。ホストサイト、SparklightAIGEO Agent、WordPress REST、汎用HTTP APIに配信できます。 |
 | 分析と運用保守 | コンテンツ、配信、アクセス、上位記事、AIクローラー、推移を分析します。独立したUpdaterが署名付き更新、完全バックアップ、環境検証、復元ポイントへのロールバックを担当します。 |
-| チームと開発者向け機能 | Admin UI V3は6言語、レスポンシブ表示、PWA、画像付きヘルプに対応します。API v1、GEOFlow CLI、同梱Agent Skillから自動化と拡張を行えます。 |
+| チームと開発者向け機能 | Admin UI V3は6言語、レスポンシブ表示、PWA、画像付きヘルプに対応します。API v1、SparklightAIGEO CLI、同梱Agent Skillから自動化と拡張を行えます。 |
 
 ### 3.0の主な変更
 
@@ -84,7 +84,7 @@ flowchart LR
 - Chrome運用アシスタントは端末ペアリングと最小権限Tokenで手動投稿タスクを取得し、確認用の下書きを入力して実行証跡を返します。最終公開は担当者が確認します。
 - タイトルライブラリは最大10万件のAI一括生成、再開、キャンセル、再試行、重複除去に対応します。削除したタスクの監査情報は90日間保持します。
 - API v1と `bin/geoflow` はカタログ、タスク、実行履歴、素材、記事、ブラウザー運用プロトコルを扱います。
-- 独立したGEOFlow UpdaterはローカルUnix socketを使って更新、完全バックアップ、環境検証、復元ポイントへのロールバックを実行します。高リスク操作には管理者パスワードと6桁の認証コードが必要です。
+- 独立したSparklightAIGEO UpdaterはローカルUnix socketを使って更新、完全バックアップ、環境検証、復元ポイントへのロールバックを実行します。高リスク操作には管理者パスワードと6桁の認証コードが必要です。
 
 詳細は [中国語の変更履歴](../CHANGELOG.md) と [英語の変更履歴](../CHANGELOG_en.md) を参照してください。
 
@@ -100,7 +100,7 @@ flowchart LR
 | 社内コンテンツ運用 | 公開フロントエンドを抑え、ブランド、グロース、コンテンツチームが制作とレビューを管理 | 素材、API、CLI、手動投稿、権限、監査 |
 | 複数ブランドと複数サイト | 一つの管理画面から複数サイト、カテゴリ、公開先を管理 | ホストサイト、Agent、WordPress、汎用API、配信ログ |
 
-GEOFlowは、実際の事業資料、明確なレビュー責任者、継続的な運用計画を持つチーム向けです。ナレッジの品質、人の判断、定期的な保守が、ユーザーとAIからの信頼を支えます。
+SparklightAIGEOは、実際の事業資料、明確なレビュー責任者、継続的な運用計画を持つチーム向けです。ナレッジの品質、人の判断、定期的な保守が、ユーザーとAIからの信頼を支えます。
 
 ---
 
@@ -123,10 +123,10 @@ GEOFlowは、実際の事業資料、明確なレビュー責任者、継続的�
 
 | コンポーネント | 現在のソースバージョンまたは状態 | 説明 |
 |----------------|----------------------------------|------|
-| GEOFlow Core | `3.2.0-beta.1` | Laravelアプリ、管理画面、フロントエンド、API、キュー、配信システム |
-| GEOFlow CLI | `0.4.0-preview.1` | `bin/geoflow` を同梱し、macOS、Linux、WSLをサポート |
+| SparklightAIGEO Core | `3.2.0-beta.1` | Laravelアプリ、管理画面、フロントエンド、API、キュー、配信システム |
+| SparklightAIGEO CLI | `0.4.0-preview.1` | `bin/geoflow` を同梱し、macOS、Linux、WSLをサポート |
 | Chrome運用アシスタント | `0.1.0` | ソースと配布用ファイルは `browser-extension/` と `dist/browser-extension/` に配置 |
-| GEOFlow Updater | 独立コンポーネント | 対象リリースと明示的に互換性がある署名版を使用。詳細は [geoflow-updater](https://github.com/yaojingang/geoflow-updater) を参照 |
+| SparklightAIGEO Updater | 独立コンポーネント | 対象リリースと明示的に互換性がある署名版を使用。詳細は [geoflow-updater](https://sparklight-ai.com/updater) を参照 |
 | 配信先Agent | チャンネルごとに生成 | ホーム、記事、静的アセット、Schema、sitemap、`llms.txt` を含む設定済みPHPパッケージを生成 |
 
 実行要件：
@@ -146,8 +146,8 @@ GEOFlowは、実際の事業資料、明確なレビュー責任者、継続的�
 ### Dockerで開発と評価
 
 ```bash
-git clone https://github.com/yaojingang/GEOFlow.git
-cd GEOFlow
+git clone https://github.com/SparklightAI/SparklightAIGEO.git
+cd SparklightAIGEO
 cp .env.example .env
 docker compose build
 docker compose up -d --remove-orphans
@@ -185,17 +185,17 @@ docker compose --env-file .env.prod -f docker-compose.prod.yml up -d app web que
 
 ## 開発者向け入口
 
-### GEOFlow CLI
+### SparklightAIGEO CLI
 
 `bin/geoflow` はAPI v1を通じてカタログ、タスク、実行履歴、素材、記事を管理します。安全な設定、ログイン、JSONファイルまたはstdin、削除確認、構造化エラーに対応します。
 
-[CLI中国語ガイド](../GEOFLOW_CLI.md) | [CLI英語ガイド](../GEOFLOW_CLI_en.md)
+[CLI中国語ガイド](../SPARKLIGHTAIGEO_CLI.md) | [CLI英語ガイド](../SPARKLIGHTAIGEO_CLI_en.md)
 
-### GEOFlow Agent Skill
+### SparklightAIGEO Agent Skill
 
-リポジトリには [GEOFlow Agent Skill](../../.agents/skills/geoflow/) が含まれています。Laravel開発、管理画面の運用、公開フロントエンド、テーマパッケージ、チャンネルサイト、旧版移行を扱います。Agent Skills対応ツールはリポジトリから検出でき、Codexでは `$geoflow` で呼び出せます。
+リポジトリには [SparklightAIGEO Agent Skill](../../.agents/skills/sparklightaigeo/) が含まれています。Laravel開発、管理画面の運用、公開フロントエンド、テーマパッケージ、チャンネルサイト、旧版移行を扱います。Agent Skills対応ツールはリポジトリから検出でき、Codexでは `$geoflow` で呼び出せます。
 
-インストールとロールバックは [Skill README](../../.agents/skills/geoflow/README.md) を参照してください。
+インストールとロールバックは [Skill README](../../.agents/skills/sparklightaigeo/README.md) を参照してください。
 
 ### 開発とテスト
 
@@ -214,9 +214,9 @@ vendor/bin/pint --test
 
 ## オープンソースと商用ライセンス
 
-現在のGEOFlowは [GNU Affero General Public License v3.0](../../LICENSE) で提供されます。Apache-2.0で公開済みの旧バージョンには元のライセンスが引き続き適用されます。旧ライセンス本文は [`docs/licenses/Apache-2.0.txt`](../licenses/Apache-2.0.txt) に保存されています。
+現在のSparklightAIGEOは [GNU Affero General Public License v3.0](../../LICENSE) で提供されます。Apache-2.0で公開済みの旧バージョンには元のライセンスが引き続き適用されます。旧ライセンス本文は [`docs/licenses/Apache-2.0.txt`](../licenses/Apache-2.0.txt) に保存されています。
 
-**個人・企業ともにGEOFlowのオープンソース版をライセンス料なしで利用でき、商用利用も可能です。** AGPL-3.0を遵守する限り、以下の利用場面で別途GEOFlowの商用ライセンスを購入する必要はありません。社内利用、顧客へのサービス提供、サービス料金の請求だけを理由に商用ライセンスの購入が必要になることはありません。
+**個人・企業ともにSparklightAIGEOのオープンソース版をライセンス料なしで利用でき、商用利用も可能です。** AGPL-3.0を遵守する限り、以下の利用場面で別途SparklightAIGEOの商用ライセンスを購入する必要はありません。社内利用、顧客へのサービス提供、サービス料金の請求だけを理由に商用ライセンスの購入が必要になることはありません。
 
 | 利用場面 | ライセンス上の条件 |
 |----------|--------------------|
@@ -225,25 +225,25 @@ vendor/bin/pint --test
 | 自社の企業サイト、ブランドサイト、GEOサブチャネル、業界情報サイトの運営 | 商用運営を含め、無料で利用できます |
 | 代理店、制作会社、コンサルタントによる顧客向けコンテンツ制作・運用代行 | 無料で利用でき、制作、コンサルティング、運用サービスの料金を請求できます |
 | 顧客向けの導入、研修、保守、カスタム開発の納品 | 無料で利用でき、サービス料金を請求できます。ソフトウェアのコピーを引き渡す場合は、AGPLの配布・ソースコード提供に関する適用条件を遵守してください |
-| GEOFlowを使ったホスティングやオンラインサービス（SaaS）の提供 | 無料で利用でき、サービスを有料で提供できます。変更版をネットワーク経由で提供する場合、対話するユーザーに完全な対応ソースコードを無料で取得する手段を提供してください |
+| SparklightAIGEOを使ったホスティングやオンラインサービス（SaaS）の提供 | 無料で利用でき、サービスを有料で提供できます。変更版をネットワーク経由で提供する場合、対話するユーザーに完全な対応ソースコードを無料で取得する手段を提供してください |
 | カスタム開発、再配布、AGPLを遵守するブランド変更やOEM納品 | 無料で利用できます。必要な表示を保持し、同一ライセンスとソースコード提供に関する適用条件を遵守してください。商標権は別途確認が必要です |
 | ソースコード提供などのAGPLの義務に例外が必要な場合。たとえば、該当する義務が適用されてもコードの非公開を求めるホワイトラベル、OEM、プロプライエタリ製品への組み込み | 著作権者に個別の商用ライセンスを申請し、締結した契約に従って利用してください |
 
 利用にあたっての注意点：
 
-- **社内利用にも適用される条件があります。** 変更したGEOFlowを従業員がネットワーク経由で対話的に利用する場合、AGPL第13条に従い、完全な対応ソースコードを無料で取得する手段を目立つ形で提供する必要があります。変更版のネットワークサービスを外部ユーザーに提供する場合も同様です。提供対象者は利用・配布の方法によって決まり、公開GitHubリポジトリへの掲載が一律に求められるわけではありません。受領者がライセンスに基づいて持つ再配布の権利も保持されます。
-- **業務データとソフトウェアのソースコードは分けて判断します。** 独立したナレッジベースの資料、顧客データ、生成した記事は、GEOFlowを利用したという理由だけでAGPLに基づく公開が必要になることは通常ありません。出力にライセンス対象のプログラムコードやその他の著作物が含まれる場合は、内容に応じた判断が必要です。
+- **社内利用にも適用される条件があります。** 変更したSparklightAIGEOを従業員がネットワーク経由で対話的に利用する場合、AGPL第13条に従い、完全な対応ソースコードを無料で取得する手段を目立つ形で提供する必要があります。変更版のネットワークサービスを外部ユーザーに提供する場合も同様です。提供対象者は利用・配布の方法によって決まり、公開GitHubリポジトリへの掲載が一律に求められるわけではありません。受領者がライセンスに基づいて持つ再配布の権利も保持されます。
+- **業務データとソフトウェアのソースコードは分けて判断します。** 独立したナレッジベースの資料、顧客データ、生成した記事は、SparklightAIGEOを利用したという理由だけでAGPLに基づく公開が必要になることは通常ありません。出力にライセンス対象のプログラムコードやその他の著作物が含まれる場合は、内容に応じた判断が必要です。
 - **無料の対象はソフトウェアのライセンス料です。** サーバー、ドメイン、モデルAPIの呼び出し、外部サービス、別途購入する技術サポートの費用は利用者が負担します。
 
 以上は既存ライセンスの利用場面別の説明であり、新たな例外を追加するものではありません。具体的な権利と義務は [LICENSE](../../LICENSE) に従います。[AGPL第13条](https://www.gnu.org/licenses/agpl-3.0.html#section13) と [プログラムの出力に関するGNUの説明](https://www.gnu.org/licenses/gpl-faq.en.html#WhatCaseIsOutputGPL) も参照してください。複雑なプロプライエタリ製品への組み込みや複数の法人が関わる納品では、事前の法的確認を推奨します。
 
-商用ライセンスの初回連絡には [GitHub Issue](https://github.com/yaojingang/GEOFlow/issues/new) を利用できます。Issueは公開されるため、契約、価格、顧客情報、その他の機密情報を書かないでください。初回連絡後は非公開の連絡手段に移行できます。適用される義務はライセンス本文と署名済み契約で決まります。
+商用ライセンスの初回連絡には [GitHub Issue](https://github.com/SparklightAI/SparklightAIGEO/issues/new) を利用できます。Issueは公開されるため、契約、価格、顧客情報、その他の機密情報を書かないでください。初回連絡後は非公開の連絡手段に移行できます。適用される義務はライセンス本文と署名済み契約で決まります。
 
-外部コントリビューターは貢献物の著作権を保持し、マージ前に [GEOFlow Contributor License Agreement v1.0](../../CLA.md) への同意が必要です。CLAにより、プロジェクトはAGPL版の維持と個別の商用ライセンス提供を継続できます。
+外部コントリビューターは貢献物の著作権を保持し、マージ前に [SparklightAIGEO Contributor License Agreement v1.0](../../CLA.md) への同意が必要です。CLAにより、プロジェクトはAGPL版の維持と個別の商用ライセンス提供を継続できます。
 
 ### 匿名テレメトリー
 
-匿名テレメトリーは初期状態で無効です。デプロイ管理者が有効化し、HTTPSの収集先を設定した場合、ログイン済み管理画面から1日最大1回のアクティビティイベントを送信します。送信項目はランダムなインスタンスID、管理者の不可逆ダイジェスト、GEOFlowバージョン、イベント種別に限定されます。
+匿名テレメトリーは初期状態で無効です。デプロイ管理者が有効化し、HTTPSの収集先を設定した場合、ログイン済み管理画面から1日最大1回のアクティビティイベントを送信します。送信項目はランダムなインスタンスID、管理者の不可逆ダイジェスト、SparklightAIGEOバージョン、イベント種別に限定されます。
 
 ```dotenv
 GEOFLOW_TELEMETRY_ENABLED=false
@@ -265,4 +265,4 @@ GEOFLOW_TELEMETRY_ENABLED=false
 
 ## Star履歴
 
-[![Star History Chart](https://star-history.dera.page/svg?repos=yaojingang/GEOFlow&type=Date)](https://star-history.dera.page/#yaojingang/GEOFlow&Date)
+[![Star History Chart](https://star-history.dera.page/svg?repos=SparklightAI/SparklightAIGEO&type=Date)](https://star-history.dera.page/#SparklightAI/SparklightAIGEO&Date)

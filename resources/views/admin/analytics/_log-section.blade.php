@@ -225,19 +225,19 @@
                             <svg viewBox="0 0 {{ $chartWidth }} {{ $chartHeight }}" class="block h-auto w-full touch-manipulation" aria-hidden="true" data-log-chart-surface>
                                 @foreach ([0, 0.5, 1] as $ratio)
                                     @php $gridY = $plotBottom - ($plotHeight * $ratio); @endphp
-                                    <line x1="{{ $plotLeft }}" y1="{{ $gridY }}" x2="{{ $plotRight }}" y2="{{ $gridY }}" stroke="#e5e7eb" stroke-width="1" />
-                                    <text x="{{ $plotLeft - 8 }}" y="{{ $gridY + 4 }}" text-anchor="end" fill="#6b7280" font-size="11" class="tabular-nums">{{ (int) round($trendMax * $ratio) }}</text>
+                                    <line x1="{{ $plotLeft }}" y1="{{ $gridY }}" x2="{{ $plotRight }}" y2="{{ $gridY }}" stroke="#ece9e4" stroke-width="1" />
+                                    <text x="{{ $plotLeft - 8 }}" y="{{ $gridY + 4 }}" text-anchor="end" fill="#6e7181" font-size="11" class="tabular-nums">{{ (int) round($trendMax * $ratio) }}</text>
                                 @endforeach
 
-                                <polyline points="{{ $pvPolyline }}" fill="none" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                                <polyline points="{{ $pvPolyline }}" fill="none" stroke="#2d326b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
                                 <polyline points="{{ $aiPolyline }}" fill="none" stroke="#9333ea" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
 
                                 @foreach ($trendPoints as $index => $point)
-                                    <circle cx="{{ $point['x'] }}" cy="{{ $point['pv_y'] }}" r="2.5" fill="#2563eb" data-log-chart-point data-index="{{ $index }}" data-x="{{ $point['x'] }}" data-pv-y="{{ $point['pv_y'] }}" data-ai-y="{{ $point['ai_y'] }}" />
+                                    <circle cx="{{ $point['x'] }}" cy="{{ $point['pv_y'] }}" r="2.5" fill="#2d326b" data-log-chart-point data-index="{{ $index }}" data-x="{{ $point['x'] }}" data-pv-y="{{ $point['pv_y'] }}" data-ai-y="{{ $point['ai_y'] }}" />
                                 @endforeach
 
-                                <line x1="{{ $defaultPoint['x'] }}" y1="{{ $plotTop }}" x2="{{ $defaultPoint['x'] }}" y2="{{ $plotBottom }}" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" data-log-chart-guide />
-                                <circle cx="{{ $defaultPoint['x'] }}" cy="{{ $defaultPoint['pv_y'] }}" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="3" data-log-chart-pv-marker />
+                                <line x1="{{ $defaultPoint['x'] }}" y1="{{ $plotTop }}" x2="{{ $defaultPoint['x'] }}" y2="{{ $plotBottom }}" stroke="#9a9ca8" stroke-width="1" stroke-dasharray="4 4" data-log-chart-guide />
+                                <circle cx="{{ $defaultPoint['x'] }}" cy="{{ $defaultPoint['pv_y'] }}" r="5" fill="#ffffff" stroke="#2d326b" stroke-width="3" data-log-chart-pv-marker />
                                 <circle cx="{{ $defaultPoint['x'] }}" cy="{{ $defaultPoint['ai_y'] }}" r="4" fill="#ffffff" stroke="#9333ea" stroke-width="2.5" data-log-chart-ai-marker />
 
                                 @if ($trendCount > 0)
@@ -250,7 +250,7 @@
                                         ];
                                     @endphp
                                     @foreach ($axisRows as $axis)
-                                        <text x="{{ $trendPoints[$axis['index']]['x'] }}" y="218" text-anchor="{{ $axis['anchor'] }}" fill="#6b7280" font-size="11">{{ \Illuminate\Support\Carbon::parse($trendRows[$axis['index']]['date'])->format('m-d') }}</text>
+                                        <text x="{{ $trendPoints[$axis['index']]['x'] }}" y="218" text-anchor="{{ $axis['anchor'] }}" fill="#6e7181" font-size="11">{{ \Illuminate\Support\Carbon::parse($trendRows[$axis['index']]['date'])->format('m-d') }}</text>
                                     @endforeach
                                 @endif
                             </svg>

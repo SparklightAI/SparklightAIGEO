@@ -10,7 +10,7 @@ use App\Support\Site\SiteThemeViewResolver;
 use Illuminate\View\View;
 
 /**
- * GEOFlow 项目介绍页。
+ * SparklightAIGEO 项目介绍页。
  */
 class AboutController extends Controller
 {
@@ -28,7 +28,7 @@ class AboutController extends Controller
         $isHosted = $this->currentSite->isHosted();
         $defaultDescription = $isHosted
             ? ($siteDescription !== '' ? $siteDescription : '关于 '.$siteTitle)
-            : 'GEOFlow 是面向生成式引擎优化的开源智能内容工程与多站点分发系统，连接知识、生成、审核、发布、分发和数据分析。';
+            : 'SparklightAIGEO 是面向生成式引擎优化的开源智能内容工程与多站点分发系统，连接知识、生成、审核、发布、分发和数据分析。';
         $aboutTitle = trim((string) ($map['about_title'] ?? ''));
         $aboutContent = trim((string) ($map['about_content'] ?? ''));
         $contactEmail = trim((string) ($map['contact_email'] ?? ''));
@@ -44,10 +44,10 @@ class AboutController extends Controller
             'pageDescription' => $pageDescription,
             'pageKeywords' => $isHosted
                 ? $siteKeywords
-                : 'GEOFlow,GEO,生成式引擎优化,开源内容系统,知识库,多站点分发',
+                : 'SparklightAIGEO,GEO,生成式引擎优化,开源内容系统,知识库,多站点分发',
             'pageOgType' => 'website',
             'canonicalUrl' => $this->urls->about(),
-            'repositoryUrl' => 'https://github.com/yaojingang/GEOFlow',
+            'repositoryUrl' => 'https://github.com/SparklightAI/SparklightAIGEO',
             'aboutTitle' => $aboutTitle !== '' ? $aboutTitle : '关于 '.$siteTitle,
             'aboutContent' => $aboutContent,
             'contactEmail' => $contactEmail,

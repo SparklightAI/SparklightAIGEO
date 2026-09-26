@@ -37,7 +37,7 @@
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
-        <env name="SITE_NAME" value="GEOFlow" force="true"/>
+        <env name="SITE_NAME" value="SparklightAIGEO" force="true"/>
         <env name="PULSE_ENABLED" value="false"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="NIGHTWATCH_ENABLED" value="false"/>

@@ -1,7 +1,7 @@
 # 知识库 23：原子事实与知识库检索 AI 质检对照测试报告
 
 - 测试时间：2026-08-30（Asia/Shanghai）
-- 知识库：23「GEOFlow 官方分发主题与生态知识（2026-08）」
+- 知识库：23「SparklightAIGEO 官方分发主题与生态知识（2026-08）」
 - 模型：DeepSeek V4 Pro（模型记录 ID 3，`deepseek-v4-pro`）
 - 样本：4 篇真实关联文章
 - 模型请求：8 次（每篇文章 × 2 种证据方式 × 1 次）
@@ -46,10 +46,10 @@
 
 | 文章 | 黄金裁决 | 核心依据 |
 | --- | --- | --- |
-| 449「GEOFlow 2.1.1 是什么」 | blocked | 原子事实记录当前公开版本为 v2.1.0，文章持续声明 v2.1.1 |
-| 471「GEOFlow 如何连接 WordPress」 | passed | 文章关于 Application Password、文章、媒体、分类和标签的表述与标准一致；配置清单省略项不构成已表达事实的矛盾 |
-| 467「GEOFlow Agent 目标站点包怎么用」 | passed | 站点包、静态页面、地图、llms.txt 与远端同步表述一致 |
-| 473「GEOFlow 主题工作流怎么用」 | passed | 主题展示范围、设计资产目录和动态预览路由表述一致 |
+| 449「SparklightAIGEO 2.1.1 是什么」 | blocked | 原子事实记录当前公开版本为 v2.1.0，文章持续声明 v2.1.1 |
+| 471「SparklightAIGEO 如何连接 WordPress」 | passed | 文章关于 Application Password、文章、媒体、分类和标签的表述与标准一致；配置清单省略项不构成已表达事实的矛盾 |
+| 467「SparklightAIGEO Agent 目标站点包怎么用」 | passed | 站点包、静态页面、地图、llms.txt 与远端同步表述一致 |
+| 473「SparklightAIGEO 主题工作流怎么用」 | passed | 主题展示范围、设计资产目录和动态预览路由表述一致 |
 
 ## 四、逐篇结果
 

@@ -68,7 +68,7 @@ class AdminSystemUpdaterBridgeTest extends TestCase
             ->assertSee(__('admin.system_updates.updater.title'))
             ->assertSee(__('admin.system_updates.updater.readiness.ready'))
             ->assertSee(__('admin.system_updates.updater.journey.title'))
-            ->assertSee('https://github.com/yaojingang/geoflow-updater', false)
+            ->assertSee('https://sparklight-ai.com/updater', false)
             ->assertSee('name="updater_authorization_code"', false)
             ->assertSee(route('admin.system-updates.updater.update'), false)
             ->assertSee(route('admin.system-updates.runs.show', ['runUuid' => $run->run_uuid]), false)
@@ -104,7 +104,7 @@ class AdminSystemUpdaterBridgeTest extends TestCase
             ->assertSee(__('admin.system_updates.updater.journey.operate'))
             ->assertSee(__('admin.system_updates.updater.cta.get'))
             ->assertSee(route('admin.system-updates.updater.prepare'), false)
-            ->assertDontSee('/absolute/path/to/GEOFlow', false)
+            ->assertDontSee('/absolute/path/to/SparklightAIGEO', false)
             ->assertDontSee(route('admin.system-updates.check'), false);
     }
 
@@ -143,7 +143,7 @@ class AdminSystemUpdaterBridgeTest extends TestCase
                 'payload' => [
                     'summary_zh' => '新增版本更新说明，并优化系统更新引导。',
                     'summary_en' => 'Adds release notes and improves the system update guidance.',
-                    'release_url' => 'https://github.com/yaojingang/GEOFlow/releases/tag/v3.1.0',
+                    'release_url' => 'https://github.com/SparklightAI/SparklightAIGEO/releases/tag/v3.1.0',
                 ],
             ]),
         ]);
@@ -160,7 +160,7 @@ class AdminSystemUpdaterBridgeTest extends TestCase
             ->assertSee('新增版本更新说明，并优化系统更新引导。')
             ->assertSee(__('admin.system_updates.release_notice.release_type.minor'))
             ->assertSee(__('admin.system_updates.release_notice.release_date', ['date' => '2026-09-01']))
-            ->assertSee('https://github.com/yaojingang/GEOFlow/releases/tag/v3.1.0', false)
+            ->assertSee('https://github.com/SparklightAI/SparklightAIGEO/releases/tag/v3.1.0', false)
             ->assertSee(__('admin.system_updates.release_notice.cta'))
             ->assertSee(__('admin.system_updates.manual_commands.title'))
             ->assertSee(__('admin.system_updates.updater.title'));
@@ -201,7 +201,7 @@ class AdminSystemUpdaterBridgeTest extends TestCase
             ->assertSee(route('admin.system-updates.updater.download'), false)
             ->assertSee(__('admin.system_updates.updater.host_root_required_title'))
             ->assertDontSee('sudo geoflow-updater enroll', false)
-            ->assertDontSee('/absolute/path/to/GEOFlow', false);
+            ->assertDontSee('/absolute/path/to/SparklightAIGEO', false);
     }
 
     public function test_prepared_package_reveals_numbered_copyable_commands_when_host_root_is_configured(): void
@@ -227,7 +227,7 @@ class AdminSystemUpdaterBridgeTest extends TestCase
             ->assertSee('data-system-updater-copy=', false)
             ->assertSee("--instance-root '/srv/geoflow'")
             ->assertSee(__('admin.system_updates.updater.copy'))
-            ->assertDontSee('/absolute/path/to/GEOFlow', false);
+            ->assertDontSee('/absolute/path/to/SparklightAIGEO', false);
     }
 
     public function test_super_admin_can_prepare_and_download_a_verified_updater_package(): void
@@ -276,9 +276,9 @@ class AdminSystemUpdaterBridgeTest extends TestCase
             ->assertOk()
             ->assertSee('data-system-updater-error-dialog', false)
             ->assertSee(__('admin.system_updates.updater.error_dialog.title.release_not_found'))
-            ->assertSee('https://github.com/yaojingang/geoflow-updater/releases', false)
-            ->assertSee('https://github.com/yaojingang/geoflow-updater/actions/workflows/release-candidate.yml', false)
-            ->assertSee('https://github.com/yaojingang/geoflow-updater/actions/workflows/release.yml', false)
+            ->assertSee('https://sparklight-ai.com/updater/releases', false)
+            ->assertSee('https://sparklight-ai.com/updater/actions/workflows/release-candidate.yml', false)
+            ->assertSee('https://sparklight-ai.com/updater/actions/workflows/release.yml', false)
             ->assertDontSee(__('admin.system_updates.updater.prepare_failed'));
         $this->assertMatchesRegularExpression(
             '/<dialog(?=[^>]*\bopen\b)(?=[^>]*data-system-updater-error-dialog)[^>]*>/',

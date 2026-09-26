@@ -16,11 +16,11 @@ permissions:
   id-token: write
   attestations: write
 concurrency:
-  group: geoflow-cli-sign
+  group: sparklightaigeo-cli-sign
   cancel-in-progress: false
 jobs:
   sign:
-    if: github.repository == 'yaojingang/GEOFlow' && github.ref == 'refs/heads/main'
+    if: github.repository == 'SparklightAI/SparklightAIGEO' && github.ref == 'refs/heads/main'
     environment: cli-release-signing
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -41,10 +41,10 @@ jobs:
           [[ "$RUN_ID" =~ ^[1-9][0-9]*$ && "$EXPECTED" =~ ^[a-f0-9]{64}$ ]]
           gh api "repos/$GITHUB_REPOSITORY/actions/runs/$RUN_ID" > "$RUNNER_TEMP/run.json"
           jq -e --arg sha "$GITHUB_SHA" '.conclusion == "success" and .event == "workflow_dispatch" and .head_branch == "main" and .head_sha == $sha and .path == ".github/workflows/cli-candidate.yml"' "$RUNNER_TEMP/run.json" >/dev/null
-          python3 -B packages/geoflow-cli/release.py candidate-evidence --run-id "$RUN_ID" --sha256 "$EXPECTED" --source-commit "$GITHUB_SHA" > "$RUNNER_TEMP/candidate-evidence.json"
+          python3 -B packages/sparklightaigeo-cli/release.py candidate-evidence --run-id "$RUN_ID" --sha256 "$EXPECTED" --source-commit "$GITHUB_SHA" > "$RUNNER_TEMP/candidate-evidence.json"
           gh run download "$RUN_ID" --name "cli-candidate-$RUN_ID" --dir "$RUNNER_TEMP/candidate"
           test "$(sha256sum "$RUNNER_TEMP/candidate/candidate.tar" | cut -d ' ' -f 1)" = "$EXPECTED"
-          gh attestation verify "$RUNNER_TEMP/candidate/candidate.tar" --repo yaojingang/GEOFlow --signer-workflow yaojingang/GEOFlow/.github/workflows/cli-candidate.yml --source-ref refs/heads/main --source-digest "$GITHUB_SHA" --deny-self-hosted-runners
+          gh attestation verify "$RUNNER_TEMP/candidate/candidate.tar" --repo SparklightAI/SparklightAIGEO --signer-workflow SparklightAI/SparklightAIGEO/.github/workflows/cli-candidate.yml --source-ref refs/heads/main --source-digest "$GITHUB_SHA" --deny-self-hosted-runners
       - name: Sign exact approved bytes with independent CLI key
         env:
           CLI_RELEASE_KEY_B64: ${{ secrets.CLI_RELEASE_KEY_B64 }}
@@ -64,21 +64,21 @@ jobs:
           [[ "$trust_version" =~ ^[1-9][0-9]*$ ]]
           gh release download "cli-trust-v$trust_version" --pattern trust.json --dir "$RUNNER_TEMP/published-trust"
           cmp "$RUNNER_TEMP/trust.json" "$RUNNER_TEMP/published-trust/trust.json"
-          gh attestation verify "$RUNNER_TEMP/trust.json" --repo yaojingang/GEOFlow --signer-workflow yaojingang/GEOFlow/.github/workflows/cli-trust.yml --source-ref refs/heads/main --source-digest "$CLI_TRUST_SOURCE_COMMIT" --deny-self-hosted-runners
+          gh attestation verify "$RUNNER_TEMP/trust.json" --repo SparklightAI/SparklightAIGEO --signer-workflow SparklightAI/SparklightAIGEO/.github/workflows/cli-trust.yml --source-ref refs/heads/main --source-digest "$CLI_TRUST_SOURCE_COMMIT" --deny-self-hosted-runners
           export TRUST_VERSION="$trust_version"
-          PYTHONPATH=packages/geoflow-cli python3 -B -c 'import os; from bootstrap import verify_tag; verify_tag("cli-trust-v" + os.environ["TRUST_VERSION"], os.environ["CLI_TRUST_SOURCE_COMMIT"])'             || exit 1
+          PYTHONPATH=packages/sparklightaigeo-cli python3 -B -c 'import os; from bootstrap import verify_tag; verify_tag("cli-trust-v" + os.environ["TRUST_VERSION"], os.environ["CLI_TRUST_SOURCE_COMMIT"])'             || exit 1
           mkdir -p "$RUNNER_TEMP/signed"
           version="$(jq -er '.version' "$RUNNER_TEMP/candidate/candidate.json")"
           [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]
-          python3 -B packages/geoflow-cli/release.py sign --candidate "$RUNNER_TEMP/candidate/candidate.tar" --candidate-evidence "$RUNNER_TEMP/candidate-evidence.json" --sha256 "$EXPECTED" --key-file "$RUNNER_TEMP/cli.key" --key-id "$CLI_RELEASE_KEY_ID" --trust "$RUNNER_TEMP/trust.json" --output "$RUNNER_TEMP/signed/geoflow-cli-$version.tar" > "$RUNNER_TEMP/signed/release.json"
+          python3 -B packages/sparklightaigeo-cli/release.py sign --candidate "$RUNNER_TEMP/candidate/candidate.tar" --candidate-evidence "$RUNNER_TEMP/candidate-evidence.json" --sha256 "$EXPECTED" --key-file "$RUNNER_TEMP/cli.key" --key-id "$CLI_RELEASE_KEY_ID" --trust "$RUNNER_TEMP/trust.json" --output "$RUNNER_TEMP/signed/sparklightaigeo-cli-$version.tar" > "$RUNNER_TEMP/signed/release.json"
           test "$(jq -er '.source_commit' "$RUNNER_TEMP/signed/release.json")" = "$GITHUB_SHA"
           test "$(jq -er '.version' "$RUNNER_TEMP/signed/release.json")" = "$version"
-          cp packages/geoflow-cli/bootstrap.py "$RUNNER_TEMP/signed/bootstrap.py"
+          cp packages/sparklightaigeo-cli/bootstrap.py "$RUNNER_TEMP/signed/bootstrap.py"
       - name: Verify signed payload after removing private key
         run: |
           set -euo pipefail
           test ! -e "$RUNNER_TEMP/cli.key"
-          python3 -B packages/geoflow-cli/release.py verify --archive "$RUNNER_TEMP/signed/$(jq -r '"geoflow-cli-" + .version + ".tar"' "$RUNNER_TEMP/signed/release.json")" --trust "$RUNNER_TEMP/trust.json"
+          python3 -B packages/sparklightaigeo-cli/release.py verify --archive "$RUNNER_TEMP/signed/$(jq -r '"sparklightaigeo-cli-" + .version + ".tar"' "$RUNNER_TEMP/signed/release.json")" --trust "$RUNNER_TEMP/trust.json"
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8
         with:
           subject-path: |

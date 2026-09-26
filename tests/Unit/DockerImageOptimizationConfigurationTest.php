@@ -12,10 +12,10 @@ class DockerImageOptimizationConfigurationTest extends TestCase
 
         $this->assertStringContainsString('COPY --from=composer:2 /usr/bin/composer /usr/bin/composer', $dockerfile);
         $this->assertStringContainsString(
-            'COPY docker/entrypoint.sh /usr/local/bin/geoflow-entrypoint',
+            'COPY docker/entrypoint.sh /usr/local/bin/sparklightaigeo-entrypoint',
             $dockerfile,
         );
-        $this->assertStringContainsString('ENTRYPOINT ["/usr/local/bin/geoflow-entrypoint"]', $dockerfile);
+        $this->assertStringContainsString('ENTRYPOINT ["/usr/local/bin/sparklightaigeo-entrypoint"]', $dockerfile);
         $this->assertStringNotContainsString('COPY . .', $dockerfile);
         $this->assertStringNotContainsString('composer install', $dockerfile);
         $this->assertStringNotContainsString('composer dump-autoload', $dockerfile);
@@ -31,7 +31,7 @@ class DockerImageOptimizationConfigurationTest extends TestCase
         $this->assertSame(1, substr_count($compose, "    build:\n"));
 
         foreach ($services as $service => $block) {
-            if ($service === 'init' || ! str_contains($block, 'image: geoflow-app:latest')) {
+            if ($service === 'init' || ! str_contains($block, 'image: sparklightaigeo-app:latest')) {
                 continue;
             }
 

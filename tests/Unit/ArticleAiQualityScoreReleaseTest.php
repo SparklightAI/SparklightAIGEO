@@ -119,7 +119,7 @@ class ArticleAiQualityScoreReleaseTest extends TestCase
         foreach ([
             '答：不能保证。',
             '诊断报告应写明第一轮验证从哪个站点开始，避免一开始就全渠道铺开。',
-            '在正式启动 GEOFlow 之前，建议先完成一份覆盖品牌数据、内容资产与平台适配三个维度的诊断报告。',
+            '在正式启动 SparklightAIGEO 之前，建议先完成一份覆盖品牌数据、内容资产与平台适配三个维度的诊断报告。',
             '- 空洞承诺：保证“品牌被推荐进入前几名”。',
         ] as $quote) {
             $this->assertSame([], $extractor->extract(['content' => $quote]), $quote);

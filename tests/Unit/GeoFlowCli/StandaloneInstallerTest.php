@@ -47,7 +47,7 @@ class StandaloneInstallerTest extends TestCase
 
     private function install(bool $update = false, bool $recover = false): Process
     {
-        $arguments = [PHP_BINARY, dirname(__DIR__, 3).'/packages/geoflow-cli/install.php', $recover ? '--recover' : '--bundle='.$this->directory.'/bundle', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin'];
+        $arguments = [PHP_BINARY, dirname(__DIR__, 3).'/packages/sparklightaigeo-cli/install.php', $recover ? '--recover' : '--bundle='.$this->directory.'/bundle', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin'];
         if ($update) {
             $arguments[] = '--update';
         }
@@ -119,7 +119,7 @@ class StandaloneInstallerTest extends TestCase
         $previous = $this->bundle();
         $this->assertSame(0, $this->install()->getExitCode());
         $this->bundle('0.4.0');
-        $process = new Process(array_merge([PHP_BINARY, dirname(__DIR__, 3).'/packages/geoflow-cli/install.php', '--bundle='.$this->directory.'/bundle', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin'], $options), $this->directory);
+        $process = new Process(array_merge([PHP_BINARY, dirname(__DIR__, 3).'/packages/sparklightaigeo-cli/install.php', '--bundle='.$this->directory.'/bundle', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin'], $options), $this->directory);
         $process->run();
         $this->assertNotSame(0, $process->getExitCode());
         $this->assertSame('', $process->getOutput());
@@ -147,7 +147,7 @@ class StandaloneInstallerTest extends TestCase
         $this->bundle('0.4.0');
         $this->assertSame(87, $this->interrupt('prepared')->getExitCode());
         $before = file_get_contents($this->directory.'/bin/.geoflow-install.json');
-        $process = new Process(array_merge([PHP_BINARY, dirname(__DIR__, 3).'/packages/geoflow-cli/install.php', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin'], $options), $this->directory);
+        $process = new Process(array_merge([PHP_BINARY, dirname(__DIR__, 3).'/packages/sparklightaigeo-cli/install.php', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin'], $options), $this->directory);
         $process->run();
         $this->assertNotSame(0, $process->getExitCode());
         $this->assertSame($previous, file_get_contents($this->directory.'/bin/geoflow'));
@@ -258,7 +258,7 @@ class StandaloneInstallerTest extends TestCase
         }
         $this->assertFileExists($this->directory.'/ready', $first->getErrorOutput());
         $latest = $this->bundle('0.5.0');
-        $second = new Process([PHP_BINARY, dirname(__DIR__, 3).'/packages/geoflow-cli/install.php', '--bundle='.$this->directory.'/bundle', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin', '--update'], $this->directory);
+        $second = new Process([PHP_BINARY, dirname(__DIR__, 3).'/packages/sparklightaigeo-cli/install.php', '--bundle='.$this->directory.'/bundle', '--trusted-keys='.$this->directory.'/trust.json', '--bin-dir='.$this->directory.'/bin', '--update'], $this->directory);
         $second->start();
         try {
             usleep(50000);
@@ -294,7 +294,7 @@ class StandaloneInstallerTest extends TestCase
             }
         });
         PHP;
-        $process = new Process([PHP_BINARY, '-r', $code, dirname(__DIR__, 3).'/packages/geoflow-cli', $this->directory, $phase], $this->directory);
+        $process = new Process([PHP_BINARY, '-r', $code, dirname(__DIR__, 3).'/packages/sparklightaigeo-cli', $this->directory, $phase], $this->directory);
         $start ? $process->start() : $process->run();
 
         return $process;

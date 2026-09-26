@@ -9,16 +9,16 @@
             </div>
             <div>
                 <span class="ent-footer__label">Resources</span>
-                <a href="{{ route('site.about') }}">关于 GEOFlow</a>
+                <a href="{{ route('site.about') }}">关于 SparklightAIGEO</a>
                 @foreach($navCategories->take(3) as $categoryItem)
                     <a href="{{ route('site.category', $categoryItem->slug) }}">{{ $categoryItem->name }}</a>
                 @endforeach
             </div>
             <div>
                 <span class="ent-footer__label">Open Source</span>
-                <a href="https://github.com/yaojingang/GEOFlow" target="_blank" rel="noopener noreferrer">GitHub</a>
-                <a href="https://github.com/yaojingang/GEOFlow/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-                <a href="https://github.com/yaojingang/GEOFlow/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+                <a href="https://github.com/SparklightAI/SparklightAIGEO" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://github.com/SparklightAI/SparklightAIGEO/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+                <a href="https://github.com/SparklightAI/SparklightAIGEO/releases" target="_blank" rel="noopener noreferrer">Releases</a>
             </div>
             <div>
                 <span class="ent-footer__label">Enterprise</span>
@@ -34,7 +34,7 @@
                 {{ $footerCopyright !== '' ? $footerCopyright : '© '.date('Y').' '.$siteName.'. All rights reserved.' }}
                 @include('site.partials.footer-filing')
             </div>
-            <span>Built with GEOFlow · Enterprise Signature 21</span>
+            <span>Built with SparklightAIGEO · Enterprise Signature 21</span>
         </div>
     </div>
 </footer>

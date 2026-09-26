@@ -239,7 +239,7 @@ final readonly class AiCapabilityExecutor implements AiWorkspaceCapabilityDriver
             summary: sprintf('已登记 %d 项当前管理员可见能力。', count($items)),
             payload: ['capabilities' => $items],
             artifactType: 'capability_catalog',
-            artifactName: 'GEOFlow 能力目录',
+            artifactName: 'SparklightAIGEO 能力目录',
             sourceRoute: 'admin.ai-workspace',
             sourceUrl: route('admin.ai-workspace'),
         );
@@ -282,7 +282,7 @@ final readonly class AiCapabilityExecutor implements AiWorkspaceCapabilityDriver
             ),
             payload: $payload,
             artifactType: 'operational_report',
-            artifactName: $days === 7 ? 'GEOFlow 运营周报' : 'GEOFlow 运营日报',
+            artifactName: $days === 7 ? 'SparklightAIGEO 运营周报' : 'SparklightAIGEO 运营日报',
             sourceRoute: 'admin.analytics',
             sourceUrl: route('admin.analytics'),
         );

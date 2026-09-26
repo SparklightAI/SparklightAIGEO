@@ -114,7 +114,7 @@ final class KnowledgeEmbeddingIdentityIsolationTest extends TestCase
 
         $bundle = app(KnowledgeRetrievalService::class)->retrieveContextBundleFromMany(
             [(int) $knowledgeBase->id],
-            'GEOFlow 检索身份',
+            'SparklightAIGEO 检索身份',
             identity: $consumer,
         );
 
@@ -138,10 +138,10 @@ final class KnowledgeEmbeddingIdentityIsolationTest extends TestCase
         $this->assertSame(7, $event->input_tokens);
         $this->assertSame(7, $event->total_tokens);
         $this->assertTrue(Str::isUuid((string) $event->request_id));
-        $this->assertSame(hash('sha256', 'GEOFlow 检索身份'), $event->request_payload_digest);
+        $this->assertSame(hash('sha256', 'SparklightAIGEO 检索身份'), $event->request_payload_digest);
         $this->assertMatchesRegularExpression('/\Aquery-1\.kb-\d+\.candidate-1\.provider-1\z/', (string) $event->call_key);
         $serialized = json_encode($event->getAttributes(), JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE);
-        $this->assertStringNotContainsString('GEOFlow 检索身份', $serialized);
+        $this->assertStringNotContainsString('SparklightAIGEO 检索身份', $serialized);
         $this->assertStringNotContainsString('personal-key', $serialized);
         $this->assertStringNotContainsString('https://personal.test', $serialized);
     }
@@ -1401,7 +1401,7 @@ final class KnowledgeEmbeddingIdentityIsolationTest extends TestCase
             'knowledge_base_id' => $knowledgeBase->id,
             'generation_key' => 'serving-generation',
             'chunk_index' => 0,
-            'content' => '关键词降级与 GEOFlow 检索身份均来自该知识片段。',
+            'content' => '关键词降级与 SparklightAIGEO 检索身份均来自该知识片段。',
             'content_hash' => hash('sha256', 'identity-chunk'),
             'source_hash' => hash('sha256', 'identity-source'),
             'embedding_json' => json_encode($vector),
@@ -1490,7 +1490,7 @@ final class KnowledgeEmbeddingIdentityIsolationTest extends TestCase
         return KnowledgeBase::query()->create(array_merge([
             'name' => '身份隔离知识库',
             'description' => '',
-            'content' => '关键词降级与 GEOFlow 检索身份均来自该知识片段。',
+            'content' => '关键词降级与 SparklightAIGEO 检索身份均来自该知识片段。',
             'character_count' => 30,
             'file_type' => 'markdown',
             'word_count' => 30,

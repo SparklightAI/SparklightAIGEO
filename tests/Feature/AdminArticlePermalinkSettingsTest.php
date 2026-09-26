@@ -233,7 +233,7 @@ class AdminArticlePermalinkSettingsTest extends TestCase
 
         $this->actingAs($this->admin(), 'admin')
             ->post(route('admin.site-settings.update'), [
-                'site_name' => 'GEOFlow',
+                'site_name' => 'SparklightAIGEO',
                 'admin_base_path' => 'control-room',
             ])
             ->assertSessionHasErrors('admin_base_path');
@@ -254,7 +254,7 @@ class AdminArticlePermalinkSettingsTest extends TestCase
 
         $this->actingAs($this->admin(), 'admin')
             ->post(route('admin.site-settings.update'), [
-                'site_name' => 'GEOFlow',
+                'site_name' => 'SparklightAIGEO',
                 'admin_base_path' => 'control-room',
             ])
             ->assertSessionHasErrors('admin_base_path');
@@ -290,7 +290,7 @@ class AdminArticlePermalinkSettingsTest extends TestCase
     private function article(): Article
     {
         $category = Category::query()->create(['name' => 'AI', 'slug' => 'ai']);
-        $author = Author::query()->create(['name' => 'GEOFlow']);
+        $author = Author::query()->create(['name' => 'SparklightAIGEO']);
 
         return Article::query()->create([
             'title' => 'Preview article',
@@ -307,7 +307,7 @@ class AdminArticlePermalinkSettingsTest extends TestCase
     private function articleWithSlug(string $slug): Article
     {
         $category = Category::query()->firstOrCreate(['slug' => 'ai'], ['name' => 'AI']);
-        $author = Author::query()->firstOrCreate(['name' => 'GEOFlow']);
+        $author = Author::query()->firstOrCreate(['name' => 'SparklightAIGEO']);
 
         return Article::query()->create([
             'title' => 'Article '.$slug,

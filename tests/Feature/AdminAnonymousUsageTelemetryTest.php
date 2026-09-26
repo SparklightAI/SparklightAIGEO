@@ -76,7 +76,7 @@ class AdminAnonymousUsageTelemetryTest extends TestCase
             ->assertSee('content="https://monitor.example/api/pulse"', false)
             ->assertSee('name="geoflow-telemetry-instance"', false)
             ->assertSee('name="geoflow-telemetry-user"', false)
-            ->assertSee('js/geoflow-pulse.js', false)
+            ->assertSee('js/sparklightaigeo-pulse.js', false)
             ->assertDontSee($admin->email, false);
     }
 
@@ -95,7 +95,7 @@ class AdminAnonymousUsageTelemetryTest extends TestCase
             ->get(route('admin.dashboard'))
             ->assertOk()
             ->assertDontSee('name="geoflow-telemetry-endpoint"', false)
-            ->assertDontSee('js/geoflow-pulse.js', false);
+            ->assertDontSee('js/sparklightaigeo-pulse.js', false);
 
         config([
             'geoflow.telemetry_enabled' => true,
@@ -107,7 +107,7 @@ class AdminAnonymousUsageTelemetryTest extends TestCase
 
     public function test_local_pulse_script_omits_credentials_and_referrer(): void
     {
-        $script = file_get_contents(public_path('js/geoflow-pulse.js'));
+        $script = file_get_contents(public_path('js/sparklightaigeo-pulse.js'));
 
         $this->assertIsString($script);
         $this->assertStringContainsString('credentials: "omit"', $script);

@@ -69,7 +69,7 @@
                     </div>
                     <h1>让全球知识成为 <span class="ent-no-break">AI 引用的可信答案</span></h1>
                     <p class="ent-hero__lead">
-                        GEOFlow 将企业知识、内容工作流、AI 可见性观测和多渠道分发连接在一个开放系统中，
+                        SparklightAIGEO 将企业知识、内容工作流、AI 可见性观测和多渠道分发连接在一个开放系统中，
                         帮助全球团队建立持续增长的 GEO 能力。
                     </p>
                     @if($siteDescription !== '')
@@ -80,7 +80,7 @@
                             预约 GEO 方案交流
                             <i data-lucide="arrow-right" aria-hidden="true"></i>
                         </a>
-                        <a href="https://github.com/yaojingang/GEOFlow" class="ent-text-link" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/SparklightAI/SparklightAIGEO" class="ent-text-link" target="_blank" rel="noopener noreferrer">
                             查看开源仓库
                             <i data-lucide="arrow-up-right" aria-hidden="true"></i>
                         </a>
@@ -95,7 +95,7 @@
                     <div class="ent-control-plane">
                         <div class="ent-control-plane__top">
                             <div class="ent-window-dots" aria-hidden="true"><span></span><span></span><span></span></div>
-                            <span>GEOFlow Control Plane</span>
+                            <span>SparklightAIGEO Control Plane</span>
                             <span class="ent-live-state"><i></i> Live Demo</span>
                         </div>
                         <div class="ent-control-plane__body">
@@ -275,14 +275,14 @@
                 <div class="ent-open-source__content ent-reveal">
                     <span class="ent-kicker">Open architecture</span>
                     <h2 id="ecosystem-title">企业能力与<span class="ent-no-break">开源生态</span>共同演进</h2>
-                    <p>GEOFlow 以开放代码、可扩展通道和清晰工作流支持团队构建自己的 GEO 基础设施。</p>
+                    <p>SparklightAIGEO 以开放代码、可扩展通道和清晰工作流支持团队构建自己的 GEO 基础设施。</p>
                     <div class="ent-code-card">
                         <div><span></span><span></span><span></span><small>terminal</small></div>
-                        <code><b>$</b> git clone https://github.com/yaojingang/GEOFlow.git</code>
-                        <code><b>$</b> cd GEOFlow</code>
+                        <code><b>$</b> git clone https://github.com/SparklightAI/SparklightAIGEO.git</code>
+                        <code><b>$</b> cd SparklightAIGEO</code>
                         <code><b>$</b> composer install</code>
                     </div>
-                    <a href="https://github.com/yaojingang/GEOFlow" class="ent-button ent-button--dark" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/SparklightAI/SparklightAIGEO" class="ent-button ent-button--dark" target="_blank" rel="noopener noreferrer">
                         <i data-lucide="code-2" aria-hidden="true"></i>
                         访问 GitHub
                     </a>
@@ -420,9 +420,9 @@
                 <div class="ent-section-heading ent-section-heading--split ent-reveal">
                     <div>
                         <span class="ent-kicker">Ideas and evidence</span>
-                        <h2 id="insights-title">GEOFlow 实践与洞察</h2>
+                        <h2 id="insights-title">SparklightAIGEO 实践与洞察</h2>
                     </div>
-                    <a href="{{ route('site.about') }}" class="ent-text-link">了解 GEOFlow <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+                    <a href="{{ route('site.about') }}" class="ent-text-link">了解 SparklightAIGEO <i data-lucide="arrow-right" aria-hidden="true"></i></a>
                 </div>
 
                 <div class="ent-featured-grid">
@@ -461,7 +461,7 @@
                             <div class="ent-empty-state">
                                 <span>Content runway</span>
                                 <h3>在后台发布文章后，最新洞察会自动出现在这里</h3>
-                                <p>当前主题已经接入 GEOFlow 的文章、分类与关于页面。</p>
+                                <p>当前主题已经接入 SparklightAIGEO 的文章、分类与关于页面。</p>
                             </div>
                         @endforelse
                     </div>
@@ -477,8 +477,8 @@
                     <p>
                         留下团队目标、市场和当前挑战。
                         {{ $primaryLeadForm
-                            ? '提交内容会安全进入 GEOFlow 增长中心。'
-                            : '在后台启用并指定表单后，提交内容会进入 GEOFlow 增长中心。' }}
+                            ? '提交内容会安全进入 SparklightAIGEO 增长中心。'
+                            : '在后台启用并指定表单后，提交内容会进入 SparklightAIGEO 增长中心。' }}
                     </p>
                     <div class="ent-contact-points">
                         <div><span>01</span><p><strong>30 分钟需求交流</strong><small>梳理当前 GEO 场景</small></p></div>
@@ -577,8 +577,8 @@
                         <div class="ent-empty-state ent-empty-state--wide">
                             <span>0 results</span>
                             <h2>{{ __('site.home_empty_title') }}</h2>
-                            <p>尝试使用更简短的关键词，或前往关于页面了解 GEOFlow。</p>
-                            <a href="{{ route('site.about') }}" class="ent-text-link">关于 GEOFlow <i data-lucide="arrow-right" aria-hidden="true"></i></a>
+                            <p>尝试使用更简短的关键词，或前往关于页面了解 SparklightAIGEO。</p>
+                            <a href="{{ route('site.about') }}" class="ent-text-link">关于 SparklightAIGEO <i data-lucide="arrow-right" aria-hidden="true"></i></a>
                         </div>
                     @endforelse
                 </div>

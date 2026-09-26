@@ -76,7 +76,7 @@ class ApiClient
             if (preg_match('/^[a-f0-9]{32}$/D', $this->recoveryEpoch) !== 1) {
                 throw new CliException('配置中的恢复代次无效，请重新登录');
             }
-            $pendingRequest->withHeader('X-GEOFlow-Recovery-Epoch', $this->recoveryEpoch);
+            $pendingRequest->withHeader('X-SparklightAIGEO-Recovery-Epoch', $this->recoveryEpoch);
         }
 
         if ($clientRequestId !== null) {

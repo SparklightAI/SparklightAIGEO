@@ -1,26 +1,26 @@
-# GEOFlow 与 Updater 联合部署升级方案
+# SparklightAIGEO 与 Updater 联合部署升级方案
 
 日期：2026-09-08。状态：已批准设计，代码实现见 [操作指引](../../blue-green-deployment-usage.md)；生产部署与发布尚未执行。目标：统一首次安装、自动升级动作、兼容版本在线切换与故障恢复。
 
 ## 1. 现状与判断
 
-GEOFlow 已有首次空库安装入口 `deploy-scripts/geoflow-docker-deploy.sh`，使用 `docker-compose.prod.yml`，包含环境准备、镜像构建、初始化、迁移和健康检查。已有数据的升级走停机排空协议。
+SparklightAIGEO 已有首次空库安装入口 `deploy-scripts/sparklightaigeo-docker-deploy.sh`，使用 `docker-compose.prod.yml`，包含环境准备、镜像构建、初始化、迁移和健康检查。已有数据的升级走停机排空协议。
 
 `geoflow-updater` 已具备宿主机更新执行器：TUF 验签、镜像摘要固定、预检、备份、迁移、激活、恢复服务、验证及中断恢复。Laravel 通过 Unix socket 发起受限操作。后续改造继续保持 updater 为唯一更新执行者。
 
-实现基线：GEOFlow `6383e956a28fa86a27454ef615d10d93a48914dd`，updater `724bf4ffd21101757b3e26f5dd70ac6cb3445b40`。当前操作接口与已完成验证见操作指引和验证记录；本方案保留设计目标及验收要求。
+实现基线：SparklightAIGEO `6383e956a28fa86a27454ef615d10d93a48914dd`，updater `724bf4ffd21101757b3e26f5dd70ac6cb3445b40`。当前操作接口与已完成验证见操作指引和验证记录；本方案保留设计目标及验收要求。
 
 | 已核对位置 | 当前行为 | 改造要求 |
 | --- | --- | --- |
-| GEOFlow `deploy-scripts/geoflow-docker-deploy.sh` 的 `deploy_stack` | 进入维护模式，停止应用服务，执行 init，再启动 | 保留首次安装语义；新的统一入口识别首次安装与受管更新 |
+| SparklightAIGEO `deploy-scripts/sparklightaigeo-docker-deploy.sh` 的 `deploy_stack` | 进入维护模式，停止应用服务，执行 init，再启动 | 保留首次安装语义；新的统一入口识别首次安装与受管更新 |
 | updater `internal/update/engine.go` | 固定执行 quiesce、backup、migrate、activate、resume、verify | 增加经过签名兼容性检查的在线更新策略 |
-| updater `internal/deployment/service.go` 的 `quiesce` | 停止 queue、knowledge-queue、scheduler、reverb、web、app、redis | 与当前 GEOFlow 的全部服务保持一致；在线路径保持基础设施运行 |
+| updater `internal/deployment/service.go` 的 `quiesce` | 停止 queue、knowledge-queue、scheduler、reverb、web、app、redis | 与当前 SparklightAIGEO 的全部服务保持一致；在线路径保持基础设施运行 |
 | updater `assets/docker-compose.managed.yml` | 固定容器名、单套应用和入口 | 拆分稳定基础设施与可并存的应用槽位 |
-| GEOFlow `docker-compose.prod.yml` | 还包含 ai-quality-queue、ai-quality-backfill-queue、ai-optimization-queue | 补入受管模板、doctor、排空及验收；以绑定发布的服务清单为准 |
+| SparklightAIGEO `docker-compose.prod.yml` | 还包含 ai-quality-queue、ai-quality-backfill-queue、ai-optimization-queue | 补入受管模板、doctor、排空及验收；以绑定发布的服务清单为准 |
 | updater `Migrate` | 一次性容器执行 `artisan migrate --force` | 编排迁移后的业务回填、官方知识同步和发布检查 |
 | updater `internal/operation/manager.go` | 根据已有阶段判断中断恢复 | 按策略分别恢复；在线策略禁止隐式整库还原 |
 
-以上服务差异是 updater 远端模板与 GEOFlow 当前工作区的对比，不能据此判定某台线上机器的实际运行状态。
+以上服务差异是 updater 远端模板与 SparklightAIGEO 当前工作区的对比，不能据此判定某台线上机器的实际运行状态。
 
 ## 2. 可用性边界
 
@@ -42,7 +42,7 @@ GEOFlow 已有首次空库安装入口 `deploy-scripts/geoflow-docker-deploy.sh`
 ## 3. 部署结构与所有权
 
 ```text
-管理员命令 / GEOFlow 更新中心
+管理员命令 / SparklightAIGEO 更新中心
               |
         geoflow-updater
        /      |       \
@@ -101,7 +101,7 @@ Kamal Proxy 已提供健康检查后切流并等待旧流量排空的机制，�
 | `steps` | 稳定步骤 ID、前置条件、执行阶段、超时、重试规则和验收规则 |
 | `rollback` | 能否在当前数据上回切旧应用；需要完整恢复时必须明确数据边界 |
 
-GEOFlow 提供统一命令 `geoflow:upgrade`，包含 `--phase=inspect|apply|verify` 与结构化 JSON 输出，内部调用既有服务或命令。宿主机负责升级锁、进程状态与操作日志，应用负责业务数据的前置条件和完成判断。命令处于新镜像中，不能在旧应用执行新版本升级逻辑。
+SparklightAIGEO 提供统一命令 `geoflow:upgrade`，包含 `--phase=inspect|apply|verify` 与结构化 JSON 输出，内部调用既有服务或命令。宿主机负责升级锁、进程状态与操作日志，应用负责业务数据的前置条件和完成判断。命令处于新镜像中，不能在旧应用执行新版本升级逻辑。
 
 | 动作 | 来源 | 执行与验收 |
 | --- | --- | --- |
@@ -132,7 +132,7 @@ GEOFlow 提供统一命令 `geoflow:upgrade`，包含 `--phase=inspect|apply|ver
 
 ## 7. 首次安装和后台统一入口
 
-保留 `geoflow-docker-deploy.sh` 的兼容入口，新增 `scripts/geoflow-deploy.sh` 作为面向使用者的统一入口。它负责调用已安装的 updater；环境检测、核心变更和操作记录由 updater 执行。
+保留 `sparklightaigeo-docker-deploy.sh` 的兼容入口，新增 `scripts/sparklightaigeo-deploy.sh` 作为面向使用者的统一入口。它负责调用已安装的 updater；环境检测、核心变更和操作记录由 updater 执行。
 
 - **新安装：** 验证下载包的来源、摘要和签名，安装 updater，再由新增 `install --instance primary --root /opt/geoflow --url https://geo.example` 初始化受管布局、空库、环境文件和首个 blue 槽位。随机生成管理员初始密码，不输出固定密码。发现已有数据、未知目录内容或已有密钥时停止首次安装路径。
 - **已受管实例：** 复用 `update --instance primary`。增加 `--dry-run --json` 输出版本、策略、升级动作、资源要求和阻塞项；执行时绑定计划哈希，防止预检与执行之间目标变化。
@@ -151,13 +151,13 @@ GEOFlow 提供统一命令 `geoflow:upgrade`，包含 `--phase=inspect|apply|ver
 
 阶段 A 的新升级动作契约使用最低 updater 协议 3，保持读取现有协议 2 发布的能力。新发布清单不能交由无法理解升级动作的旧 updater 执行。
 
-GEOFlow 主要位置：`app/Console/Commands/`、新增 `app/Services/Deployment/`、`deployment/upgrade-plan.json`、`tests/Feature/`、`tests/Unit/`、部署文档。updater 主要位置：`internal/managed/`、`internal/tufclient/`、`internal/tufrepo/`、`internal/deployment/`、`internal/doctor/`、`internal/update/`、`internal/operation/`、受管 Compose 与发布工作流。
+SparklightAIGEO 主要位置：`app/Console/Commands/`、新增 `app/Services/Deployment/`、`deployment/upgrade-plan.json`、`tests/Feature/`、`tests/Unit/`、部署文档。updater 主要位置：`internal/managed/`、`internal/tufclient/`、`internal/tufrepo/`、`internal/deployment/`、`internal/doctor/`、`internal/update/`、`internal/operation/`、受管 Compose 与发布工作流。
 
 ### B. 增加在线蓝绿策略
 
 引入基础设施与槽位模板、入口配置、策略选择、请求排空、后台交接、在线备份标识和应用回切。在线发布要求最低 updater 协议升级到 4，避免只有阶段 A 能力的 updater 误接在线更新；旧协议清单按维护模式解释，未知字段或不兼容协议明确拒绝。新协议发布前先完成同一候选包的双架构演练。协议编号在实际实施时先核对远端最新值，已被占用时递增分配。
 
-updater 新增 `internal/traffic/` 与 `internal/deployment/bluegreen.go`，扩展实例状态、更新状态机和崩溃恢复测试；`assets/` 新增基础设施、槽位和入口模板。GEOFlow 补候选版本 readiness、视图隔离、带版本的资源保留、worker 排空证据和兼容性测试。
+updater 新增 `internal/traffic/` 与 `internal/deployment/bluegreen.go`，扩展实例状态、更新状态机和崩溃恢复测试；`assets/` 新增基础设施、槽位和入口模板。SparklightAIGEO 补候选版本 readiness、视图隔离、带版本的资源保留、worker 排空证据和兼容性测试。
 
 本阶段可通过宿主机 CLI 完成在线升级，阶段 C 尚未交付时也可独立使用。
 
@@ -186,6 +186,6 @@ updater 新增 `internal/traffic/` 与 `internal/deployment/bluegreen.go`，扩�
 | 完整恢复边界 | 开放写入前恢复所有检查点范围；开放写入后恢复需要单独操作授权 |
 | 发布身份 | amd64、arm64 使用同一批准候选的源提交、TUF 目标及镜像摘要，禁止重新构建后沿用旧验收证据 |
 
-updater 执行 `go test -race ./...`、`go vet ./...` 和所有新增 Compose 模板的 `config --quiet`，扩展当前 `phase-c-rehearsal` 覆盖在线策略。GEOFlow 执行新增升级命令和兼容性测试、现有 updater 桥接和镜像配置测试，以及 `.github/workflows/ci.yml` 要求的相关检查。压测结果保存请求数、错误数、升级前后新增记录、任务副作用次数和排空证据。
+updater 执行 `go test -race ./...`、`go vet ./...` 和所有新增 Compose 模板的 `config --quiet`，扩展当前 `phase-c-rehearsal` 覆盖在线策略。SparklightAIGEO 执行新增升级命令和兼容性测试、现有 updater 桥接和镜像配置测试，以及 `.github/workflows/ci.yml` 要求的相关检查。压测结果保存请求数、错误数、升级前后新增记录、任务副作用次数和排空证据。
 
 开发与本地测试无需生产凭据。候选镜像发布沿用 GHCR、GitHub Actions 和现有 TUF 签名环境；签名私钥继续留在受保护环境。真实主机部署另外绑定具体主机、域名、实例路径和已验证的恢复点。本设计未连接生产主机，也未执行数据库迁移、发布或容器切换。

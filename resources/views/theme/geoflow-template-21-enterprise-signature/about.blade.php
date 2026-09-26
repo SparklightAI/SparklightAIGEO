@@ -9,12 +9,12 @@
         $aboutSchema = [
             $schemaAtContext => 'https://schema.org',
             $schemaAtType => 'AboutPage',
-            'name' => '关于 GEOFlow',
+            'name' => '关于 SparklightAIGEO',
             'description' => $pageDescription,
             'url' => $canonicalUrl ?? route('site.about'),
             'mainEntity' => [
                 $schemaAtType => 'SoftwareApplication',
-                'name' => 'GEOFlow',
+                'name' => 'SparklightAIGEO',
                 'applicationCategory' => 'BusinessApplication',
                 'operatingSystem' => 'Web',
                 'url' => $repositoryUrl,
@@ -29,7 +29,7 @@
         <header class="ent-article-hero ent-about-hero">
             <div class="ent-article-shell">
                 <span class="ent-about-hero__label">开源项目</span>
-                <h1>关于 GEOFlow</h1>
+                <h1>关于 SparklightAIGEO</h1>
                 <p class="ent-article-hero__excerpt">
                     把可信知识、AI 内容工程与多站点分发连接起来，为持续运营的 GEO 内容资产提供一套开放的工作流。
                 </p>

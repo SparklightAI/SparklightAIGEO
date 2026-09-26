@@ -48,7 +48,7 @@ final class SiteDiscoveryController extends Controller
         $siteName = $this->textMapLine((string) ($settings['site_name'] ?? config('geoflow.site_name', config('app.name'))));
         $description = $this->textMapLine((string) ($settings['site_description'] ?? config('geoflow.site_description', '')));
         $lines = [
-            '# '.($siteName !== '' ? $siteName : 'GEOFlow Site'),
+            '# '.($siteName !== '' ? $siteName : 'SparklightAIGEO Site'),
             '',
         ];
 

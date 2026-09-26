@@ -1,4 +1,4 @@
-🥷 # GEOFlow AI 质检自动优化迭代方案（待确认）
+🥷 # SparklightAIGEO AI 质检自动优化迭代方案（待确认）
 
 > 状态：已完成 review，由最终版替代，尚未进入实施
 >
@@ -54,7 +54,7 @@ AI 质检完成后，系统可以根据问题定位、原因和建议生成受�
 
 ## 当前代码已经提供的基础
 
-截至 2026-08-30，GEOFlow 已经具备结构化质检、精确定位、质量门禁、异步执行和审计基础。本次升级可以在 Laravel、Redis、Horizon 和现有 AI 模型配置内完成。
+截至 2026-08-30，SparklightAIGEO 已经具备结构化质检、精确定位、质量门禁、异步执行和审计基础。本次升级可以在 Laravel、Redis、Horizon 和现有 AI 模型配置内完成。
 
 | 当前能力 | 代码位置 | 可复用点 |
 | --- | --- | --- |
@@ -75,7 +75,7 @@ AI 质检完成后，系统可以根据问题定位、原因和建议生成受�
 
 本方案借鉴机制，不引入新的 Python 运行时、外部服务或第三方 API Key。
 
-| 资料 | 可借鉴机制 | GEOFlow 中的用法 |
+| 资料 | 可借鉴机制 | SparklightAIGEO 中的用法 |
 | --- | --- | --- |
 | [Self-Refine](https://github.com/madaan/self-refine) | 初稿、反馈、迭代，保留历史并设置最大尝试次数 | 用质检问题作为明确反馈，每轮保存输入、补丁、候选和结果 |
 | [TextGrad](https://github.com/zou-group/textgrad) 与 [Nature 论文](https://www.nature.com/articles/s41586-025-08661-4) | 用自然语言反馈指导文本更新，反馈中包含上下文和约束 | 把问题、证据、禁改项、历史失败原因一起交给优化模型 |

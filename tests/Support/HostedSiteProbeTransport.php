@@ -27,7 +27,7 @@ final class HostedSiteProbeTransport implements OutboundTransport
         $path = (string) parse_url($target->url, PHP_URL_PATH);
         $activationToken = (string) data_get(
             $request->getOptions(),
-            'headers.X-GEOFlow-Hosted-Activation',
+            'headers.X-SparklightAIGEO-Hosted-Activation',
             ''
         );
         if ($this->requiredActivationToken !== null

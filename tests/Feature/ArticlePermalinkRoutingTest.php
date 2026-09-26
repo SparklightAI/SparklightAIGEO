@@ -309,7 +309,7 @@ class ArticlePermalinkRoutingTest extends TestCase
     {
         Carbon::setTestNow('2026-09-12 08:30:00');
         $category = Category::query()->create(['name' => 'AI', 'slug' => 'ai']);
-        $author = Author::query()->create(['name' => 'GEOFlow']);
+        $author = Author::query()->create(['name' => 'SparklightAIGEO']);
 
         $article = Article::query()->create([
             'title' => 'Permalink article',

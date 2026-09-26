@@ -276,7 +276,7 @@ class AdminManualPublicationsTest extends TestCase
             'tone' => '克制专业',
             'domain' => 'GEO',
             'bio' => '这是一段不应完整进入审计日志的身份介绍。',
-            'disclosure_text' => '本账号与 GEOFlow 项目有关联。',
+            'disclosure_text' => '本账号与 SparklightAIGEO 项目有关联。',
             'is_active' => '1',
         ])->assertRedirect();
 
@@ -284,17 +284,17 @@ class AdminManualPublicationsTest extends TestCase
         $this->actingAs($superAdmin, 'admin')->post(route('admin.manual-publications.settings.accounts.store'), [
             'persona_id' => $persona->getKey(),
             'platform' => ManualPublicationAccount::PLATFORM_LINKEDIN,
-            'account_name' => 'GEOFlow LinkedIn',
+            'account_name' => 'SparklightAIGEO LinkedIn',
             'profile_url' => 'https://www.linkedin.com/company/geoflow',
             'notes' => '仅保存账号引用，不保存密码。',
             'is_active' => '1',
         ])->assertRedirect();
 
-        $this->assertDatabaseHas('manual_publication_accounts', ['account_name' => 'GEOFlow LinkedIn']);
+        $this->assertDatabaseHas('manual_publication_accounts', ['account_name' => 'SparklightAIGEO LinkedIn']);
         $sanitize = new \ReflectionMethod(AdminActivityLogger::class, 'sanitizePayload');
         $details = $sanitize->invoke(null, [
             'bio' => '这是一段不应完整进入审计日志的身份介绍。',
-            'disclosure_text' => '本账号与 GEOFlow 项目有关联。',
+            'disclosure_text' => '本账号与 SparklightAIGEO 项目有关联。',
             'target_context' => '目标讨论上下文',
         ]);
         $this->assertStringStartsWith('[text:', $details['bio']);
@@ -420,11 +420,11 @@ class AdminManualPublicationsTest extends TestCase
     private function identity(Admin $admin): array
     {
         $persona = ManualPublicationPersona::query()->create([
-            'name' => 'GEOFlow 专家', 'disclosure_text' => '本账号代表 GEOFlow 团队。', 'created_by_admin_id' => $admin->getKey(),
+            'name' => 'SparklightAIGEO 专家', 'disclosure_text' => '本账号代表 SparklightAIGEO 团队。', 'created_by_admin_id' => $admin->getKey(),
         ]);
         $account = ManualPublicationAccount::query()->create([
             'persona_id' => $persona->getKey(), 'platform' => ManualPublicationAccount::PLATFORM_ZHIHU,
-            'account_name' => 'GEOFlow 知乎账号', 'created_by_admin_id' => $admin->getKey(),
+            'account_name' => 'SparklightAIGEO 知乎账号', 'created_by_admin_id' => $admin->getKey(),
         ]);
 
         return [$persona, $account];

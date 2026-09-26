@@ -24,12 +24,12 @@ body.admin-action-dialog-open {
     border: 0;
     border-radius: 16px;
     background: transparent;
-    color: #111827;
+    color: #1e2238;
     pointer-events: auto;
 }
 
 .admin-action-dialog::backdrop {
-    background: rgba(15, 23, 42, .48);
+    background: rgba(30, 34, 56, .48);
 }
 
 .admin-action-dialog__surface {
@@ -39,7 +39,7 @@ body.admin-action-dialog-open {
     overflow: hidden;
     border-radius: 16px;
     background: #fff;
-    box-shadow: 0 24px 72px rgba(15, 23, 42, .28);
+    box-shadow: 0 24px 72px rgba(30, 34, 56, .28);
 }
 
 .admin-action-dialog__content {
@@ -59,8 +59,8 @@ body.admin-action-dialog-open {
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background: #eff6ff;
-    color: #2563eb;
+    background: #eff0fa;
+    color: #2d326b;
 }
 
 .admin-action-dialog__icon svg {
@@ -91,7 +91,7 @@ body.admin-action-dialog-open {
 
 .admin-action-dialog__title {
     margin: 5px 0 0;
-    color: #111827;
+    color: #1e2238;
     font-size: 18px;
     font-weight: 600;
     line-height: 26px;
@@ -101,7 +101,7 @@ body.admin-action-dialog-open {
 .admin-action-dialog__message,
 .admin-action-dialog__guidance {
     margin: 10px 0 0;
-    color: #4b5563;
+    color: #565a6b;
     font-size: 14px;
     line-height: 22px;
     overflow-wrap: anywhere;
@@ -110,8 +110,8 @@ body.admin-action-dialog-open {
 
 .admin-action-dialog__guidance {
     border-radius: 10px;
-    background: #f8fafc;
-    color: #475569;
+    background: #f7f4ef;
+    color: #565a6b;
     font-size: 13px;
     line-height: 20px;
     padding: 11px 12px;
@@ -128,7 +128,7 @@ body.admin-action-dialog-open {
 .admin-action-dialog__field label {
     display: block;
     margin-bottom: 7px;
-    color: #374151;
+    color: #3e4152;
     font-size: 13px;
     font-weight: 600;
     line-height: 20px;
@@ -138,10 +138,10 @@ body.admin-action-dialog-open {
     box-sizing: border-box;
     width: 100%;
     min-height: 42px;
-    border: 1px solid #d1d5db;
+    border: 1px solid #dcd8d1;
     border-radius: 8px;
     background: #fff;
-    color: #111827;
+    color: #1e2238;
     font: inherit;
     font-size: 14px;
     padding: 9px 11px;
@@ -149,20 +149,20 @@ body.admin-action-dialog-open {
 }
 
 .admin-action-dialog__field input:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, .16);
+    border-color: #2d326b;
+    box-shadow: 0 0 0 3px rgba(45, 50, 107, .16);
 }
 
 .admin-action-dialog__field input[readonly] {
-    background: #f8fafc;
-    color: #334155;
+    background: #f7f4ef;
+    color: #3e4152;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 .admin-action-dialog__field [data-admin-action-field-help],
 .admin-action-dialog__field-error {
     margin: 7px 0 0;
-    color: #64748b;
+    color: #6e7181;
     font-size: 12px;
     line-height: 18px;
 }
@@ -176,8 +176,8 @@ body.admin-action-dialog-open {
     flex: 0 0 auto;
     justify-content: flex-end;
     gap: 10px;
-    border-top: 1px solid #f1f5f9;
-    background: #f8fafc;
+    border-top: 1px solid #f1ede7;
+    background: #f7f4ef;
     padding: 16px 24px;
 }
 
@@ -203,18 +203,18 @@ body.admin-action-dialog-open {
 .admin-action-button:focus-visible,
 .admin-action-notice__close:focus-visible,
 .admin-action-notice__copy a:focus-visible {
-    outline: 2px solid #2563eb;
+    outline: 2px solid #2d326b;
     outline-offset: 2px;
 }
 
 .admin-action-button--secondary {
-    border-color: #d1d5db;
+    border-color: #dcd8d1;
     background: #fff;
-    color: #374151;
+    color: #3e4152;
 }
 
 .admin-action-button--primary {
-    background: #2563eb;
+    background: #2d326b;
     color: #fff;
 }
 
@@ -232,8 +232,8 @@ body.admin-action-dialog-open {
 }
 
 @media (hover: hover) {
-    .admin-action-button--secondary:hover { background: #f1f5f9; }
-    .admin-action-button--primary:hover { background: #1d4ed8; }
+    .admin-action-button--secondary:hover { background: #f1ede7; }
+    .admin-action-button--primary:hover { background: #232752; }
     .admin-action-dialog[data-tone="danger"] .admin-action-button--primary:hover,
     .admin-action-dialog[data-tone="error"] .admin-action-button--primary:hover { background: #b91c1c; }
     .admin-action-dialog[data-tone="warning"] .admin-action-button--primary:hover { background: #b45309; }
@@ -260,8 +260,8 @@ body.admin-action-dialog-open {
     gap: 12px;
     border-radius: 16px;
     background: #fff;
-    box-shadow: 0 20px 64px rgba(15, 23, 42, .24);
-    color: #111827;
+    box-shadow: 0 20px 64px rgba(30, 34, 56, .24);
+    color: #1e2238;
     padding: 16px;
     overflow: hidden;
     pointer-events: auto;
@@ -283,7 +283,7 @@ body.admin-action-dialog-open {
 .admin-action-notice[data-tone="error"] .admin-action-notice__icon,
 .admin-action-notice[data-tone="danger"] .admin-action-notice__icon { background: #fef2f2; color: #dc2626; }
 .admin-action-notice[data-tone="warning"] .admin-action-notice__icon { background: #fffbeb; color: #d97706; }
-.admin-action-notice[data-tone="info"] .admin-action-notice__icon { background: #eff6ff; color: #2563eb; }
+.admin-action-notice[data-tone="info"] .admin-action-notice__icon { background: #eff0fa; color: #2d326b; }
 .admin-action-notice__icon svg { width: 18px; height: 18px; }
 .admin-action-notice__copy {
     min-width: 0;
@@ -295,13 +295,13 @@ body.admin-action-dialog-open {
     padding: 1px 2px 1px 0;
 }
 .admin-action-notice__copy strong { display: block; font-size: 14px; line-height: 20px; overflow-wrap: anywhere; }
-.admin-action-notice__copy p { margin: 4px 0 0; color: #475569; font-size: 13px; line-height: 20px; overflow-wrap: anywhere; white-space: pre-line; }
-.admin-action-notice__copy [data-admin-notice-guidance] { color: #64748b; }
-.admin-action-notice__copy a { display: inline-flex; min-height: 40px; align-items: center; margin-top: 8px; color: #1d4ed8; font-size: 13px; font-weight: 600; text-decoration: none; }
-.admin-action-notice__close { display: inline-flex; width: 40px; height: 40px; flex: 0 0 40px; align-items: center; justify-content: center; border: 0; border-radius: 8px; background: transparent; color: #64748b; transition: background-color 120ms ease-out, color 120ms ease-out, transform 120ms ease-out; }
+.admin-action-notice__copy p { margin: 4px 0 0; color: #565a6b; font-size: 13px; line-height: 20px; overflow-wrap: anywhere; white-space: pre-line; }
+.admin-action-notice__copy [data-admin-notice-guidance] { color: #6e7181; }
+.admin-action-notice__copy a { display: inline-flex; min-height: 40px; align-items: center; margin-top: 8px; color: #232752; font-size: 13px; font-weight: 600; text-decoration: none; }
+.admin-action-notice__close { display: inline-flex; width: 40px; height: 40px; flex: 0 0 40px; align-items: center; justify-content: center; border: 0; border-radius: 8px; background: transparent; color: #6e7181; transition: background-color 120ms ease-out, color 120ms ease-out, transform 120ms ease-out; }
 .admin-action-notice__close:active { transform: scale(.96); }
 .admin-action-notice__close svg { width: 18px; height: 18px; }
-@media (hover: hover) { .admin-action-notice__close:hover { background: #f1f5f9; color: #334155; } }
+@media (hover: hover) { .admin-action-notice__close:hover { background: #f1ede7; color: #3e4152; } }
 
 @keyframes admin-action-dialog-in {
     from { opacity: 0; transform: translateY(8px) scale(.98); }

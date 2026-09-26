@@ -200,7 +200,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'content-engineering-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
 
         Article::query()->create([
@@ -298,7 +298,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'editor-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $task = Task::query()->create([
             'name' => 'GEO 内容工程演示任务',
@@ -479,7 +479,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'image-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => '文章图片上传测试',
@@ -495,24 +495,24 @@ class AdminArticlesPageTest extends TestCase
         $response = $this->actingAs($admin, 'admin')
             ->postJson(route('admin.articles.editor.images.upload', ['articleId' => (int) $article->id]), [
                 'image' => UploadedFile::fake()->image('geo-flow-editor.png', 640, 360),
-                'alt' => 'GEOFlow 编辑器截图',
+                'alt' => 'SparklightAIGEO 编辑器截图',
                 'position' => 12,
             ]);
 
         $response->assertOk()
             ->assertJsonPath('message', __('admin.article_editor.message.upload_success'))
-            ->assertJsonPath('image.alt', 'GEOFlow 编辑器截图');
+            ->assertJsonPath('image.alt', 'SparklightAIGEO 编辑器截图');
 
         $markdown = (string) $response->json('image.markdown');
         $url = (string) $response->json('image.url');
 
-        $this->assertStringStartsWith('![GEOFlow 编辑器截图](/storage/uploads/images/', $markdown);
+        $this->assertStringStartsWith('![SparklightAIGEO 编辑器截图](/storage/uploads/images/', $markdown);
         $this->assertStringStartsWith('/storage/uploads/images/', $url);
         $this->assertSame(1, ImageLibrary::query()->where('name', '文章编辑器图片')->count());
-        $this->assertSame(1, Image::query()->where('original_name', 'GEOFlow 编辑器截图')->count());
+        $this->assertSame(1, Image::query()->where('original_name', 'SparklightAIGEO 编辑器截图')->count());
         $this->assertMatchesRegularExpression(
             '/^[a-f0-9]{64}$/',
-            (string) Image::query()->where('original_name', 'GEOFlow 编辑器截图')->value('managed_path_hash'),
+            (string) Image::query()->where('original_name', 'SparklightAIGEO 编辑器截图')->value('managed_path_hash'),
         );
         $this->assertSame(1, ArticleImage::query()->where('article_id', (int) $article->id)->count());
 
@@ -536,7 +536,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'image-validation-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => '文章图片校验测试',
@@ -572,7 +572,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
 
         $this->actingAs($admin, 'admin')
@@ -612,7 +612,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         Article::query()->create([
             'title' => '后台标签展示文章',
@@ -650,7 +650,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'distribution-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $channel = DistributionChannel::query()->create([
             'name' => '目标站点',
@@ -698,7 +698,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'distribution-filter-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $channelOne = DistributionChannel::query()->create([
             'name' => '渠道一',
@@ -819,7 +819,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'remote-view-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $syncedChannel = DistributionChannel::query()->create([
             'name' => '已同步渠道',
@@ -930,7 +930,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'local-view-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => '本站查看按钮文章',
@@ -977,7 +977,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'category-permalink',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         Article::query()->create([
             'title' => '分类固定链接文章',
@@ -1020,7 +1020,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'batch-actions-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => '批量操作相对路径文章',
@@ -1093,7 +1093,7 @@ class AdminArticlesPageTest extends TestCase
             'slug' => 'subdirectory-batch-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         Article::query()->create([
             'title' => '二级目录批量路径文章',
@@ -1141,7 +1141,7 @@ class AdminArticlesPageTest extends TestCase
         $this->actingAs($admin, 'admin')
             ->get(route('admin.dashboard'))
             ->assertOk()
-            ->assertSee('GEOFlow')
+            ->assertSee('SparklightAIGEO')
             ->assertDontSee('Public Frontend Name');
     }
 }

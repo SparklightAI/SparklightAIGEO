@@ -1,6 +1,6 @@
 {
     "id": "geoflow-template-21-enterprise-signature",
-    "name": "GEOFlow 21 Enterprise Signature",
+    "name": "SparklightAIGEO 21 Enterprise Signature",
     "version": "1.0.0",
     "description": "面向全球企业官网的纯白高质感主题，覆盖品牌、产品、开源生态、行业方案、案例、项目介绍与线索转化。",
     "framework": "laravel",
@@ -54,7 +54,7 @@
     "notes": [
         "参考站点仅用于设计逻辑提炼，未复制其品牌、素材、文案或专有代码。",
         "首页中的客户、案例、全球覆盖与业务指标均为界面演示信息，并在页面中提供可见标识。",
-        "真实文章、分类、SEO、项目介绍、开源仓库地址和首页模块明确指定的线索表单继续使用 GEOFlow 现有数据契约。",
+        "真实文章、分类、SEO、项目介绍、开源仓库地址和首页模块明确指定的线索表单继续使用 SparklightAIGEO 现有数据契约。",
         "主题加入后台后会自动出现在模板列表中，保持未启用状态，需管理员确认后激活。"
     ]
 }

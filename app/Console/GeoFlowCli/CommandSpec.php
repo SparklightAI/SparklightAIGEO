@@ -215,7 +215,7 @@ final class CommandSpec
     {
         $lines = array_map(static fn (array $spec): string => '  geoflow '.$spec['usage'], self::all());
 
-        return 'GEOFlow CLI '.CliVersion::VALUE.PHP_EOL.PHP_EOL
+        return 'SparklightAIGEO CLI '.CliVersion::VALUE.PHP_EOL.PHP_EOL
             .'Usage:'.PHP_EOL.implode(PHP_EOL, $lines).PHP_EOL.PHP_EOL
             .'Global options: --profile NAME --config PATH --base-url URL --token-stdin --timeout SECONDS '
             .'--allow-insecure-http --no-interaction --quiet (-q) --verbose (-v|-vv|-vvv) '

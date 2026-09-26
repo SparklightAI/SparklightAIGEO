@@ -57,7 +57,7 @@ MD);
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => 'Markdown 渲染测试',
@@ -83,7 +83,7 @@ MD);
     {
         SiteSetting::query()->updateOrCreate(
             ['setting_key' => 'site_name'],
-            ['setting_value' => 'GEOFlow Support']
+            ['setting_value' => 'SparklightAIGEO Support']
         );
         SiteSetting::query()->updateOrCreate(
             ['setting_key' => 'site_description'],
@@ -100,7 +100,7 @@ MD);
             'slug' => 'tech-seo',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => 'Article SEO Title',
@@ -119,13 +119,13 @@ MD);
         $this->get(route('site.article', $article->slug))
             ->assertOk()
             ->assertSee('<title>Article SEO Title</title>', false)
-            ->assertDontSee('<title>Article SEO Title - GEOFlow Support</title>', false)
+            ->assertDontSee('<title>Article SEO Title - SparklightAIGEO Support</title>', false)
             ->assertSee('<meta name="description" content="Article SEO Description">', false)
             ->assertSee('<meta name="keywords" content="alpha,beta">', false)
             ->assertSee('<meta property="og:title" content="Article SEO Title">', false)
             ->assertSee('<meta property="og:description" content="Article SEO Description">', false)
             ->assertSee('<meta property="og:type" content="article">', false)
-            ->assertSee('<meta property="og:site_name" content="GEOFlow Support">', false);
+            ->assertSee('<meta property="og:site_name" content="SparklightAIGEO Support">', false);
     }
 
     public function test_theme_article_page_renders_array_based_sticky_ad(): void
@@ -155,7 +155,7 @@ MD);
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => 'Sticky Ad 渲染测试',
@@ -213,7 +213,7 @@ MD);
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => 'Sticky Ad 安全回退测试',
@@ -273,7 +273,7 @@ MD);
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => 'Sticky Ad 全量拦截测试',
@@ -335,7 +335,7 @@ MD);
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => '正文广告渲染测试',
@@ -405,7 +405,7 @@ MD);
             'slug' => 'module-tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $article = Article::query()->create([
             'title' => '模块广告渲染测试',
@@ -436,7 +436,7 @@ MD);
             'slug' => 'tech',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         Article::query()->create([
             'title' => '首页热门文章',
@@ -485,7 +485,7 @@ MD);
     public function test_theme_sidebar_tolerates_missing_article_collection(): void
     {
         $html = view('theme.apihot-recommend-20260623.partials.sidebar', [
-            'siteTitle' => 'GEOFlow',
+            'siteTitle' => 'SparklightAIGEO',
             'showFeedPanel' => false,
         ])->render();
 
@@ -507,7 +507,7 @@ MD);
             'slug' => 'draft-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         Article::query()->create([
             'title' => '已发布文章',
@@ -557,7 +557,7 @@ MD);
     {
         SiteSetting::query()->updateOrCreate(
             ['setting_key' => 'site_name'],
-            ['setting_value' => 'GEOFlow Demo']
+            ['setting_value' => 'SparklightAIGEO Demo']
         );
         SiteSetting::query()->updateOrCreate(
             ['setting_key' => 'site_description'],
@@ -581,8 +581,8 @@ MD);
             ->assertSee('data-home-poster-carousel', false)
             ->assertSee('https://example.com/banner-one.jpg', false)
             ->assertSee('Banner One')
-            ->assertSee('GEOFlow Feed')
-            ->assertSee('GEOFlow Demo')
+            ->assertSee('SparklightAIGEO Feed')
+            ->assertSee('SparklightAIGEO Demo')
             ->assertSee('Demo homepage description');
     }
 }

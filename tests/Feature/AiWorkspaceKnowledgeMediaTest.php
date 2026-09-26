@@ -514,7 +514,7 @@ final class AiWorkspaceKnowledgeMediaTest extends TestCase
             'section_key' => '任务创建',
             'route_name' => 'admin.tasks.create',
             'title' => '任务创建表单',
-            'alt_text' => 'GEOFlow 任务创建页的配置表单',
+            'alt_text' => 'SparklightAIGEO 任务创建页的配置表单',
             'caption' => '在这里选择模型、标题库和知识库。',
             'keywords' => ['任务', '创建', '模型'],
             'locale' => 'zh_CN',

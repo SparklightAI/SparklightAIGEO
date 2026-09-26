@@ -16,7 +16,7 @@ class GeoFlowUpgradeCommand extends Command
         {--plan-sha256= : SHA256 of the exact signed plan bytes; required for apply}
         {--json : Emit the machine-readable upgrade report}';
 
-    protected $description = 'Inspect, apply, or verify the signed GEOFlow deployment upgrade plan';
+    protected $description = 'Inspect, apply, or verify the signed SparklightAIGEO deployment upgrade plan';
 
     public function handle(UpgradeOrchestrator $upgrades): int
     {

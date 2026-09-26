@@ -1,4 +1,4 @@
-# GEOFlow AI 工作台运行手册
+# SparklightAIGEO AI 工作台运行手册
 
 ## 定位
 

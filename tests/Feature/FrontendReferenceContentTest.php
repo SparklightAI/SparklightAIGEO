@@ -53,7 +53,7 @@ class FrontendReferenceContentTest extends TestCase
         $this->assertCount(50, array_unique($files));
         $this->assertSame([
             'geoflow-getting-started' => 35,
-            'geoflow-deployment-operations' => 15,
+            'sparklightaigeo-deployment-operations' => 15,
         ], $categoryCounts);
     }
 

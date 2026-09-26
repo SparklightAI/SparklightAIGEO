@@ -9,7 +9,7 @@ class SystemUpdaterPlatform
     public function current(): string
     {
         if (PHP_OS_FAMILY !== 'Linux') {
-            throw new RuntimeException('GEOFlow Updater currently supports Linux hosts only.');
+            throw new RuntimeException('SparklightAIGEO Updater currently supports Linux hosts only.');
         }
 
         return match (strtolower(php_uname('m'))) {

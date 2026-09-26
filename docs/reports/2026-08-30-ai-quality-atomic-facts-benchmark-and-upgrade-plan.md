@@ -1,4 +1,4 @@
-# GEOFlow 原子事实库与 AI 质检升级最终方案
+# SparklightAIGEO 原子事实库与 AI 质检升级最终方案
 
 日期：2026-08-30
 版本：Final Review v1.0
@@ -53,9 +53,9 @@
 
 原子事实库需要一批跨文章重复使用、可由业务人员确认、更新频率可控的事实。知识内容若以临时观点、长尾案例和频繁变化的非结构化描述为主，快速通道覆盖率会偏低。此时现有质检仍然工作，新增事实治理带来的 Token 和延迟收益会变小。
 
-## GEOFlow 当前基础
+## SparklightAIGEO 当前基础
 
-GEOFlow 已具备知识库正文、知识分块、来源哈希、混合检索、知识库修订、任务多知识库绑定、AI 质检快照、三态结论、灰度发布、Horizon 队列和失效重算。这项升级可以沿用现有 Laravel 单体架构与 Laravel AI SDK。
+SparklightAIGEO 已具备知识库正文、知识分块、来源哈希、混合检索、知识库修订、任务多知识库绑定、AI 质检快照、三态结论、灰度发布、Horizon 队列和失效重算。这项升级可以沿用现有 Laravel 单体架构与 Laravel AI SDK。
 
 当前 `ArticleAiQualityInspectionService` 使用 `ArticleFactCandidateExtractor` 提取本篇文章的动态事实候选，再由 `ArticleAiQualityEvidenceBuilder` 和 `KnowledgeRetrievalService` 组装证据。现有快速链路限制通用检索、补充检索、证据数量和上下文长度，并把事实候选、证据、模型、算法版本和执行信息写入 `ArticleAiQualityCheck`。
 
@@ -79,7 +79,7 @@ GEOFlow 已具备知识库正文、知识分块、来源哈希、混合检索、
 
 调研优先使用官方仓库、论文与实际实现。算法类项目提供事实拆分和核验方法，知识工程类项目提供来源、时间和版本建模思路。
 
-| 项目 | 主要方法 | GEOFlow 可吸收的设计 | 采用边界 |
+| 项目 | 主要方法 | SparklightAIGEO 可吸收的设计 | 采用边界 |
 |---|---|---|---|
 | [FActScore](https://github.com/shmsw25/FActScore) / [EMNLP 2023](https://aclanthology.org/2023.emnlp-main.741/) | 长文本拆成原子事实，逐条检索并判断支持 | 原子拆分、逐事实证据、聚合评分 | 面向单次回答，缺少持久化标准事实和人工发布 |
 | [SAFE / LongFact](https://github.com/google-deepmind/long-form-factuality) / [DeepMind 论文页](https://deepmind.google/research/publications/85420/) | 把事实改写为可独立核验的陈述，多轮搜索证据 | 自包含事实、相关性过滤、证据轨迹 | 外部搜索延迟和成本较高，适合离线评测参考 |
@@ -89,7 +89,7 @@ GEOFlow 已具备知识库正文、知识分块、来源哈希、混合检索、
 | [OpenSPG KAG](https://github.com/OpenSPG/KAG) | 知识结构与文本块双向索引，提供数值和语义算子 | 事实与来源双向关联、类型化数值比较 | 完整平台会增加 Python、图谱和运维面 |
 | [OpenFactCheck](https://github.com/openfactcheck-research/openfactcheck) / [EMNLP 2024 Demo](https://aclanthology.org/2024.emnlp-demo.23/) | Claim Processor、Retriever、Verifier、Reviser 可组合 | 组件边界、来源元数据、可替换核验器 | v2 仍在开发，代码采用 AGPL-3.0，当前只作设计参考 |
 
-FActScore、SAFE 和 Ragas 验证了逐条事实核验的可行性。RefChecker 的三态协议更适合生产门禁，未知事实需要进入回退检索或人工复核。GraphRAG 与 KAG 说明数字事实要带来源、有效时间和范围。OpenFactCheck 的组件拆分可以映射到 GEOFlow 现有 Laravel 服务，无需引入新运行时。
+FActScore、SAFE 和 Ragas 验证了逐条事实核验的可行性。RefChecker 的三态协议更适合生产门禁，未知事实需要进入回退检索或人工复核。GraphRAG 与 KAG 说明数字事实要带来源、有效时间和范围。OpenFactCheck 的组件拆分可以映射到 SparklightAIGEO 现有 Laravel 服务，无需引入新运行时。
 
 调研时核对的仓库快照为：FActScore `f28272d`、SAFE `9d27158`、RefChecker `1df1b25`、Ragas `298b682`、GraphRAG `f40e9a2`、KAG `fdab15b`、OpenFactCheck `d72a87f`。
 

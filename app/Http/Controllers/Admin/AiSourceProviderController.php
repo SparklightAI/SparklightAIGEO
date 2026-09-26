@@ -173,7 +173,7 @@ class AiSourceProviderController extends Controller
     public function testProvider(TestAiSourceProviderRequest $request, int $providerId): JsonResponse
     {
         $payload = $request->validated();
-        $query = $this->normalizeTestQuery((string) ($payload['query'] ?? 'GEOFlow'));
+        $query = $this->normalizeTestQuery((string) ($payload['query'] ?? 'SparklightAIGEO'));
         $reservation = null;
         $outboundAttempted = false;
         try {
@@ -495,7 +495,7 @@ class AiSourceProviderController extends Controller
     {
         $query = trim($query);
 
-        return $query !== '' ? mb_substr($query, 0, 200, 'UTF-8') : 'GEOFlow';
+        return $query !== '' ? mb_substr($query, 0, 200, 'UTF-8') : 'SparklightAIGEO';
     }
 
     private function joinList(mixed $value): string

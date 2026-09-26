@@ -2,7 +2,7 @@
 
 ## 背景
 
-当前网站设置后台已有“文章详情页广告管理”，但现有能力主要是文章详情页底部跟随广告，数据存放在 `site_settings.article_detail_ads`，前台默认只展示第一条启用广告。新的需求是增加文章正文内容模块顶部和底部的文本广告，并允许多个 GEOFlow Agent 渠道站点按渠道选择、同步和渲染这些广告。
+当前网站设置后台已有“文章详情页广告管理”，但现有能力主要是文章详情页底部跟随广告，数据存放在 `site_settings.article_detail_ads`，前台默认只展示第一条启用广告。新的需求是增加文章正文内容模块顶部和底部的文本广告，并允许多个 SparklightAIGEO Agent 渠道站点按渠道选择、同步和渲染这些广告。
 
 本方案不改动现有底部跟随广告的数据结构，避免破坏已存在的前台展示和测试。
 
@@ -12,7 +12,7 @@
 - 支持文本广告新增、编辑、删除、启用、排序和预览。
 - 支持广告文字、广告链接、来源追踪参数、新标签页打开、文本颜色等字段。
 - 支持分发渠道编辑页按渠道选择是否同步指定文本广告。
-- 支持 GEOFlow Agent 目标站点接收、保存和渲染文本广告。
+- 支持 SparklightAIGEO Agent 目标站点接收、保存和渲染文本广告。
 - 文本广告样式要适配不同前台模板，不能破坏正文排版和 SEO 结构。
 
 ## 非目标
@@ -64,7 +64,7 @@ article_detail_text_ads
     "id": "article_text_ad_...",
     "name": "内容顶部推荐",
     "placement": "content_top",
-    "text": "了解 GEOFlow 多站点分发方案",
+    "text": "了解 SparklightAIGEO 多站点分发方案",
     "url": "/contact",
     "text_color": "#2563eb",
     "open_new_tab": true,
@@ -133,7 +133,7 @@ article_detail_text_ads
 DistributionChannel::targetSiteSettingsPayload()
         |
         v
-GEOFlow Agent /geoflow-agent/v1/site-settings
+SparklightAIGEO Agent /geoflow-agent/v1/site-settings
         |
         v
 目标站点 storage/site-settings.json
@@ -281,7 +281,7 @@ resources/views/site/partials/article-text-ads.blade.php
 
 新配置为空时，不渲染任何内容，不影响文章详情页。
 
-### GEOFlow Agent 渠道
+### SparklightAIGEO Agent 渠道
 
 新目标站点包支持文本广告。旧目标站点包不会识别 `article_text_ads`，因此需要重新下载并覆盖目标站点包。
 
@@ -393,4 +393,4 @@ php artisan test
 
 ## 推荐结论
 
-建议按“独立文本广告配置 + 渠道策略选择 + GEOFlow Agent 目标站点渲染”的方向实施。这个方案对现有底部跟随广告零侵入，对本地前台和目标站点都可逐步上线，并且后续可以自然扩展点击统计、定向展示和渠道级样式覆盖。
+建议按“独立文本广告配置 + 渠道策略选择 + SparklightAIGEO Agent 目标站点渲染”的方向实施。这个方案对现有底部跟随广告零侵入，对本地前台和目标站点都可逐步上线，并且后续可以自然扩展点击统计、定向展示和渠道级样式覆盖。

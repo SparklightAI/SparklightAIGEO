@@ -37,7 +37,7 @@ class OpenSourceLicenseMetadataTest extends TestCase
         $this->assertStringContainsString('Apache License', $apacheLicense);
         $this->assertStringContainsString('right to sublicense through multiple tiers', $cla);
         $this->assertStringContainsString('commercial, or proprietary licenses', $cla);
-        $this->assertStringContainsString('GEOFlow CLA v1.0', $pullRequestTemplate);
+        $this->assertStringContainsString('SparklightAIGEO CLA v1.0', $pullRequestTemplate);
     }
 
     /** @return array<string, mixed> */

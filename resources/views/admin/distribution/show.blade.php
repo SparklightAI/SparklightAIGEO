@@ -474,7 +474,7 @@
                     </div>
                     <div class="rounded-md border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-700">
                         <span class="font-medium">{{ __('admin.distribution.generic.payload_contract') }}：</span>
-                        <code class="break-all text-gray-900">GEOFlow article JSON v1</code>
+                        <code class="break-all text-gray-900">SparklightAIGEO article JSON v1</code>
                     </div>
                 </div>
                 <div class="mt-6 grid grid-cols-1 gap-4 text-sm text-gray-700 md:grid-cols-2 xl:grid-cols-4">

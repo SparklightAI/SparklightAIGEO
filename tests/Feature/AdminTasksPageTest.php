@@ -1154,7 +1154,7 @@ class AdminTasksPageTest extends TestCase
             'slug' => 'task-distribution-category',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $channel = DistributionChannel::query()->create([
             'name' => '失败目标站点',

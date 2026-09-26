@@ -82,7 +82,7 @@
 
 ### 4.1 用人工标签校准模型裁判
 
-OpenAI Evals 将高质量评分规则与人工 choice labels 作为模型裁判元评测的核心输入。GEOFlow 应把“人工放行结论、问题类别、严重度、证据充分性”形成版本化私有数据集，使用裁判与人工一致率决定版本晋级。[OpenAI Evals](https://github.com/openai/evals) · [Build an eval](https://github.com/openai/evals/blob/main/docs/build-eval.md)
+OpenAI Evals 将高质量评分规则与人工 choice labels 作为模型裁判元评测的核心输入。SparklightAIGEO 应把“人工放行结论、问题类别、严重度、证据充分性”形成版本化私有数据集，使用裁判与人工一致率决定版本晋级。[OpenAI Evals](https://github.com/openai/evals) · [Build an eval](https://github.com/openai/evals/blob/main/docs/build-eval.md)
 
 ### 4.2 将事实忠实度拆成主张与证据支持
 
@@ -90,7 +90,7 @@ Ragas 的 faithfulness 流程先把回答拆成可验证主张，再逐条判断
 
 ### 4.3 确定性断言与模型断言组合
 
-DeepEval 和 Promptfoo 都支持组件级与端到端评测、确定性断言、模型评分、权重和关键指标阈值。GEOFlow 可用确定性规则处理广告禁词、数字格式、引用存在性和 Schema；模型集中处理语义冲突、证据充分性与主观完整性。[DeepEval](https://github.com/confident-ai/deepeval) · [Promptfoo assertions](https://www.promptfoo.dev/docs/configuration/expected-outputs/) · [Promptfoo CLI](https://www.promptfoo.dev/docs/usage/command-line/)
+DeepEval 和 Promptfoo 都支持组件级与端到端评测、确定性断言、模型评分、权重和关键指标阈值。SparklightAIGEO 可用确定性规则处理广告禁词、数字格式、引用存在性和 Schema；模型集中处理语义冲突、证据充分性与主观完整性。[DeepEval](https://github.com/confident-ai/deepeval) · [Promptfoo assertions](https://www.promptfoo.dev/docs/configuration/expected-outputs/) · [Promptfoo CLI](https://www.promptfoo.dev/docs/usage/command-line/)
 
 ### 4.4 规则索引与预计算
 

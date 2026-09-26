@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EnforceCurrentSiteSurface
 {
-    public const ACTIVATION_HEADER = 'X-GEOFlow-Hosted-Activation';
+    public const ACTIVATION_HEADER = 'X-SparklightAIGEO-Hosted-Activation';
 
     public function __construct(
         private readonly CurrentSite $currentSite,

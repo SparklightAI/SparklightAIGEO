@@ -104,8 +104,8 @@ class ArticleAiQualityQueueConfigurationTest extends TestCase
     public function test_production_deploy_and_healthcheck_require_quality_workers(): void
     {
         $root = dirname(__DIR__, 2);
-        $deploy = (string) file_get_contents($root.'/deploy-scripts/geoflow-docker-deploy.sh');
-        $healthcheck = (string) file_get_contents($root.'/deploy-scripts/geoflow-healthcheck.sh');
+        $deploy = (string) file_get_contents($root.'/deploy-scripts/sparklightaigeo-docker-deploy.sh');
+        $healthcheck = (string) file_get_contents($root.'/deploy-scripts/sparklightaigeo-healthcheck.sh');
         $deploymentGuide = (string) file_get_contents($root.'/docs/deployment/DEPLOYMENT.md');
 
         $this->assertStringContainsString(

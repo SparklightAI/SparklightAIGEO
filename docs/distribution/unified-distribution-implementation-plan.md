@@ -1,10 +1,10 @@
-# GEOFlow 分发管理统一实施方案
+# SparklightAIGEO 分发管理统一实施方案
 
 > **给 Agent 执行者：** 必须使用 `superpowers:subagent-driven-development`（推荐）或 `superpowers:executing-plans` 按任务逐步执行。本文中的步骤使用复选框（`- [ ]`）语法，便于执行时跟踪进度。
 
-**目标：** 将 GEOFlow 的内容分发能力建设为 Agent 优先、异步执行、可扩展 Provider 的内容同步层，并确保远端分发失败不会阻塞或回滚本地文章发布。
+**目标：** 将 SparklightAIGEO 的内容分发能力建设为 Agent 优先、异步执行、可扩展 Provider 的内容同步层，并确保远端分发失败不会阻塞或回滚本地文章发布。
 
-**架构：** GEOFlow 继续作为文章生成、审核和本地发布的事实源。当本地文章进入 `published` 状态后，GEOFlow 创建 `article_distributions` 记录，并把任务投递到专用的 `distribution` 队列；队列任务通过 `DistributionPublisherManager` 按渠道类型选择发布器，当前支持 `geoflow_agent` 目标站 Agent 和 `wordpress_rest` WordPress REST API 两类渠道，并记录远端 ID、URL、状态、元数据和日志。Ghost、微信公众号、Telegram 和社交平台等第三方 Provider 仍作为后续适配器扩展。
+**架构：** SparklightAIGEO 继续作为文章生成、审核和本地发布的事实源。当本地文章进入 `published` 状态后，SparklightAIGEO 创建 `article_distributions` 记录，并把任务投递到专用的 `distribution` 队列；队列任务通过 `DistributionPublisherManager` 按渠道类型选择发布器，当前支持 `geoflow_agent` 目标站 Agent 和 `wordpress_rest` WordPress REST API 两类渠道，并记录远端 ID、URL、状态、元数据和日志。Ghost、微信公众号、Telegram 和社交平台等第三方 Provider 仍作为后续适配器扩展。
 
 **技术栈：** Laravel 12、PHP 8.2+、Blade 管理后台、Tailwind CSS、lucide 图标、Eloquent 模型、Laravel 队列、Laravel HTTP Client、PHPUnit、Laravel Pint。
 
@@ -19,7 +19,7 @@
 
 统一结论：
 
-- 第一版采用 Agent 优先路线；GEOFlow 2.x 已在同一分发抽象层上补充 WordPress REST 渠道。
+- 第一版采用 Agent 优先路线；SparklightAIGEO 2.x 已在同一分发抽象层上补充 WordPress REST 渠道。
 - `multi-platform-distribution-plan.md` 保留为长期 Provider 路线参考。
 - `distribution-management-agent-plan.md` 的 Agent 架构成为当前实施基线，但本文补齐后台功能逻辑、UI 设计约束、代码调用链和数据库逻辑。
 
@@ -51,7 +51,7 @@
 
 ### 2.2 不阻塞本地发布
 
-分发管理不能改变 GEOFlow 当前文章发布主流程。文章一旦被本地工作流判定为 `published`，本地文章状态就以本地发布为准。远端分发失败只影响 `article_distributions.status` 和分发日志，不回滚以下字段：
+分发管理不能改变 SparklightAIGEO 当前文章发布主流程。文章一旦被本地工作流判定为 `published`，本地文章状态就以本地发布为准。远端分发失败只影响 `article_distributions.status` 和分发日志，不回滚以下字段：
 
 - `articles.status`
 - `articles.review_status`
@@ -61,16 +61,16 @@
 
 ### 2.3 Agent 优先
 
-GEOFlow 的第一类目标仍是自有目标站 Agent，目标站点只需要实现一组稳定 Agent 接口：
+SparklightAIGEO 的第一类目标仍是自有目标站 Agent，目标站点只需要实现一组稳定 Agent 接口：
 
 - `GET /geoflow-agent/v1/health`
 - `POST /geoflow-agent/v1/articles`
 
-GEOFlow 只关心 Agent 协议，不直接关心目标站点底层是 WordPress、静态站、Laravel、Next.js 还是其他系统。第三方平台应通过独立发布器接入，保持和 Agent 相同的队列、状态、日志、重试和远端元数据模型，而不是把平台 API 直接塞进文章发布主流程。
+SparklightAIGEO 只关心 Agent 协议，不直接关心目标站点底层是 WordPress、静态站、Laravel、Next.js 还是其他系统。第三方平台应通过独立发布器接入，保持和 Agent 相同的队列、状态、日志、重试和远端元数据模型，而不是把平台 API 直接塞进文章发布主流程。
 
 ### 2.5 WordPress 渠道
 
-GEOFlow 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress 站点。管理员需要在 WordPress 用户资料页创建 Application Password，并在 GEOFlow 分发渠道中选择“WordPress REST”后填写站点地址、用户名和 Application Password。
+SparklightAIGEO 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress 站点。管理员需要在 WordPress 用户资料页创建 Application Password，并在 SparklightAIGEO 分发渠道中选择“WordPress REST”后填写站点地址、用户名和 Application Password。
 
 首版 WordPress 渠道支持：
 
@@ -82,7 +82,7 @@ GEOFlow 2.x 支持通过 WordPress Core REST API 将文章分发到 WordPress �
 - 后台健康检查，检测 `/wp-json` 和当前用户编辑、发布、上传权限。
 - 分发队列中的远端编辑、删除、重试和日志记录继续复用统一分发管理能力。
 
-WordPress 渠道不需要目标站点包、伪静态规则或 GEOFlow Agent 签名协议。`llms.txt`、TXT 地图、Schema 深度控制、SEO 插件字段和模板控制属于后续 WordPress Connector 插件增强能力。
+WordPress 渠道不需要目标站点包、伪静态规则或 SparklightAIGEO Agent 签名协议。`llms.txt`、TXT 地图、Schema 深度控制、SEO 插件字段和模板控制属于后续 WordPress Connector 插件增强能力。
 
 ### 2.4 安全边界
 
@@ -127,12 +127,12 @@ WordPress 渠道不需要目标站点包、伪静态规则或 GEOFlow Agent 签�
 4. 管理员把 `key_id` 和 secret 配置到目标站点 Agent。
 5. 管理员在渠道详情页发起健康检查，确认 Agent 可达且验签正常。
 6. 内容运营人员在任务创建或编辑页勾选活跃分发渠道。
-7. 任务生成文章后，文章仍先进入 GEOFlow 本地审核和发布流程。
+7. 任务生成文章后，文章仍先进入 SparklightAIGEO 本地审核和发布流程。
 8. 当文章本地状态变为 `published` 后，系统为文章和渠道创建或更新 `article_distributions` 记录。
 9. 系统向 `distribution` 队列投递 `ProcessArticleDistributionJob`。
 10. 队列任务构造 payload，生成 HMAC 请求头，向目标站 Agent 发送文章。
 11. 目标站 Agent 返回 `remote_id`、`remote_url` 和远端状态。
-12. GEOFlow 将分发记录更新为 `synced`，保存远端信息，并写入日志。
+12. SparklightAIGEO 将分发记录更新为 `synced`，保存远端信息，并写入日志。
 13. 如果请求失败，分发记录更新为 `failed`，保存错误信息和日志，本地文章保持已发布。
 
 ### 4.2 渠道生命周期
@@ -148,7 +148,7 @@ WordPress 渠道不需要目标站点包、伪静态规则或 GEOFlow Agent 签�
 - `endpoint_url` 用于请求目标站 Agent，后台表单允许输入裸域名或完整 URL；未填写协议时默认补 `https://`，入库前去掉末尾 `/`。
 - `channel_type` 第一版固定为 `geoflow_agent`。
 - `template_key` 是可选字段，预留给目标站主题、栏目或模板映射。
-- `site_settings` 保存当前渠道的目标站点设置，包括网站名称、副标题、描述、关键词、版权、Logo、Favicon、SEO 模板、列表数量等；它只影响目标渠道站点，不修改 GEOFlow 本站的网站设置。
+- `site_settings` 保存当前渠道的目标站点设置，包括网站名称、副标题、描述、关键词、版权、Logo、Favicon、SEO 模板、列表数量等；它只影响目标渠道站点，不修改 SparklightAIGEO 本站的网站设置。
 - `created_by_admin_id` 记录创建人，便于后续审计。
 
 密钥创建逻辑：
@@ -429,7 +429,7 @@ failed -> queued -> sending -> synced
 - 目标站点设置区：
   - 复用网站设置中的站点信息字段：网站名称、副标题、描述、关键词、版权、Logo、Favicon、SEO 标题模板、SEO 描述模板、推荐数量和每页数量。
   - 复用网站设置中的前台模板发现能力，从 `resources/views/theme/*/manifest.json` 读取可选模板，在渠道编辑页以单选卡片展示。
-  - 保存后写入当前渠道的 `site_settings` JSON 和 `template_key`，不会影响 GEOFlow 本站设置。
+  - 保存后写入当前渠道的 `site_settings` JSON 和 `template_key`，不会影响 SparklightAIGEO 本站设置。
   - 渠道详情页提供“同步设置”操作，将这些设置通过签名接口发送到目标站 Agent。
 - Agent 接入引导卡片：
   - 展示示例文件路径 `docs/distribution/agent-sample/php/geoflow-agent.php`。
@@ -578,7 +578,7 @@ GET /geoflow-agent/v1/health
 }
 ```
 
-GEOFlow 处理规则：
+SparklightAIGEO 处理规则：
 
 - HTTP 2xx 且可解析 JSON 即认为 Agent 可响应。
 - 成功时写入 `last_health_status = ok`。
@@ -610,7 +610,7 @@ POST /geoflow-agent/v1/articles
     "published_at": "2026-05-18T10:00:00.000000Z",
     "updated_at": "2026-05-18T10:00:00.000000Z",
     "category": {"id": 1, "name": "Category", "slug": "category"},
-    "author": {"id": 1, "name": "GEOFlow"},
+    "author": {"id": 1, "name": "SparklightAIGEO"},
     "task": {"id": 1, "name": "Task name"}
   }
 }
@@ -640,13 +640,13 @@ POST /geoflow-agent/v1/articles
 ```text
 Content-Type: application/json
 Accept: application/json
-X-GEOFlow-Key-Id: gfk_xxx
-X-GEOFlow-Timestamp: 2026-05-18T10:00:00+08:00
-X-GEOFlow-Nonce: uuid-or-random
-X-GEOFlow-Idempotency-Key: article-123-channel-5-publish-v1
-X-GEOFlow-Body-SHA256: hex-sha256-body
-X-GEOFlow-Signature: hex-hmac-sha256
-X-GEOFlow-Event: article.publish
+X-SparklightAIGEO-Key-Id: gfk_xxx
+X-SparklightAIGEO-Timestamp: 2026-05-18T10:00:00+08:00
+X-SparklightAIGEO-Nonce: uuid-or-random
+X-SparklightAIGEO-Idempotency-Key: article-123-channel-5-publish-v1
+X-SparklightAIGEO-Body-SHA256: hex-sha256-body
+X-SparklightAIGEO-Signature: hex-hmac-sha256
+X-SparklightAIGEO-Event: article.publish
 ```
 
 签名字符串：
@@ -1255,7 +1255,7 @@ UI 设计：
 
 ### 11.6 DP-4：Agent 示例、目标站点包与接入文档
 
-目标：让目标站点开发者可以按示例快速接入 GEOFlow 分发协议，同时让普通新站点可以直接下载 ZIP 站点包、上传解压后进入测试。
+目标：让目标站点开发者可以按示例快速接入 SparklightAIGEO 分发协议，同时让普通新站点可以直接下载 ZIP 站点包、上传解压后进入测试。
 
 涉及文件：
 
@@ -1298,7 +1298,7 @@ UI 设计：
 文档内容：
 
 - 如何启动本地 Agent 示例。
-- 如何在 GEOFlow 创建渠道。
+- 如何在 SparklightAIGEO 创建渠道。
 - 如何复制 `key_id` 和 secret；忘记 secret 时，超级管理员如何通过当前密码临时重新显示。
 - 如何从渠道详情页下载目标站点包。
 - 如何在渠道编辑页维护目标站点设置并选择目标模板。
@@ -1319,7 +1319,7 @@ UI 设计：
 - 带二级目录的 Agent 地址可以通过生成包的健康检查、文章发布和前台链接烟测。
 - 目标站点设置可以通过签名接口同步到生成包，并影响首页标题、SEO 和页脚版权。
 - 密码错误不能下载站点包。
-- 本地启动示例后，GEOFlow 健康检查可成功。
+- 本地启动示例后，SparklightAIGEO 健康检查可成功。
 - 发布测试文章后，示例 Agent 能收到并保存文章。
 
 ### 11.7 DP-5：发布硬化与首版提交
@@ -1332,7 +1332,7 @@ UI 设计：
 - 不暂存 `.env`、storage、日志、缓存、上传目录。
 - 不暂存 `.longtask/`。
 - 不暂存 longtask 骨架文档。
-- 不从旁路仓库 `GEOFlow-laravel12` 推送。
+- 不从旁路仓库 `SparklightAIGEO-laravel12` 推送。
 
 建议提交拆分：
 

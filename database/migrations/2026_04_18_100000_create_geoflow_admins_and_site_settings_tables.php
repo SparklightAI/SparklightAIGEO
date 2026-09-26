@@ -1,7 +1,7 @@
 <?php
 
 /**
- * GEOFlow 后台管理员与站点键值设置表（先于业务大表迁移，供外键引用 admins）。
+ * SparklightAIGEO 后台管理员与站点键值设置表（先于业务大表迁移，供外键引用 admins）。
  */
 
 use Illuminate\Database\Migrations\Migration;

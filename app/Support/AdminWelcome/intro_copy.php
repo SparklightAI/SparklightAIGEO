@@ -5,21 +5,21 @@ declare(strict_types=1);
 return [
     'zh-CN' => [
         'meta' => [
-            'badge' => 'GEOFlow 3.0',
+            'badge' => 'SparklightAIGEO 3.0',
             'switch_label' => 'English',
             'close' => '关闭',
-            'links_label' => '继续了解 GEOFlow 3.0，可以查看更新日志、项目仓库和作者主页。',
+            'links_label' => '继续了解 SparklightAIGEO 3.0，可以查看更新日志、项目仓库和作者主页。',
             'author_link' => '作者 X 主页',
             'github_link' => '项目 GitHub',
             'changelog_link' => '更新日志',
         ],
         'letter' => [
-            'title' => '欢迎使用 GEOFlow 3.0',
-            'subtitle' => 'GEOFlow 是一套面向企业官网、行业信源平台和内部内容运营的开源 GEO 智能运营系统。它围绕可信知识、内容生产、质量审核、多站分发和数据反馈，建立一条可持续运营的工作链路。',
+            'title' => '欢迎使用 SparklightAIGEO 3.0',
+            'subtitle' => 'SparklightAIGEO 是一套面向企业官网、行业信源平台和内部内容运营的开源 GEO 智能运营系统。它围绕可信知识、内容生产、质量审核、多站分发和数据反馈，建立一条可持续运营的工作链路。',
             'blocks' => [
                 [
                     'type' => 'paragraph',
-                    'content' => '你好，欢迎来到 GEOFlow 3.0。这个主版本重新统一了后台体验，也把知识、AI、审核、发布、分发、人工运营与数据分析接成了一套完整的 GEO 运营工作台。',
+                    'content' => '你好，欢迎来到 SparklightAIGEO 3.0。这个主版本重新统一了后台体验，也把知识、AI、审核、发布、分发、人工运营与数据分析接成了一套完整的 GEO 运营工作台。',
                 ],
                 [
                     'type' => 'paragraph',
@@ -34,13 +34,13 @@ return [
                     'items' => [
                         '统一的 Admin UI V3：用清晰、克制、响应式的界面组织完整后台，并提供图文帮助助手、最近访问、移动端操作和 PWA 独立窗口',
                         '可信的内容生产链路：把企业知识库、RAG、AI 生成、文章质检和人工审核接到同一流程',
-                        '多端运营链路：支持本站、托管渠道站点、GEOFlow Agent、WordPress、通用 API 和 Chrome 运营助手',
+                        '多端运营链路：支持本站、托管渠道站点、SparklightAIGEO Agent、WordPress、通用 API 和 Chrome 运营助手',
                         '可追踪的工程保障：通过任务与队列状态、分发日志、AI 可见性、访问分析，以及独立更新、完整备份和回滚能力管理运行风险',
                     ],
                 ],
                 [
                     'type' => 'heading',
-                    'content' => 'GEOFlow 可以用在哪里',
+                    'content' => 'SparklightAIGEO 可以用在哪里',
                 ],
                 [
                     'type' => 'list',
@@ -72,7 +72,7 @@ return [
                 [
                     'type' => 'list',
                     'items' => [
-                        'GEOFlow 用于提高内容工程效率，以及内容被 AI 理解、引用和推荐的概率；平台排名与展示结果仍由各答案引擎决定',
+                        'SparklightAIGEO 用于提高内容工程效率，以及内容被 AI 理解、引用和推荐的概率；平台排名与展示结果仍由各答案引擎决定',
                         '知识质量决定内容上限；关键事实、专业判断和高风险内容仍需人工确认',
                         '批量生成或发布前，请先用小样本验证事实、图片、链接、远端页面和回滚路径',
                     ],
@@ -86,25 +86,25 @@ return [
     ],
     'en' => [
         'meta' => [
-            'badge' => 'GEOFlow 3.0',
+            'badge' => 'SparklightAIGEO 3.0',
             'switch_label' => '中文',
             'close' => 'Close',
-            'links_label' => 'To learn more about GEOFlow 3.0, visit the changelog, project repository, or author profile.',
+            'links_label' => 'To learn more about SparklightAIGEO 3.0, visit the changelog, project repository, or author profile.',
             'author_link' => 'Author X Profile',
             'github_link' => 'Project GitHub',
             'changelog_link' => 'Changelog',
         ],
         'letter' => [
-            'title' => 'Welcome to GEOFlow 3.0',
-            'subtitle' => 'GEOFlow is an open-source GEO operations system for corporate websites, vertical source platforms, and internal content operations. It connects trusted knowledge, content production, quality review, multi-site distribution, and analytics into a sustainable workflow.',
+            'title' => 'Welcome to SparklightAIGEO 3.0',
+            'subtitle' => 'SparklightAIGEO is an open-source GEO operations system for corporate websites, vertical source platforms, and internal content operations. It connects trusted knowledge, content production, quality review, multi-site distribution, and analytics into a sustainable workflow.',
             'blocks' => [
                 [
                     'type' => 'paragraph',
-                    'content' => 'Welcome to GEOFlow 3.0. This major release unifies the admin experience and connects knowledge, AI, review, publishing, distribution, manual operations, and analytics in one GEO operations workspace.',
+                    'content' => 'Welcome to SparklightAIGEO 3.0. This major release unifies the admin experience and connects knowledge, AI, review, publishing, distribution, manual operations, and analytics in one GEO operations workspace.',
                 ],
                 [
                     'type' => 'paragraph',
-                    'content' => 'GEOFlow 3.0 is guided by trust, clarity, and control. The unified interface reduces operational overhead while keeping evidence, status, risk, and next steps visible, so individuals and teams can work through the same operating loop.',
+                    'content' => 'SparklightAIGEO 3.0 is guided by trust, clarity, and control. The unified interface reduces operational overhead while keeping evidence, status, risk, and next steps visible, so individuals and teams can work through the same operating loop.',
                 ],
                 [
                     'type' => 'heading',
@@ -115,13 +115,13 @@ return [
                     'items' => [
                         'Unified Admin UI V3: a clear, restrained, responsive admin with illustrated help, recent pages, mobile support, and a standalone PWA experience',
                         'Trusted content production: enterprise knowledge, RAG, AI generation, article AI quality inspection, and human review in one workflow',
-                        'Multi-site and multi-channel operations: the local site, hosted channel sites, GEOFlow Agent, WordPress, generic APIs, and the Chrome operations assistant',
+                        'Multi-site and multi-channel operations: the local site, hosted channel sites, SparklightAIGEO Agent, WordPress, generic APIs, and the Chrome operations assistant',
                         'Operational safeguards: task and queue status, distribution logs, AI visibility and traffic analytics, plus independent updates, full backups, and rollback',
                     ],
                 ],
                 [
                     'type' => 'heading',
-                    'content' => 'Where GEOFlow fits',
+                    'content' => 'Where SparklightAIGEO fits',
                 ],
                 [
                     'type' => 'list',
@@ -153,7 +153,7 @@ return [
                 [
                     'type' => 'list',
                     'items' => [
-                        'GEOFlow improves content engineering efficiency and the probability that AI systems understand, cite, and recommend your content; ranking and visibility remain decisions made by each answer engine',
+                        'SparklightAIGEO improves content engineering efficiency and the probability that AI systems understand, cite, and recommend your content; ranking and visibility remain decisions made by each answer engine',
                         'Knowledge quality sets the ceiling for downstream content; critical facts, expert judgment, and high-risk content still require human review',
                         'Before bulk generation or publishing, verify facts, images, links, remote pages, and rollback paths with a small sample',
                     ],

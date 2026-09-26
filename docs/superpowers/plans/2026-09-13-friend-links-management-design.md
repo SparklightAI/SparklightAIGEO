@@ -1,4 +1,4 @@
-**GEOFlow 友情链接管理最终方案**
+**SparklightAIGEO 友情链接管理最终方案**
 
 日期：2026-09-13。版本：V2。状态：已确认并完成实现与测试，改动保留在当前工作区。
 
@@ -43,11 +43,11 @@
 
 关键参考文件：
 
-- [网站设置控制器](</Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow/app/Http/Controllers/Admin/SiteSettingsController.php>)
-- [网站设置页面](</Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow/resources/views/admin/site-settings/index.blade.php>)
-- [前台设置缓存](</Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow/app/Support/Site/SiteSettingsBag.php>)
-- [首页控制器](</Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow/app/Http/Controllers/Site/HomeController.php>)
-- [现有跨主题页脚测试](</Users/laoyao/AI Coding/01-Projects/OpenSource/GEOFlow/tests/Feature/SiteFilingSettingsTest.php>)
+- [网站设置控制器](</Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO/app/Http/Controllers/Admin/SiteSettingsController.php>)
+- [网站设置页面](</Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO/resources/views/admin/site-settings/index.blade.php>)
+- [前台设置缓存](</Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO/app/Support/Site/SiteSettingsBag.php>)
+- [首页控制器](</Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO/app/Http/Controllers/Site/HomeController.php>)
+- [现有跨主题页脚测试](</Users/laoyao/AI Coding/01-Projects/OpenSource/SparklightAIGEO/tests/Feature/SiteFilingSettingsTest.php>)
 
 **4. 后台交互**
 
@@ -140,7 +140,7 @@
 
 导入主题和存量自定义主题使用同一接入约定：页脚显式引用 `site.partials.friend-links`，并包含公共 head，或在自有 head 中加载友情链接样式。后台常驻简短说明「自定义主题需支持友情链接展示」；当前使用导入主题时显示「当前主题的友情链接展示需通过首页预览确认」。主题来源只用于提示，不作为已经兼容或一定不兼容的判断依据。
 
-主题导出继续使用现有依赖扫描，将公共友情链接组件纳入 `requires.views`；导入到缺少组件的旧版 GEOFlow 时，应在现有依赖检查阶段明确报错。主题包只包含模板与资源，友情链接名单仍属于站点设置，不能随主题包导出。保留现有主题包格式与版本策略，不在本任务中自行提升产品版本。
+主题导出继续使用现有依赖扫描，将公共友情链接组件纳入 `requires.views`；导入到缺少组件的旧版 SparklightAIGEO 时，应在现有依赖检查阶段明确报错。主题包只包含模板与资源，友情链接名单仍属于站点设置，不能随主题包导出。保留现有主题包格式与版本策略，不在本任务中自行提升产品版本。
 
 已安装主题的真实首页预览用于确认列表与样式。现有预览沙箱会把外站点击改为新窗口并施加自己的来源策略，保留这一行为；管理员选择的打开方式和链接关系在实际主站页面验证，不用沙箱点击结果代替上线行为。
 

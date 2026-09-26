@@ -38,8 +38,8 @@ docker buildx inspect --bootstrap
 echo ">>> 构建并推送 app 镜像"
 docker buildx build --platform "${PLATFORM}" \
   -f docker/Dockerfile.prod \
-  -t "${REGISTRY}/${NS}/geoflow-app-prod:${VERSION}" \
-  -t "${REGISTRY}/${NS}/geoflow-app-prod:latest" \
+  -t "${REGISTRY}/${NS}/sparklightaigeo-app-prod:${VERSION}" \
+  -t "${REGISTRY}/${NS}/sparklightaigeo-app-prod:latest" \
   --build-arg COMPOSER_IMAGE="${COMPOSER_IMAGE}" \
   --build-arg PHP_FPM_IMAGE="${PHP_FPM_IMAGE}" \
   --build-arg PECL_REDIS_VERSION="${PECL_REDIS_VERSION}" \
@@ -54,7 +54,7 @@ docker buildx build --platform "${PLATFORM}" \
   --push .
 
 echo ">>> 推送完成"
-echo "    ${REGISTRY}/${NS}/geoflow-app-prod:${VERSION}"
+echo "    ${REGISTRY}/${NS}/sparklightaigeo-app-prod:${VERSION}"
 echo "    ${REGISTRY}/${NS}/geoflow-web-prod:${VERSION}"
-echo "    ${REGISTRY}/${NS}/geoflow-app-prod:latest"
+echo "    ${REGISTRY}/${NS}/sparklightaigeo-app-prod:latest"
 echo "    ${REGISTRY}/${NS}/geoflow-web-prod:latest"

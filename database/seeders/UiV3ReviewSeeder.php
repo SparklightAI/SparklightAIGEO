@@ -197,7 +197,7 @@ class UiV3ReviewSeeder extends Seeder
                 ['name' => self::KNOWLEDGE_BASE_NAME],
                 [
                     'description' => '仅包含演示信息，不含稳定版数据。',
-                    'content' => "GEOFlow 将问题地图、知识资产、任务生产和分发观测组织在一个工作台中。\n该记录用于 UI V3 页面审查。",
+                    'content' => "SparklightAIGEO 将问题地图、知识资产、任务生产和分发观测组织在一个工作台中。\n该记录用于 UI V3 页面审查。",
                     'character_count' => 61,
                     'used_task_count' => 1,
                     'file_type' => 'markdown',
@@ -422,7 +422,7 @@ class UiV3ReviewSeeder extends Seeder
                     'status' => LeadSubmission::STATUS_NEW,
                     'payload' => ['name' => '演示客户', 'phone' => '138****0000', 'need' => '希望了解 GEO 内容工程。'],
                     'ip_address' => '127.0.0.1',
-                    'user_agent' => 'GEOFlow UI V3 Review Fixture',
+                    'user_agent' => 'SparklightAIGEO UI V3 Review Fixture',
                     'note' => '本地审查数据。',
                 ],
             );

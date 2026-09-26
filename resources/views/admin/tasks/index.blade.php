@@ -395,7 +395,7 @@
                                         <td class="hidden px-5 py-4 text-sm text-gray-600 tabular-nums whitespace-nowrap sm:table-cell">
                                             {{ \Illuminate\Support\Carbon::parse($task['expires_at'])->format('Y-m-d H:i') }}
                                         </td>
-                                        <td class="sticky right-0 z-10 bg-white px-5 py-4 text-right text-sm whitespace-nowrap shadow-[-8px_0_14px_-14px_rgba(15,23,42,0.45)] transition-colors [@media(hover:hover)]:group-hover:bg-gray-50">
+                                        <td class="sticky right-0 z-10 bg-white px-5 py-4 text-right text-sm whitespace-nowrap shadow-[-8px_0_14px_-14px_rgba(30, 34, 56,0.45)] transition-colors [@media(hover:hover)]:group-hover:bg-gray-50">
                                             @if ($task['can_restore'] ?? true)
                                             <form
                                                 method="POST"
@@ -484,7 +484,7 @@
     </div>
 
     <dialog
-        class="fixed inset-0 m-auto w-[min(600px,calc(100vw-2rem))] max-w-none overflow-hidden overscroll-contain rounded-2xl border-0 bg-white p-0 text-left text-gray-900 shadow-[0_24px_72px_rgba(15,23,42,0.28)] backdrop:bg-[rgba(15,23,42,0.48)]"
+        class="fixed inset-0 m-auto w-[min(600px,calc(100vw-2rem))] max-w-none overflow-hidden overscroll-contain rounded-2xl border-0 bg-white p-0 text-left text-gray-900 shadow-[0_24px_72px_rgba(30, 34, 56,0.28)] backdrop:bg-[rgba(30, 34, 56,0.48)]"
         data-task-index-readiness-dialog
         data-blocked-title="{{ __('admin.task_create.readiness.dialog_blocked_title') }}"
         data-warning-title="{{ __('admin.task_create.readiness.dialog_warning_title') }}"

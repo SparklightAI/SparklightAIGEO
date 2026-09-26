@@ -1,4 +1,4 @@
-# 🥷 GEOFlow 后台操作弹窗统一升级方案（最终确认版）
+# 🥷 SparklightAIGEO 后台操作弹窗统一升级方案（最终确认版）
 
 > 状态：已按确认方案实施，自动化与响应式验收通过
 >
@@ -277,7 +277,7 @@
 
 ### 10.1 设计方向
 
-- 视觉主题：延续 GEOFlow Admin UI V3 的克制企业工具风格，以白色实体表面、清晰文字层级和语义色表达风险。
+- 视觉主题：延续 SparklightAIGEO Admin UI V3 的克制企业工具风格，以白色实体表面、清晰文字层级和语义色表达风险。
 - CSS 策略：共享操作弹窗使用由 `resources/js/app.js` 引入的 `resources/css/admin-action-dialog.css` 语义类，确保 UI V3 和旧布局都加载；现有功能型弹窗 token 继续放在 `resources/css/app.css`；页面按钮继续使用现有 Tailwind 工具类；不引入 CSS Modules、CSS-in-JS 或新依赖。
 - 交互特征：按钮按下使用现有 `scale(0.96)`；鼠标触发的弹窗使用短促淡入；键盘触发和减少动态效果模式不播放进入动画。
 

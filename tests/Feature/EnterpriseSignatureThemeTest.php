@@ -24,7 +24,7 @@ class EnterpriseSignatureThemeTest extends TestCase
             ->firstWhere('id', self::THEME_ID);
 
         $this->assertIsArray($theme);
-        $this->assertSame('GEOFlow 21 Enterprise Signature', $theme['name']);
+        $this->assertSame('SparklightAIGEO 21 Enterprise Signature', $theme['name']);
         $this->assertFileExists(resource_path('views/theme/'.self::THEME_ID.'/layout.blade.php'));
         $this->assertFileExists(public_path('themes/'.self::THEME_ID.'/theme.css'));
 
@@ -75,7 +75,7 @@ class EnterpriseSignatureThemeTest extends TestCase
         $this->get(route('site.home'))
             ->assertOk()
             ->assertSee('themes/'.self::THEME_ID.'/theme.css', false)
-            ->assertSee('GEOFlow Control Plane')
+            ->assertSee('SparklightAIGEO Control Plane')
             ->assertSee('让全球知识')
             ->assertSee('成为')
             ->assertSee('可信答案')
@@ -111,7 +111,7 @@ class EnterpriseSignatureThemeTest extends TestCase
         $response = $this->get(route('site.home'))
             ->assertOk()
             ->assertSee('已连接后台表单')
-            ->assertSee('提交内容会安全进入 GEOFlow 增长中心。')
+            ->assertSee('提交内容会安全进入 SparklightAIGEO 增长中心。')
             ->assertSee(
                 'action="'.route('site.lead-forms.submit', ['slug' => $leadForm->slug]).'"',
                 false
@@ -137,7 +137,7 @@ class EnterpriseSignatureThemeTest extends TestCase
             ->assertOk()
             ->assertSee($article->title)
             ->assertSee('Search results')
-            ->assertDontSee('GEOFlow Control Plane')
+            ->assertDontSee('SparklightAIGEO Control Plane')
             ->assertDontSee('NORTHSTAR INDUSTRIAL');
     }
 
@@ -190,7 +190,7 @@ class EnterpriseSignatureThemeTest extends TestCase
             ->assertOk()
             ->assertSee('演示表单 · 请在首页模块指定表单')
             ->assertSee('请在后台首页模块中添加线索表单模块')
-            ->assertSee('在后台启用并指定表单后，提交内容会进入 GEOFlow 增长中心。')
+            ->assertSee('在后台启用并指定表单后，提交内容会进入 SparklightAIGEO 增长中心。')
             ->assertDontSee('action="'.route('site.lead-forms.submit', ['slug' => 'enterprise-geo']).'"', false);
     }
 
@@ -208,7 +208,7 @@ class EnterpriseSignatureThemeTest extends TestCase
             ->assertDontSee('Knowledge domain')
             ->assertDontSee('Category index')
             ->assertDontSee('Browse by topic')
-            ->assertDontSee('GEOFlow Insight')
+            ->assertDontSee('SparklightAIGEO Insight')
             ->assertDontSee('ent-article-card__visual', false)
             ->assertDontSee('published resources')
             ->assertSee('themes/'.self::THEME_ID.'/theme.css', false);
@@ -218,21 +218,21 @@ class EnterpriseSignatureThemeTest extends TestCase
             ->assertSee('<h2>Enterprise evidence body</h2>', false)
             ->assertSee('data-ent-article-toc', false)
             ->assertSee('data-ent-article-content', false)
-            ->assertDontSee('GEOFlow Insight')
+            ->assertDontSee('SparklightAIGEO Insight')
             ->assertDontSee('data-ent-copy-url', false);
 
         $this->get(route('site.about'))
             ->assertOk()
-            ->assertSee('关于 GEOFlow')
+            ->assertSee('关于 SparklightAIGEO')
             ->assertSee('让可信知识进入 AI 答案')
             ->assertSee('一条完整的内容工作流')
-            ->assertSee('GEOFlow 包含的核心能力')
+            ->assertSee('SparklightAIGEO 包含的核心能力')
             ->assertSee('开放、可部署的技术基础')
             ->assertSee('从开源仓库开始')
             ->assertSee('data-ent-article-toc', false)
             ->assertSee('data-ent-article-content', false)
             ->assertSee('AboutPage')
-            ->assertSee('https://github.com/yaojingang/GEOFlow')
+            ->assertSee('https://github.com/SparklightAI/SparklightAIGEO')
             ->assertDontSee('文章信息')
             ->assertDontSee('次阅读');
 
@@ -261,9 +261,9 @@ class EnterpriseSignatureThemeTest extends TestCase
         $this->get(route('site.about'))
             ->assertOk()
             ->assertSee('article-detail-shell', false)
-            ->assertSee('关于 GEOFlow')
+            ->assertSee('关于 SparklightAIGEO')
             ->assertSee('一条完整的内容工作流')
-            ->assertSee('https://github.com/yaojingang/GEOFlow');
+            ->assertSee('https://github.com/SparklightAI/SparklightAIGEO');
     }
 
     public function test_legacy_apple_theme_uses_the_about_navigation(): void
@@ -278,13 +278,13 @@ class EnterpriseSignatureThemeTest extends TestCase
         $this->get(route('site.home'))
             ->assertOk()
             ->assertSee('href="'.route('site.about').'"', false)
-            ->assertSee('关于 GEOFlow')
+            ->assertSee('关于 SparklightAIGEO')
             ->assertDontSee(__('site.archive_title'));
 
         $this->get(route('site.category', ['slug' => $article->category->slug]))
             ->assertOk()
             ->assertSee('href="'.route('site.about').'"', false)
-            ->assertSee('关于 GEOFlow')
+            ->assertSee('关于 SparklightAIGEO')
             ->assertDontSee(__('site.archive_title'));
     }
 
@@ -407,7 +407,7 @@ class EnterpriseSignatureThemeTest extends TestCase
         );
         SiteSetting::query()->updateOrCreate(
             ['setting_key' => 'site_name'],
-            ['setting_value' => 'GEOFlow'],
+            ['setting_value' => 'SparklightAIGEO'],
         );
         SiteSetting::query()->updateOrCreate(
             ['setting_key' => 'site_description'],
@@ -444,7 +444,7 @@ class EnterpriseSignatureThemeTest extends TestCase
             'description' => 'Enterprise GEO knowledge and practice.',
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow Research',
+            'name' => 'SparklightAIGEO Research',
         ]);
 
         return Article::query()->create([

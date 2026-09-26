@@ -192,7 +192,7 @@ with sync_playwright() as playwright:
             const target = document.createElement('div');
             document.body.append(target);
             const pattern = [
-                '## GEOFlow 检查结果',
+                '## SparklightAIGEO 检查结果',
                 '',
                 '> 当前观测显示内容引用正在恢复。',
                 '',

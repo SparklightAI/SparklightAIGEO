@@ -165,7 +165,7 @@ class WordPressDistributionIdempotencyTest extends TestCase
         $receipts = [];
         $deleteKeys = [];
         Http::fake(function ($request) use (&$remoteExists, &$receipts, &$deleteKeys) {
-            $key = $request->header('X-GEOFlow-Idempotency-Key')[0];
+            $key = $request->header('X-SparklightAIGEO-Idempotency-Key')[0];
             if (str_ends_with($request->url(), '/delete')) {
                 $deleteKeys[] = $key;
             }
@@ -997,7 +997,7 @@ class WordPressDistributionIdempotencyTest extends TestCase
             'slug' => 'wordpress-distribution-'.uniqid(),
         ]);
         $author = Author::query()->create([
-            'name' => 'GEOFlow',
+            'name' => 'SparklightAIGEO',
         ]);
         $task = Task::query()->create([
             'name' => 'WordPress distribution task',

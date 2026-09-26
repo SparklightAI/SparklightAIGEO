@@ -383,7 +383,7 @@ final class HomepageModuleBuilder
 
     /**
      * Normalize JSON payloads exported by design agents or manual tools into
-     * GEOFlow homepage style tokens and module records.
+     * SparklightAIGEO homepage style tokens and module records.
      *
      * @return array{style:array<string,string>,modules:list<array<string,mixed>>}
      */

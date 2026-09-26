@@ -22,7 +22,7 @@ WORKDIR /var/www/html
 COPY public /var/www/html/public
 COPY --from=assets /app/public/build /var/www/html/public/build
 COPY docker/nginx/default.conf.template /etc/nginx/templates/default.conf.template
-COPY docker/nginx/geoflow-app.conf /etc/nginx/snippets/geoflow-app.conf
+COPY docker/nginx/sparklightaigeo-app.conf /etc/nginx/snippets/sparklightaigeo-app.conf
 
 RUN rm -f /var/www/html/public/storage \
     && ln -s ../storage/app/public /var/www/html/public/storage

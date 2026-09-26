@@ -109,7 +109,7 @@
                                 ['key' => 'visibility', 'label' => __('admin.growth_center.ai_visibility.kpi.visibility'), 'color' => '#7c3aed', 'decimals' => 1, 'suffix' => '%'],
                                 ['key' => 'top1', 'label' => __('admin.growth_center.ai_visibility.kpi.top1'), 'color' => '#d97706', 'decimals' => 1, 'suffix' => '%'],
                                 ['key' => 'top3', 'label' => __('admin.growth_center.ai_visibility.kpi.top3'), 'color' => '#059669', 'decimals' => 1, 'suffix' => '%'],
-                                ['key' => 'samples', 'label' => __('admin.growth_center.ai_visibility.table.samples'), 'color' => '#475569'],
+                                ['key' => 'samples', 'label' => __('admin.growth_center.ai_visibility.table.samples'), 'color' => '#565a6b'],
                             ],
                         ])
                     </div>

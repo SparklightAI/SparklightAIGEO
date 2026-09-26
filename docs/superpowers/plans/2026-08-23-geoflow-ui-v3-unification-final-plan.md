@@ -1,24 +1,24 @@
-# GEOFlow 新旧系统融合最终实施方案
+# SparklightAIGEO 新旧系统融合最终实施方案
 
 > 状态：Final v2.0，待用户确认后实施
 >
 > 日期：2026-08-23
 >
-> 最终代码库：`GEOFlow`
+> 最终代码库：`SparklightAIGEO`
 >
 > 最终管理后台：`http://localhost:18080/admin`
 >
-> 数据基准：当前 `GEOFlow` 数据库、站点设置、前台模板与文件
+> 数据基准：当前 `SparklightAIGEO` 数据库、站点设置、前台模板与文件
 >
-> 界面基准：`GEOFlow-UI-V3` 的真实管理页面与 AI 工作台
+> 界面基准：`SparklightAIGEO-UI-V3` 的真实管理页面与 AI 工作台
 
 ## 1. 最终结论
 
-本次融合采用“保留 GEOFlow 业务与数据，迁入 UI V3 和 AI 工作台”的路线。
+本次融合采用“保留 SparklightAIGEO 业务与数据，迁入 UI V3 和 AI 工作台”的路线。
 
 完成后只保留以下一套系统：
 
-- 一个代码目录和代码库：`GEOFlow`。
+- 一个代码目录和代码库：`SparklightAIGEO`。
 - 一个管理后台入口：`http://localhost:18080/admin`。
 - 一套 PostgreSQL 数据：沿用当前 18080 系统的数据。
 - 一套 Redis、队列、调度和实时事件服务。
@@ -33,7 +33,7 @@
 原方案的主方向正确，已经覆盖界面迁移、旧数据保留、AI 工作台接入和最终单系统收口。本轮补齐了会直接影响实施安全与验收结果的十二项内容：
 
 1. 增加双工作树保护，先固化两边未提交内容，再进入干净集成工作树。
-2. 明确 UI V3 分支是当前 GEOFlow 基线的直接后续提交，可以保留连续 Git 历史，减少人工拷贝。
+2. 明确 UI V3 分支是当前 SparklightAIGEO 基线的直接后续提交，可以保留连续 Git 历史，减少人工拷贝。
 3. 增加旧数据库逻辑备份与克隆验证，禁止复制正在运行的 PostgreSQL 数据目录。
 4. 增加 `APP_KEY`、加密模型密钥、Session、站点域名和文件存储的保留规则。
 5. 增加最终容器拓扑，补齐 Nginx 静态资源网关、两条 AI 队列、Scheduler 和 Reverb。
@@ -51,7 +51,7 @@
 
 ### 3.1 代码关系
 
-| 项目 | `GEOFlow` | `GEOFlow-UI-V3` |
+| 项目 | `SparklightAIGEO` | `SparklightAIGEO-UI-V3` |
 |---|---|---|
 | 当前分支 | `codex/backend-stability-login-repair` | `codex/admin-ui-v3` |
 | 当前提交 | `3f18e0f8173dbb32fa50beedb17b53cf79078f78` | `1d81460e380d12605a722fa68051a1aa527a6106` |
@@ -60,7 +60,7 @@
 | 未跟踪文件 | 10 | 63 |
 | 已跟踪改动量 | `+1598 / -714` | `+2675 / -297` |
 
-UI V3 提交历史直接建立在当前 GEOFlow 提交之上。实施时应把 UI V3 分支与后续 AI 工作台改动导入 `GEOFlow`，保留原提交关系。
+UI V3 提交历史直接建立在当前 SparklightAIGEO 提交之上。实施时应把 UI V3 分支与后续 AI 工作台改动导入 `SparklightAIGEO`，保留原提交关系。
 
 两边未提交内容都视为用户资产。实施过程中禁止使用 `git reset --hard`、`git clean`、`git stash -u` 或覆盖式复制。
 
@@ -100,13 +100,13 @@ UI V3 提交历史直接建立在当前 GEOFlow 提交之上。实施时应把 U
 旧系统的重要站点基准：
 
 - 当前主题：`geoflow-template-21-enterprise-signature`。
-- 站点名和标题：`GEOFlow`。
+- 站点名和标题：`SparklightAIGEO`。
 - 首页模块配置：1900 字节，SHA-256 为 `ffadea45d7a464856035d38fb2cd519a90553951556057f44c3ef2e4c5303563`。
 - 首页样式配置：196 字节，SHA-256 为 `4431182f01ef0d92a37bbc88ef00a5e4b1c250da2ee07630b680559c9299c175`。
 - `storage/app` 当前约 154 MB。
 - 前台主题 Blade 目录 27 个，公开主题目录 26 个。
 
-UI V3 演示库中的 `toutiao-news-20260426`、`GEOFlow Support`、演示管理员和演示内容都不进入最终数据。
+UI V3 演示库中的 `toutiao-news-20260426`、`SparklightAIGEO Support`、演示管理员和演示内容都不进入最终数据。
 
 ### 3.4 当前验证基线
 
@@ -150,7 +150,7 @@ UI V3 演示库中的 `toutiao-news-20260426`、`GEOFlow Support`、演示管理
 
 ### 5.1 保留内容
 
-- `GEOFlow` Git 历史和原有业务代码。
+- `SparklightAIGEO` Git 历史和原有业务代码。
 - 18080 对应 PostgreSQL 数据与 Redis 运行配置。
 - 当前 `APP_KEY` 和已加密的 AI 模型凭据。
 - 当前管理员、文章、任务、内容资产、分发渠道、线索和系统设置。
@@ -164,7 +164,7 @@ UI V3 演示库中的 `toutiao-news-20260426`、`GEOFlow Support`、演示管理
 - UI V3 演示数据库及其中的演示管理员、演示内容和演示站点设置。
 - `UiV3ReviewSeeder` 和 `FrontendDemoSeeder` 在正式环境中的执行入口。
 - 28080 专用 Session、端口、数据库卷、Redis、网络和容器名称。
-- `GEOFlow-UI-V3` 独立源码目录。
+- `SparklightAIGEO-UI-V3` 独立源码目录。
 - 旧 Admin UI V2 静态原型和 UI V3 Pilot 静态包作为运行入口。
 - 与 UI V3、AI 工作台或其安全链路没有可追溯关系的后台改动。
 
@@ -192,7 +192,7 @@ geoflow-web :18080
   `-- 动态请求          no-store
           |
           v
-      geoflow-app
+      sparklightaigeo-app
           |
           |-- PostgreSQL，沿用旧数据目录
           |-- Redis，缓存、锁、队列、Session
@@ -244,12 +244,12 @@ Reverb 作为实时体验增强。连接失败、事件丢失或序号不连续�
 
 执行内容：
 
-1. 在 `GEOFlow` 为 Admin UI V2 预览改动建立独立归档分支和提交。
-2. 在 `GEOFlow-UI-V3` 把已提交 UI V3、未提交 AI 工作台、错误弹窗和分发安全改动拆成可追溯提交。
-3. 把 UI V3 分支导入 `GEOFlow` 的本地 Git 对象库，保留原始提交哈希和归档引用。
-4. 在 `GEOFlow` 创建 `codex/geoflow-ui-v3-unification` 集成分支和独立干净工作树。
+1. 在 `SparklightAIGEO` 为 Admin UI V2 预览改动建立独立归档分支和提交。
+2. 在 `SparklightAIGEO-UI-V3` 把已提交 UI V3、未提交 AI 工作台、错误弹窗和分发安全改动拆成可追溯提交。
+3. 把 UI V3 分支导入 `SparklightAIGEO` 的本地 Git 对象库，保留原始提交哈希和归档引用。
+4. 在 `SparklightAIGEO` 创建 `codex/geoflow-ui-v3-unification` 集成分支和独立干净工作树。
 5. 将两边状态、提交、未跟踪文件和差异摘要写入迁移清单。
-6. 生成旧数据库逻辑备份、文件归档、文件清单和校验值，放入仓库外的 `../GEOFlow-recovery/20260823/`。
+6. 生成旧数据库逻辑备份、文件归档、文件清单和校验值，放入仓库外的 `../SparklightAIGEO-recovery/20260823/`。
 7. 从备份恢复一套临时数据库，验证备份可以使用。
 
 阶段门禁：
@@ -440,7 +440,7 @@ Reverb 作为实时体验增强。连接失败、事件丢失或序号不连续�
 
 切换中：
 
-1. 在 `GEOFlow` 发布集成代码和 Vite 资源。
+1. 在 `SparklightAIGEO` 发布集成代码和 Vite 资源。
 2. 保留旧 `.env` 与 `APP_KEY`，只合并已审核的新环境变量。
 3. 执行数据库迁移。
 4. 清理并重建配置、路由、视图和事件缓存。
@@ -501,10 +501,10 @@ PostgreSQL / Redis
 2. 删除 UI V2 和 UI V3 Pilot 的运行入口。
 3. 删除 `.env.ui-v3`、`docker-compose.ui-v3.yml` 和 28080 专用开发脚本。
 4. 停止并删除名称以 `geoflow-ui-v3-` 开头的容器、网络和命名卷。
-5. 确认 UI V3 分支已导入 `GEOFlow` 并存在归档引用后，删除 `GEOFlow-UI-V3` 独立目录。
+5. 确认 UI V3 分支已导入 `SparklightAIGEO` 并存在归档引用后，删除 `SparklightAIGEO-UI-V3` 独立目录。
 6. 更新 README、部署文档、运行手册和系统更新说明，只保留 18080 单系统操作方式。
 
-删除范围必须精确匹配 `geoflow-ui-v3-*` 和 `GEOFlow-UI-V3`。不得删除 `GEOFlow/docker-data`、`GEOFlow/storage`、`geoflow-postgres` 或其旧数据目录。
+删除范围必须精确匹配 `geoflow-ui-v3-*` 和 `SparklightAIGEO-UI-V3`。不得删除 `SparklightAIGEO/docker-data`、`SparklightAIGEO/storage`、`geoflow-postgres` 或其旧数据目录。
 
 ## 8. 环境变量合并清单
 
@@ -663,7 +663,7 @@ node --test tests/JavaScript/ai-workspace.test.js
 | 页面刷新闪旧样式 | 动态页或资源缓存错误 | Nginx 分离指纹资源、普通资源和动态 HTML 缓存 |
 | 权限入口泄露 | 菜单、最近处理与路由判断不一致 | 共用路由权限注册表，按身份跑全页回归 |
 | 回退删除会话数据 | 执行共享会话表 `down()` | 以开关和代码回退为主，保留共享表 |
-| 清理误删旧数据 | 容器或目录目标过宽 | 只匹配 `geoflow-ui-v3-*` 和 `GEOFlow-UI-V3`，清理前复核清单 |
+| 清理误删旧数据 | 容器或目录目标过宽 | 只匹配 `geoflow-ui-v3-*` 和 `SparklightAIGEO-UI-V3`，清理前复核清单 |
 
 最脆弱的假设是 UI V3 在小型演示数据上成立后，也能直接承载旧系统更大的列表、长文本、复杂设置和 154 MB 文件。旧数据克隆验收是正式切换的硬门禁，任何关键页面失败都会暂停切换。
 
@@ -671,7 +671,7 @@ node --test tests/JavaScript/ai-workspace.test.js
 
 同时满足以下条件，融合才算完成：
 
-- `GEOFlow` 是唯一代码库和源码目录。
+- `SparklightAIGEO` 是唯一代码库和源码目录。
 - 18080 是唯一管理后台入口，28080 已下线。
 - 旧数据库、旧 `APP_KEY`、旧站点设置、旧主题和旧文件继续使用。
 - 全后台页面统一采用 UI V3，旧壳层和原型运行入口已删除。

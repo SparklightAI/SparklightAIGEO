@@ -31,7 +31,7 @@ class GeoFlowApplication extends Application
     public function doRun(InputInterface $input, OutputInterface $output): int
     {
         if (! $input instanceof ArgvInput) {
-            throw new CliException('GEOFlow CLI 需要 ArgvInput');
+            throw new CliException('SparklightAIGEO CLI 需要 ArgvInput');
         }
 
         $errorOutput = $output instanceof ConsoleOutputInterface

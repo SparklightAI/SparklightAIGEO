@@ -18,7 +18,7 @@ class ConfigurationRepositoryTest extends TestCase
     {
         parent::setUp();
 
-        $this->root = sys_get_temp_dir().'/geoflow-cli-test-'.bin2hex(random_bytes(6));
+        $this->root = sys_get_temp_dir().'/sparklightaigeo-cli-test-'.bin2hex(random_bytes(6));
         mkdir($this->root.'/home/.config/geoflow', 0700, true);
         mkdir($this->root.'/cwd', 0700, true);
 

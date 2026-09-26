@@ -126,7 +126,7 @@ final readonly class AiWorkspaceCoordinator
                 'prompt' => $prompt,
                 'prompt_versions' => (array) config('ai-workspace.prompt_versions', []),
                 'risk_level' => 'low',
-                'status_message' => 'GEOFlow 正在理解请求。',
+                'status_message' => 'SparklightAIGEO 正在理解请求。',
             ]);
             $run->forceFill($this->executionGuard->snapshotForCreation($lockedAdmin))->save();
             $this->traces->recordInitial($run);
@@ -657,7 +657,7 @@ final readonly class AiWorkspaceCoordinator
             'artifact_count' => count((array) $context['artifact_references']),
             'truncated' => (bool) $context['truncated'],
         ]);
-        $answering = $this->transitionResolutionOwned((string) $run->id, $leaseOwner, 'answering', ['status_message' => 'GEOFlow 正在回答。'], [
+        $answering = $this->transitionResolutionOwned((string) $run->id, $leaseOwner, 'answering', ['status_message' => 'SparklightAIGEO 正在回答。'], [
             'event_type' => 'model.requested',
             'kind' => 'analysis',
             'title' => '生成回答',
@@ -865,7 +865,7 @@ final readonly class AiWorkspaceCoordinator
                 'status_message' => '已识别为简单问候，正在快速响应。',
             ]);
             $answering = $this->transitionResolutionOwned((string) $run->id, $leaseOwner, 'answering', [
-                'status_message' => 'GEOFlow 正在快速响应。',
+                'status_message' => 'SparklightAIGEO 正在快速响应。',
             ], [
                 'event_type' => 'run.started',
                 'kind' => 'analysis',

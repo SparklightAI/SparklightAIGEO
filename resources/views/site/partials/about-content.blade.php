@@ -1,5 +1,5 @@
 <p class="about-lede">
-    GEOFlow 是一套面向 GEO（生成式引擎优化）的开源智能内容工程与多站点分发系统。它把知识库、素材、提示词、AI 生成任务、审核发布、数据分析和多端分发连接成一条可以持续运营的工作流。
+    SparklightAIGEO 是一套面向 GEO（生成式引擎优化）的开源智能内容工程与多站点分发系统。它把知识库、素材、提示词、AI 生成任务、审核发布、数据分析和多端分发连接成一条可以持续运营的工作流。
 </p>
 
 <p>
@@ -9,7 +9,7 @@
 <h2 id="about-purpose">让可信知识进入 AI 答案</h2>
 
 <p>
-    GEOFlow 将知识库放在内容生产的起点。团队可以把真实业务资料整理进知识库，再结合标题库、关键词库、图片库、作者和提示词形成生产输入。配置 embedding 模型后，系统会为知识内容建立向量索引，并在文章生成时召回相关资料。
+    SparklightAIGEO 将知识库放在内容生产的起点。团队可以把真实业务资料整理进知识库，再结合标题库、关键词库、图片库、作者和提示词形成生产输入。配置 embedding 模型后，系统会为知识内容建立向量索引，并在文章生成时召回相关资料。
 </p>
 
 <blockquote class="about-principle">
@@ -20,7 +20,7 @@
 <h2 id="about-workflow">一条完整的内容工作流</h2>
 
 <p>
-    GEOFlow 把内容工程拆成五个连续阶段。每个阶段都能单独管理，也能通过任务、队列和分发渠道形成自动化链路。
+    SparklightAIGEO 把内容工程拆成五个连续阶段。每个阶段都能单独管理，也能通过任务、队列和分发渠道形成自动化链路。
 </p>
 
 <ol class="about-flow">
@@ -49,7 +49,7 @@
         <span>04</span>
         <div>
             <strong>发布到本站与多端</strong>
-            <p>内容可以发布到本地前台，也可以通过 GEOFlow Agent、WordPress REST 或通用 HTTP API 分发到目标站点。</p>
+            <p>内容可以发布到本地前台，也可以通过 SparklightAIGEO Agent、WordPress REST 或通用 HTTP API 分发到目标站点。</p>
         </div>
     </li>
     <li>
@@ -61,7 +61,7 @@
     </li>
 </ol>
 
-<h2 id="about-capabilities">GEOFlow 包含的核心能力</h2>
+<h2 id="about-capabilities">SparklightAIGEO 包含的核心能力</h2>
 
 <dl class="about-capabilities">
     <div>
@@ -93,7 +93,7 @@
 <h2 id="about-foundation">开放、可部署的技术基础</h2>
 
 <p>
-    GEOFlow 建立在 Laravel 12 与 PHP 8.3+ 之上，使用 PostgreSQL 保存业务数据，并推荐 pgvector 支撑知识向量。Redis 承担队列与缓存，Laravel Scheduler、Horizon 和 Reverb 分别服务于调度、队列运行与实时能力。
+    SparklightAIGEO 建立在 Laravel 12 与 PHP 8.3+ 之上，使用 PostgreSQL 保存业务数据，并推荐 pgvector 支撑知识向量。Redis 承担队列与缓存，Laravel Scheduler、Horizon 和 Reverb 分别服务于调度、队列运行与实时能力。
 </p>
 
 <dl class="about-stack">
@@ -110,7 +110,7 @@
 <h2 id="about-scenarios">适合持续建设内容资产的团队</h2>
 
 <p>
-    GEOFlow 可以作为独立 GEO 官网、现有官网中的内容频道、行业信源站点、内部内容管理后台，或多品牌、多主题的分发中枢。内容团队可以使用素材、任务和审核链路，工程团队可以控制部署、模型和渠道，运营团队可以查看发布、分发和分析结果。
+    SparklightAIGEO 可以作为独立 GEO 官网、现有官网中的内容频道、行业信源站点、内部内容管理后台，或多品牌、多主题的分发中枢。内容团队可以使用素材、任务和审核链路，工程团队可以控制部署、模型和渠道，运营团队可以查看发布、分发和分析结果。
 </p>
 
 <p>
@@ -120,7 +120,7 @@
 <h2 id="about-open-source">从开源仓库开始</h2>
 
 <p>
-    GEOFlow 以 GNU Affero General Public License v3.0 开源发布。个人与组织可以在遵守 AGPL-3.0 的前提下使用、修改、部署和分发；修改后的网络服务应按许可证向其用户提供对应源代码。闭源修改、白标、OEM、商业产品集成或其他需要免除 AGPL-3.0 义务的场景，可向版权所有者申请单独的商业许可。仓库包含应用源码、部署配置、说明文档、测试以及 GEOFlow Agent Skill。
+    SparklightAIGEO 以 GNU Affero General Public License v3.0 开源发布。个人与组织可以在遵守 AGPL-3.0 的前提下使用、修改、部署和分发；修改后的网络服务应按许可证向其用户提供对应源代码。闭源修改、白标、OEM、商业产品集成或其他需要免除 AGPL-3.0 义务的场景，可向版权所有者申请单独的商业许可。仓库包含应用源码、部署配置、说明文档、测试以及 SparklightAIGEO Agent Skill。
 </p>
 
 <div class="about-repository">

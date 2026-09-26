@@ -1,7 +1,7 @@
-GEOFlow 任务不执行时，优先检查 Queue Worker、Scheduler 与 Redis。三者分别负责消费作业、按时投递和保存队列状态，任一环节异常都会影响任务执行。
+SparklightAIGEO 任务不执行时，优先检查 Queue Worker、Scheduler 与 Redis。三者分别负责消费作业、按时投递和保存队列状态，任一环节异常都会影响任务执行。
 
 ## 任务不执行的现象与直连原因
-在 GEOFlow 中，后台任务（如 AI 内容生成、RAG 索引、定时抓取）分别依赖两个常驻进程：
+在 SparklightAIGEO 中，后台任务（如 AI 内容生成、RAG 索引、定时抓取）分别依赖两个常驻进程：
 - **Queue Worker**：处理队列中的异步作业，命令为 `php artisan queue:work redis --queue=geoflow,default`。
 - **Scheduler**：按计划投递周期任务，常驻命令为 `php artisan schedule:work`。
 常见现象与原因对照如下：
@@ -13,7 +13,7 @@ GEOFlow 任务不执行时，优先检查 Queue Worker、Scheduler 与 Redis。�
 
 ## 排查 Queue Worker 与 Scheduler 是否运行
 1. **使用健康检查脚本**
-GEOFlow 提供 `bash deploy-scripts/geoflow-healthcheck.sh`，输出会直接显示 `queue` 和 `scheduler` 是否为运行状态。若脚本返回组件缺失，即可锁定问题。
+SparklightAIGEO 提供 `bash deploy-scripts/sparklightaigeo-healthcheck.sh`，输出会直接显示 `queue` 和 `scheduler` 是否为运行状态。若脚本返回组件缺失，即可锁定问题。
 2. **手动检查进程**：确认 `queue:work` 与 `schedule:work` 都有常驻进程，并核对 Worker 正在监听 `geoflow,default`。
 3. **检查 Redis 连通性**：确认应用与 Worker 使用同一套 Redis 连接和队列前缀，日志中没有连接拒绝或超时。
 

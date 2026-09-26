@@ -19,7 +19,7 @@ class ManagementSiteQuery
 
         return [
             'site_key' => 'primary', 'kind' => 'primary',
-            'name' => $settings['site_name'] ?? config('app.name', 'GEOFlow'),
+            'name' => $settings['site_name'] ?? config('app.name', 'SparklightAIGEO'),
             'active_theme' => $settings['active_theme'] ?? config('geoflow.default_theme'),
             'settings' => $settings,
             'settings_revision' => hash('sha256', json_encode($settings, JSON_THROW_ON_ERROR)),

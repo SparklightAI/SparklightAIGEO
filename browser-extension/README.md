@@ -1,17 +1,17 @@
-# GEOFlow Chrome Operator
+# SparklightAIGEO Chrome Operator
 
-Manifest V3 extension for human-confirmed publishing work. It connects to a self-hosted GEOFlow instance, claims assigned manual-publication work orders, opens target pages, and fills supported editors. The operator reviews the draft and performs the final publish action.
+Manifest V3 extension for human-confirmed publishing work. It connects to a self-hosted SparklightAIGEO instance, claims assigned manual-publication work orders, opens target pages, and fills supported editors. The operator reviews the draft and performs the final publish action.
 
 ## Local installation
 
-1. Run the GEOFlow migration and sign in to the admin console.
+1. Run the SparklightAIGEO migration and sign in to the admin console.
 2. Open `chrome://extensions`, enable Developer mode, and choose **Load unpacked**.
 3. Select this `browser-extension` directory.
-4. Open the toolbar action, enter the GEOFlow base URL, and approve the displayed code in GEOFlow.
+4. Open the toolbar action, enter the SparklightAIGEO base URL, and approve the displayed code in SparklightAIGEO.
 
-Remote GEOFlow instances require HTTPS. HTTP is accepted only for `localhost` and `127.0.0.1`.
+Remote SparklightAIGEO instances require HTTPS. HTTP is accepted only for `localhost` and `127.0.0.1`.
 
-One Chrome profile connects to one GEOFlow instance. Use separate Chrome profiles when platform accounts must stay isolated.
+One Chrome profile connects to one SparklightAIGEO instance. Use separate Chrome profiles when platform accounts must stay isolated.
 After Chrome or the side panel restarts, reopen a claimed work order from the queue to restore its in-session context and heartbeat.
 
 ## Supported behavior
@@ -19,7 +19,7 @@ After Chrome or the side panel restarts, reopen a claimed work order from the qu
 - Generic work orders: claim, open target, copy content, release, and report result.
 - Zhihu answers: verify the active profile, locate the answer editor, and fill plain text.
 - The extension never clicks the final Publish button.
-- Platform cookies, passwords, and access tokens remain in Chrome and are never sent to GEOFlow.
+- Platform cookies, passwords, and access tokens remain in Chrome and are never sent to SparklightAIGEO.
 
 ## Verification and packaging
 

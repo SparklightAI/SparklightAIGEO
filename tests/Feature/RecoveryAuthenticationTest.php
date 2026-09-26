@@ -98,7 +98,7 @@ class RecoveryAuthenticationTest extends TestCase
         $token = app(ApiTokenService::class)->createToken('current', ['sites:read'], $admin->id)['token'];
         $this->withToken($token)->postJson('/api/v1/auth/logout')->assertConflict()->assertJsonPath('error.code', 'recovery_epoch_conflict');
         $this->assertSame(1, $admin->tokens()->count());
-        $this->withToken($token)->withHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32))
+        $this->withToken($token)->withHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32))
             ->postJson('/api/v1/auth/logout')->assertOk();
         $this->assertSame(0, $admin->tokens()->count());
     }
@@ -109,7 +109,7 @@ class RecoveryAuthenticationTest extends TestCase
         $admin = $this->admin();
         $token = $this->postJson('/api/v1/auth/login', ['username' => $admin->username, 'password' => 'recovery-test-password'])->assertOk()->json('data.token');
         $this->withToken($token)->getJson('/api/v1/auth/session')->assertOk();
-        $this->withHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32))->postJson('/api/v1/management/theme-workspaces', ['site' => 'primary', 'theme' => 'default'])
+        $this->withHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32))->postJson('/api/v1/management/theme-workspaces', ['site' => 'primary', 'theme' => 'default'])
             ->assertServiceUnavailable()->assertJsonPath('error.code', 'recovery_background_held');
         $this->postJson('/horizon/api/jobs/retry/example')->assertServiceUnavailable();
         $this->postJson('/api/v1/auth/logout')->assertOk();
@@ -168,7 +168,7 @@ class RecoveryAuthenticationTest extends TestCase
         $this->hostState();
         $admin = $this->admin();
         $token = app(ApiTokenService::class)->createToken('theme', ['themes:read', 'themes:write', 'themes:code'], $admin->id)['token'];
-        $this->withToken($token)->withHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32));
+        $this->withToken($token)->withHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32));
         $id = $this->postJson('/api/v1/management/theme-workspaces', ['site' => 'primary', 'theme' => 'default'])->assertCreated()->json('data.id');
         $base = '/api/v1/management/theme-workspaces/'.$id;
         $this->postJson($base.'/code-authorizations', ['password' => 'recovery-test-password'])->assertOk();
@@ -178,7 +178,7 @@ class RecoveryAuthenticationTest extends TestCase
         $this->get($preview)->assertForbidden();
         // Restoring an old sequence can reuse a token id; the old grant still must fail.
         PersonalAccessToken::findToken($token)->forceFill(['recovery_epoch' => str_repeat('c', 32)])->save();
-        $this->withHeader('X-GEOFlow-Recovery-Epoch', str_repeat('c', 32))->postJson($base.'/previews')->assertForbidden();
+        $this->withHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('c', 32))->postJson($base.'/previews')->assertForbidden();
         $this->postJson($base.'/code-authorizations', ['password' => 'recovery-test-password'])->assertOk();
         $this->postJson($base.'/previews')->assertOk();
         $this->get($preview)->assertForbidden();
@@ -225,8 +225,8 @@ class RecoveryAuthenticationTest extends TestCase
         $this->hostState('http_ready');
         $admin = $this->admin();
         $token = app(ApiTokenService::class)->createToken('browser', ['browser-operations:read', 'browser-operations:execute'], $admin->id)['token'];
-        $this->withToken($token)->withHeader('X-GEOFlow-Browser-Protocol', '1')->withHeader('X-GEOFlow-Client-Version', '0.1.0')
-            ->withHeader('X-GEOFlow-Recovery-Epoch', str_repeat('a', 32))
+        $this->withToken($token)->withHeader('X-SparklightAIGEO-Browser-Protocol', '1')->withHeader('X-SparklightAIGEO-Client-Version', '0.1.0')
+            ->withHeader('X-SparklightAIGEO-Recovery-Epoch', str_repeat('a', 32))
             ->deleteJson('/api/v1/browser-operations/session')->assertOk();
         $this->assertSame(0, $admin->tokens()->count());
     }

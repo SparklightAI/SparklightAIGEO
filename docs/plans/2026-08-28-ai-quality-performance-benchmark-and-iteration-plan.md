@@ -1,10 +1,10 @@
-# GEOFlow AI 质检性能、质量与稳定性对标及迭代方案
+# SparklightAIGEO AI 质检性能、质量与稳定性对标及迭代方案
 
 > 状态：已按最终评审版完成代码升级，生产门禁仍保持 v1
 > 初稿日期：2026-08-28
 > Review 日期：2026-08-28
 > 实施日期：2026-08-29
-> 证据范围：当前 GEOFlow 工作区、质检记录 #5、队列运行日志、模型配置、现有测试，以及 Promptfoo、DeepEval、Ragas 的仓库与关键实现
+> 证据范围：当前 SparklightAIGEO 工作区、质检记录 #5、队列运行日志、模型配置、现有测试，以及 Promptfoo、DeepEval、Ragas 的仓库与关键实现
 > 本文用途：记录已确认的目标、边界、接口、迁移、验收和发布顺序。实施结果见 `docs/reviews/2026-08-29-ai-quality-fast-v2-implementation-report.md`。
 
 ## 一、结论摘要
@@ -19,7 +19,7 @@
 
 当前工作区已经具备文章质检状态接口、2 秒轮询、动态进度条、分段记录、输入指纹、活动记录去重、分段续跑和定时对账。最终方案保留这些能力，重点补齐真实阶段耗时、截止时间、错误分类和队列隔离。初稿中“新增状态接口与前端轮询”的描述已经修正。
 
-GitHub 对标选择 [Promptfoo](https://github.com/promptfoo/promptfoo)、[DeepEval](https://github.com/confident-ai/deepeval) 和 [Ragas](https://github.com/vibrantlabsai/ragas)。截至调研日，三者分别约有 24.6k、17.9k 和 15.5k Stars。选择依据包含社区影响力、维护活跃度、与 GEOFlow 在线内容质检的迁移相关性。OpenAI Evals、Langfuse、MLflow、Opik 也进入候选审阅；前三个入选项目在混合断言、事实忠实度、裁判校准、缓存和并发控制方面更贴合当前问题。
+GitHub 对标选择 [Promptfoo](https://github.com/promptfoo/promptfoo)、[DeepEval](https://github.com/confident-ai/deepeval) 和 [Ragas](https://github.com/vibrantlabsai/ragas)。截至调研日，三者分别约有 24.6k、17.9k 和 15.5k Stars。选择依据包含社区影响力、维护活跃度、与 SparklightAIGEO 在线内容质检的迁移相关性。OpenAI Evals、Langfuse、MLflow、Opik 也进入候选审阅；前三个入选项目在混合断言、事实忠实度、裁判校准、缓存和并发控制方面更贴合当前问题。
 
 ## 二、目标、适用范围与非目标
 
@@ -188,7 +188,7 @@ Star 数据为 2026-08-28 调研快照，后续会自然变化。
 
 ### 4.2 候选概览
 
-| 项目 | 约 Stars | 定位 | 与 GEOFlow 的直接相关性 | 结论 |
+| 项目 | 约 Stars | 定位 | 与 SparklightAIGEO 的直接相关性 | 结论 |
 | --- | ---: | --- | --- | --- |
 | [Promptfoo](https://github.com/promptfoo/promptfoo) | 24.6k | LLM 测试、评测与红队 | 混合断言、阈值、缓存、调度、延迟门禁 | 入选 |
 | [DeepEval](https://github.com/confident-ai/deepeval) | 17.9k | LLM 专用测试框架 | 忠实度、G-Eval、并发与裁判解释 | 入选 |
@@ -874,7 +874,7 @@ node --test tests/JavaScript/*.test.js
 - [MLflow](https://github.com/mlflow/mlflow)
 - [Opik](https://github.com/comet-ml/opik)
 
-### GEOFlow 当前实现
+### SparklightAIGEO 当前实现
 
 - `app/Services/GeoFlow/ArticleAiQualityInspectionService.php`
 - `app/Services/GeoFlow/ArticleFactCandidateExtractor.php`

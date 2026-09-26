@@ -2,7 +2,7 @@
 
 ## 背景
 
-当前 GEOFlow 已支持文章详情页正文顶部和底部的轻量文本广告，数据保存在 `site_settings.article_detail_text_ads`，并可以通过分发渠道同步到 GEOFlow Agent 目标站点。
+当前 SparklightAIGEO 已支持文章详情页正文顶部和底部的轻量文本广告，数据保存在 `site_settings.article_detail_text_ads`，并可以通过分发渠道同步到 SparklightAIGEO Agent 目标站点。
 
 现有实现的核心限制是：
 
@@ -20,7 +20,7 @@
 3. 每条文字链可配置文字、链接、颜色、新标签打开、追踪参数、启用状态和排序。
 4. 每个模块可选择展示位置：正文顶部或正文底部。
 5. 渠道站点可以选择继承全局模块、勾选全局模块、禁用广告，或使用渠道自定义模块。
-6. 本地前台和 GEOFlow Agent 目标站点都能渲染新结构。
+6. 本地前台和 SparklightAIGEO Agent 目标站点都能渲染新结构。
 7. 兼容现有旧扁平文本广告数据，避免已有配置失效。
 
 ## 非目标
@@ -194,7 +194,7 @@ distribution_channels.channel_config.article_text_ad_policy
 
 ### 6. 目标站点包需要双格式渲染
 
-GEOFlow Agent 目标站点包必须支持：
+SparklightAIGEO Agent 目标站点包必须支持：
 
 - 旧扁平 `article_text_ads`。
 - 新模块化 `article_text_ads`。
@@ -215,7 +215,7 @@ flowchart LR
     A --> D["渠道编辑页策略"]
     D --> E["DistributionChannel 生效模块计算"]
     E --> F["目标站点设置 payload"]
-    F --> G["GEOFlow Agent 保存 site-settings.json"]
+    F --> G["SparklightAIGEO Agent 保存 site-settings.json"]
     G --> H["目标站点文章详情页渲染"]
 ```
 

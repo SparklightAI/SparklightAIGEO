@@ -134,7 +134,7 @@ class DistributionQueueConfigurationTest extends TestCase
 
     public function test_deployment_healthcheck_rejects_pending_migrations(): void
     {
-        $healthcheck = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/geoflow-healthcheck.sh');
+        $healthcheck = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/sparklightaigeo-healthcheck.sh');
 
         $this->assertIsString($healthcheck);
         $this->assertStringContainsString(
@@ -156,8 +156,8 @@ class DistributionQueueConfigurationTest extends TestCase
             $this->assertStringNotContainsString('geoflow-system-update-queue-prod', $contents, $file);
         }
 
-        $deploy = (string) file_get_contents($root.'/deploy-scripts/geoflow-docker-deploy.sh');
-        $healthcheck = (string) file_get_contents($root.'/deploy-scripts/geoflow-healthcheck.sh');
+        $deploy = (string) file_get_contents($root.'/deploy-scripts/sparklightaigeo-docker-deploy.sh');
+        $healthcheck = (string) file_get_contents($root.'/deploy-scripts/sparklightaigeo-healthcheck.sh');
         $this->assertStringContainsString('geoflow-system-update-queue-prod', $deploy);
         $this->assertStringContainsString('--remove-orphans', $deploy);
         $this->assertStringContainsString('geoflow-system-update-queue-prod', $healthcheck);
@@ -178,7 +178,7 @@ class DistributionQueueConfigurationTest extends TestCase
 
     public function test_deploy_script_matches_secure_cookie_to_public_protocol(): void
     {
-        $script = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/geoflow-docker-deploy.sh');
+        $script = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/sparklightaigeo-docker-deploy.sh');
 
         $this->assertIsString($script);
         $this->assertStringContainsString('https://*) session_secure_cookie=true', $script);
@@ -190,7 +190,7 @@ class DistributionQueueConfigurationTest extends TestCase
 
     public function test_deploy_script_drains_old_services_around_database_migrations(): void
     {
-        $script = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/geoflow-docker-deploy.sh');
+        $script = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/sparklightaigeo-docker-deploy.sh');
 
         $this->assertIsString($script);
         $maintenanceLogAt = strpos($script, 'Entering maintenance mode and draining existing application services.');
@@ -228,7 +228,7 @@ class DistributionQueueConfigurationTest extends TestCase
         $this->assertStringContainsString('-e AUTO_OPTIMIZE=false', $maintenanceBlock);
         $this->assertStringContainsString('if enter_maintenance_mode; then', $script);
 
-        $healthcheck = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/geoflow-healthcheck.sh');
+        $healthcheck = file_get_contents(dirname(__DIR__, 2).'/deploy-scripts/sparklightaigeo-healthcheck.sh');
         $this->assertIsString($healthcheck);
         $this->assertStringContainsString('GEOFLOW_SKIP_HTTP_CHECK', $healthcheck);
         $this->assertStringContainsString('fail "HTTP health endpoint failed:', $healthcheck);
@@ -238,7 +238,7 @@ class DistributionQueueConfigurationTest extends TestCase
     {
         $root = dirname(__DIR__, 2);
         $nginxTemplate = file_get_contents($root.'/docker/nginx/default.conf.template');
-        $nginxApp = file_get_contents($root.'/docker/nginx/geoflow-app.conf');
+        $nginxApp = file_get_contents($root.'/docker/nginx/sparklightaigeo-app.conf');
 
         $this->assertIsString($nginxTemplate);
         $this->assertIsString($nginxApp);

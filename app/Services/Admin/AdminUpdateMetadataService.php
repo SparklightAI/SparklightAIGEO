@@ -7,11 +7,11 @@ use Illuminate\Http\Client\Factory;
 use Illuminate\Support\Facades\Cache;
 
 /**
- * Checks upstream GEOFlow release metadata for admin update notifications.
+ * Checks upstream SparklightAIGEO release metadata for admin update notifications.
  */
 class AdminUpdateMetadataService
 {
-    private const GITHUB_REPOSITORY_URL = 'https://github.com/yaojingang/GEOFlow';
+    private const GITHUB_REPOSITORY_URL = 'https://github.com/SparklightAI/SparklightAIGEO';
 
     private const OFFICIAL_RELEASE_METADATA_URL = self::GITHUB_REPOSITORY_URL.'/releases/latest/download/version.json';
 

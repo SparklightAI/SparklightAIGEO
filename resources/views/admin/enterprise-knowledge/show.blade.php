@@ -31,8 +31,8 @@
         }
 
         .enterprise-markdown-editor .vditor-toolbar {
-            background: #f9fafb;
-            border-bottom-color: #e5e7eb;
+            background: #fbf8f4;
+            border-bottom-color: #ece9e4;
             padding: 8px 10px;
             position: sticky;
             top: 0;
@@ -43,7 +43,7 @@
         .enterprise-markdown-editor .vditor-ir pre.vditor-reset,
         .enterprise-markdown-editor .vditor-wysiwyg pre.vditor-reset,
         .enterprise-markdown-editor .vditor-sv .vditor-reset {
-            color: #111827;
+            color: #1e2238;
             font-size: 15px;
             line-height: 1.85;
         }
@@ -60,7 +60,7 @@
         }
 
         .enterprise-markdown-editor .vditor-preview {
-            border-left-color: #e5e7eb;
+            border-left-color: #ece9e4;
         }
 
         .enterprise-markdown-editor .vditor-textarea {

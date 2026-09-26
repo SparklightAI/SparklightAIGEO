@@ -138,7 +138,7 @@ test('authorized updater actions collect central prompt fields and preserve the 
                 dialogConfirmLabel: 'Update system',
                 dialogGuidance: 'A verified backup is available.',
                 dialogMessage: 'The service will restart.',
-                dialogTitle: 'Update GEOFlow',
+                dialogTitle: 'Update SparklightAIGEO',
                 dialogTone: 'warning',
                 passwordLabel: 'Current password',
                 passwordRequired: 'true',

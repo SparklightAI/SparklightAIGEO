@@ -36,7 +36,7 @@ class SystemUpdaterBootstrapService
     public function prepare(): array
     {
         $manifestUrl = (string) config('geoflow.updater_bootstrap_manifest_url');
-        if ($manifestUrl !== 'https://github.com/yaojingang/geoflow-updater/releases/latest/download/bootstrap-manifest.json') {
+        if ($manifestUrl !== 'https://sparklight-ai.com/updater/releases/latest/download/bootstrap-manifest.json') {
             throw new RuntimeException('Updater bootstrap source is invalid.');
         }
 

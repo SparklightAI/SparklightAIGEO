@@ -2,19 +2,19 @@
 
 ## Name
 
-GEOFlow Chrome Operator
+SparklightAIGEO Chrome Operator
 
 ## Short description
 
-Claim GEOFlow publishing work and safely fill drafts in websites where you are already signed in.
+Claim SparklightAIGEO publishing work and safely fill drafts in websites where you are already signed in.
 
 ## Detailed description
 
-GEOFlow Chrome Operator gives content operations teams a controlled bridge between self-hosted GEOFlow work orders and a user's existing Chrome session.
+SparklightAIGEO Chrome Operator gives content operations teams a controlled bridge between self-hosted SparklightAIGEO work orders and a user's existing Chrome session.
 
 Operators can review assigned work, claim one work order, open its target page, copy content, and return a completion receipt. The included Zhihu answer adapter verifies the expected profile before filling plain text into an empty answer editor. The operator remains responsible for reviewing the draft and clicking the platform's final Publish button.
 
-The extension requests website access only when the user connects a GEOFlow instance or opens a target platform. It does not collect platform credentials, cookies, page bodies, or browsing history.
+The extension requests website access only when the user connects a SparklightAIGEO instance or opens a target platform. It does not collect platform credentials, cookies, page bodies, or browsing history.
 
 ## Category
 
@@ -32,14 +32,14 @@ Productivity
 ## Permission justification
 
 - `sidePanel`: provides a persistent work queue next to the target page.
-- `storage`: stores the scoped GEOFlow connection and current task state.
+- `storage`: stores the scoped SparklightAIGEO connection and current task state.
 - `scripting`: runs a packaged adapter after the operator requests draft filling.
 - `activeTab`: limits page interaction to the operator's active workflow.
-- Optional host access: requested for the configured GEOFlow instance and each target platform origin.
+- Optional host access: requested for the configured SparklightAIGEO instance and each target platform origin.
 
 ## Support
 
-<https://github.com/yaojingang/GEOFlow/issues>
+<https://github.com/SparklightAI/SparklightAIGEO/issues>
 
 ## Pre-submission checklist
 

@@ -83,7 +83,7 @@ class DistributionController extends Controller
                 ->first()
             : null;
         $defaultSite = [
-            'name' => SiteSettingsBag::get('site_name', (string) config('geoflow.site_name', 'GEOFlow')),
+            'name' => SiteSettingsBag::get('site_name', (string) config('geoflow.site_name', 'SparklightAIGEO')),
             'url' => route('site.home'),
             'published_articles' => Article::query()->published()->count(),
             'forms_total' => (int) ($defaultSiteFormStats?->total ?? 0),
@@ -1688,13 +1688,13 @@ class DistributionController extends Controller
      */
     private function normalizeChannelSiteSettings(array $payload, ?DistributionChannel $channel = null): array
     {
-        $defaultName = trim((string) ($payload['name'] ?? 'GEOFlow Target Site'));
+        $defaultName = trim((string) ($payload['name'] ?? 'SparklightAIGEO Target Site'));
         $defaults = $channel?->resolvedSiteSettings() ?? [
-            'site_name' => $defaultName !== '' ? $defaultName : 'GEOFlow Target Site',
+            'site_name' => $defaultName !== '' ? $defaultName : 'SparklightAIGEO Target Site',
             'site_subtitle' => '',
-            'site_description' => '由 GEOFlow 自动分发和管理的目标站点。',
+            'site_description' => '由 SparklightAIGEO 自动分发和管理的目标站点。',
             'site_keywords' => '',
-            'copyright_info' => '© '.date('Y').' '.($defaultName !== '' ? $defaultName : 'GEOFlow Target Site'),
+            'copyright_info' => '© '.date('Y').' '.($defaultName !== '' ? $defaultName : 'SparklightAIGEO Target Site'),
             'site_logo' => '',
             'site_favicon' => '',
             'seo_title_template' => '{title} - {site_name}',

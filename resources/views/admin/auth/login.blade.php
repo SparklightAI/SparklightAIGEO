@@ -10,6 +10,7 @@
         @vite(['resources/css/app.css', 'resources/js/pwa.js'])
     @else
         <script src="{{ asset('js/tailwindcss.play-cdn.js') }}"></script>
+        <x-brand-tailwind-config />
         @vite('resources/js/pwa.js')
     @endif
     <script src="{{ asset('js/lucide.min.js') }}"></script>
@@ -17,21 +18,32 @@
     <style>
         body {
             background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0) 32%),
-                radial-gradient(circle at bottom right, rgba(229, 231, 235, 0.72), rgba(229, 231, 235, 0) 30%),
-                linear-gradient(180deg, #f5f5f7 0%, #e5e7eb 100%);
+                radial-gradient(circle at bottom right, rgba(239, 240, 250, 0.72), rgba(239, 240, 250, 0) 30%),
+                linear-gradient(180deg, #fbf8f4 0%, #ece9e4 100%);
             min-height: 100vh;
         }
         .login-form {
             background: rgba(255, 255, 255, 0.82);
             backdrop-filter: blur(24px) saturate(180%);
-            border: 1px solid rgba(209, 213, 219, 0.9);
-            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+            border: 1px solid rgba(220, 216, 209, 0.9);
+            box-shadow: 0 24px 60px rgba(30, 34, 56, 0.08);
         }
         .login-badge {
-            background: linear-gradient(180deg, #6b7280 0%, #374151 100%);
+            background: linear-gradient(180deg, #2d326b 0%, #1e2238 100%);
+            box-shadow: 0 10px 24px rgba(45, 50, 107, 0.24);
         }
         .initial-admin-hint {
-            background: linear-gradient(180deg, rgba(239, 246, 255, 0.96) 0%, rgba(255, 255, 255, 0.9) 100%);
+            background: linear-gradient(180deg, rgba(239, 240, 250, 0.96) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+        .login-submit {
+            background: #2d326b;
+            box-shadow: 0 8px 20px rgba(45, 50, 107, 0.22);
+        }
+        .login-submit:hover { background: #232752; }
+        .login-input:focus {
+            border-color: #2d326b;
+            box-shadow: 0 0 0 3px rgba(45, 50, 107, 0.16);
+            outline: none;
         }
     </style>
     @endunless
@@ -50,8 +62,9 @@
     <div class="rounded-2xl p-8 login-form">
         <div class="text-center mb-8">
             <div class="login-badge w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                <i data-lucide="sparkles" class="w-8 h-8 text-white"></i>
             </div>
+            <img src="{{ asset('brand/sparklight-wordmark.png') }}" alt="星火之光AI SparkLight AI" class="mx-auto mb-3 h-9 w-auto sm:h-10">
             <h1 class="text-2xl font-bold text-gray-900 mb-2">{{ __('admin.login.title') }}</h1>
             <p class="text-gray-600">{{ __('admin.login.subtitle', ['site_name' => $adminSiteName]) }}</p>
         </div>
@@ -100,13 +113,13 @@
             <div>
                 <label for="username" class="block text-sm font-medium text-gray-700 mb-2">{{ __('admin.login.username') }}</label>
                 <input type="text" id="username" name="username" required value="{{ old('username') }}"
-                       class="block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       class="login-input block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                        placeholder="{{ __('admin.login.username_placeholder') }}" autocomplete="username">
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-2">{{ __('admin.login.password') }}</label>
                 <input type="password" id="password" name="password" required
-                       class="block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                       class="login-input block w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                        placeholder="{{ __('admin.login.password_placeholder') }}" autocomplete="current-password">
             </div>
             <input type="hidden" name="remember" value="0">
@@ -117,7 +130,7 @@
                 </span>
                 <span class="text-xs text-gray-400">{{ __('admin.login.remember_30_days_hint') }}</span>
             </label>
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg">
+            <button type="submit" class="login-submit w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 px-4 rounded-lg">
                 {{ __('admin.login.submit') }}
             </button>
         </form>

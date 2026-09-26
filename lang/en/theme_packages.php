@@ -14,7 +14,7 @@ return [
     'export_boundary' => 'Includes theme files, assets and private notes. Articles, categories, accounts, leads and site settings stay on the source site.',
     'download' => 'Download theme ZIP',
     'expires' => 'Available until :time, only to your administrator account.',
-    'upload_intro' => 'Upload a standard GEOFlow theme ZIP to check integrity and compatibility.',
+    'upload_intro' => 'Upload a standard SparklightAIGEO theme ZIP to check integrity and compatibility.',
     'upload_boundary' => 'Inspection only reads files. After installation, preview all six page types and activate separately in site settings.',
     'choose_file' => 'Choose theme ZIP',
     'upload_limit' => 'Current upload limit: :size MiB. Defaults: 500 files, 5 MiB per file, 25 MiB unpacked.',

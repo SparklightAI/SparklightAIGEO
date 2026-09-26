@@ -12,7 +12,7 @@ final class BrowserDeviceAuthorizationController extends BaseApiController
     public function store(Request $request, DeviceAuthorizationService $authorizations): JsonResponse
     {
         $this->ensureTrustedInstance($request);
-        $clientName = trim((string) $request->input('client_name', 'GEOFlow Chrome'));
+        $clientName = trim((string) $request->input('client_name', 'SparklightAIGEO Chrome'));
         if ($clientName === '' || mb_strlen($clientName) > 80) {
             throw new ApiException('validation_failed', '客户端名称格式无效', 422);
         }
@@ -45,7 +45,7 @@ final class BrowserDeviceAuthorizationController extends BaseApiController
     {
         $host = strtolower($request->getHost());
         if (! $request->isSecure() && ! in_array($host, ['localhost', '127.0.0.1', '::1'], true)) {
-            throw new ApiException('insecure_instance', '远程 GEOFlow 实例必须使用 HTTPS', 400);
+            throw new ApiException('insecure_instance', '远程 SparklightAIGEO 实例必须使用 HTTPS', 400);
         }
     }
 }

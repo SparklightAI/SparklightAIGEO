@@ -65,9 +65,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1 \
 COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/99-opcache.ini
 COPY docker/php/opcache-dev.ini /usr/local/etc/php/conf.d/zz-opcache-dev.ini
 COPY docker/php/php-docker-overrides.ini /usr/local/etc/php/conf.d/99-overrides.ini
-COPY docker/entrypoint.sh /usr/local/bin/geoflow-entrypoint
+COPY docker/entrypoint.sh /usr/local/bin/sparklightaigeo-entrypoint
 
-RUN chmod +x /usr/local/bin/geoflow-entrypoint
+RUN chmod +x /usr/local/bin/sparklightaigeo-entrypoint
 
-ENTRYPOINT ["/usr/local/bin/geoflow-entrypoint"]
+ENTRYPOINT ["/usr/local/bin/sparklightaigeo-entrypoint"]
 CMD ["php", "artisan", "about"]

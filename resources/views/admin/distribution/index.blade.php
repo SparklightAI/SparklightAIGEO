@@ -27,8 +27,8 @@
         </header>
 
         <div data-selected-sync-modal class="fixed inset-0 z-50 hidden items-center justify-center overflow-y-auto px-4 py-4 sm:px-6" aria-labelledby="selected-sync-title" role="dialog" aria-modal="true">
-            <div class="fixed inset-0 bg-[rgba(15,23,42,0.48)]" data-selected-sync-close></div>
-            <div class="relative mx-auto max-h-[calc(100dvh-2rem)] w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-[0_24px_72px_rgba(15,23,42,0.28)]">
+            <div class="fixed inset-0 bg-[rgba(30, 34, 56,0.48)]" data-selected-sync-close></div>
+            <div class="relative mx-auto max-h-[calc(100dvh-2rem)] w-full max-w-4xl overflow-hidden rounded-2xl bg-white shadow-[0_24px_72px_rgba(30, 34, 56,0.28)]">
                 <form method="POST" action="{{ route('admin.distribution.sync-settings-selected.preview') }}" class="flex max-h-[calc(100dvh-2rem)] flex-col">
                     @csrf
                     <div class="flex items-start justify-between gap-4 border-b border-gray-200 px-6 py-5">
