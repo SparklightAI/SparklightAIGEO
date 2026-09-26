@@ -41,26 +41,6 @@ flowchart LR
 
 系统保留知识来源、任务配置、模型调用、质检证据、人工放行、发布状态和渠道日志，方便团队持续复盘和维护内容资产。
 
----
-
-## 界面预览
-
-<table>
-  <tr>
-    <td width="50%"><img src="resources/knowledge/ai-workspace/media/01-ai-workspace-start.webp" alt="SparklightAIGEO Admin UI V3 图文帮助工作台" /><br /><sub>图文帮助工作台</sub></td>
-    <td width="50%"><img src="resources/knowledge/ai-workspace/media/03-analytics-overview.webp" alt="SparklightAIGEO Admin UI V3 数据中心" /><br /><sub>数据中心</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="resources/knowledge/ai-workspace/media/05-task-list.webp" alt="SparklightAIGEO Admin UI V3 任务管理" /><br /><sub>任务管理</sub></td>
-    <td width="50%"><img src="resources/knowledge/ai-workspace/media/10-article-quality.webp" alt="SparklightAIGEO Admin UI V3 文章 AI 质检" /><br /><sub>文章 AI 质检</sub></td>
-  </tr>
-  <tr>
-    <td width="50%"><img src="resources/knowledge/ai-workspace/media/19-hosted-sites.webp" alt="SparklightAIGEO Admin UI V3 托管渠道站点" /><br /><sub>托管渠道站点</sub></td>
-    <td width="50%"><img src="resources/knowledge/ai-workspace/media/20-manual-publication.webp" alt="SparklightAIGEO Admin UI V3 人工发布工作台" /><br /><sub>人工发布工作台</sub></td>
-  </tr>
-</table>
-
-这些脱敏界面来自 3.0 内置帮助素材，覆盖知识问答、任务调度、文章质检、托管站点、人工发布和数据分析等主要流程。
 
 ---
 
